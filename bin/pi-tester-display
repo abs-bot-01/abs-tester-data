@@ -1,0 +1,27 @@
+#!/bin/sh
+# Start the disposable Pi-agent Xvfb display used by desktop tests.
+set -eu
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+DISPLAY_NAME=${PI_TESTER_DISPLAY:-:1042}
+RUNTIME="$ROOT/.runtime"
+PID_FILE="$RUNTIME/xvfb.pid"
+LOG_FILE="$RUNTIME/xvfb.log"
+mkdir -p "$RUNTIME"
+
+if /usr/bin/xdpyinfo -display "$DISPLAY_NAME" >/dev/null 2>&1; then
+  printf '{"display":"%s","status":"already-running"}\n' "$DISPLAY_NAME"
+  exit 0
+fi
+
+/usr/bin/Xvfb "$DISPLAY_NAME" -screen 0 1280x720x24 -ac -nolisten tcp +extension RANDR >"$LOG_FILE" 2>&1 &
+printf '%s\n' "$!" >"$PID_FILE"
+for _ in $(seq 1 40); do
+  if /usr/bin/xdpyinfo -display "$DISPLAY_NAME" >/dev/null 2>&1; then
+    printf '{"display":"%s","status":"started","pid":%s}\n' "$DISPLAY_NAME" "$(cat "$PID_FILE")"
+    exit 0
+  fi
+  sleep 0.2
+done
+
+echo "Pi-agent Xvfb display failed: $DISPLAY_NAME (see $LOG_FILE)" >&2
+exit 1

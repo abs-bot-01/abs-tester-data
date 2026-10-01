@@ -1,0 +1,30 @@
+#!/bin/sh
+# Capture a cursor-marked screenshot into a project run's artifacts folder.
+set -eu
+if [ "$#" -ne 3 ]; then
+  echo "usage: pi-tester-capture <project> <run-id> <label>" >&2
+  exit 2
+fi
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+project=$1
+run_id=$2
+label=$3
+case "$project" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid project" >&2; exit 3 ;; esac
+case "$run_id" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid run id" >&2; exit 3 ;; esac
+case "$label" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid label" >&2; exit 3 ;; esac
+run_dir="$ROOT/tester-data/projects/$project/runs/$run_id"
+out="$run_dir/artifacts/$label.png"
+[ -d "$run_dir" ] || { echo "run not found: $project/$run_id" >&2; exit 4; }
+mkdir -p "$run_dir/artifacts"
+DISPLAY_NAME=${PI_TESTER_DISPLAY:-:1042}
+/usr/bin/import -display "$DISPLAY_NAME" -window root -quality 90 "$out"
+cur=$(/usr/bin/xdotool -display "$DISPLAY_NAME" getmouselocation 2>/dev/null || true)
+x=$(printf '%s' "$cur" | tr ' ' '\n' | sed -n 's/^x://p' | head -n1)
+y=$(printf '%s' "$cur" | tr ' ' '\n' | sed -n 's/^y://p' | head -n1)
+if [ -n "${x:-}" ] && [ -n "${y:-}" ]; then
+  /usr/bin/convert "$out" \
+    -stroke white -strokewidth 2 -fill none -draw "circle $x,$y $((x+9)),$y" \
+    -fill red -stroke none -draw "circle $x,$y $((x+5)),$y" "$out"
+fi
+/usr/bin/mogrify -resize '1280>' "$out"
+printf '{"project":"%s","run":"%s","artifact":"%s","cursor":"%s,%s"}\n' "$project" "$run_id" "artifacts/$label.png" "${x:-none}" "${y:-none}"

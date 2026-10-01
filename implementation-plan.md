@@ -1,8 +1,8 @@
 # Tester System — Implementation Plan
 
-*Status: Phases 0–4 (project scaffolding + migration, run restructure, findings v2, KB restructure, runbook tooling) and Phase 5 tooling are implemented on `abs-bot-01` (2026-09-01); old data archived in `tester-data-pre-v2/`. The agent-facing behavioural instructions (`AGENTS.md`, `TOOLS.md`, `RUNBOOK.md`) are updated to match. Remaining: real-run validation of runbook execution and project-lifecycle prompts.*
+*Status: The original phases 0–4 and phase 5 tooling were implemented on `abs-bot-01` (2026-09-01). This repository now provides the portable Pi-agent entry point, local store, and desktop wrappers. Remaining: real-run validation of runbook execution and project-lifecycle prompts.*
 
-*Basis: `document-contracts.md` (Design Document). This plan turns the design into ordered, concrete work. Each phase lists its goal, the tasks, the files touched, and the acceptance criteria. When this plan is done, the tester system matches the design.*
+*Basis: `architecture.md` (Design Document). This plan turns the design into ordered, concrete work. Each phase lists its goal, the tasks, the files touched, and the acceptance criteria. When this plan is done, the tester system matches the design.*
 
 ---
 
@@ -12,10 +12,10 @@ A working POC already runs on `abs-bot-01`:
 
 | Component | State today |
 |-----------|-------------|
-| Tester agent (`tester`) with OpenClaw gateway + desktop node | Working; Xvfb display `:1042.0`; launch/stop/capture/tool wrappers approved |
+| Pi-agent tester with local desktop wrappers | Working locally; disposable Xvfb display `:1042`; launch/stop/capture/tool wrappers are in `bin/` |
 | `tester-tools.py` | Working store with subcommands: `run-start`, `action`, `poi`, `finding`, `run-complete`, `history`, `validate`, `knowledge-add` |
 | Storage | `tester-data/journals/<run-id>/run.jsonl`, `tester-data/artifacts/<run-id>/`, `tester-data/reports/<run-id>.md`, `pois.jsonl`, `findings.jsonl`, `knowledge.md`, `index.md` |
-| Agent instructions | `AGENTS.md` with workflow, safety, finding policy, storage format sections |
+| Agent instructions | `AGENTS.md` and `pi-agent/TESTING_INSTRUCTIONS.md` with workflow, safety, finding policy, and storage rules |
 | Existing data | 4 real runs (GD-Math), 1 POI, 1 finding (drag anomaly), a live knowledge.md |
 
 The POC's concepts survive; the work below restructures storage, adds the missing documents, and changes the agent's workflow instructions to match the design.
@@ -83,11 +83,11 @@ Tasks:
 2. `action`: add `"event":"action"` field; treat `--evidence` paths as event-bound artifacts (store paths relative to the run folder; copy/rename captures into the run's `artifacts/`); keep `seq` semantics unchanged.
 3. `run-complete`: unchanged semantics, but it must no longer write a separate file.
 4. New `run-report`: consolidates `run.jsonl` → `run.md`→`index.md` per design §3.3 (header block, coverage narrative in seq order, artifact references inline, footer). Regeneration is idempotent.
-5. Update `tester-capture` so screenshots land directly in the active run's `artifacts/` and are returned with the path for event binding.
+5. Update `bin/pi-tester-capture` so screenshots land directly in the active run's `artifacts/` and are returned with the path for event binding.
 6. `validate` gains run checks: first/last event kinds, increasing `seq`, artifact paths resolving, exactly one header/footer.
 7. Findings' run anchors switch to the new path form (`runs/<run-id>/run.jsonl#seq=N`).
 
-Files touched: `tester-tools.py`, `bin/tester-capture`, `TOOLS.md`.
+Files touched: `tester-tools.py`, `bin/pi-tester-capture`, `AGENTS.md`, and `pi-agent/TESTING_INSTRUCTIONS.md`.
 
 Acceptance: a new run produces one folder with `run.jsonl`, `artifacts/`, and after `run-report` an `index.md`; the report reads as a narrative with inline artifact references; validation passes.
 

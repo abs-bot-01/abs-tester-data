@@ -1,0 +1,47 @@
+#!/bin/sh
+# Launch a supplied desktop application on the Pi-agent test display.
+set -eu
+if [ "$#" -lt 1 ]; then
+  echo "usage: pi-tester-launch <executable-or-command> [args...]" >&2
+  exit 2
+fi
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+DISPLAY_NAME=${PI_TESTER_DISPLAY:-:1042}
+RUNTIME="$ROOT/.runtime/apps"
+mkdir -p "$RUNTIME"
+
+if ! /usr/bin/xdpyinfo -display "$DISPLAY_NAME" >/dev/null 2>&1; then
+  echo "display $DISPLAY_NAME is not available; run bin/pi-tester-display first" >&2
+  exit 3
+fi
+
+requested_app=$1
+app=$requested_app
+shift
+case "$app" in
+  */*)
+    app=$(realpath -- "$app")
+    ;;
+  *)
+    app=$(command -v -- "$app" 2>/dev/null || true)
+    [ -n "$app" ] || { echo "app not found in PATH: $requested_app" >&2; exit 4; }
+    app=$(realpath -- "$app")
+    ;;
+esac
+[ -f "$app" ] && [ -x "$app" ] || { echo "app is not an executable file: $app" >&2; exit 5; }
+
+app_id="pi-tester-app-$(date +%s)-$$"
+pid_file="$RUNTIME/$app_id.pid"
+log_file="$RUNTIME/$app_id.log"
+(
+  export DISPLAY="$DISPLAY_NAME"
+  export XDG_SESSION_TYPE=x11
+  export NO_AT_BRIDGE=0
+  export QT_QPA_PLATFORM=xcb
+  export GDK_BACKEND=x11
+  export QT_ACCESSIBILITY=1
+  exec "$app" "$@"
+) >"$log_file" 2>&1 &
+pid=$!
+printf '%s\n' "$pid" >"$pid_file"
+printf '{"app_id":"%s","pid":%s,"app":"%s","display":"%s","log":"%s"}\n' "$app_id" "$pid" "$app" "$DISPLAY_NAME" "$log_file"

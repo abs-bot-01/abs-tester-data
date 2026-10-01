@@ -1,0 +1,19 @@
+#!/bin/sh
+# Stop an application started by pi-tester-launch.
+set -eu
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+if [ "$#" -ne 1 ]; then
+  echo "usage: pi-tester-stop <app-id>" >&2
+  exit 2
+fi
+case "$1" in
+  pi-tester-app-[A-Za-z0-9-]*) : ;;
+  *) echo "invalid app id" >&2; exit 3 ;;
+esac
+pid_file="$ROOT/.runtime/apps/$1.pid"
+if [ -f "$pid_file" ]; then
+  pid=$(cat "$pid_file")
+  kill "$pid" 2>/dev/null || true
+  rm -f -- "$pid_file"
+fi
+printf '{"stopped":"%s"}\n' "$1"

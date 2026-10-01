@@ -132,7 +132,7 @@ Tester should:
 
 ## Current implementation
 
-According to the documents, the system has already been deployed and exercised as an **OpenClaw agent**.
+The repository now contains a portable **Pi-agent tester** setup.
 
 The implementation includes:
 
@@ -146,10 +146,12 @@ The implementation includes:
 - Runbook creation and validation.
 - History search.
 - Data validation.
-- An OpenClaw desktop node using Xvfb and computer-use tools.
-- Restricted wrapper commands for launching apps, stopping apps, and taking screenshots.
+- Local disposable Xvfb desktop support using Pi-agent UI interaction tools.
+- Local wrappers for launching apps, stopping apps, and taking screenshots.
+- Pi-agent instructions in `AGENTS.md` and `pi-agent/TESTING_INSTRUCTIONS.md`.
 
-The setup files include OpenClaw configuration, systemd service configuration, agent instructions, and the tester’s persona.
+The setup is local to this repository and does not require a gateway, global
+agent profile, or system-wide skill installation.
 
 ## Main known limitation
 
@@ -161,11 +163,8 @@ Because of this, the tester can observe drag-related problems but cannot always 
 
 ## Planned future work
 
-The longer-term direction is to turn this into a reusable package that can work with:
-
-- OpenClaw.
-- Pi.
-- Other agent systems.
+The longer-term direction is to keep this as a reusable package that can work
+with Pi-agent and other agent systems.
 
 The package should provide:
 
