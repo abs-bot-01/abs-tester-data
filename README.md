@@ -5,7 +5,7 @@ user-facing interface only, keeps durable evidence, and produces reports,
 findings, runbooks, and knowledge in plain Open Knowledge Format (OKF v0.2)
 Markdown — no database, no front-end, files a human can read anywhere.
 
-This folder is the project's paper trail: transcripts (`Transcript1–9.vtt`),
+This folder is the project's paper trail: transcripts in `transcript/`,
 `Notes.md`, the design contract (`document-contracts.md`), the implementation
 plan, and the collected OpenClaw setup (`openclaw-tester-setup/`).
 
@@ -85,4 +85,4 @@ the system stands and where it is going.
 | Implementation plan and status | `implementation-plan.md` |
 | Collected OpenClaw setup (workspace, wrappers, service, config) | `openclaw-tester-setup/` |
 | Working deployment | `abs-bot-01:~/.openclaw/workspace/tester/` |
-| Session transcripts (design history) | `Transcript1–9.vtt` |
+| Session transcripts (design history) | `transcript/*.vtt` |
