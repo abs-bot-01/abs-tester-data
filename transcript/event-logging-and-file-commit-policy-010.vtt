@@ -1,0 +1,309 @@
+WEBVTT
+
+NOTE Converted from meeting-in-product-transcript-english.txt.
+
+00:00:00.000 --> 00:00:03.000
+Generally, like what to say?
+
+00:00:03.000 --> 00:00:07.000
+Who else is there? Karpagam Sarikka has left.
+
+00:00:07.000 --> 00:00:11.000
+Subramaniam is not here, Karthikeyan is not here. Okay, I will record this for you only and tell you.
+
+00:00:11.000 --> 00:00:12.000
+Recording has started, anna.
+
+00:00:12.000 --> 00:00:13.000
+Good.
+
+00:00:13.000 --> 00:00:21.000
+Actually, like, what is it? If we put it in actions.json, it will only record the actions it performs. Okay.
+
+00:00:21.000 --> 00:00:26.000
+It should actually have been in events.json. Why should it have been in events.json?
+
+00:00:26.000 --> 00:00:29.000
+Actually, first I opened the app. What to say?
+
+00:00:29.000 --> 00:00:33.000
+I opened the app. If I said I opened the app, that's an event.
+
+00:00:33.000 --> 00:00:37.000
+An event is generally going to be in the past tense. Okay. The app opened, that's an event.
+
+00:00:37.000 --> 00:00:38.000
+Okay.
+
+00:00:38.000 --> 00:00:44.000
+15 seconds passed. What to say about the app? 15 seconds passed since the app opened. I couldn't interact. It's loading. That's an event.
+
+00:00:44.000 --> 00:00:49.000
+Okay. It crashed. That's an event. None of these are actions it performs.
+
+00:00:49.000 --> 00:00:52.000
+The actions it performs can be recorded as an event.
+
+00:00:52.000 --> 00:00:55.000
+If I say I did this, I did that, I did this, then it can be recorded as an event.
+
+00:00:55.000 --> 00:00:59.000
+That is, like what to say? I picked it 50/50. That's an event.
+
+00:00:59.000 --> 00:01:04.000
+It's not just what it does. If the game shows a pop-up, that can also be made into an event.
+
+00:01:04.000 --> 00:01:09.000
+So, if this is recorded in events.json, then actions.json is not good enough.
+
+00:01:09.000 --> 00:01:12.000
+Okay. Why am I telling you this now?
+
+00:01:12.000 --> 00:01:18.000
+As I told you, surf surf means this was prepared after three or four hours of discussion.
+
+00:01:18.000 --> 00:01:22.000
+But even then, I didn't have the idea to record those events. It's only coming now.
+
+00:01:22.000 --> 00:01:28.000
+So, what is this? Whoever designs it will evolve gradually. That's not the point. But we need to know what we are doing. Otherwise, a design cannot be made.
+
+00:01:28.000 --> 00:01:33.000
+Why did I say it should be in events.json?
+
+00:01:33.000 --> 00:01:38.000
+What's its name? Like, JSON is generally useful when there is a very large volume of data.
+
+00:01:38.000 --> 00:01:46.000
+Generally, if you look at a normal JSON, there will be at least 10,000 records, at least 10,000 lines.
+
+00:01:46.000 --> 00:01:52.000
+That's why it shouldn't be committed. That's the reason why JSON shouldn't be committed. That's the reason.
+
+00:01:52.000 --> 00:01:55.000
+Even if it's committed, it must be in the DB.
+
+00:01:55.000 --> 00:01:59.000
+Okay. Next, they said that MD is created, JSON is created, right?
+
+00:01:59.000 --> 00:02:05.000
+JSON will have a high volume. If you create MD to the same extent, it's of no use.
+
+00:02:05.000 --> 00:02:10.000
+So, in MD, there will only be some of what comes in events.json.
+
+00:02:10.000 --> 00:02:12.000
+That is, I opened the app.
+
+00:02:12.000 --> 00:02:15.000
+If I say the app has loaded, a screenshot can be taken for that.
+
+00:02:15.000 --> 00:02:22.000
+That is, only selected events should come to MD.
+
+00:02:22.000 --> 00:02:27.000
+The screen changed. Something happened. That is, if you want to clear a board, let's say.
+
+00:02:27.000 --> 00:02:33.000
+If there are 10 moves to clear that board, taking screenshots of all 10 moves is not that. It's madness.
+
+00:02:33.000 --> 00:02:39.000
+Okay. Actually, what we can do is, the initial screenshot of the board comes, right? And that,
+
+00:02:39.000 --> 00:02:43.000
+The one that comes before clearing it last, right? Taking one screenshot of that is enough.
+
+00:02:43.000 --> 00:02:44.000
+For one level.
+
+00:02:44.000 --> 00:02:48.000
+We don't have time to do it for 10 levels.
+
+00:02:48.000 --> 00:02:53.000
+Then, sorry, we don't have time to do it for 10 boards.
+
+00:02:53.000 --> 00:02:58.000
+So, like, this is where the exception comes, if it's a bug report, let's say. That needs to be done.
+
+00:02:58.000 --> 00:03:02.000
+So, actually, like,
+
+00:03:02.000 --> 00:03:07.000
+Two things. That is, only important things should be recorded. And also when the state changes.
+
+00:03:07.000 --> 00:03:10.000
+A new level has loaded. I went to the settings screen.
+
+00:03:10.000 --> 00:03:15.000
+Okay. The context changes, right? It should know to record at that point. If it's like that,
+
+00:03:15.000 --> 00:03:20.000
+That thing, right? Like, what is this? It can be actions.md. Or what to say?
+
+00:03:20.000 --> 00:03:21.000
+It can even be flow.md.
+
+00:03:21.000 --> 00:03:28.000
+That is, what does flow mean? I did this first, I did this second. That is, it could even be how the test flow went.
+
+00:03:28.000 --> 00:03:33.000
+Now this is being recorded, right? After this is recorded,
+
+00:03:33.000 --> 00:03:35.000
+The actual findings, right?
+
+00:03:35.000 --> 00:03:42.000
+In findings, this place can be linked. The MD file can be linked. Findings is an MD file.
+
+00:03:42.000 --> 00:03:44.000
+Findings should be MD.
+
+00:03:44.000 --> 00:03:47.000
+Why should findings be MD?
+
+00:03:47.000 --> 00:03:54.000
+The very reason for recording those findings is that it's going to tell a human. Look at all these, and so on.
+
+00:03:54.000 --> 00:03:59.000
+Bugs can also be recorded in that finding.
+
+00:03:59.000 --> 00:04:05.000
+After looking at that finding file, if it's a bug in the finding, what to say? We will say it should be treated as a bug.
+
+00:04:05.000 --> 00:04:10.000
+Or if it's not a bug, then it will write it down in knowledge. This is actually not a bug, and so on.
+
+00:04:10.000 --> 00:04:16.000
+That knowledge, knowledge can be an MD file. No problem.
+
+00:04:16.000 --> 00:04:19.000
+Knowledge will not be much anyway.
+
+00:04:19.000 --> 00:04:23.000
+Consider knowledge as a folder, basically. Keep knowledge as a folder.
+
+00:04:23.000 --> 00:04:25.000
+It doesn't even have to be a file.
+
+00:04:25.000 --> 00:04:31.000
+Okay. Inside that folder, however it saves the knowledge, let it save. That knowledge should be in context.
+
+00:04:31.000 --> 00:04:33.000
+Now what's the matter?
+
+00:04:33.000 --> 00:04:38.000
+In this, what to say?
+
+00:04:38.000 --> 00:04:41.000
+All MD files can be committed.
+
+00:04:41.000 --> 00:04:41.500
+Okay.
+
+00:04:41.000 --> 00:04:45.000
+Even more, they should be done. Because it's not going to be large. The size is not going to be large.
+
+00:04:45.000 --> 00:04:45.500
+Okay.
+
+00:04:45.000 --> 00:04:49.000
+Nothing in JSON should be committed.
+
+00:04:49.000 --> 00:04:50.000
+Okay.
+
+00:04:50.000 --> 00:04:55.000
+If you keep it in the DB only if it's committed, there's no problem. There's no point in keeping it in the DB.
+
+00:04:55.000 --> 00:04:59.000
+If they start with events.json,
+
+00:04:59.000 --> 00:05:03.000
+And they actually run it for one hour daily, let's say.
+
+00:05:03.000 --> 00:05:06.000
+It will prepare a 100 GB file daily.
+
+00:05:06.000 --> 00:05:09.000
+In 10 days, all the space on the hard disk will be gone.
+
+00:05:09.000 --> 00:05:09.500
+Okay.
+
+00:05:09.000 --> 00:05:13.000
+So, it's better to just overwrite this.
+
+00:05:13.000 --> 00:05:14.000
+What?
+
+00:05:14.000 --> 00:05:18.000
+Like, that some temporary JSON.
+
+00:05:18.000 --> 00:05:26.000
+When logging findings, what to say? It's better to log under that run ID, by putting the run ID. In MD.
+
+00:05:26.000 --> 00:05:27.000
+Okay, anna.
+
+00:05:27.000 --> 00:05:32.000
+Or for each run, have separate JSON files inside that folder,
+
+00:05:32.000 --> 00:05:37.000
+And then if it's not committed when needed, it's only going to be on that machine. It's not going to other machines.
+
+00:05:37.000 --> 00:05:42.000
+So, JSON should not be committed. JSON should not be committed. But like,
+
+00:05:42.000 --> 00:05:45.000
+I don't even know about actions.
+
+00:05:45.000 --> 00:05:48.000
+Okay. The reason is,
+
+00:05:48.000 --> 00:05:53.000
+Depending on the file size. Many actions will come. It doesn't mean they should be committed. Large ones will be created daily.
+
+00:05:53.000 --> 00:05:57.000
+So, findings.md, right? I don't even know if that should be committed.
+
+00:05:57.000 --> 00:05:59.000
+But two
+
+00:05:59.000 --> 00:06:01.000
+Issues are there, right?
+
+00:06:01.000 --> 00:06:05.000
+Issues and knowledge, definitely issues and bugs and knowledge must be committed.
+
+00:06:05.000 --> 00:06:06.000
+Okay, anna, okay, anna.
+
+00:06:06.000 --> 00:06:12.000
+Because next time, that is, they have finished testing. If you are going to take that test report and work on it,
+
+00:06:12.000 --> 00:06:15.000
+Then the agent should have that knowledge.
+
+00:06:15.000 --> 00:06:18.000
+It won't work without committing it.
+
+00:06:18.000 --> 00:06:20.000
+Okay, anna.
+
+00:06:20.000 --> 00:06:24.000
+Soumya akka, you should have had all this understanding yesterday.
+
+00:06:24.000 --> 00:06:27.000
+It's all in the document.
+
+00:06:27.000 --> 00:06:35.000
+Actually, what happened, Soumya akka. That is, we can't read much, that's why we
+
+00:06:35.000 --> 00:06:37.000
+I stopped the meeting recording.
+
+00:06:37.000 --> 00:06:38.000
+Good, akka.
+
+00:06:38.000 --> 00:06:40.000
+Soumya akka,
