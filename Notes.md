@@ -1,0 +1,9 @@
+- It should act as a regression tester
+- It should records session logs  in jsonl.
+- It should be able to answer the question.
+- It should be storeing the screenshots too. DVC or something.
+- I should be able to store the hilights of the sessions and create the create reports so that I should be able to see the issues. There should be storing decisions, faqs, anamolies, etc.
+- It should be able to reacreate the bugs. If it is not able to reacreate the bug during the session it should be storing it in known bugs. If it finds the same bug again in other session it should be updating the knowladge base before taking further dicisions.
+- Check otel or DuckDB https://duckdb.org/ for creating knowladgebase. Check other options. It's a memory of the agent.
+- Three Commands: You Explore it, Record everything at action level, Collect important items(bugs, doubts), create knowladegbase (me and agent), consult the knowladge base in future sessions. Frequent bugs, It should escale issues based too if issue accures again and again.
+- THree data sets: Actions with evidance, What has to be discussed with human, what is remembered and will impact future behaviour.

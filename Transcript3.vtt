@@ -1,0 +1,684 @@
+WEBVTT
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/6-0
+00:00:04.138 --> 00:00:04.858
+<v srdj-abs>Start it.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/7-0
+00:00:09.338 --> 00:00:10.778
+<v srdj-abs>I'm sorry.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/8-0
+00:00:12.058 --> 00:00:13.178
+<v vc-abs>You have the camera.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/10-0
+00:00:13.738 --> 00:00:15.338
+<v srdj-abs>Yeah, it started record.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/12-0
+00:00:16.138 --> 00:00:19.708
+<v vc-abs>Okay,
+so I don't think it should like bug</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/11-0
+00:00:18.058 --> 00:00:21.098
+<v srdj-abs>So for like first thing.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/12-1
+00:00:19.708 --> 00:00:22.938
+<v vc-abs>should be found by unlisting the logs.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/13-0
+00:00:23.418 --> 00:00:23.978
+<v srdj-abs>Okay.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/17-0
+00:00:25.018 --> 00:00:26.995
+<v vc-abs>Okay,
+but should be actually found actually</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/17-1
+00:00:26.995 --> 00:00:28.298
+<v vc-abs>after many exports they have.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/18-0
+00:00:28.938 --> 00:00:29.338
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/21-0
+00:00:29.778 --> 00:00:33.801
+<v vc-abs>Part of the reason is, actually,
+let's say like a actually is a record</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/21-1
+00:00:33.801 --> 00:00:38.503
+<v vc-abs>section first and then it first actually
+it will already like essentially like for</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/21-2
+00:00:38.503 --> 00:00:41.619
+<v vc-abs>every next step,
+it has to analyse the current current</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/21-3
+00:00:41.619 --> 00:00:42.298
+<v vc-abs>screen shot.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/22-0
+00:00:44.378 --> 00:00:48.298
+<v vc-abs>And it might have to actually look at the
+like a action earlier action.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/23-0
+00:00:50.218 --> 00:00:52.338
+<v vc-abs>Because at any given point in time.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/24-0
+00:00:53.818 --> 00:00:59.588
+<v vc-abs>Just lets say like the current state as
+well as the last action might not be</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/24-1
+00:00:59.588 --> 00:01:05.057
+<v vc-abs>enough for the CLM to understand like
+what is currently happening. Okay,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/24-2
+00:01:05.057 --> 00:01:10.826
+<v vc-abs>it is a sequence of actions. I did this,
+I did this, I did this, I did this.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/24-3
+00:01:10.826 --> 00:01:13.898
+<v vc-abs>Now I am here what to do mention so just.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/25-0
+00:01:14.138 --> 00:01:16.138
+<v vc-abs>Actually,
+the last nap that is not be good enough.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/26-0
+00:01:16.858 --> 00:01:17.258
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/27-0
+00:01:17.738 --> 00:01:20.607
+<v vc-abs>Actually,
+essentially what should happen is it</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/27-1
+00:01:20.607 --> 00:01:25.490
+<v vc-abs>should have a tool to analyse the log.
+Airmen should have a tool to analyse the</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/27-2
+00:01:25.490 --> 00:01:25.978
+<v vc-abs>actions.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/28-0
+00:01:27.818 --> 00:01:30.240
+<v vc-abs>Okay,
+but actually identifying the bugs should</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/28-1
+00:01:30.240 --> 00:01:30.858
+<v vc-abs>happen live.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/29-0
+00:01:31.978 --> 00:01:34.138
+<v vc-abs>Whenever actually it is working,
+you get current screenshot.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/30-0
+00:01:34.778 --> 00:01:35.018
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/31-0
+00:01:36.538 --> 00:01:39.956
+<v vc-abs>So,
+if it is not actually like working as per</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/31-1
+00:01:39.956 --> 00:01:43.818
+<v vc-abs>expectation,
+it should be able to record a finding.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/32-0
+00:01:44.618 --> 00:01:44.938
+<v srdj-abs>Right.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/33-0
+00:01:45.738 --> 00:01:47.578
+<v vc-abs>The finding itself separate table all
+together.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/34-0
+00:01:48.218 --> 00:01:48.378
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/35-0
+00:01:48.858 --> 00:01:52.338
+<v vc-abs>Maybe the finding table itself might be
+used to communicate with you.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/36-0
+00:01:54.378 --> 00:01:56.825
+<v vc-abs>Okay,
+or else like lets say like it can</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/36-1
+00:01:56.825 --> 00:02:01.658
+<v vc-abs>actually add a lets say like a value to
+print that and then present it to you.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/37-0
+00:02:02.378 --> 00:02:02.618
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/38-0
+00:02:03.338 --> 00:02:07.203
+<v vc-abs>OK,
+like either there will be 3 tables or 4</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/38-1
+00:02:07.203 --> 00:02:11.947
+<v vc-abs>tables, OK,
+but just actually unleasing the like logs</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/38-2
+00:02:11.947 --> 00:02:16.778
+<v vc-abs>alone will not actually give it the
+necessary content.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/39-0
+00:02:19.018 --> 00:02:20.018
+<v vc-abs>It will be only partial.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/40-0
+00:02:20.858 --> 00:02:21.338
+<v srdj-abs>Haan.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/42-0
+00:02:22.378 --> 00:02:26.687
+<v vc-abs>So like just actually like make sure like
+it is documented and the action is shown</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/42-1
+00:02:26.687 --> 00:02:29.178
+<v vc-abs>in the diagram before going for
+implementation.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/41-0
+00:02:29.818 --> 00:02:30.138
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/43-0
+00:02:31.178 --> 00:02:34.444
+<v vc-abs>Because actually,
+if actually they endorsement and the</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/43-1
+00:02:34.444 --> 00:02:38.125
+<v vc-abs>diagram is not right,
+it actually initially even seem like it</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/43-2
+00:02:38.125 --> 00:02:38.778
+<v vc-abs>is working.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/44-0
+00:02:40.858 --> 00:02:42.058
+<v vc-abs>But after something, it will not work.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/45-0
+00:02:44.138 --> 00:02:45.178
+<v vc-abs>So get the diagram break.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/46-0
+00:02:46.018 --> 00:02:46.298
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/47-0
+00:02:46.378 --> 00:02:49.383
+<v vc-abs>Get that I am right. Actually,
+for you should be like basically you</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/47-1
+00:02:49.383 --> 00:02:51.018
+<v vc-abs>should be like essentially with that.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/52-0
+00:02:52.818 --> 00:02:55.736
+<v vc-abs>It should be able to convince you the
+diagram,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/52-1
+00:02:55.736 --> 00:03:00.517
+<v vc-abs>even if you have actually some doubts
+without the diagram like just actually</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/52-2
+00:03:00.517 --> 00:03:05.546
+<v vc-abs>get it clarified with it and if need is
+like if you think actually the something</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/48-0
+00:03:01.978 --> 00:03:02.378
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/52-3
+00:03:05.546 --> 00:03:09.396
+<v vc-abs>should be detailed,
+ask it to create a new diagram along with</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/51-0
+00:03:06.538 --> 00:03:06.938
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/52-4
+00:03:09.396 --> 00:03:11.258
+<v vc-abs>the old diagram to add detail.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/53-0
+00:03:13.498 --> 00:03:16.778
+<v vc-abs>In that every diagram has a have a
+description beneath it.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/54-0
+00:03:17.578 --> 00:03:17.978
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/58-0
+00:03:19.178 --> 00:03:24.781
+<v vc-abs>Like just actually go through like say
+like the document actually and then</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/58-1
+00:03:24.781 --> 00:03:29.338
+<v vc-abs>implement it and then the implementation
+can happen in card.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/57-0
+00:03:29.978 --> 00:03:30.378
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/60-0
+00:03:31.738 --> 00:03:37.461
+<v vc-abs>Just action like record the action,
+switch up the screenshots on WhatsApp,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/59-0
+00:03:36.538 --> 00:03:36.978
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/60-1
+00:03:37.461 --> 00:03:39.978
+<v vc-abs>let there be activation one step.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/61-0
+00:03:41.738 --> 00:03:43.898
+<v vc-abs>And then actually bring in the actually
+the findings.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/62-0
+00:03:45.018 --> 00:03:45.658
+<v srdj-abs>Yeah, got.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/63-0
+00:03:45.378 --> 00:03:51.093
+<v vc-abs>And actually the way to make sure I
+actually get working is to like a give it</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/63-1
+00:03:51.093 --> 00:03:52.338
+<v vc-abs>some buggy level.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/66-0
+00:03:54.458 --> 00:03:57.285
+<v vc-abs>Basically,
+there is one other thing we are not</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/66-1
+00:03:57.285 --> 00:04:01.133
+<v vc-abs>talking about actually an app that works
+with existing content,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/66-2
+00:04:01.133 --> 00:04:03.418
+<v vc-abs>we are talking about live exploration.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/64-0
+00:04:02.218 --> 00:04:02.698
+<v srdj-abs>Haan.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/65-0
+00:04:04.058 --> 00:04:04.538
+<v srdj-abs>No.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/67-0
+00:04:05.578 --> 00:04:10.142
+<v vc-abs>So like you could actually basically you
+could actually ask the AE 2 and there is</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/67-1
+00:04:10.142 --> 00:04:13.258
+<v vc-abs>one other thing,
+it should not have access to the code.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/68-0
+00:04:13.858 --> 00:04:14.058
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/71-0
+00:04:15.658 --> 00:04:20.010
+<v vc-abs>So just actually it can launch the binary
+basically it can launch the application,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/71-1
+00:04:20.010 --> 00:04:24.204
+<v vc-abs>but it should not have access to the code.
+That should be that should be there.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/71-2
+00:04:24.204 --> 00:04:28.240
+<v vc-abs>All is actually it will stop actually
+looking at the application if it start</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/69-0
+00:04:25.178 --> 00:04:25.658
+<v srdj-abs>No.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/71-3
+00:04:28.240 --> 00:04:29.498
+<v vc-abs>looking at the code for.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/70-0
+00:04:30.378 --> 00:04:30.778
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/72-0
+00:04:31.978 --> 00:04:34.870
+<v vc-abs>Okay,
+do like you can add I want to isolate</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/72-1
+00:04:34.870 --> 00:04:40.061
+<v vc-abs>like there are actually there are 2 A's
+like one A that you will you are using</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/72-2
+00:04:40.061 --> 00:04:44.727
+<v vc-abs>for developing this application and
+actually one one other thing it is</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/72-3
+00:04:44.727 --> 00:04:46.698
+<v vc-abs>actually test the application.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/74-0
+00:04:47.978 --> 00:04:53.135
+<v vc-abs>They should be separate and actually
+development day you felt that actually</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/74-1
+00:04:53.135 --> 00:04:58.427
+<v vc-abs>the testing a should not have access to
+the code base. How do I suggest that?</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/74-2
+00:04:58.427 --> 00:05:03.583
+<v vc-abs>So that is just actually looked at like
+and the second thing is give me one</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/73-0
+00:04:59.978 --> 00:05:00.378
+<v srdj-abs>Han.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/74-3
+00:05:03.583 --> 00:05:04.058
+<v vc-abs>minute.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/75-0
+00:05:06.218 --> 00:05:08.618
+<v vc-abs>No problem.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/86-0
+00:05:40.138 --> 00:05:44.848
+<v vc-abs>So the second thing is actually to make
+sure the water application it says as a</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/86-1
+00:05:44.848 --> 00:05:46.378
+<v vc-abs>bug that you already know.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/85-0
+00:05:45.258 --> 00:05:45.578
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/87-0
+00:05:48.178 --> 00:05:49.258
+<v vc-abs>Expected to find it.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/88-0
+00:05:51.578 --> 00:05:57.428
+<v vc-abs>Basically, like a 2 level,
+the extended internet actually will do</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/88-1
+00:05:57.428 --> 00:06:02.392
+<v vc-abs>something okay,
+and it should be like definitely like a</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/88-2
+00:06:02.392 --> 00:06:03.898
+<v vc-abs>university level.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/89-0
+00:06:05.258 --> 00:06:05.898
+<v srdj-abs>What?</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/91-0
+00:06:05.578 --> 00:06:09.866
+<v vc-abs>Anytime you create your own game,
+basically when you develop this,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/91-1
+00:06:09.866 --> 00:06:12.298
+<v vc-abs>it does not have to test the GD match.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/90-0
+00:06:12.618 --> 00:06:13.018
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/92-0
+00:06:14.258 --> 00:06:15.258
+<v vc-abs>Create a simple joke.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/93-0
+00:06:16.058 --> 00:06:16.498
+<v srdj-abs>Okay.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/94-0
+00:06:17.338 --> 00:06:18.458
+<v vc-abs>And after 230.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/95-0
+00:06:19.338 --> 00:06:19.818
+<v srdj-abs>Got it.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/96-0
+00:06:20.298 --> 00:06:23.411
+<v vc-abs>Our term testing will be better,
+not sneakers.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/96-1
+00:06:23.411 --> 00:06:28.378
+<v vc-abs>Live action games like Shielded,
+you will not be able to manage the speed.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/99-0
+00:06:29.578 --> 00:06:35.700
+<v vc-abs>Essentially, to actually to play snake,
+it should be able to look at the scene</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/99-1
+00:06:35.700 --> 00:06:41.899
+<v vc-abs>every every second is not less than that.
+So create like a of a board game or a</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/97-0
+00:06:37.978 --> 00:06:40.058
+<v srdj-abs>Okay, got it.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/99-2
+00:06:41.899 --> 00:06:44.378
+<v vc-abs>puzzle and then ask to solve it.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/98-0
+00:06:45.018 --> 00:06:45.498
+<v srdj-abs>Got it.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/103-0
+00:06:45.778 --> 00:06:50.252
+<v vc-abs>And don't have complicated person,
+complicated person just actually 4 times,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/100-0
+00:06:48.618 --> 00:06:48.938
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/103-1
+00:06:50.252 --> 00:06:54.494
+<v vc-abs>5 times or something like that.
+And have a level with like explicit bug.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/101-0
+00:06:51.338 --> 00:06:51.818
+<v srdj-abs>Hello.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/103-2
+00:06:54.494 --> 00:06:57.050
+<v vc-abs>Hey,
+actually it should not be able to like</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/103-3
+00:06:57.050 --> 00:07:01.814
+<v vc-abs>basically renew chat actually it should
+not work or actually like there should be</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/102-0
+00:07:01.498 --> 00:07:01.978
+<v srdj-abs>Mhm.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/103-4
+00:07:01.814 --> 00:07:04.138
+<v vc-abs>unsolvable level or something like that.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/104-0
+00:07:06.298 --> 00:07:13.418
+<v vc-abs>Try to actually make it find it fixing
+its not its responsibility.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/105-0
+00:07:14.218 --> 00:07:14.378
+<v srdj-abs>Oh.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/106-0
+00:07:15.738 --> 00:07:18.269
+<v vc-abs>Okay,
+and actually just actually have some</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/106-1
+00:07:18.269 --> 00:07:22.566
+<v vc-abs>anomaly too and actually so that you can
+give it some excuse. Basically,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/106-2
+00:07:22.566 --> 00:07:26.627
+<v vc-abs>don't care about this item,
+it should be able to like take that into</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/106-3
+00:07:26.627 --> 00:07:27.098
+<v vc-abs>account.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/107-0
+00:07:28.218 --> 00:07:31.155
+<v vc-abs>It's all like a see like a see some
+sensor. Sector.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/107-1
+00:07:31.155 --> 00:07:33.018
+<v vc-abs>Get the Atkinson skin short blog.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/110-0
+00:07:34.618 --> 00:07:39.697
+<v vc-abs>OK, second, what is it I forgot? Firstly,
+give the action and slim shot slot,</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/110-1
+00:07:39.697 --> 00:07:44.841
+<v vc-abs>second actually make it identify the bug,
+3rd will give you the exceptions and</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/110-2
+00:07:44.841 --> 00:07:49.985
+<v vc-abs>actually they make it actually sound
+exceptions when it actually both of them.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/110-3
+00:07:49.985 --> 00:07:54.738
+<v vc-abs>Just actually we have planned for one
+step at a time, not all the steps.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/108-0
+00:07:51.058 --> 00:07:51.258
+<v srdj-abs>No.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/109-0
+00:07:55.498 --> 00:07:55.898
+<v srdj-abs>Yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/111-0
+00:07:55.578 --> 00:07:57.802
+<v vc-abs>Initially,
+don't worry about backup description.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/111-1
+00:07:57.802 --> 00:07:58.618
+<v vc-abs>It's all my issue.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/112-0
+00:07:59.258 --> 00:07:59.658
+<v srdj-abs>yeah.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/113-0
+00:08:00.098 --> 00:08:01.778
+<v vc-abs>Even if the data is lost,
+it's not a problem.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/114-0
+00:08:02.538 --> 00:08:03.018
+<v srdj-abs>Got you.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/115-0
+00:08:03.138 --> 00:08:07.098
+<v vc-abs>Backup actually, it is part of hardening,
+not part of initial exploration.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/116-0
+00:08:09.498 --> 00:08:10.298
+<v vc-abs>Anything else?</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/117-0
+00:08:11.418 --> 00:08:12.538
+<v srdj-abs>No, as of now.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/118-0
+00:08:13.498 --> 00:08:13.738
+<v vc-abs>Oh.</v>
+
+35a0af36-a477-410e-8ed3-cc5969a71c90/119-0
+00:08:15.418 --> 00:08:15.578
+<v srdj-abs>Bye.</v>

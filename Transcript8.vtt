@@ -1,0 +1,1896 @@
+WEBVTT
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/6-0
+00:00:03.319 --> 00:00:06.953
+<v vc-abs>Fine, you can tell you want to remove it,
+just actually record it like you can</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/7-0
+00:00:05.439 --> 00:00:08.608
+<v srdj-abs>Yeah, it's a start.
+Since I have started recording,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/6-1
+00:00:06.953 --> 00:00:07.919
+<v vc-abs>actually get it done.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/7-1
+00:00:08.608 --> 00:00:10.559
+<v srdj-abs>then there's no point in typing.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/9-0
+00:00:10.079 --> 00:00:12.894
+<v vc-abs>Yeah, anyway,
+this is why like I was actually talking</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/9-1
+00:00:12.894 --> 00:00:15.919
+<v vc-abs>about this one. What is it?
+I forgot the assistant thing.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/13-0
+00:00:17.679 --> 00:00:20.670
+<v vc-abs>Okay,
+so the diagram is actually correct at the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/13-1
+00:00:20.670 --> 00:00:23.848
+<v vc-abs>high level,
+but actually a couple of changes here.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/13-2
+00:00:23.848 --> 00:00:26.278
+<v vc-abs>Okay,
+one is actually like a couple of</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/13-3
+00:00:26.278 --> 00:00:29.893
+<v vc-abs>corrections too. Okay,
+one is actually like the human can</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/13-4
+00:00:29.893 --> 00:00:34.567
+<v vc-abs>actually interact with the tester
+directly to actually start the tester in</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/12-0
+00:00:33.839 --> 00:00:34.159
+<v srdj-abs>No.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/13-5
+00:00:34.567 --> 00:00:38.306
+<v vc-abs>exploratory mode. Okay,
+like the human can also talk to the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/13-6
+00:00:38.306 --> 00:00:40.799
+<v vc-abs>tester to actually let's say what is it?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/14-0
+00:00:42.799 --> 00:00:44.319
+<v vc-abs>Take that look as an input.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/15-0
+00:00:45.439 --> 00:00:45.639
+<v srdj-abs>Hello.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/16-0
+00:00:45.999 --> 00:00:48.382
+<v vc-abs>OK,
+and actually the human can ask the tester</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/16-1
+00:00:48.382 --> 00:00:51.439
+<v vc-abs>to create a loop to based on some part of
+the exploration.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/18-0
+00:00:53.399 --> 00:00:55.870
+<v vc-abs>OK,
+run group can be the last time when we</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/18-1
+00:00:55.870 --> 00:01:00.065
+<v vc-abs>discussed, I did not say that. OK,
+run group can essentially be both the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/18-2
+00:01:00.065 --> 00:01:04.375
+<v vc-abs>input and the output for the test.
+I like the output of actually some test</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/17-0
+00:01:02.559 --> 00:01:02.879
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/18-3
+00:01:04.375 --> 00:01:06.559
+<v vc-abs>might be the input of some other test.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/19-0
+00:01:08.079 --> 00:01:11.318
+<v vc-abs>So let's say it explodes something,
+it explodes some 10 streams. OK,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/19-1
+00:01:11.318 --> 00:01:14.933
+<v vc-abs>you wanted to actually freeze that
+exploration so that the same thing can be</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/19-2
+00:01:14.933 --> 00:01:15.919
+<v vc-abs>like done once again.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/22-0
+00:01:18.399 --> 00:01:19.559
+<v vc-abs>Is self available?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/20-0
+00:01:18.439 --> 00:01:18.639
+<v srdj-abs>No.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/21-0
+00:01:19.919 --> 00:01:20.239
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/25-0
+00:01:21.759 --> 00:01:26.485
+<v vc-abs>same thing can be done once again.
+Then it becomes actually like basically</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/25-1
+00:01:26.485 --> 00:01:31.338
+<v vc-abs>like you ask the exploratory test to
+create a runbook and actually next time</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/25-2
+00:01:31.338 --> 00:01:36.631
+<v vc-abs>around like you can ask the test too like
+lets say they call the sometimes playbook</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/25-3
+00:01:36.631 --> 00:01:41.799
+<v vc-abs>too either run the runbook again or like
+play the playbook again so that actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/23-0
+00:01:38.639 --> 00:01:39.119
+<v srdj-abs>Mhm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/25-4
+00:01:41.799 --> 00:01:43.879
+<v vc-abs>you can create one other new run.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/24-0
+00:01:41.839 --> 00:01:42.079
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/26-0
+00:01:44.879 --> 00:01:49.446
+<v vc-abs>Okay, run action tester to run action.
+The relationship is actually rather</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/26-1
+00:01:49.446 --> 00:01:53.405
+<v vc-abs>straightforward. Okay,
+like a tester always like whenever tester</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/26-2
+00:01:53.405 --> 00:01:57.181
+<v vc-abs>runs, the runbook is created.
+The exception is when it sorry,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/26-3
+00:01:57.181 --> 00:02:00.287
+<v vc-abs>whenever a tester is run,
+run document is created.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/26-4
+00:02:00.287 --> 00:02:03.759
+<v vc-abs>The exception is when you are creating a
+runbook itself.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/27-0
+00:02:05.919 --> 00:02:09.692
+<v vc-abs>So, test has actually 2 responsibilities.
+One is, let's say, running test.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/27-1
+00:02:09.692 --> 00:02:12.459
+<v vc-abs>The other thing is actually creating
+tests. If needed,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/27-2
+00:02:12.459 --> 00:02:16.232
+<v vc-abs>we can actually create 2 agents too,
+one test runner and one actually test</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/27-3
+00:02:16.232 --> 00:02:18.697
+<v vc-abs>reader or something like that.
+But we as of now,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/27-4
+00:02:18.697 --> 00:02:20.559
+<v vc-abs>we will actually have the same thing.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/28-0
+00:02:22.079 --> 00:02:24.316
+<v vc-abs>Okay,
+and actually from run actually the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/28-1
+00:02:24.316 --> 00:02:28.627
+<v vc-abs>findings like again findings is also
+generated by the texture run and findings</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/28-2
+00:02:28.627 --> 00:02:30.319
+<v vc-abs>might be generated parallel to.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/30-0
+00:02:31.519 --> 00:02:35.346
+<v vc-abs>It is not like actually run has to
+complete before findings are generated,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/30-1
+00:02:35.346 --> 00:02:38.662
+<v vc-abs>but actually the thing is a finding
+should be MD document, okay,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/30-2
+00:02:38.662 --> 00:02:41.010
+<v vc-abs>like ideally it like basically if it is
+JSON,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/29-0
+00:02:40.319 --> 00:02:40.559
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/30-3
+00:02:41.010 --> 00:02:44.786
+<v vc-abs>like the thing is actually finding is
+something that should be like human</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/30-4
+00:02:44.786 --> 00:02:48.052
+<v vc-abs>readable since human is a consumer,
+so run can be Jason events,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/30-5
+00:02:48.052 --> 00:02:51.011
+<v vc-abs>finding actually it can have Jason events,
+not a problem,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/30-6
+00:02:51.011 --> 00:02:53.359
+<v vc-abs>but it should actually consolidate that
+into.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/31-0
+00:02:53.959 --> 00:02:54.479
+<v vc-abs>NMD.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/32-0
+00:02:56.479 --> 00:02:59.977
+<v vc-abs>And out of the findings,
+actually like you ask the agent to like</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/32-1
+00:02:59.977 --> 00:03:02.668
+<v vc-abs>create tasks,
+either this agent or a new agent or</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/32-2
+00:03:02.668 --> 00:03:06.543
+<v vc-abs>somehow it is this agent itself.
+Or else you very well can actually get</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/32-3
+00:03:06.543 --> 00:03:11.064
+<v vc-abs>the other partner tasks and tasks and the
+other things the task can be created by a</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/32-4
+00:03:11.064 --> 00:03:14.079
+<v vc-abs>tester or even the builder might have the
+same feature.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/34-0
+00:03:15.319 --> 00:03:17.954
+<v vc-abs>Basically,
+you can say the builder actually there is</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/34-1
+00:03:17.954 --> 00:03:21.932
+<v vc-abs>this finding document here like these 3
+findings should have actually analogous</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/34-2
+00:03:21.932 --> 00:03:25.065
+<v vc-abs>tasks, create a task.
+So maybe the task document could be like</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/33-0
+00:03:23.839 --> 00:03:24.239
+<v srdj-abs>2.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/34-3
+00:03:25.065 --> 00:03:26.159
+<v vc-abs>a part of the builder.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/35-0
+00:03:26.719 --> 00:03:29.359
+<v srdj-abs>Okay, but builder, who is the builder?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/36-0
+00:03:30.159 --> 00:03:31.439
+<v vc-abs>Builders is a separate agent.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/37-0
+00:03:32.319 --> 00:03:33.119
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/38-0
+00:03:34.559 --> 00:03:38.015
+<v vc-abs>Build separation which actually I'm
+trying to build like in like a parallel.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/38-1
+00:03:38.015 --> 00:03:40.080
+<v vc-abs>You don't have very much about it.
+Basically,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/40-0
+00:03:39.919 --> 00:03:46.159
+<v srdj-abs>Okay, so for now for now,
+like physically builder is not in</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/38-2
+00:03:40.080 --> 00:03:42.639
+<v vc-abs>you can actually like drop the tasks in
+builder for now.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/39-0
+00:03:44.239 --> 00:03:45.279
+<v vc-abs>Both person better.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/40-1
+00:03:46.159 --> 00:03:47.199
+<v srdj-abs>existence.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/41-0
+00:03:48.879 --> 00:03:50.239
+<v vc-abs>Builders not AU or India.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/42-0
+00:03:51.199 --> 00:03:53.119
+<v srdj-abs>So this needs to be dropped.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/44-0
+00:03:51.999 --> 00:03:55.983
+<v vc-abs>The builder is not in existence, so yeah,
+you can actually give even task.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/44-1
+00:03:55.983 --> 00:04:00.234
+<v vc-abs>I would recommend you to move to the
+builder, you don't have to worry about it.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/44-2
+00:04:00.234 --> 00:04:04.325
+<v vc-abs>And this is part of the reason why
+actually we should do create diagrams and</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/43-0
+00:04:00.959 --> 00:04:01.359
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/44-3
+00:04:04.325 --> 00:04:06.079
+<v vc-abs>arrange, we should not just stop.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/45-0
+00:04:08.039 --> 00:04:10.321
+<v vc-abs>OK,
+so like apart from this actually from the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/45-1
+00:04:10.321 --> 00:04:13.845
+<v vc-abs>findings and from actually whatever you
+know knowledge you might have,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/45-2
+00:04:13.845 --> 00:04:16.079
+<v vc-abs>you could ask the tester to create the KB
+2.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/46-0
+00:04:16.879 --> 00:04:17.359
+<v srdj-abs>Mhm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/47-0
+00:04:18.479 --> 00:04:21.397
+<v vc-abs>KB, again, just take a look.
+KB is actually both, let's say,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/47-1
+00:04:21.397 --> 00:04:23.359
+<v vc-abs>the input and the output of a test shell.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/48-0
+00:04:24.319 --> 00:04:24.799
+<v srdj-abs>Mhm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/49-0
+00:04:26.319 --> 00:04:28.744
+<v vc-abs>That's it.
+You'll be like interacting with the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/49-1
+00:04:28.744 --> 00:04:29.519
+<v vc-abs>texture mostly.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/52-0
+00:04:30.559 --> 00:04:33.521
+<v srdj-abs>Okay,
+and the document so current</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/52-1
+00:04:33.521 --> 00:04:39.359
+<v srdj-abs>implementation it have a journals
+basically which is document one.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/55-0
+00:04:41.359 --> 00:04:44.239
+<v srdj-abs>The run document so.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/59-0
+00:04:41.919 --> 00:04:46.257
+<v vc-abs>Give me one minute,
+let me let me look through it by testing</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/56-0
+00:04:45.759 --> 00:04:45.999
+<v srdj-abs>No.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/59-1
+00:04:46.257 --> 00:04:51.805
+<v vc-abs>data journals, then reports, UK, India.
+I would rather actually have actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/59-2
+00:04:51.805 --> 00:04:57.709
+<v vc-abs>report that MD under the journals folder.
+So like it depends like however you want</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/59-3
+00:04:57.709 --> 00:05:00.839
+<v vc-abs>to be basically having this also will
+help.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/62-0
+00:05:01.679 --> 00:05:05.857
+<v vc-abs>We can decide on that, okay. Anyway,
+the structure it has proposed is good</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/62-1
+00:05:05.857 --> 00:05:09.145
+<v vc-abs>enough. General,
+it is actually it is actually logging the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/62-2
+00:05:09.145 --> 00:05:12.154
+<v vc-abs>events report.
+It is actually consulted in the report</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/62-3
+00:05:12.154 --> 00:05:15.608
+<v vc-abs>artifacts in IDPMG.
+So like ideally it could be the other way</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/62-4
+00:05:15.608 --> 00:05:15.999
+<v vc-abs>around.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/63-0
+00:05:17.199 --> 00:05:20.460
+<v vc-abs>So like your reports could have your
+artifacts too,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/63-1
+00:05:20.460 --> 00:05:25.477
+<v vc-abs>your reports could have lets say like
+reports run ID slash artifacts sub folder</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/63-2
+00:05:25.477 --> 00:05:29.679
+<v vc-abs>and reports run ID index.
+md which actually has the actual report.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/64-0
+00:05:32.079 --> 00:05:35.689
+<v vc-abs>So that actually like this doesn't have
+to be basically like you should be able</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/64-1
+00:05:35.689 --> 00:05:38.307
+<v vc-abs>to like move them together too.
+If you are moving around,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/64-2
+00:05:38.307 --> 00:05:40.925
+<v vc-abs>actually the article should also move
+along, move around.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/64-3
+00:05:40.925 --> 00:05:43.679
+<v vc-abs>So the article should be folder should be
+like under the ID.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/65-0
+00:05:45.839 --> 00:05:46.319
+<v srdj-abs>Mhm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/66-0
+00:05:46.439 --> 00:05:49.008
+<v vc-abs>POIs,
+I would actually request you to have it</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/66-1
+00:05:49.008 --> 00:05:52.025
+<v vc-abs>as findings.
+Like what is actually POIs and findings?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/66-2
+00:05:52.025 --> 00:05:53.199
+<v vc-abs>Aren't they the same?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/67-0
+00:05:53.999 --> 00:06:01.199
+<v srdj-abs>Its basically POIs and findings.
+I was about to ask what is POIs in the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/67-1
+00:06:01.199 --> 00:06:02.399
+<v srdj-abs>first place?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/68-0
+00:06:02.079 --> 00:06:04.959
+<v vc-abs>It is the same thing finding point of
+interest.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/69-0
+00:06:05.919 --> 00:06:07.839
+<v srdj-abs>Find of interest.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/70-0
+00:06:08.479 --> 00:06:10.959
+<v vc-abs>Find out in the Sastry.
+I understood be the agent.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/74-0
+00:06:14.959 --> 00:06:17.852
+<v vc-abs>We can do that. We can go with findings.
+Actually,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/71-0
+00:06:17.599 --> 00:06:18.799
+<v srdj-abs>It is like.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/74-1
+00:06:17.852 --> 00:06:21.199
+<v vc-abs>findings is actually lot easier to say.
+PO is a long word.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/75-0
+00:06:20.239 --> 00:06:20.639
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/76-0
+00:06:22.639 --> 00:06:24.927
+<v vc-abs>Finding 2 syllables POA,
+actually 3 syllables.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/76-1
+00:06:24.927 --> 00:06:25.999
+<v vc-abs>Lets go with findings.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/77-0
+00:06:26.319 --> 00:06:26.559
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/78-0
+00:06:29.679 --> 00:06:30.319
+<v srdj-abs>Then.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/80-0
+00:06:29.759 --> 00:06:34.394
+<v vc-abs>And task okay task and this one task and
+builder you can skip knowledge.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/79-0
+00:06:34.319 --> 00:06:34.719
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/80-1
+00:06:34.394 --> 00:06:39.219
+<v vc-abs>md is actually like a knowledge.md or kb.
+md that we will actually discuss.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/80-2
+00:06:39.219 --> 00:06:43.982
+<v vc-abs>I believe it mostly like I say let's say
+linked document basically I think</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/80-3
+00:06:43.982 --> 00:06:47.919
+<v vc-abs>actually you can have a folder called
+knowledge and index md.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/81-0
+00:06:48.639 --> 00:06:51.679
+<v vc-abs>And then the index MD could have filled
+into multiple other documents.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/82-0
+00:06:53.599 --> 00:06:56.879
+<v vc-abs>I don't need to single documents.
+Eventually it will become bigger.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/83-0
+00:06:57.679 --> 00:06:57.999
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/84-0
+00:06:59.119 --> 00:07:01.697
+<v vc-abs>And originally,
+like even actually on findings,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/84-1
+00:07:01.697 --> 00:07:04.705
+<v vc-abs>it can actually propose candidates for
+knowledge thing.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/84-2
+00:07:04.705 --> 00:07:08.573
+<v vc-abs>This is a knowledge actually I got.
+You can actually simply look at the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/84-3
+00:07:08.573 --> 00:07:11.957
+<v vc-abs>knowledge you can separately and you can
+ask it to, let's say,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/84-4
+00:07:11.957 --> 00:07:13.999
+<v vc-abs>like create actually add it to the KB.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/86-0
+00:07:15.919 --> 00:07:20.536
+<v vc-abs>Add it to the KB or amend the KB,
+basically add the existing items and this</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/85-0
+00:07:20.239 --> 00:07:20.719
+<v srdj-abs>Good.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/86-1
+00:07:20.536 --> 00:07:24.849
+<v vc-abs>is part of the reason why actually the
+findings should be an MD field,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/86-2
+00:07:24.849 --> 00:07:25.639
+<v vc-abs>not the JSML.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/89-0
+00:07:26.919 --> 00:07:28.799
+<v vc-abs>It can have a intermediate JSNL,
+not a problem,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/89-1
+00:07:28.799 --> 00:07:31.894
+<v vc-abs>but actually the final document should be
+taken MD because you will be reading</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/89-2
+00:07:31.894 --> 00:07:32.639
+<v vc-abs>through the finals.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/90-0
+00:07:34.559 --> 00:07:37.340
+<v vc-abs>I am for the diagram above,
+actually not this one,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/90-1
+00:07:37.340 --> 00:07:40.995
+<v vc-abs>but for the diagram above,
+try to use what is it mervade so that I</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/90-2
+00:07:40.995 --> 00:07:44.922
+<v vc-abs>like, so like with actually asking,
+I believe it will actually cut some</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/90-3
+00:07:44.922 --> 00:07:46.559
+<v vc-abs>corners to achieve the layout.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/91-0
+00:07:47.919 --> 00:07:50.239
+<v vc-abs>If made it may be simpler,
+you can change that too.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/99-0
+00:07:50.639 --> 00:07:55.140
+<v srdj-abs>Yeah,
+and the in inside like the structure of</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/94-0
+00:07:52.639 --> 00:07:54.159
+<v vc-abs>Okay, what?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/99-1
+00:07:55.140 --> 00:08:00.816
+<v srdj-abs>the documents itself,
+the run document that we were going</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/99-2
+00:08:00.816 --> 00:08:01.599
+<v srdj-abs>through.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/100-0
+00:08:03.039 --> 00:08:06.736
+<v vc-abs>so with for run actually,
+it is actually like whatever we called as</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/100-1
+00:08:06.736 --> 00:08:09.346
+<v vc-abs>steps,
+I think it is calling as events which is</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/100-2
+00:08:09.346 --> 00:08:09.999
+<v vc-abs>even better.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/101-0
+00:08:11.839 --> 00:08:14.079
+<v vc-abs>Okay, because it gives us more.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/104-0
+00:08:15.519 --> 00:08:18.096
+<v vc-abs>Okay,
+and actually it is actually important</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/104-1
+00:08:18.096 --> 00:08:22.079
+<v vc-abs>that actually it actually attacks the
+relevant artifacts to events.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/106-0
+00:08:26.079 --> 00:08:28.960
+<v vc-abs>If it's taking a screen shot,
+it is actually better to tie it to</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/105-0
+00:08:26.159 --> 00:08:26.799
+<v srdj-abs>Yeah, okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/106-1
+00:08:28.960 --> 00:08:29.359
+<v vc-abs>yourself.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/107-0
+00:08:30.639 --> 00:08:31.039
+<v srdj-abs>Look.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/108-0
+00:08:32.799 --> 00:08:35.199
+<v vc-abs>Because actually artifact only has a run
+idea, am I right?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/110-0
+00:08:36.079 --> 00:08:41.839
+<v srdj-abs>Will we have some front end to view these
+things? or?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/109-0
+00:08:36.599 --> 00:08:37.119
+<v vc-abs>Where did it?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/112-0
+00:08:41.959 --> 00:08:45.956
+<v vc-abs>EMD fields are good enough.
+So like the thing is 2 things, okay,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/112-1
+00:08:45.956 --> 00:08:50.938
+<v vc-abs>we will need a front end if actually the
+document is actually the data is large,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/112-2
+00:08:50.938 --> 00:08:55.796
+<v vc-abs>okay, and actually the data is large,
+there is no point in actually collecting</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/112-3
+00:08:55.796 --> 00:08:57.519
+<v vc-abs>the data in the first place.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/111-0
+00:08:58.319 --> 00:08:58.479
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/113-0
+00:08:59.159 --> 00:09:02.564
+<v vc-abs>What happens is,
+let's say there are actually 100 records</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/113-1
+00:09:02.564 --> 00:09:05.383
+<v vc-abs>in run,
+there may be 10 records in findings and</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/113-2
+00:09:05.383 --> 00:09:08.319
+<v vc-abs>there may be one record that actually
+goes to KV.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/115-0
+00:09:09.519 --> 00:09:11.903
+<v vc-abs>So generally,
+you will be looking at the findings,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/115-1
+00:09:11.903 --> 00:09:14.007
+<v vc-abs>you will not be looking at the run
+directly.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/115-2
+00:09:14.007 --> 00:09:17.793
+<v vc-abs>You will be looking at the run only when
+actually the findings actually you want</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/115-3
+00:09:17.793 --> 00:09:20.692
+<v vc-abs>to like verify the evidence that are
+linked by your findings.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/115-4
+00:09:20.692 --> 00:09:24.245
+<v vc-abs>That is part of the reason you need
+actually like MD documents even for the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/114-0
+00:09:21.279 --> 00:09:21.519
+<v srdj-abs>One.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/115-5
+00:09:24.245 --> 00:09:24.479
+<v vc-abs>runs.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/118-0
+00:09:25.999 --> 00:09:29.126
+<v vc-abs>Yeah,
+it might actually create events actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/118-1
+00:09:29.126 --> 00:09:32.652
+<v vc-abs>during the run,
+but post creation it should actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/118-2
+00:09:32.652 --> 00:09:38.240
+<v vc-abs>consolidate the JSNL file into what is it
+I forgot EMD file so that it can actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/116-0
+00:09:35.199 --> 00:09:35.759
+<v srdj-abs>MD.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/118-3
+00:09:38.240 --> 00:09:43.164
+<v vc-abs>link link it link it or else it can
+simply do one thing you can still you</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/117-0
+00:09:40.879 --> 00:09:41.199
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/118-4
+00:09:43.164 --> 00:09:45.759
+<v vc-abs>don't have to actually create actually.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/119-0
+00:09:46.239 --> 00:09:48.543
+<v vc-abs>Run for the finding in the finding itself.
+Actually,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/119-1
+00:09:48.543 --> 00:09:52.066
+<v vc-abs>it can actually add a like a description
+and actually it can attach actually one</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/119-2
+00:09:52.066 --> 00:09:52.719
+<v vc-abs>or more images.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/120-0
+00:09:54.479 --> 00:09:56.639
+<v vc-abs>So maybe you might not need the MD.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/121-0
+00:09:57.439 --> 00:09:57.839
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/124-0
+00:09:57.919 --> 00:10:01.667
+<v vc-abs>And there is no point to the dark one
+will be really large.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/124-1
+00:10:01.667 --> 00:10:06.791
+<v vc-abs>So do one thing findings actually let it
+actually attach actually the appropriate</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/124-2
+00:10:06.791 --> 00:10:09.853
+<v vc-abs>context,
+maybe description and stuff or actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/124-3
+00:10:09.853 --> 00:10:15.039
+<v vc-abs>the evidence evidences lets say like one
+or more images with some caption to them.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/125-0
+00:10:17.199 --> 00:10:18.479
+<v vc-abs>The findings the next, Shashank.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/127-0
+00:10:20.879 --> 00:10:23.853
+<v vc-abs>And the evidence doesn't have to be
+mandatory.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/127-1
+00:10:23.853 --> 00:10:27.081
+<v vc-abs>There could be findings like a but I
+encourage it.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/127-2
+00:10:27.081 --> 00:10:31.764
+<v vc-abs>Having evidence is actually good enough,
+but actually like if you make it</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/127-3
+00:10:31.764 --> 00:10:35.119
+<v vc-abs>mandatory,
+it might actually not share its thoughts.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/126-0
+00:10:35.679 --> 00:10:36.159
+<v srdj-abs>Mhm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/132-0
+00:10:37.159 --> 00:10:40.891
+<v vc-abs>Evidence is actually something that
+happened, am I right?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/132-1
+00:10:40.891 --> 00:10:45.588
+<v vc-abs>It is not something it inferred.
+So have evidence optional for findings,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/132-2
+00:10:45.588 --> 00:10:50.285
+<v vc-abs>but lets actually ask it to like
+encourage actually lets encourage it to</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/132-3
+00:10:50.285 --> 00:10:55.305
+<v vc-abs>like a produce enough evidence so that
+actually like we don't know to collect</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/132-4
+00:10:55.305 --> 00:10:56.399
+<v vc-abs>the evidence, OK.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/131-0
+00:10:56.879 --> 00:10:57.359
+<v srdj-abs>Mhm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/133-0
+00:10:56.879 --> 00:10:58.799
+<v vc-abs>Some reference or something should be
+fine, good enough.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/135-0
+00:10:59.999 --> 00:11:03.255
+<v vc-abs>Because evidence is a stronger word,
+so we can actually encourage it to like</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/134-0
+00:11:01.919 --> 00:11:02.239
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/135-1
+00:11:03.255 --> 00:11:06.639
+<v vc-abs>add reference so that actually the human
+is able to like make better judgments.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/138-0
+00:11:10.399 --> 00:11:14.475
+<v srdj-abs>I have one,
+I have one question before we move on to</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/136-0
+00:11:10.479 --> 00:11:11.519
+<v vc-abs>What next?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/138-1
+00:11:14.475 --> 00:11:18.245
+<v srdj-abs>the okay.
+So this is the basically first we will</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/138-2
+00:11:18.245 --> 00:11:23.937
+<v srdj-abs>complete this and then ask my query.
+So this is the structure of a report</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/138-3
+00:11:23.937 --> 00:11:28.399
+<v srdj-abs>document that it generates at the end
+basically once the.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/139-0
+00:11:29.999 --> 00:11:32.399
+<v srdj-abs>It is done taking all this.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/142-0
+00:11:31.279 --> 00:11:33.511
+<v vc-abs>Yeah,
+it is very standard thing I made most</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/142-1
+00:11:33.511 --> 00:11:37.265
+<v vc-abs>probably like after running it,
+it should actually give you actually link</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/140-0
+00:11:35.679 --> 00:11:36.079
+<v srdj-abs>Thank you.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/142-2
+00:11:37.265 --> 00:11:39.599
+<v vc-abs>to like one able, one findings,
+nothing else.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/141-0
+00:11:39.999 --> 00:11:40.479
+<v srdj-abs>Hmm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/144-0
+00:11:42.479 --> 00:11:45.407
+<v vc-abs>Findings and actually we do not have a
+result. So the result,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/144-1
+00:11:45.407 --> 00:11:48.429
+<v vc-abs>I don't think we have to persist.
+The result will be transient.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/144-2
+00:11:48.429 --> 00:11:51.876
+<v vc-abs>It could be simply shown in the,
+let's say like a shown actually in this</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/144-3
+00:11:51.876 --> 00:11:54.852
+<v vc-abs>on the screen or else let's say like if
+you want to record it,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/144-4
+00:11:54.852 --> 00:11:57.119
+<v vc-abs>you can actually ask it to record that
+failure.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/143-0
+00:11:57.799 --> 00:11:58.279
+<v srdj-abs>Mhm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/147-0
+00:11:59.759 --> 00:12:04.333
+<v srdj-abs>Okay,
+before we move on to document 2i have a</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/147-1
+00:12:04.333 --> 00:12:12.587
+<v srdj-abs>side question related to storage of these
+all documents in which structure so like</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/145-0
+00:12:06.559 --> 00:12:06.879
+<v vc-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/147-2
+00:12:12.587 --> 00:12:17.759
+<v srdj-abs>we are going for the project based
+approach or run.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/146-0
+00:12:16.879 --> 00:12:17.919
+<v vc-abs>Abraham, Mr. Chair.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/148-0
+00:12:21.359 --> 00:12:28.159
+<v srdj-abs>Okay, so like inside the open club club,
+you'll be creating a folder project then.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/150-0
+00:12:23.199 --> 00:12:28.616
+<v vc-abs>So, like, yeah, so give me no wait.
+So whenever actually you actually chat</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/150-1
+00:12:28.616 --> 00:12:32.879
+<v vc-abs>with the teacher,
+you will always actually start with the.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/149-0
+00:12:31.599 --> 00:12:31.879
+<v srdj-abs>No.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/151-0
+00:12:35.359 --> 00:12:39.759
+<v srdj-abs>You're not audible.
+I will always start with them.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/169-0
+00:15:03.119 --> 00:15:04.159
+<v vc-abs>Is Sruban Oralman?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/170-0
+00:15:08.639 --> 00:15:09.199
+<v vc-abs>Saroop.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/171-0
+00:15:11.439 --> 00:15:12.079
+<v srdj-abs>You're Adam.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/172-0
+00:15:13.399 --> 00:15:16.879
+<v vc-abs>Yeah, so sorry, but you got a call.
+So what were you discussing? I forgot.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/175-0
+00:15:18.039 --> 00:15:24.399
+<v srdj-abs>Basically,
+I should be starting the project thing.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/180-0
+00:15:23.359 --> 00:15:25.599
+<v vc-abs>Basically,
+whenever you start a conversation,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/180-1
+00:15:25.599 --> 00:15:27.888
+<v vc-abs>like it will be like for a particular
+project,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/180-2
+00:15:27.888 --> 00:15:31.492
+<v vc-abs>the particular project will have
+intersection about actually where is the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/176-0
+00:15:28.159 --> 00:15:28.479
+<v srdj-abs>Bye.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/180-3
+00:15:31.492 --> 00:15:34.463
+<v vc-abs>binary, how to run it,
+everything may be like apart from all</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/177-0
+00:15:33.839 --> 00:15:34.319
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/180-4
+00:15:34.463 --> 00:15:36.752
+<v vc-abs>this thing,
+actually we need a structure for a</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/180-5
+00:15:36.752 --> 00:15:40.649
+<v vc-abs>project too, at least we need a, lets say,
+index field which talks about how to</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/178-0
+00:15:39.839 --> 00:15:40.159
+<v srdj-abs>Alright.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/180-6
+00:15:40.649 --> 00:15:42.159
+<v vc-abs>start the project and what not.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/179-0
+00:15:42.959 --> 00:15:43.279
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/182-0
+00:15:43.039 --> 00:15:47.557
+<v vc-abs>And actually the tester should be capable
+of creating the project itself. Basically,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/181-0
+00:15:46.639 --> 00:15:47.079
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/182-1
+00:15:47.557 --> 00:15:51.862
+<v vc-abs>if you just actually giving it to like if
+you are not actually asking it to lets</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/182-2
+00:15:51.862 --> 00:15:56.380
+<v vc-abs>say like work with any particular project,
+if you are actually asking it to like run</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/182-3
+00:15:56.380 --> 00:15:58.879
+<v vc-abs>it,
+it should actually first create a project.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/183-0
+00:16:00.799 --> 00:16:04.519
+<v vc-abs>First date of project and actually it
+should actually keep on recording</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/183-1
+00:16:04.519 --> 00:16:08.601
+<v vc-abs>actually like its own findings about
+actually running things and the KB na the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/183-2
+00:16:08.601 --> 00:16:12.735
+<v vc-abs>KB is at the project level or whatever
+document actually like we discussed like</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/183-3
+00:16:12.735 --> 00:16:14.079
+<v vc-abs>the parent is the project.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/184-0
+00:16:16.879 --> 00:16:17.359
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/185-0
+00:16:17.119 --> 00:16:19.699
+<v vc-abs>So only like in the project scope,
+actually the documents are out there</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/185-1
+00:16:19.699 --> 00:16:21.599
+<v vc-abs>outside of the project,
+the documents are not valid.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/187-0
+00:16:21.999 --> 00:16:25.146
+<v srdj-abs>So,
+so like the biggest document the key be</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/186-0
+00:16:23.159 --> 00:16:23.279
+<v vc-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/187-1
+00:16:25.146 --> 00:16:28.795
+<v srdj-abs>the final document itself is at the
+project level,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/187-2
+00:16:28.795 --> 00:16:30.799
+<v srdj-abs>so all other documents will.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/188-0
+00:16:29.919 --> 00:16:33.492
+<v vc-abs>It will be, It should not be biggest.
+Actually,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/190-0
+00:16:32.719 --> 00:16:36.825
+<v srdj-abs>Basically,
+biggest in the sense not in the size,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/188-1
+00:16:33.492 --> 00:16:37.439
+<v vc-abs>there will be some tender ones most
+important, yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/190-1
+00:16:36.825 --> 00:16:43.614
+<v srdj-abs>the importance based on the importance.
+So basically all the 5 documents of 5 or</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/189-0
+00:16:39.519 --> 00:16:39.999
+<v vc-abs>yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/190-2
+00:16:43.614 --> 00:16:50.402
+<v srdj-abs>4 whatever documents that we all kind of
+documents should be at a project level.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/190-3
+00:16:50.402 --> 00:16:55.599
+<v srdj-abs>And so whenever we tell it to like run
+new test or something.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/191-0
+00:16:56.159 --> 00:16:59.288
+<v srdj-abs>To do with that project,
+it should be at a project level,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/191-1
+00:16:59.288 --> 00:17:00.799
+<v srdj-abs>nothing outside the project.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/192-0
+00:17:00.159 --> 00:17:01.839
+<v vc-abs>You're right, yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/194-0
+00:17:02.239 --> 00:17:06.297
+<v srdj-abs>And if we are something starts at outside
+the project,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/194-1
+00:17:06.297 --> 00:17:11.980
+<v srdj-abs>either it would suggest like should I
+work with some individual project that</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/194-2
+00:17:11.980 --> 00:17:16.260
+<v srdj-abs>you already have,
+like you have these projects or like it</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/193-0
+00:17:13.439 --> 00:17:13.839
+<v vc-abs>Thank you.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/194-3
+00:17:16.260 --> 00:17:21.279
+<v srdj-abs>should create a new project based on
+their and for the interaction.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/196-0
+00:17:23.359 --> 00:17:28.100
+<v vc-abs>So as of now actually we are like we are
+having the project separate folders</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/196-1
+00:17:28.100 --> 00:17:32.719
+<v vc-abs>eventually actually look at these folders
+will be part of our repo itself.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/195-0
+00:17:33.039 --> 00:17:33.359
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/197-0
+00:17:35.119 --> 00:17:38.916
+<v vc-abs>So, that we will discuss later afternoon,
+like ascending folder, housing,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/197-1
+00:17:38.916 --> 00:17:40.559
+<v vc-abs>all the projects is good enough.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/198-0
+00:17:40.959 --> 00:17:41.319
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/199-0
+00:17:43.679 --> 00:17:44.879
+<v vc-abs>Okay, then what else?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/202-0
+00:17:44.799 --> 00:17:48.644
+<v srdj-abs>OK,
+so next document was this finding</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/202-1
+00:17:48.644 --> 00:17:53.199
+<v srdj-abs>document which is existing is the JSNL
+file.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/203-0
+00:17:55.679 --> 00:17:56.959
+<v vc-abs>I'm not getting what to say again.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/209-0
+00:17:56.959 --> 00:18:03.427
+<v srdj-abs>So current implementation creates a JSNL
+findings dot JSNL file one record for per</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/209-1
+00:18:03.427 --> 00:18:08.960
+<v srdj-abs>distinct issue are real example from the
+existing GT mat drag anomaly.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/206-0
+00:18:03.959 --> 00:18:04.239
+<v vc-abs>Thank you.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/209-2
+00:18:08.960 --> 00:18:15.039
+<v srdj-abs>So there is one example it created.
+So this is the structure of the document.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/210-0
+00:18:14.039 --> 00:18:20.894
+<v vc-abs>Okay fine, okay fine. Excepted, okay.
+Chapel, okay, fine. Observe, okay, fine.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/210-1
+00:18:20.894 --> 00:18:24.799
+<v vc-abs>Evidence, yeah, it's fine.
+It's good enough.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/211-0
+00:18:26.279 --> 00:18:29.119
+<v vc-abs>But the problem is actually they should
+be in a table.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/212-0
+00:18:30.079 --> 00:18:30.479
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/213-0
+00:18:30.719 --> 00:18:31.519
+<v vc-abs>In other section.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/214-0
+00:18:32.799 --> 00:18:33.199
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/215-0
+00:18:34.879 --> 00:18:38.879
+<v vc-abs>So ideally,
+finance should be at POC with sections.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/216-0
+00:18:40.119 --> 00:18:42.960
+<v vc-abs>So that you just actually look at the UOC,
+you click on the interesting trending,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/216-1
+00:18:42.960 --> 00:18:45.039
+<v vc-abs>and when you read it,
+like you do not worry about the rest.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/217-0
+00:18:45.759 --> 00:18:46.159
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/218-0
+00:18:47.039 --> 00:18:49.465
+<v vc-abs>This.com can be created, okay,
+but actually the report should be</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/218-1
+00:18:49.465 --> 00:18:50.959
+<v vc-abs>generated over this for you to consider.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/219-0
+00:18:51.519 --> 00:18:51.919
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/220-0
+00:18:54.559 --> 00:18:59.919
+<v srdj-abs>The document is for the agents
+consumption, not for users conversion.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/224-0
+00:19:01.039 --> 00:19:03.852
+<v vc-abs>A Jason Alia Jason looks for the agents
+conservation,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/221-0
+00:19:02.479 --> 00:19:03.279
+<v srdj-abs>Jason L.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/224-1
+00:19:03.852 --> 00:19:06.719
+<v vc-abs>but actually the finding MD is for use of
+consumption.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/227-0
+00:19:07.359 --> 00:19:12.959
+<v srdj-abs>Okay, these are task document. So for now,
+do we?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/235-0
+00:19:12.639 --> 00:19:15.783
+<v vc-abs>And there is actually,
+there is actually one other thing there</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/235-1
+00:19:15.783 --> 00:19:18.329
+<v vc-abs>should be global knowledge outside of the
+project,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/230-0
+00:19:17.839 --> 00:19:18.159
+<v srdj-abs>Mm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/235-2
+00:19:18.329 --> 00:19:21.124
+<v vc-abs>which is actually JPU is available,
+so on and so forth,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/235-3
+00:19:21.124 --> 00:19:23.969
+<v vc-abs>which you can actually even configure at
+the claw level,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/235-4
+00:19:23.969 --> 00:19:27.962
+<v vc-abs>maybe Seoul or actually get some agents
+that can be partner supports it or else</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/231-0
+00:19:27.039 --> 00:19:27.519
+<v srdj-abs>Hmm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/235-5
+00:19:27.962 --> 00:19:29.759
+<v vc-abs>you can have a special shift for it.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/233-0
+00:19:29.039 --> 00:19:31.039
+<v srdj-abs>It does have a agents dot.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/236-0
+00:19:31.839 --> 00:19:34.842
+<v vc-abs>Okay, great. Yeah,
+you can simply say that JP is available</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/237-0
+00:19:32.959 --> 00:19:40.959
+<v srdj-abs>So it have agent soul and human file and
+there is one memory file which.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/236-1
+00:19:34.842 --> 00:19:36.319
+<v vc-abs>and you can use JQ 2 process.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/240-0
+00:19:39.039 --> 00:19:41.821
+<v vc-abs>Yeah,
+I am just give me example somewhere else.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/240-1
+00:19:41.821 --> 00:19:46.170
+<v vc-abs>Like I just actually wanted to say that
+like apart from project knowledge,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/238-0
+00:19:42.639 --> 00:19:43.039
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/240-2
+00:19:46.170 --> 00:19:50.808
+<v vc-abs>there is a like lets say like a system
+knowledge which actually workout success</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/239-0
+00:19:49.199 --> 00:19:49.799
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/240-3
+00:19:50.808 --> 00:19:53.359
+<v vc-abs>projects, for example,
+lets say like a GPH.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/242-0
+00:19:51.839 --> 00:19:56.676
+<v srdj-abs>They basically tester improves its
+knowledge, the generic knowledge,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/242-1
+00:19:56.676 --> 00:20:01.513
+<v srdj-abs>not just a project specific.
+So lets say if you tell it something to</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/242-2
+00:20:01.513 --> 00:20:05.649
+<v srdj-abs>do differently,
+it should have a knowledge about that too,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/242-3
+00:20:05.649 --> 00:20:10.346
+<v srdj-abs>like not specific to project.
+If it applies to all of the project,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/241-0
+00:20:08.799 --> 00:20:09.199
+<v vc-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/242-4
+00:20:10.346 --> 00:20:12.239
+<v srdj-abs>it should be there and the.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/243-0
+00:20:12.919 --> 00:20:14.559
+<v srdj-abs>Global knowledge base, right?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/246-0
+00:20:13.839 --> 00:20:16.713
+<v vc-abs>Yeah, it makes sense,
+but I am not entirely sure actually what</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/246-1
+00:20:16.713 --> 00:20:19.222
+<v vc-abs>will be the interviews,
+how would we interact with it?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/246-2
+00:20:19.222 --> 00:20:22.643
+<v vc-abs>We will actually discuss anyway,
+like I think its just one more word added</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/244-0
+00:20:19.839 --> 00:20:19.999
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/246-3
+00:20:22.643 --> 00:20:24.879
+<v vc-abs>to your global knowledge or something
+like that.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/245-0
+00:20:25.279 --> 00:20:25.639
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/247-0
+00:20:26.799 --> 00:20:27.279
+<v vc-abs>Let's see.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/248-0
+00:20:27.759 --> 00:20:32.334
+<v srdj-abs>Okay,
+and these are the basically this is the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/248-1
+00:20:32.334 --> 00:20:35.119
+<v srdj-abs>task example it given human.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/249-0
+00:20:34.439 --> 00:20:40.479
+<v vc-abs>Yeah, this I told you, no,
+like we can park this.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/250-0
+00:20:41.119 --> 00:20:44.799
+<v srdj-abs>OK, so for now,
+tasks it doesn't have to create.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/252-0
+00:20:42.479 --> 00:20:46.903
+<v vc-abs>Just actually ask it to like say like
+task and builder separately out of this</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/252-1
+00:20:46.903 --> 00:20:49.683
+<v vc-abs>document.
+Let's say like simply because actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/252-2
+00:20:49.683 --> 00:20:51.839
+<v vc-abs>that will be part of some other build.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/251-0
+00:20:52.639 --> 00:20:53.119
+<v srdj-abs>OK.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/255-0
+00:20:55.279 --> 00:20:58.684
+<v srdj-abs>Okay,
+and the knowledge base should it be</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/255-1
+00:20:58.684 --> 00:21:05.089
+<v srdj-abs>basically you said it should be this one
+marked out as you can read like notes</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/255-2
+00:21:05.089 --> 00:21:10.603
+<v srdj-abs>real entries from the live.
+So this is these are the basically this</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/255-3
+00:21:10.603 --> 00:21:13.279
+<v srdj-abs>is the actual document right now.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/256-0
+00:21:13.439 --> 00:21:16.399
+<v srdj-abs>We have the actual AB we have.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/257-0
+00:21:14.319 --> 00:21:18.159
+<v vc-abs>Yeah, understood. Yeah, it doesn't matter.
+Give it doesn't matter.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/258-0
+00:21:18.799 --> 00:21:19.199
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/262-0
+00:21:19.919 --> 00:21:23.439
+<v vc-abs>Maybe same difference like RL,
+lets say M difference.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/261-0
+00:21:21.519 --> 00:21:21.999
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/264-0
+00:21:24.079 --> 00:21:26.396
+<v srdj-abs>Yeah,
+basically it's like notes down the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/264-1
+00:21:26.396 --> 00:21:29.279
+<v srdj-abs>current decision,
+known application facts and all.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/263-0
+00:21:28.159 --> 00:21:28.639
+<v vc-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/265-0
+00:21:30.879 --> 00:21:33.987
+<v srdj-abs>Okay,
+and the other one is the last one is</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/265-1
+00:21:33.987 --> 00:21:36.879
+<v srdj-abs>runbook example, what it will look like.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/268-0
+00:21:38.719 --> 00:21:43.185
+<v vc-abs>Target so like it looks like actually
+they are actually I'm not entirely sure</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/268-1
+00:21:43.185 --> 00:21:44.159
+<v vc-abs>whether actually.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/274-0
+00:21:45.679 --> 00:21:48.940
+<v vc-abs>They are, what is it?
+They are actually like listening to us or</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/274-1
+00:21:48.940 --> 00:21:50.978
+<v vc-abs>not,
+but I am pretty much sure they are</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/274-2
+00:21:50.978 --> 00:21:54.035
+<v vc-abs>stealing the idea somehow.
+So this structure it is showing,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/274-3
+00:21:54.035 --> 00:21:58.163
+<v vc-abs>this is the previous structure actually
+like we actually the I am Karwa actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/271-0
+00:21:54.079 --> 00:21:54.399
+<v srdj-abs>Alright.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/274-4
+00:21:58.163 --> 00:22:01.679
+<v vc-abs>like a startup data for entity builder
+when we went from YAML to MD.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/276-0
+00:22:03.519 --> 00:22:07.912
+<v vc-abs>So this is the precise like a thing or
+precise structure we used to like express</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/276-1
+00:22:07.912 --> 00:22:10.841
+<v vc-abs>dictionaries.
+The only difference is we were actually</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/275-0
+00:22:09.759 --> 00:22:10.239
+<v srdj-abs>Hmm.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/276-2
+00:22:10.841 --> 00:22:14.205
+<v vc-abs>making the keys bold.
+Basically the objective will be in bold</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/276-3
+00:22:14.205 --> 00:22:14.639
+<v vc-abs>letters.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/277-0
+00:22:17.119 --> 00:22:19.919
+<v vc-abs>Okay, T1 dashboard loads. Yeah,
+this is good.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/278-0
+00:22:21.039 --> 00:22:21.119
+<v srdj-abs>No.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/279-0
+00:22:22.639 --> 00:22:26.851
+<v srdj-abs>Okay,
+then I will give it updated knowledge</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/279-1
+00:22:26.851 --> 00:22:31.159
+<v srdj-abs>base and come up with the updated plan.
+and.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/285-0
+00:22:27.759 --> 00:22:30.730
+<v vc-abs>Okay,
+and actually part of the part of the</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/285-1
+00:22:30.730 --> 00:22:34.255
+<v vc-abs>reason actually of course as we discussed
+earlier,</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/285-2
+00:22:34.255 --> 00:22:39.715
+<v vc-abs>part of the reason for creating the last
+ones is to like make sure that we are</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/285-3
+00:22:39.715 --> 00:22:40.199
+<v vc-abs>linked.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/284-0
+00:22:41.079 --> 00:22:41.439
+<v srdj-abs>Yeah.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/286-0
+00:22:42.199 --> 00:22:46.291
+<v vc-abs>And like I requested you to like change
+the diagrams and actually drop the task</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/286-1
+00:22:46.291 --> 00:22:47.519
+<v vc-abs>and builder out of this.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/287-0
+00:22:49.839 --> 00:22:50.959
+<v vc-abs>No, that should be fine.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/288-0
+00:22:51.439 --> 00:22:51.799
+<v srdj-abs>Okay.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/291-0
+00:22:52.959 --> 00:22:53.799
+<v vc-abs>Anything else, ma?</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/292-0
+00:22:54.599 --> 00:22:55.199
+<v srdj-abs>Yeah, for now.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/293-0
+00:22:56.239 --> 00:22:57.119
+<v vc-abs>Okay, bye.</v>
+
+8a4f935b-79a7-4d6a-abd0-5e40e9912c70/294-0
+00:22:57.599 --> 00:22:57.919
+<v srdj-abs>Bye.</v>

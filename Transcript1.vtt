@@ -1,0 +1,1331 @@
+WEBVTT
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/6-0
+00:00:03.680 --> 00:00:06.880
+<v srdj-abs>Starting now starting cycle.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/5-0
+00:00:03.760 --> 00:00:05.280
+<v vc-abs>So it should actually.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/8-0
+00:00:07.520 --> 00:00:09.997
+<v vc-abs>Okay,
+so it should be explored and it should</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/8-1
+00:00:09.997 --> 00:00:12.640
+<v vc-abs>actually record everything at the action
+level.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/10-0
+00:00:15.520 --> 00:00:20.724
+<v vc-abs>Okay, this is actually create first goal.
+The second goal is it should actually</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/10-1
+00:00:20.724 --> 00:00:23.977
+<v vc-abs>collect important items and like all in
+with you.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/10-2
+00:00:23.977 --> 00:00:27.360
+<v vc-abs>It could be a bug or it could be a doubt,
+what not.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/9-0
+00:00:24.400 --> 00:00:24.760
+<v srdj-abs>Sure.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/11-0
+00:00:29.360 --> 00:00:33.148
+<v vc-abs>The 3rd thing is actually it should be
+able to like create a knowledge base out</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/11-1
+00:00:33.148 --> 00:00:34.000
+<v vc-abs>of your alignment.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/12-0
+00:00:35.360 --> 00:00:35.760
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/16-0
+00:00:36.880 --> 00:00:40.644
+<v vc-abs>It is a the knowledge base is a product
+of you and the agent,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/16-1
+00:00:40.644 --> 00:00:45.198
+<v vc-abs>and it should be able to consider the
+knowledge base for further distance,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/13-0
+00:00:40.880 --> 00:00:41.280
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/16-2
+00:00:45.198 --> 00:00:50.055
+<v vc-abs>whether or not to align on something or
+whether like whether or not to escalate</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/14-0
+00:00:46.560 --> 00:00:47.280
+<v srdj-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/16-3
+00:00:50.055 --> 00:00:53.091
+<v vc-abs>something.
+Isn't lets see if there is a repeating</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/16-4
+00:00:53.091 --> 00:00:55.520
+<v vc-abs>bug, the instruction could be escalated.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/15-0
+00:00:56.080 --> 00:00:56.480
+<v srdj-abs>No.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/17-0
+00:00:56.960 --> 00:00:59.726
+<v vc-abs>Yes,
+give it actually like have the highest</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/17-1
+00:00:59.726 --> 00:01:02.240
+<v vc-abs>priority are there is a really frequent.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/19-0
+00:01:04.560 --> 00:01:09.093
+<v vc-abs>It can actually report that to you.
+So these 3 things it has to do initially,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/19-1
+00:01:09.093 --> 00:01:10.720
+<v vc-abs>the rest we will figure out.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/18-0
+00:01:09.600 --> 00:01:10.000
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/20-0
+00:01:12.600 --> 00:01:18.902
+<v srdj-abs>Okay, so it should explorer it,
+it should record everything at the action</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/20-1
+00:01:18.902 --> 00:01:23.161
+<v srdj-abs>level, collect important items like bugs,
+doubts,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/20-2
+00:01:23.161 --> 00:01:28.697
+<v srdj-abs>create knowledge base with on its own,
+also talking with me too,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/20-3
+00:01:28.697 --> 00:01:30.400
+<v srdj-abs>like with the human.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/23-0
+00:01:30.960 --> 00:01:36.553
+<v srdj-abs>And consult the knowledge base in the
+future sessions and lets say if there is</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/21-0
+00:01:35.200 --> 00:01:35.440
+<v vc-abs>Haan.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/23-1
+00:01:36.553 --> 00:01:40.588
+<v srdj-abs>a frequent bug,
+it should like reported like this bug is</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/23-2
+00:01:40.588 --> 00:01:45.190
+<v srdj-abs>happening again and again.
+And the other thing I missed one part</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/22-0
+00:01:43.920 --> 00:01:44.160
+<v vc-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/23-3
+00:01:45.190 --> 00:01:46.960
+<v srdj-abs>before this frequent bug.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/27-0
+00:01:49.920 --> 00:01:52.671
+<v srdj-abs>In the which I will take it from the
+report,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/24-0
+00:01:50.480 --> 00:01:51.520
+<v vc-abs>What is the other thing?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/27-1
+00:01:52.671 --> 00:01:57.440
+<v srdj-abs>I will check it from the recording.
+It said something before frequent things.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/26-0
+00:01:54.880 --> 00:01:55.840
+<v vc-abs>You are recording.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/28-0
+00:01:58.560 --> 00:02:02.240
+<v vc-abs>Before frequent, no, it should escalate.
+When it actually.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/29-0
+00:02:01.600 --> 00:02:06.320
+<v srdj-abs>Yeah, this escalation part,
+what does it mean in this context?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/30-0
+00:02:09.200 --> 00:02:11.845
+<v vc-abs>Essentially,
+it should give actually more priority the</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/30-1
+00:02:11.845 --> 00:02:15.645
+<v vc-abs>next time around when a report comes,
+this particular thing actually should be</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/30-2
+00:02:15.645 --> 00:02:16.800
+<v vc-abs>shown to the first item.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/31-0
+00:02:17.880 --> 00:02:21.440
+<v srdj-abs>What particular thing escalate what
+issues?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/32-0
+00:02:20.240 --> 00:02:24.762
+<v vc-abs>Whatever if the escalated one escalated
+issue, escalated issue, doubt, question,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/32-1
+00:02:24.762 --> 00:02:25.600
+<v vc-abs>whatever it is.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/34-0
+00:02:27.760 --> 00:02:30.955
+<v vc-abs>Basically,
+actually the knowledge base it creates,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/34-1
+00:02:30.955 --> 00:02:33.774
+<v vc-abs>it helps.
+It helps it for actually 2 things.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/33-0
+00:02:30.960 --> 00:02:31.120
+<v srdj-abs>Hello.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/34-2
+00:02:33.774 --> 00:02:37.032
+<v vc-abs>Basically,
+the knowledge base helps it like control</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/34-3
+00:02:37.032 --> 00:02:38.160
+<v vc-abs>the other 2 flues.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/35-0
+00:02:39.640 --> 00:02:43.396
+<v vc-abs>What to record, what not to record.
+For example, even in recording,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/35-1
+00:02:43.396 --> 00:02:47.760
+<v vc-abs>it doesn't have to like, let us say,
+record the mundane flues again and again.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/36-0
+00:02:49.600 --> 00:02:50.080
+<v srdj-abs>Mhm.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/37-0
+00:02:51.520 --> 00:02:54.240
+<v vc-abs>Or else like it could record,
+but it does not have to act on it.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/39-0
+00:02:56.960 --> 00:03:02.360
+<v srdj-abs>Yeah, knowledge base will say itself,
+say its a high priority or a low priority,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/38-0
+00:02:57.000 --> 00:02:58.360
+<v vc-abs>So let's say like there's a new level.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/39-1
+00:03:02.360 --> 00:03:06.760
+<v srdj-abs>low priority happening again,
+we don't have to do anything on it.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/39-2
+00:03:06.760 --> 00:03:10.227
+<v srdj-abs>So it will simply say low priority bug
+found again,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/39-3
+00:03:10.227 --> 00:03:13.760
+<v srdj-abs>but not like push it on the top,
+that kind of thing.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/42-0
+00:03:13.680 --> 00:03:16.913
+<v vc-abs>You are right,
+like that is one and it like basically</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/42-1
+00:03:16.913 --> 00:03:21.404
+<v vc-abs>the knowledge base will help it like help
+me take many actions. Basically,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/40-0
+00:03:21.040 --> 00:03:21.320
+<v srdj-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/42-2
+00:03:21.404 --> 00:03:25.715
+<v vc-abs>it is a historical action like basically
+it uses its memory. Basically,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/42-3
+00:03:25.715 --> 00:03:29.727
+<v vc-abs>this is the memory part.
+This is the memory part that controls its</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/42-4
+00:03:29.727 --> 00:03:32.361
+<v vc-abs>behaviour.
+The first 2 does not control its</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/41-0
+00:03:31.680 --> 00:03:31.920
+<v srdj-abs>Right.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/42-5
+00:03:32.361 --> 00:03:32.960
+<v vc-abs>behaviour.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/44-0
+00:03:34.480 --> 00:03:37.812
+<v vc-abs>The first is actually record of just
+actually what happened.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/44-1
+00:03:37.812 --> 00:03:41.744
+<v vc-abs>It will not actually base its future
+decision based on the first set of</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/44-2
+00:03:41.744 --> 00:03:44.421
+<v vc-abs>records.
+The second thing is a set of records to</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/43-0
+00:03:42.880 --> 00:03:43.360
+<v srdj-abs>Mhm.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/44-3
+00:03:44.421 --> 00:03:45.240
+<v vc-abs>align with you.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/45-0
+00:03:48.200 --> 00:03:52.721
+<v vc-abs>The 3rd thing is the findings like which
+will influence future behaviour both</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/45-1
+00:03:52.721 --> 00:03:55.040
+<v vc-abs>during exploration as well as reporting.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/46-0
+00:03:56.800 --> 00:04:01.947
+<v srdj-abs>One knowledge base where everything is
+like recorded,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/46-1
+00:04:01.947 --> 00:04:05.760
+<v srdj-abs>other one is they like temporary memory.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/49-0
+00:04:05.120 --> 00:04:09.532
+<v vc-abs>No, it's not knowledge base. Like we have,
+we have actually no,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/47-0
+00:04:07.040 --> 00:04:07.400
+<v srdj-abs>Thank you.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/49-1
+00:04:09.532 --> 00:04:13.600
+<v vc-abs>let's say like we have 3 3 datasets. Okay,
+one is actions.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/48-0
+00:04:14.160 --> 00:04:14.600
+<v srdj-abs>No.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/50-0
+00:04:15.040 --> 00:04:17.840
+<v vc-abs>Okay, actions along with evidence.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/54-0
+00:04:19.760 --> 00:04:22.684
+<v vc-abs>OK,
+it would be essentially an image or lets</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/54-1
+00:04:22.684 --> 00:04:27.297
+<v vc-abs>say like a like a lets say like a an
+error log or something like that.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/51-0
+00:04:27.120 --> 00:04:27.200
+<v srdj-abs>Ahh.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/54-2
+00:04:27.297 --> 00:04:32.560
+<v vc-abs>So one is actually actions with evidence
+that helps us understand what was done.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/52-0
+00:04:30.000 --> 00:04:30.200
+<v srdj-abs>Hello.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/53-0
+00:04:33.360 --> 00:04:33.600
+<v srdj-abs>Not.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/56-0
+00:04:34.800 --> 00:04:37.860
+<v vc-abs>Okay,
+and actually the second table is what has</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/55-0
+00:04:35.080 --> 00:04:35.280
+<v srdj-abs>Haan.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/56-1
+00:04:37.860 --> 00:04:38.880
+<v vc-abs>to be discussed.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/57-0
+00:04:39.840 --> 00:04:40.320
+<v srdj-abs>Haan.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/58-0
+00:04:41.520 --> 00:04:50.320
+<v vc-abs>The 3rd thing is what is remembered or
+what should influence future behaviour.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/59-0
+00:04:51.720 --> 00:04:53.280
+<v srdj-abs>What is?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/60-0
+00:04:52.320 --> 00:04:53.600
+<v vc-abs>These are the 3 datasets.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/61-0
+00:04:54.720 --> 00:05:00.800
+<v srdj-abs>Remembered and well impact feature.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/62-0
+00:05:00.160 --> 00:05:02.400
+<v vc-abs>Influence in future behaviour, yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/63-0
+00:05:05.360 --> 00:05:05.840
+<v srdj-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/64-0
+00:05:07.760 --> 00:05:08.240
+<v srdj-abs>Right.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/65-0
+00:05:08.160 --> 00:05:12.509
+<v vc-abs>So the idea is imagine that actually we
+ask it to compare actually the</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/65-1
+00:05:12.509 --> 00:05:17.470
+<v vc-abs>screenshots given particular actions and
+report when the when something when the</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/65-2
+00:05:17.470 --> 00:05:19.920
+<v vc-abs>change actually does not make any sense.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/66-0
+00:05:22.320 --> 00:05:26.209
+<v vc-abs>Okay, let's say like without,
+let's say without memory,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/66-1
+00:05:26.209 --> 00:05:31.557
+<v vc-abs>let's say if it compares actually 2
+screenshots, okay from 2 different runs,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/66-2
+00:05:31.557 --> 00:05:34.960
+<v vc-abs>let's say in between actually we moved a
+button.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/67-0
+00:05:37.520 --> 00:05:42.488
+<v vc-abs>Okay, it can simply put the button,
+but the button is rendered in the wrong</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/67-1
+00:05:42.488 --> 00:05:42.880
+<v vc-abs>place.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/68-0
+00:05:43.520 --> 00:05:43.920
+<v srdj-abs>Mm.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/69-0
+00:05:45.200 --> 00:05:48.400
+<v vc-abs>But when we chat with it,
+if you tell it that...</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/70-0
+00:05:49.920 --> 00:05:53.417
+<v vc-abs>Like we have actually made some changes
+to the UA buttons are moved here and</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/70-1
+00:05:53.417 --> 00:05:55.280
+<v vc-abs>there, now we do not consider the symbol.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/71-0
+00:05:58.080 --> 00:06:02.820
+<v srdj-abs>Basically,
+known known working state of the app</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/72-0
+00:05:58.120 --> 00:06:03.690
+<v vc-abs>Other knowledge list can be the known
+factor, not just working study,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/71-1
+00:06:02.820 --> 00:06:04.400
+<v srdj-abs>should be there.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/72-1
+00:06:03.690 --> 00:06:05.600
+<v vc-abs>it could be many things.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/74-0
+00:06:07.360 --> 00:06:10.727
+<v vc-abs>Basically,
+that is actually like why I imagine that</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/74-1
+00:06:10.727 --> 00:06:15.972
+<v vc-abs>actually you actually you have a junior
+under you who is actually supposed to do</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/74-2
+00:06:15.972 --> 00:06:17.720
+<v vc-abs>regression testing for you.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/73-0
+00:06:18.320 --> 00:06:18.640
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/77-0
+00:06:19.440 --> 00:06:21.922
+<v vc-abs>Okay,
+first actually like whenever actually the</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/77-1
+00:06:21.922 --> 00:06:26.267
+<v vc-abs>first data set we were discussing is kind
+of a snapshot that is automatically taken</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/77-2
+00:06:26.267 --> 00:06:29.473
+<v vc-abs>by the machine they use.
+They work with go dot go dot records</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/75-0
+00:06:29.440 --> 00:06:29.760
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/77-3
+00:06:29.473 --> 00:06:33.663
+<v vc-abs>actually water like where did they move
+their mouse where did they click to what</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/77-4
+00:06:33.663 --> 00:06:37.800
+<v vc-abs>was the screen at that point in time.
+So it is something automatically created.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/77-5
+00:06:37.800 --> 00:06:40.128
+<v vc-abs>Okay,
+the second thing is actually something</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/77-6
+00:06:40.128 --> 00:06:43.800
+<v vc-abs>they create actually like manually when
+they when they think there is.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/78-0
+00:06:43.880 --> 00:06:45.200
+<v vc-abs>Something important to discuss.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/76-0
+00:06:45.680 --> 00:06:46.080
+<v srdj-abs>Hello.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/82-0
+00:06:47.280 --> 00:06:50.472
+<v vc-abs>Basically, I clicked on the button,
+the button did not work.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/82-1
+00:06:50.472 --> 00:06:54.135
+<v vc-abs>I had to click on this 3 times to make it
+work. Those kind of things.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/82-2
+00:06:54.135 --> 00:06:57.903
+<v vc-abs>First thing is actually like done
+mechanically by the underlying layer.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/79-0
+00:06:56.680 --> 00:06:56.800
+<v srdj-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/82-3
+00:06:57.903 --> 00:07:00.938
+<v vc-abs>I am just giving you examples.
+It can do it mechanically,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/80-0
+00:06:58.480 --> 00:06:58.800
+<v srdj-abs>Right.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/82-4
+00:07:00.938 --> 00:07:05.177
+<v vc-abs>it can do it or like it will be good or
+can do it or the agent itself can do it.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/82-5
+00:07:05.177 --> 00:07:08.160
+<v vc-abs>But the first is record a set of actions.
+The second is.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/81-0
+00:07:07.120 --> 00:07:07.360
+<v srdj-abs>No.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/83-0
+00:07:08.240 --> 00:07:12.347
+<v vc-abs>Set of important items that you are you
+today have to discuss.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/83-1
+00:07:12.347 --> 00:07:15.606
+<v vc-abs>The 3rd is the knowledge the it
+accumulated okay,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/83-2
+00:07:15.606 --> 00:07:18.800
+<v vc-abs>basically the important decisions that
+are made.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/84-0
+00:07:21.560 --> 00:07:25.423
+<v vc-abs>Which will which it will use to control
+its further action.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/84-1
+00:07:25.423 --> 00:07:30.058
+<v vc-abs>Let's say you ask it actually not to
+let's say like test anything under</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/84-2
+00:07:30.058 --> 00:07:30.960
+<v vc-abs>testing lists.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/85-0
+00:07:32.640 --> 00:07:35.718
+<v vc-abs>Actually,
+let's say like it's actually testing a</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/85-1
+00:07:35.718 --> 00:07:38.860
+<v vc-abs>dev build.
+It actually tests every level in every</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/85-2
+00:07:38.860 --> 00:07:42.378
+<v vc-abs>every playlist.
+It actually starts actually reporting a</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/85-3
+00:07:42.378 --> 00:07:43.760
+<v vc-abs>lot of volatile items.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/86-0
+00:07:45.200 --> 00:07:48.800
+<v vc-abs>Okay,
+from our level under development playlist.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/87-0
+00:07:51.040 --> 00:07:51.760
+<v vc-abs>Are you following?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/88-0
+00:07:52.320 --> 00:07:52.640
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/89-0
+00:07:55.840 --> 00:07:56.640
+<v vc-abs>Repeat it.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/90-0
+00:07:57.360 --> 00:08:00.560
+<v srdj-abs>No, basically, so lets say.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/91-0
+00:08:02.240 --> 00:08:07.451
+<v srdj-abs>I As soon as you asked me now,
+I lost the thought.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/91-1
+00:08:07.451 --> 00:08:15.932
+<v srdj-abs>So I was thinking also when you said you
+it should be not like giving things based</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/91-2
+00:08:15.932 --> 00:08:22.880
+<v srdj-abs>on the development levels, right?
+If that part, now I got confused.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/93-0
+00:08:24.000 --> 00:08:26.738
+<v vc-abs>Yeah, it should not,
+but how will it know it?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/93-1
+00:08:26.738 --> 00:08:31.501
+<v vc-abs>So lets say first time actually. Yeah,
+but how will you like when will you tell</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/92-0
+00:08:27.200 --> 00:08:28.160
+<v srdj-abs>We have to done it.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/93-2
+00:08:31.501 --> 00:08:31.680
+<v vc-abs>it?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/94-0
+00:08:33.120 --> 00:08:34.080
+<v srdj-abs>When it asks.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/98-0
+00:08:36.720 --> 00:08:40.760
+<v vc-abs>so when it builds,
+lets say it actually figures out actually</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/98-1
+00:08:40.760 --> 00:08:45.992
+<v vc-abs>like lets say it played a level, OK,
+it actually figure figured out 100 bucks.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/95-0
+00:08:45.760 --> 00:08:46.080
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/98-2
+00:08:45.992 --> 00:08:49.370
+<v vc-abs>There is no point in earning 100 bucks.
+Basically,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/96-0
+00:08:48.160 --> 00:08:48.480
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/98-3
+00:08:49.370 --> 00:08:54.204
+<v vc-abs>it has to say that actually this level
+actually contains a lot of error.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/98-4
+00:08:54.204 --> 00:08:56.920
+<v vc-abs>Then you tell actually like these levels.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/97-0
+00:08:54.480 --> 00:08:55.040
+<v srdj-abs>Thank you.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/99-0
+00:08:57.360 --> 00:08:59.600
+<v vc-abs>Under that particular playlist,
+our development levels,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/99-1
+00:08:59.600 --> 00:09:00.960
+<v vc-abs>we don't have to revision test it.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/100-0
+00:09:01.520 --> 00:09:01.920
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/101-0
+00:09:02.720 --> 00:09:07.416
+<v vc-abs>Now it has to record this somewhere so
+that the next time around it conducts the</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/101-1
+00:09:07.416 --> 00:09:10.140
+<v vc-abs>testing,
+it uses this knowledge base either to</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/101-2
+00:09:10.140 --> 00:09:14.662
+<v vc-abs>avoid testing the level at all or else
+understand that actually it is a known</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/101-3
+00:09:14.662 --> 00:09:18.720
+<v vc-abs>issue which we do not have to care so
+that it does not report to you.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/102-0
+00:09:21.360 --> 00:09:24.240
+<v vc-abs>So this is the 3rd table is the
+conservative memory.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/103-0
+00:09:24.880 --> 00:09:25.360
+<v srdj-abs>Gotcha.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/104-0
+00:09:28.800 --> 00:09:32.870
+<v vc-abs>This is a structure I am imagining.
+You can actually get the transcript and</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/104-1
+00:09:32.870 --> 00:09:35.440
+<v vc-abs>you can actually ask you to read in it
+further.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/105-0
+00:09:36.080 --> 00:09:36.480
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/107-0
+00:09:37.680 --> 00:09:42.358
+<v srdj-abs>I have my notes too.
+I'll like the earlier discussion we had,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/106-0
+00:09:38.000 --> 00:09:39.200
+<v vc-abs>Like that would be.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/107-1
+00:09:42.358 --> 00:09:46.960
+<v srdj-abs>the I'll take this one as a transcript
+too. I will create a.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/108-0
+00:09:45.680 --> 00:09:47.532
+<v vc-abs>Yeah,
+come up with let's say final solution on</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/108-1
+00:09:47.532 --> 00:09:48.320
+<v vc-abs>what has to be done.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/109-0
+00:09:48.800 --> 00:09:49.200
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/110-0
+00:09:51.040 --> 00:09:52.480
+<v vc-abs>Okay, anything else?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/111-0
+00:09:52.280 --> 00:09:58.943
+<v srdj-abs>Okay, I know I'll do it later in email.
+I have like merger one of one or 2</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/111-1
+00:09:58.943 --> 00:10:00.720
+<v srdj-abs>branches in GD Math.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/112-0
+00:10:03.360 --> 00:10:04.560
+<v srdj-abs>We'll do it and then.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/113-0
+00:10:04.600 --> 00:10:09.524
+<v vc-abs>Who How good are things going with a EN
+Akshmai in developing good earth?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/113-1
+00:10:09.524 --> 00:10:11.920
+<v vc-abs>Are you actually going in cities or?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/114-0
+00:10:12.960 --> 00:10:19.368
+<v srdj-abs>So there are teeny tiny issues,
+teeny tiny issues like lots and lots of</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/114-1
+00:10:19.368 --> 00:10:25.597
+<v srdj-abs>comments. That's the issue.
+Other issue is there were implementations</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/114-2
+00:10:25.597 --> 00:10:31.560
+<v srdj-abs>which I reviewed basically.
+So what happens if it doesn't respect.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/116-0
+00:10:31.280 --> 00:10:35.200
+<v vc-abs>Give me one minute. Give me one minute.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/115-0
+00:10:31.640 --> 00:10:33.080
+<v srdj-abs>Our structure.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/117-0
+00:10:44.400 --> 00:10:45.200
+<v vc-abs>Hey, tell me, ma'am.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/118-0
+00:10:46.120 --> 00:10:48.623
+<v srdj-abs>So,
+like it's changing the code as it likes,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/118-1
+00:10:48.623 --> 00:10:51.960
+<v srdj-abs>it is fixing the bugs,
+like there are like good things too.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/123-0
+00:10:53.880 --> 00:11:00.450
+<v srdj-abs>But there are some things it is modifying.
+So lets say we have a pubsub where all of</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/119-0
+00:10:54.400 --> 00:10:55.280
+<v vc-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/123-1
+00:11:00.450 --> 00:11:06.402
+<v srdj-abs>our signals are just a single signals.
+There is no what is it argument in it</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/121-0
+00:11:06.080 --> 00:11:08.200
+<v vc-abs>Multiple signals, yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/123-2
+00:11:06.402 --> 00:11:09.880
+<v srdj-abs>started adding arguments to the signals
+too.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/124-0
+00:11:11.200 --> 00:11:14.199
+<v vc-abs>We have to just tell it,
+this is how we do it and you can actually</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/124-1
+00:11:14.199 --> 00:11:14.960
+<v vc-abs>give a reason to.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/125-0
+00:11:16.040 --> 00:11:23.938
+<v srdj-abs>But like the reason for adding the signal
+was to fix the issue that we had long ago,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/125-1
+00:11:23.938 --> 00:11:31.000
+<v srdj-abs>basically long in the sense in some areas
+we do accept expect the argument.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/126-0
+00:11:32.760 --> 00:11:33.640
+<v vc-abs>OK.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/127-0
+00:11:34.040 --> 00:11:39.240
+<v srdj-abs>But we our signal does not have it,
+so in order to fix the bugs,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/127-1
+00:11:39.240 --> 00:11:41.160
+<v srdj-abs>it have fix the signals.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/128-0
+00:11:42.440 --> 00:11:45.400
+<v srdj-abs>Things are working, it is following like.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/129-0
+00:11:42.560 --> 00:11:46.160
+<v vc-abs>Its fine if it is changing the structure.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/130-0
+00:11:48.280 --> 00:11:52.967
+<v srdj-abs>Structure, it is not changing too much,
+but it is not following our if else</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/132-0
+00:11:52.080 --> 00:11:55.599
+<v vc-abs>No, it doesn't matter.
+It doesn't matter as long as as long as</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/130-1
+00:11:52.967 --> 00:11:54.200
+<v srdj-abs>policy and all like.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/132-1
+00:11:55.599 --> 00:12:00.123
+<v vc-abs>like you do not think actually like those
+are actually stupid changes which will</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/132-2
+00:12:00.123 --> 00:12:01.520
+<v vc-abs>break things. It is fine.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/131-0
+00:12:00.920 --> 00:12:01.320
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/134-0
+00:12:03.320 --> 00:12:08.164
+<v srdj-abs>so like we we'll have to do some human
+review little for some time,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/134-1
+00:12:08.164 --> 00:12:12.509
+<v srdj-abs>then if things are like fine,
+like if like it's good enough,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/133-0
+00:12:10.720 --> 00:12:11.280
+<v vc-abs>Nothing.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/134-2
+00:12:12.509 --> 00:12:13.720
+<v srdj-abs>then like we can.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/135-0
+00:12:12.960 --> 00:12:15.482
+<v vc-abs>the problem is actually she will not be
+able to do it, am I right?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/135-1
+00:12:15.482 --> 00:12:16.800
+<v vc-abs>You will be able to do the reviews.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/138-0
+00:12:17.800 --> 00:12:22.811
+<v srdj-abs>so I told her to do the review with the
+AI first, some higher model,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/138-1
+00:12:22.811 --> 00:12:28.621
+<v srdj-abs>not just like medium or even medium can
+do the review with the differentiation.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/136-0
+00:12:24.160 --> 00:12:24.400
+<v vc-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/138-2
+00:12:28.621 --> 00:12:33.560
+<v srdj-abs>Just ask it like compare the branches.
+What is the change? Tell me,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/137-0
+00:12:33.040 --> 00:12:33.280
+<v vc-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/138-3
+00:12:33.560 --> 00:12:36.320
+<v srdj-abs>like what have you changed? Like what?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/146-0
+00:12:36.440 --> 00:12:39.874
+<v srdj-abs>Things are changed,
+it can answer on its own.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/139-0
+00:12:38.560 --> 00:12:38.880
+<v vc-abs>No.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/146-1
+00:12:39.874 --> 00:12:43.159
+<v srdj-abs>And if let's say you find something
+random,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/140-0
+00:12:40.960 --> 00:12:41.280
+<v vc-abs>Hi.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/146-2
+00:12:43.159 --> 00:12:48.908
+<v srdj-abs>like why this file is there because like
+you have gone through 4 iterations.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/141-0
+00:12:44.880 --> 00:12:45.320
+<v vc-abs>Thank you.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/142-0
+00:12:47.280 --> 00:12:47.600
+<v vc-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/146-3
+00:12:48.908 --> 00:12:52.342
+<v srdj-abs>In one of the iterations you change 20
+files,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/143-0
+00:12:50.000 --> 00:12:50.320
+<v vc-abs>Hi.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/146-4
+00:12:52.342 --> 00:12:58.240
+<v srdj-abs>but only you used like 10 file changes
+and that other 10 are just a leftovers.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/144-0
+00:12:52.880 --> 00:12:53.200
+<v vc-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/145-0
+00:12:56.880 --> 00:12:57.480
+<v vc-abs>Thank you.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/150-0
+00:12:58.680 --> 00:13:04.374
+<v srdj-abs>Those things should not be there.
+So either it could be part of our agents.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/150-1
+00:13:04.374 --> 00:13:10.218
+<v srdj-abs>md file like leftover should not be there
+or we have to clean it up later on.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/147-0
+00:13:07.360 --> 00:13:07.760
+<v vc-abs>Nah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/150-2
+00:13:10.218 --> 00:13:15.162
+<v srdj-abs>The easiest approach would be to add the
+instructions the agents.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/148-0
+00:13:10.560 --> 00:13:11.040
+<v vc-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/150-3
+00:13:15.162 --> 00:13:17.560
+<v srdj-abs>md if it still not following it.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/149-0
+00:13:16.400 --> 00:13:16.720
+<v vc-abs>And.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/152-0
+00:13:18.040 --> 00:13:23.546
+<v srdj-abs>We will like have a one review sessions
+wherever before merging any branch,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/151-0
+00:13:22.560 --> 00:13:23.120
+<v vc-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/152-1
+00:13:23.546 --> 00:13:25.720
+<v srdj-abs>we will have a review session.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/153-0
+00:13:26.720 --> 00:13:27.360
+<v vc-abs>Okay, ma'am.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/155-0
+00:13:28.920 --> 00:13:35.393
+<v srdj-abs>And it's not that costly either like 0.
+0 numbers to review like get the only</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/154-0
+00:13:29.600 --> 00:13:30.080
+<v vc-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/155-1
+00:13:35.393 --> 00:13:40.040
+<v srdj-abs>review the difference between 2 branches
+for a feature.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/156-0
+00:13:41.320 --> 00:13:44.935
+<v vc-abs>Yeah, understood, understood, understood.
+And it doesn't have to be like only like</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/156-1
+00:13:44.935 --> 00:13:48.244
+<v vc-abs>a if it could be other things too.
+But anyway, involving an expertise, Sir,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/158-0
+00:13:47.320 --> 00:13:50.806
+<v srdj-abs>Yeah,
+so when we say like diff in the sense</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/156-2
+00:13:48.244 --> 00:13:48.680
+<v vc-abs>good idea.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/158-1
+00:13:50.806 --> 00:13:55.401
+<v srdj-abs>like this is the feature branch,
+this is the main branch,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/157-0
+00:13:54.120 --> 00:13:55.080
+<v vc-abs>Connect.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/158-2
+00:13:55.401 --> 00:13:59.204
+<v srdj-abs>what it is in have added,
+review things for me,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/158-3
+00:13:59.204 --> 00:14:03.800
+<v srdj-abs>act as a senior tester or good or
+developer or something.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/159-0
+00:14:07.720 --> 00:14:08.440
+<v vc-abs>Say it again.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/161-0
+00:14:09.160 --> 00:14:13.691
+<v srdj-abs>So basically,
+like I simply start with the capital case</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/161-1
+00:14:13.691 --> 00:14:18.790
+<v srdj-abs>things, I write it in caps,
+act as a senior good or developer,</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/161-2
+00:14:18.790 --> 00:14:25.182
+<v srdj-abs>review this branch with the main like
+compare this branch with the main branch</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/161-3
+00:14:25.182 --> 00:14:26.720
+<v srdj-abs>and review the fee.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/162-0
+00:14:26.840 --> 00:14:31.512
+<v srdj-abs>Yeah,
+it changes the implementation and give me</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/162-1
+00:14:31.512 --> 00:14:32.680
+<v srdj-abs>the summary.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/163-0
+00:14:34.440 --> 00:14:36.360
+<v srdj-abs>It can simply get this very easily.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/165-0
+00:14:37.560 --> 00:14:39.952
+<v vc-abs>Yeah,
+it looks like actually you do not</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/164-0
+00:14:38.000 --> 00:14:39.720
+<v srdj-abs>And it's fairly readable summary.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/165-1
+00:14:39.952 --> 00:14:43.720
+<v vc-abs>actually see anything dangerous,
+so let it continue our shoes.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/168-0
+00:14:44.280 --> 00:14:50.733
+<v srdj-abs>I didn't see that much like basically
+apart from what is it the little bit of</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/168-1
+00:14:50.733 --> 00:14:57.434
+<v srdj-abs>code style and writing too many comments.
+I don't see anything that breaking and</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/166-0
+00:14:55.000 --> 00:14:55.200
+<v vc-abs>And.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/167-0
+00:14:56.840 --> 00:14:57.640
+<v vc-abs>Nice.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/168-2
+00:14:57.434 --> 00:15:02.480
+<v srdj-abs>they also the testing they also did they
+tested like Soumya.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/169-0
+00:15:03.000 --> 00:15:05.400
+<v srdj-abs>Karthik, what is it? Who is it?</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/171-0
+00:15:07.720 --> 00:15:12.210
+<v srdj-abs>I got Sarika and Unajame,
+all 3 tested it that things are working</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/171-1
+00:15:12.210 --> 00:15:15.000
+<v srdj-abs>on the device. They took a bill in check.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/170-0
+00:15:13.560 --> 00:15:14.360
+<v vc-abs>Okay, Sanya.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/172-0
+00:15:15.880 --> 00:15:17.880
+<v vc-abs>That is good enough. If it is working,
+that is fine.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/173-0
+00:15:18.360 --> 00:15:18.680
+<v srdj-abs>Yeah.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/174-0
+00:15:21.000 --> 00:15:22.120
+<v vc-abs>Okay, they eligible.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/176-0
+00:15:26.360 --> 00:15:26.840
+<v vc-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/177-0
+00:15:28.520 --> 00:15:28.840
+<v vc-abs>Okay.</v>
+
+921325e2-fbd1-488b-b6f3-ba58e0751449/178-0
+00:15:31.720 --> 00:15:32.040
+<v vc-abs>Okay.</v>

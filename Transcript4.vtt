@@ -1,0 +1,332 @@
+WEBVTT
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/7-0
+00:00:04.872 --> 00:00:08.967
+<v srdj-abs>Now it started,
+so we have to we can remove parky and</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/6-0
+00:00:05.592 --> 00:00:06.152
+<v vc-abs>How hard?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/7-1
+00:00:08.967 --> 00:00:09.952
+<v srdj-abs>other things.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/9-0
+00:00:11.112 --> 00:00:13.592
+<v vc-abs>The other thing is sexual understanding,
+whether Victor is needed or not.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/8-0
+00:00:11.712 --> 00:00:11.832
+<v srdj-abs>Okay.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/10-0
+00:00:14.512 --> 00:00:14.872
+<v srdj-abs>Okay.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/11-0
+00:00:16.832 --> 00:00:19.792
+<v srdj-abs>This, what is it?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/15-0
+00:00:22.272 --> 00:00:23.472
+<v srdj-abs>Bhagat as killer.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/18-0
+00:00:26.632 --> 00:00:29.488
+<v vc-abs>So the idea is actually if it is Victor
+DB,</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/18-1
+00:00:29.488 --> 00:00:34.874
+<v vc-abs>we could expose the database as a tool to
+the agent which can use this as actually</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/18-2
+00:00:34.874 --> 00:00:35.912
+<v vc-abs>like a baseline.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/21-0
+00:00:38.672 --> 00:00:40.352
+<v srdj-abs>Actual entry, right?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/22-0
+00:00:38.712 --> 00:00:39.832
+<v vc-abs>It can store both.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/23-0
+00:00:42.712 --> 00:00:43.192
+<v vc-abs>What?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/24-0
+00:00:44.352 --> 00:00:48.330
+<v srdj-abs>So basically the SQLite FTS file versus
+actual vector DB,</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/24-1
+00:00:48.330 --> 00:00:52.032
+<v srdj-abs>the dedicated vector DB you are talking
+about, right?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/27-0
+00:00:51.992 --> 00:00:54.905
+<v vc-abs>Yeah,
+dedicated vector DBi believe actually</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/27-1
+00:00:54.905 --> 00:00:58.016
+<v vc-abs>SQLite itself supports something new
+nowadays.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/27-2
+00:00:58.016 --> 00:01:01.192
+<v vc-abs>We just actually check for that SQLite
+vectors.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/28-0
+00:01:05.472 --> 00:01:07.872
+<v srdj-abs>Escalate on the Internet itself.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/29-0
+00:01:09.352 --> 00:01:10.952
+<v vc-abs>Yeah, search for escalate director.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/32-0
+00:01:19.712 --> 00:01:22.032
+<v srdj-abs>They have something on escalate whack.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/37-0
+00:01:24.112 --> 00:01:31.557
+<v srdj-abs>A brute force and zero preprocessing
+preindexing required operates Daribian</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/37-1
+00:01:31.557 --> 00:01:33.712
+<v srdj-abs>standard blog columns.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/40-0
+00:01:36.392 --> 00:01:39.441
+<v vc-abs>I think this is not actually like a this
+one.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/40-1
+00:01:39.441 --> 00:01:42.952
+<v vc-abs>This is not actually like a group shows.
+What is it?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/41-0
+00:01:42.272 --> 00:01:47.535
+<v srdj-abs>This is the Sqlide Wax 6 ecosystem
+operates similar to Sqlide's full text</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/41-1
+00:01:47.535 --> 00:01:51.375
+<v srdj-abs>search extension,
+it acts as a embedded virtual table</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/41-2
+00:01:51.375 --> 00:01:51.872
+<v srdj-abs>engine.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/44-0
+00:01:54.232 --> 00:01:56.854
+<v vc-abs>Okay, we will go text something for now,
+let us get things working,</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/44-1
+00:01:56.854 --> 00:01:58.472
+<v vc-abs>and then if needed, we will stop escalate.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/45-0
+00:01:58.992 --> 00:01:59.352
+<v srdj-abs>Yeah.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/48-0
+00:02:01.112 --> 00:02:03.432
+<v vc-abs>Okay,
+and the implementation has to be done in</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/48-1
+00:02:03.432 --> 00:02:06.392
+<v vc-abs>4 steps, I believe,
+as we were discussing in the afternoon.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/50-0
+00:02:07.672 --> 00:02:09.112
+<v vc-abs>Just asking you to explode.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/49-0
+00:02:07.712 --> 00:02:08.192
+<v srdj-abs>What's?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/53-0
+00:02:11.512 --> 00:02:14.472
+<v vc-abs>So like the tool should be implemented in
+steps.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/54-0
+00:02:15.672 --> 00:02:19.432
+<v vc-abs>The first step is actually asking you to
+explorer an app and report its ending.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/55-0
+00:02:21.112 --> 00:02:22.952
+<v vc-abs>And then actually recording the actions.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/58-0
+00:02:25.032 --> 00:02:27.539
+<v vc-abs>We actually like you talked about the
+sequence, am I right?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/58-1
+00:02:27.539 --> 00:02:30.171
+<v vc-abs>If we can come up with a sequence and
+actually reptile events,</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/58-2
+00:02:30.171 --> 00:02:32.552
+<v vc-abs>we can actually decide on like whether or
+not to finish.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/59-0
+00:02:36.792 --> 00:02:37.432
+<v vc-abs>Anything else?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/60-0
+00:02:37.992 --> 00:02:40.272
+<v srdj-abs>OK, so wait a second.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/61-0
+00:02:41.792 --> 00:02:43.952
+<v srdj-abs>Can you repeat last thing I didn't get?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/62-0
+00:02:45.472 --> 00:02:46.272
+<v srdj-abs>Big what?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/63-0
+00:02:49.672 --> 00:02:50.552
+<v vc-abs>No, it was good.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/64-0
+00:02:52.192 --> 00:02:55.392
+<v srdj-abs>You said you were talking about the 4
+steps.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/67-0
+00:02:52.632 --> 00:02:56.820
+<v vc-abs>So I ask you to split,
+split the overall thing into from 4</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/67-1
+00:02:56.820 --> 00:03:00.510
+<v vc-abs>sections and pick it up them,
+pick them one by one.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/67-2
+00:03:00.510 --> 00:03:06.258
+<v vc-abs>The first thing is asking me to, yeah,
+the first thing is to like ask it to just</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/65-0
+00:03:00.912 --> 00:03:02.112
+<v srdj-abs>The implementation.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/67-3
+00:03:06.258 --> 00:03:10.232
+<v vc-abs>actually explore,
+capture the actions and the evidence.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/66-0
+00:03:10.672 --> 00:03:11.152
+<v srdj-abs>Mhm.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/68-0
+00:03:11.992 --> 00:03:13.869
+<v vc-abs>Okay,
+the second thing is to look identifying</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/68-1
+00:03:13.869 --> 00:03:14.072
+<v vc-abs>bugs.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/69-0
+00:03:15.592 --> 00:03:18.739
+<v vc-abs>The 3rd thing is aligning with the user.
+The 4th thing is actually repopulating</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/69-1
+00:03:18.739 --> 00:03:21.059
+<v vc-abs>the knowledge base.
+The first thing is actually wiring the</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/69-2
+00:03:21.059 --> 00:03:22.632
+<v vc-abs>knowledge base with this one once again.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/71-0
+00:03:24.392 --> 00:03:27.112
+<v vc-abs>The test journal that completes us.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/70-0
+00:03:25.872 --> 00:03:26.112
+<v srdj-abs>Right.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/73-0
+00:03:28.032 --> 00:03:31.832
+<v srdj-abs>Okay,
+so the like the implementation itself</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/73-1
+00:03:31.832 --> 00:03:35.112
+<v srdj-abs>should be made into these steps, okay.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/72-0
+00:03:33.512 --> 00:03:34.312
+<v vc-abs>In steps.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/74-0
+00:03:36.352 --> 00:03:37.232
+<v srdj-abs>Okay, I'll do that.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/75-0
+00:03:36.632 --> 00:03:39.338
+<v vc-abs>so the idea is actually if even actually
+one step actually,</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/75-1
+00:03:39.338 --> 00:03:41.592
+<v vc-abs>the idea is actually spend some 4 hours
+per step.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/76-0
+00:03:43.112 --> 00:03:46.192
+<v vc-abs>If actually something proves costly,
+then we'll revisit whether or not to do</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/76-1
+00:03:46.192 --> 00:03:46.392
+<v vc-abs>this.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/77-0
+00:03:46.952 --> 00:03:47.432
+<v srdj-abs>Mhm.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/78-0
+00:03:49.352 --> 00:03:50.592
+<v vc-abs>Okay, anything else?</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/79-0
+00:03:49.632 --> 00:03:54.832
+<v srdj-abs>But I know I'll get the transcript and
+update the doc. so.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/80-0
+00:03:53.032 --> 00:03:56.712
+<v vc-abs>Okay, see you ma'am. Bye.</v>
+
+877b0921-7ec8-437c-ae00-5bf6fd27aec9/81-0
+00:03:57.272 --> 00:03:57.632
+<v srdj-abs>Welcome.</v>

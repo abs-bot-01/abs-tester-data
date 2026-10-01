@@ -1,0 +1,932 @@
+WEBVTT
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/8-0
+00:00:04.007 --> 00:00:06.563
+<v vc-abs>Understand the implementation thoroughly,
+end to end.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/8-1
+00:00:06.563 --> 00:00:10.349
+<v vc-abs>So the reason I'm stating this is that we
+have been actually talking about this</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/6-0
+00:00:07.527 --> 00:00:07.847
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/8-2
+00:00:10.349 --> 00:00:13.757
+<v vc-abs>testing thing for quite some time.
+If you have actually understood this</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/8-3
+00:00:13.757 --> 00:00:16.219
+<v vc-abs>actually earlier,
+to the extent that I should like,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/8-4
+00:00:16.219 --> 00:00:19.390
+<v vc-abs>I believe will be helpful.
+You do not have to like ask for this by</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/8-5
+00:00:19.390 --> 00:00:21.047
+<v vc-abs>document, you already will know it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/9-0
+00:00:22.887 --> 00:00:26.327
+<v srdj-abs>I remember it, we had basically.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/13-0
+00:00:22.967 --> 00:00:24.869
+<v vc-abs>Okay,
+I will now by understanding and</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/13-1
+00:00:24.869 --> 00:00:27.472
+<v vc-abs>remembering,
+no understanding and remembering are 2</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/13-2
+00:00:27.472 --> 00:00:30.174
+<v vc-abs>different things.
+I am not talking about remembering.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/10-0
+00:00:28.567 --> 00:00:29.047
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/13-3
+00:00:30.174 --> 00:00:34.129
+<v vc-abs>Remembering you don't have to do it is
+already there in the transcript, right?</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/11-0
+00:00:31.847 --> 00:00:32.327
+<v srdj-abs>yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/13-4
+00:00:34.129 --> 00:00:36.581
+<v vc-abs>Understanding is a different thing.
+So actually,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/12-0
+00:00:34.727 --> 00:00:35.047
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/13-5
+00:00:36.581 --> 00:00:40.435
+<v vc-abs>the way I told you is I told you that
+originally, actually, if you remember,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/13-6
+00:00:40.435 --> 00:00:41.687
+<v vc-abs>we have only 3 documents.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/16-0
+00:00:42.407 --> 00:00:46.176
+<v vc-abs>And then actually during discussion it
+actually moved into 4 and yesterday in</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/16-1
+00:00:46.176 --> 00:00:49.898
+<v vc-abs>our discussion it actually became 5.
+So the original thing actually I wanted</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/16-2
+00:00:49.898 --> 00:00:53.039
+<v vc-abs>you to actually start this actually like
+if I remember it right,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/16-3
+00:00:53.039 --> 00:00:55.456
+<v vc-abs>actually I think I called it as the run
+document.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/16-4
+00:00:55.456 --> 00:00:59.274
+<v vc-abs>Run document essentially is actually like
+the record of what happened during a</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/16-5
+00:00:59.274 --> 00:01:01.207
+<v vc-abs>particular run. It acts like a evidence.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/14-0
+00:00:59.687 --> 00:01:00.167
+<v srdj-abs>Mhm.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/15-0
+00:01:01.527 --> 00:01:01.847
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/17-0
+00:01:02.327 --> 00:01:04.069
+<v vc-abs>Okay,
+and actually out of the run document,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/17-1
+00:01:04.069 --> 00:01:06.327
+<v vc-abs>actually be told that it will create a
+finding document.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/20-0
+00:01:07.527 --> 00:01:09.838
+<v vc-abs>OK, the finding document will be,
+lets say,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/20-1
+00:01:09.838 --> 00:01:13.724
+<v vc-abs>like important items which actually like
+the user has to take a look, OK,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/20-2
+00:01:13.724 --> 00:01:17.873
+<v vc-abs>and actually in the finding document
+there could be actually links to sections</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/20-3
+00:01:17.873 --> 00:01:20.866
+<v vc-abs>in the run document as actually for
+further context, OK,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/19-0
+00:01:20.727 --> 00:01:21.207
+<v srdj-abs>Mhm.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/20-4
+00:01:20.866 --> 00:01:25.173
+<v vc-abs>and actually from the findings document,
+it can actually like basically basically</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/20-5
+00:01:25.173 --> 00:01:29.217
+<v vc-abs>like based on the findings document and
+actually based on actually like the.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/22-0
+00:01:29.607 --> 00:01:33.787
+<v vc-abs>Any other context you already might have,
+you can like, you can like, OK,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/22-1
+00:01:33.787 --> 00:01:36.894
+<v vc-abs>give me one minute like, OK, fine.
+After the findings,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/22-2
+00:01:36.894 --> 00:01:41.300
+<v vc-abs>there is actually one other thing which
+is actually based on the findings you</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/22-3
+00:01:41.300 --> 00:01:45.142
+<v vc-abs>will be creating, let us say, like issues,
+bugs, or tasks document,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/21-0
+00:01:43.447 --> 00:01:45.607
+<v srdj-abs>The anomalies and all.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/22-4
+00:01:45.142 --> 00:01:48.927
+<v vc-abs>basically like the action that has to be
+taken. Yeah, no actually.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/24-0
+00:01:49.047 --> 00:01:52.112
+<v vc-abs>Couple of items, OK,
+lets see actually it has a findings</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/24-1
+00:01:52.112 --> 00:01:54.908
+<v vc-abs>document, some 10 findings, OK.
+Of the 10 findings,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/23-0
+00:01:54.007 --> 00:01:54.167
+<v srdj-abs>Haan.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/24-2
+00:01:54.908 --> 00:01:57.489
+<v vc-abs>actually 3 findings might be
+insignificant, OK.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/24-3
+00:01:57.489 --> 00:02:00.070
+<v vc-abs>They might not be of any importance at
+all, OK.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/24-4
+00:02:00.070 --> 00:02:04.318
+<v vc-abs>And actually 3 items actually might be
+something that we have to act upon, OK.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/24-5
+00:02:04.318 --> 00:02:07.167
+<v vc-abs>And actually,
+like the other 4 items might be things</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/24-6
+00:02:07.167 --> 00:02:08.727
+<v vc-abs>that I already misunderstood.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/27-0
+00:02:10.207 --> 00:02:12.407
+<v vc-abs>OK,
+so like let's actually take one by one</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/27-1
+00:02:12.407 --> 00:02:15.478
+<v vc-abs>things actually we do not have to care,
+we will forget. OK,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/27-2
+00:02:15.478 --> 00:02:19.470
+<v vc-abs>things we have to ask on that actually
+goes into the tasks document or issues</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/27-3
+00:02:19.470 --> 00:02:23.513
+<v vc-abs>document, however we want to call it.
+Basically like this becomes an input for</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/27-4
+00:02:23.513 --> 00:02:26.379
+<v vc-abs>the system that is going to fix the
+actual application.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/27-5
+00:02:26.379 --> 00:02:28.887
+<v vc-abs>Basically that is the input to the like
+builder.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/25-0
+00:02:27.207 --> 00:02:27.607
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/26-0
+00:02:29.447 --> 00:02:29.767
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/29-0
+00:02:30.287 --> 00:02:32.672
+<v vc-abs>So, like first is run,
+the second is findings,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/29-1
+00:02:32.672 --> 00:02:36.528
+<v vc-abs>the 3rd is either issues or tasks.
+We'll actually figure out a name for it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/29-2
+00:02:36.528 --> 00:02:39.217
+<v vc-abs>Basically,
+those are the features are the fixes that</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/29-3
+00:02:39.217 --> 00:02:42.414
+<v vc-abs>has to be implemented, okay?
+And actually like the 5th item is</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/29-4
+00:02:42.414 --> 00:02:46.270
+<v vc-abs>actually from the findings document,
+actually like there could be let's say</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/29-5
+00:02:46.270 --> 00:02:49.720
+<v vc-abs>like misunderstandings, okay,
+you do not want to happen. Basically,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/29-6
+00:02:49.720 --> 00:02:53.576
+<v vc-abs>if the findings are too much, no,
+there is no point you will not be able to</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/29-7
+00:02:53.576 --> 00:02:54.287
+<v vc-abs>go through it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/28-0
+00:02:54.807 --> 00:02:55.047
+<v srdj-abs>Haan.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/30-0
+00:02:54.967 --> 00:02:58.248
+<v vc-abs>So when you clearly know actually
+something is actually not necessary,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/30-1
+00:02:58.248 --> 00:03:01.899
+<v vc-abs>you can you as a user can actually use
+the finding document to actually create</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/30-2
+00:03:01.899 --> 00:03:05.643
+<v vc-abs>actually like some other document which
+yesterday called us knowledge base or KB</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/30-3
+00:03:05.643 --> 00:03:08.647
+<v vc-abs>document which actually like acts like
+the input for the tester.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/31-0
+00:03:10.407 --> 00:03:13.306
+<v vc-abs>Saying that actually these are the things
+actually you can actually neglect.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/31-1
+00:03:13.306 --> 00:03:14.887
+<v vc-abs>These are the things you have to focus on.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/34-0
+00:03:16.967 --> 00:03:19.880
+<v vc-abs>That is basically the,
+apart from actually the application</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/34-1
+00:03:19.880 --> 00:03:22.300
+<v vc-abs>itself,
+this is the context that it will operate</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/34-2
+00:03:22.300 --> 00:03:25.263
+<v vc-abs>around in GD Maths.
+Actually problems actually like you can</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/32-0
+00:03:22.807 --> 00:03:23.127
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/34-3
+00:03:25.263 --> 00:03:29.114
+<v vc-abs>actually tap a tail to split it. Okay,
+the tile might not split always split.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/33-0
+00:03:27.847 --> 00:03:28.327
+<v srdj-abs>Mhm.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/34-4
+00:03:29.114 --> 00:03:31.287
+<v vc-abs>Actually, there are some rules to it.
+Okay,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/34-5
+00:03:31.287 --> 00:03:35.089
+<v vc-abs>if actually basically like if actually
+there is a variable in both the tiles</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/34-6
+00:03:35.089 --> 00:03:38.892
+<v vc-abs>then the variable has to match for the
+tile to actually be added or actually</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/34-7
+00:03:38.892 --> 00:03:39.287
+<v vc-abs>cleared.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/36-0
+00:03:39.767 --> 00:03:44.012
+<v vc-abs>Those kind of things is in the memory of
+the 2 agent, the testing agent,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/36-1
+00:03:44.012 --> 00:03:48.373
+<v vc-abs>the tester that is the like 4th document
+for that actually the input could</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/35-0
+00:03:44.087 --> 00:03:44.207
+<v srdj-abs>Okay.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/36-2
+00:03:48.373 --> 00:03:52.967
+<v vc-abs>actually come from the findings or you
+yourself can actually add things to it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/38-0
+00:03:55.887 --> 00:03:58.305
+<v vc-abs>For every document,
+actually there is a producer,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/38-1
+00:03:58.305 --> 00:04:01.256
+<v vc-abs>there is a consumer.
+I will actually go through the producer</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/37-0
+00:03:58.727 --> 00:03:59.207
+<v srdj-abs>Mhm.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/38-2
+00:04:01.256 --> 00:04:03.722
+<v vc-abs>and consumer class.
+So apart from this 4 document,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/38-3
+00:04:03.722 --> 00:04:06.044
+<v vc-abs>4 documents,
+I actually wanted you to add a 5th</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/38-4
+00:04:06.044 --> 00:04:07.447
+<v vc-abs>document, which is a runbook.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/41-0
+00:04:08.687 --> 00:04:10.760
+<v vc-abs>OK,
+run book is actually different from</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/41-1
+00:04:10.760 --> 00:04:14.026
+<v vc-abs>actually run documents. OK,
+run book is a setup they call this</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/39-0
+00:04:12.007 --> 00:04:12.327
+<v srdj-abs>Okay.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/41-2
+00:04:14.026 --> 00:04:18.018
+<v vc-abs>playbook too in automation world. OK,
+it essentially means actually what are</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/40-0
+00:04:15.607 --> 00:04:15.847
+<v srdj-abs>I.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/41-3
+00:04:18.018 --> 00:04:22.269
+<v vc-abs>the things that it has to do? Basically,
+like it actually this is actually like a</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/41-4
+00:04:22.269 --> 00:04:25.483
+<v vc-abs>set of instructions,
+basically a set of tests it has to test,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/41-5
+00:04:25.483 --> 00:04:28.853
+<v vc-abs>do this test this test,
+test this second test this 3rd and so on</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/41-6
+00:04:28.853 --> 00:04:29.527
+<v vc-abs>and so forth.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/42-0
+00:04:30.727 --> 00:04:32.807
+<v vc-abs>So explanation is actually open ended,
+am I right?</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/43-0
+00:04:33.447 --> 00:04:33.927
+<v srdj-abs>Hmm.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/44-0
+00:04:34.727 --> 00:04:37.536
+<v vc-abs>Explanation actually give a simple simple
+simple product open this application</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/44-1
+00:04:37.536 --> 00:04:38.247
+<v vc-abs>explorer this thing.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/45-0
+00:04:39.407 --> 00:04:41.595
+<v vc-abs>OK,
+I was actually open this application like</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/45-1
+00:04:41.595 --> 00:04:44.878
+<v vc-abs>you lets say like continue the
+explanation from where you have left,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/45-2
+00:04:44.878 --> 00:04:48.542
+<v vc-abs>in which case actually it can go to the
+previous run, look at the last step,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/45-3
+00:04:48.542 --> 00:04:51.920
+<v vc-abs>and actually could go there and then
+actually continue from there. OK,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/45-4
+00:04:51.920 --> 00:04:54.631
+<v vc-abs>so like the tester could be asked to do
+multiple things,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/45-5
+00:04:54.631 --> 00:04:56.963
+<v vc-abs>one is actually like asking to start
+afresh. OK,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/45-6
+00:04:56.963 --> 00:05:00.721
+<v vc-abs>the other thing is actually in which case
+actually only your point will be the</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/45-7
+00:05:00.721 --> 00:05:01.007
+<v vc-abs>input.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/47-0
+00:05:02.007 --> 00:05:04.897
+<v vc-abs>Along with any context you might have
+already given it. OK,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/46-0
+00:05:04.487 --> 00:05:04.647
+<v srdj-abs>Hello.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/47-1
+00:05:04.897 --> 00:05:08.557
+<v vc-abs>the second thing is asking it to continue
+in which case actually along with</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/47-2
+00:05:08.557 --> 00:05:10.725
+<v vc-abs>actually its original context and your
+form,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/47-3
+00:05:10.725 --> 00:05:14.433
+<v vc-abs>it will have a run document basically
+like a record of like something it has</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/47-4
+00:05:14.433 --> 00:05:16.986
+<v vc-abs>already done.
+It will try to replicate the steps and</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/47-5
+00:05:16.986 --> 00:05:20.647
+<v vc-abs>try to actually continue from there.
+This will not be open in the Explorer.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/49-0
+00:05:22.327 --> 00:05:25.366
+<v vc-abs>On the other hand,
+actually you could give it a set of tests,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/49-1
+00:05:25.366 --> 00:05:27.523
+<v vc-abs>test this, test this, test this,
+test this,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/49-2
+00:05:27.523 --> 00:05:30.367
+<v vc-abs>that becomes a runbook that is the 5th
+document actually.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/48-0
+00:05:30.887 --> 00:05:31.007
+<v srdj-abs>Ha.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/50-0
+00:05:32.807 --> 00:05:34.087
+<v vc-abs>That's it. That's the entire day.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/51-0
+00:05:34.807 --> 00:05:35.207
+<v srdj-abs>Got it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/52-0
+00:05:36.887 --> 00:05:41.233
+<v vc-abs>And if I have to like state with the
+consumer and actually producer,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/52-1
+00:05:41.233 --> 00:05:44.760
+<v vc-abs>so like this,
+what is it the run document itself? Okay,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/52-2
+00:05:44.760 --> 00:05:49.295
+<v vc-abs>so basically like one thing actually it's
+a collaborative effort. Okay,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/52-3
+00:05:49.295 --> 00:05:54.207
+<v vc-abs>so most of the documents will be like
+prepared by either the agent separately</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/52-4
+00:05:54.207 --> 00:05:56.727
+<v vc-abs>or like between the agent and the human.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/55-0
+00:05:57.847 --> 00:06:00.938
+<v vc-abs>Okay,
+playbook actually will mostly be actually</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/55-1
+00:06:00.938 --> 00:06:05.703
+<v vc-abs>developed by actually the agent and the
+human. Run is actually developed.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/53-0
+00:06:03.327 --> 00:06:03.807
+<v srdj-abs>Hmm.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/55-2
+00:06:05.703 --> 00:06:08.601
+<v vc-abs>Run is actually created purely by the
+agent.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/55-3
+00:06:08.601 --> 00:06:12.207
+<v vc-abs>Findings is actually created purely by
+the agent. Okay,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/55-4
+00:06:12.207 --> 00:06:16.007
+<v vc-abs>task is actually created by again the
+agent and the human.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/57-0
+00:06:16.487 --> 00:06:19.827
+<v vc-abs>The human can look at the findings like I
+lets say create some tasks or else</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/54-0
+00:06:16.727 --> 00:06:17.047
+<v srdj-abs>Okay.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/57-1
+00:06:19.827 --> 00:06:22.863
+<v vc-abs>actually they can look at the some
+findings some create another task.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/57-2
+00:06:22.863 --> 00:06:25.769
+<v vc-abs>Maybe lets say it actually it actually
+thought something as a bug,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/57-3
+00:06:25.769 --> 00:06:28.675
+<v vc-abs>lets say that is not a bug.
+But while actually looking at actually</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/56-0
+00:06:27.527 --> 00:06:28.007
+<v srdj-abs>Mhm.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/57-4
+00:06:28.675 --> 00:06:32.101
+<v vc-abs>you figured out actually there is one
+other bug even without the agent testing</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/57-5
+00:06:32.101 --> 00:06:34.010
+<v vc-abs>it,
+you still can actually ask the agent to</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/57-6
+00:06:34.010 --> 00:06:34.487
+<v vc-abs>add a task.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/59-0
+00:06:36.487 --> 00:06:39.033
+<v vc-abs>Okay,
+so like a task is a task is actually</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/59-1
+00:06:39.033 --> 00:06:43.712
+<v vc-abs>regulated by the agent and the human,
+and KB it is the same thing. Once again,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/59-2
+00:06:43.712 --> 00:06:46.969
+<v vc-abs>KB it is the legal,
+KB it is actually primarily human.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/59-3
+00:06:46.969 --> 00:06:50.167
+<v vc-abs>I would say apart from writing KB is
+primarily human.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/58-0
+00:06:51.167 --> 00:06:52.167
+<v srdj-abs>The knowledge base.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/60-0
+00:06:51.567 --> 00:06:53.607
+<v vc-abs>That is a clear big knowledge base, yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/61-0
+00:06:55.287 --> 00:06:59.814
+<v vc-abs>So these are these are the like producers
+and consumers run document will be</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/61-1
+00:06:59.814 --> 00:07:04.400
+<v vc-abs>actually run book or playbook will be
+consumed by the agent to conduct tests.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/61-2
+00:07:04.400 --> 00:07:07.163
+<v vc-abs>Okay,
+run is actually consumed by the agent to</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/61-3
+00:07:07.163 --> 00:07:12.043
+<v vc-abs>like record findings or else actually the
+agent might actually create both the run</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/61-4
+00:07:12.043 --> 00:07:14.807
+<v vc-abs>document and the findings are fun so
+parallel.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/62-0
+00:07:15.927 --> 00:07:19.330
+<v vc-abs>So for rent document, actually,
+it might be the human who is the consumer</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/62-1
+00:07:19.330 --> 00:07:22.641
+<v vc-abs>who wants to look at an evidence.
+Maybe the agent might not consume the</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/62-2
+00:07:22.641 --> 00:07:23.607
+<v vc-abs>rent document at all.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/63-0
+00:07:24.967 --> 00:07:27.773
+<v vc-abs>For findings, again,
+actually the human is the consumer.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/63-1
+00:07:27.773 --> 00:07:30.727
+<v vc-abs>For tasks, it is not the human,
+but it is the build system.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/65-0
+00:07:32.087 --> 00:07:36.142
+<v vc-abs>Apart from the tester,
+we are going to have a builder too, right?</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/64-0
+00:07:35.567 --> 00:07:35.687
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/65-1
+00:07:36.142 --> 00:07:39.398
+<v vc-abs>The builder will consume the tasks for KB.
+Actually,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/65-2
+00:07:39.398 --> 00:07:42.224
+<v vc-abs>like KB like at least in this context for
+KB,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/65-3
+00:07:42.224 --> 00:07:44.927
+<v vc-abs>actually the agent is the pioneer
+consumer.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/66-0
+00:07:48.247 --> 00:07:50.807
+<v vc-abs>That is the interior of it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/67-0
+00:07:48.647 --> 00:07:54.647
+<v srdj-abs>But knowledge base will be written by
+this one not as agent.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/70-0
+00:07:53.047 --> 00:07:57.087
+<v vc-abs>Yeah, that's what I said.
+Producer is human, no, not agent.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/68-0
+00:07:56.247 --> 00:07:58.647
+<v srdj-abs>No, human will tell it, right?</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/70-1
+00:07:57.087 --> 00:08:01.734
+<v vc-abs>Actually, it could be both.
+Why so it might just actually act like a</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/70-2
+00:08:01.734 --> 00:08:04.967
+<v vc-abs>stenographer,
+it might not think much about it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/69-0
+00:08:05.127 --> 00:08:05.527
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/71-0
+00:08:06.807 --> 00:08:09.527
+<v vc-abs>KB is actually basically the last sharing
+our context with it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/72-0
+00:08:09.927 --> 00:08:10.407
+<v srdj-abs>Mhm.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/73-0
+00:08:11.367 --> 00:08:14.257
+<v vc-abs>It might write it down,
+but actually you will be the other.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/73-1
+00:08:14.257 --> 00:08:15.847
+<v vc-abs>That is what I believe as of now.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/74-0
+00:08:17.687 --> 00:08:21.171
+<v vc-abs>And actually the thing is like since
+actually we know actually who are the</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/74-1
+00:08:21.171 --> 00:08:24.655
+<v vc-abs>consumers, who are the producers,
+actually what are actually the util like</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/74-2
+00:08:24.655 --> 00:08:28.556
+<v vc-abs>how are these documents themselves used,
+we should be able to create the documents.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/74-3
+00:08:28.556 --> 00:08:32.087
+<v vc-abs>The reason actually I'm asking you to
+create the documents is that once you</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/74-4
+00:08:32.087 --> 00:08:34.409
+<v vc-abs>look align on the documents with it,
+both of you,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/74-5
+00:08:34.409 --> 00:08:37.847
+<v vc-abs>both you and the agent will have a better
+clarity on what should be done.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/77-0
+00:08:39.527 --> 00:08:43.663
+<v vc-abs>So just like application development,
+we actually finalise the ERD first</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/77-1
+00:08:43.663 --> 00:08:46.156
+<v vc-abs>planning,
+let's say like entities and their</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/77-2
+00:08:46.156 --> 00:08:50.745
+<v vc-abs>relationships. Here we are doing the same.
+That should have been the first step.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/75-0
+00:08:47.527 --> 00:08:47.767
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/77-3
+00:08:50.745 --> 00:08:53.918
+<v vc-abs>And of course,
+you haven't been developing application,</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/77-4
+00:08:53.918 --> 00:08:56.864
+<v vc-abs>so you will have been knowing it,
+so not a problem.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/77-5
+00:08:56.864 --> 00:08:59.527
+<v vc-abs>But if you still can try,
+you can even ask it.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/76-0
+00:08:57.927 --> 00:08:58.247
+<v srdj-abs>Yeah.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/78-0
+00:08:59.687 --> 00:09:01.047
+<v vc-abs>Whether this will be helpful or not.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/79-0
+00:09:02.247 --> 00:09:04.887
+<v vc-abs>If it's I'll say it otherwise,
+we'll actually do it otherwise.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/81-0
+00:09:05.527 --> 00:09:12.407
+<v srdj-abs>Okay, since yeah,
+I'll come up with the document contracts.</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/80-0
+00:09:07.687 --> 00:09:08.407
+<v vc-abs>Anything elsewhere?</v>
+
+0d4416b0-803e-4896-88b0-41d438b3a29e/82-0
+00:09:13.207 --> 00:09:13.607
+<v vc-abs>Okay.</v>

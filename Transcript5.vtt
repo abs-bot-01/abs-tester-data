@@ -1,0 +1,828 @@
+WEBVTT
+
+559453bf-2631-4ac1-9cb7-1260d4525001/6-0
+00:00:04.044 --> 00:00:07.484
+<v srdj-abs>Right now it started recording.
+We can continue.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/10-0
+00:00:05.684 --> 00:00:09.781
+<v vc-abs>Okay, so okay,
+so there is actually something called as</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/10-1
+00:00:09.781 --> 00:00:15.634
+<v vc-abs>STT like sorry sequence diagrams, okay,
+it actually talks about the sequence of</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/10-2
+00:00:15.634 --> 00:00:20.755
+<v vc-abs>actions like it is actually like a good
+way to like record workflows.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/9-0
+00:00:17.164 --> 00:00:17.484
+<v srdj-abs>Yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/10-3
+00:00:20.755 --> 00:00:26.535
+<v vc-abs>So first actually we will actually like
+discuss about actually like how does a</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/10-4
+00:00:26.535 --> 00:00:28.804
+<v vc-abs>human interact with the system.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/19-0
+00:00:29.844 --> 00:00:32.272
+<v vc-abs>Okay,
+one thing is actually they actually ask</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/19-1
+00:00:32.272 --> 00:00:36.495
+<v vc-abs>the system to do something. Basically,
+they ask the system to test a particular</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/19-2
+00:00:36.495 --> 00:00:40.243
+<v vc-abs>application that is actually mounted to
+its application already. Okay,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/19-3
+00:00:40.243 --> 00:00:43.251
+<v vc-abs>this mounting part,
+let's not actually consider it as an</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/19-4
+00:00:43.251 --> 00:00:46.313
+<v vc-abs>interaction. Okay,
+let it be a setup because it is mostly</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/18-0
+00:00:45.484 --> 00:00:45.804
+<v srdj-abs>Haan.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/19-5
+00:00:46.313 --> 00:00:49.164
+<v vc-abs>one time thing, okay,
+but actually starting the test.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/20-0
+00:00:49.284 --> 00:00:50.884
+<v vc-abs>Can happen actually multiple times.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/26-0
+00:00:52.324 --> 00:00:54.550
+<v vc-abs>Okay,
+so like a human actually asks the system</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/26-1
+00:00:54.550 --> 00:00:58.246
+<v vc-abs>to like explorer an application. Okay,
+this could be actually the one kind of</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/26-2
+00:00:58.246 --> 00:01:00.520
+<v vc-abs>thing which actually kickstart the
+application,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/26-3
+00:01:00.520 --> 00:01:03.979
+<v vc-abs>like which actually runs a lengthy
+process. Okay, since they start this,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/26-4
+00:01:03.979 --> 00:01:07.675
+<v vc-abs>they could they very well might actually
+want to understand the status of the</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/26-5
+00:01:07.675 --> 00:01:08.244
+<v vc-abs>current run.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/25-0
+00:01:09.044 --> 00:01:09.244
+<v srdj-abs>Haan.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/37-0
+00:01:10.244 --> 00:01:14.567
+<v vc-abs>So essentially, actually like there is a,
+let's say like a one more flow where</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/37-1
+00:01:14.567 --> 00:01:18.946
+<v vc-abs>actually like the human actually starts
+the flow and then they actually monitor</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/37-2
+00:01:18.946 --> 00:01:22.886
+<v vc-abs>the flow, whatnot. Is this one okay?
+And the second thing is inspecting</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/31-0
+00:01:20.844 --> 00:01:21.084
+<v srdj-abs>No.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/37-3
+00:01:22.886 --> 00:01:25.732
+<v vc-abs>evidence,
+this can happen post the fact of flow has</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/37-4
+00:01:25.732 --> 00:01:28.633
+<v vc-abs>actually completed or even when the flow
+is running,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/37-5
+00:01:28.633 --> 00:01:30.604
+<v vc-abs>you can actually check the evidence.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/36-0
+00:01:31.404 --> 00:01:31.804
+<v srdj-abs>No.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/38-0
+00:01:32.164 --> 00:01:34.244
+<v vc-abs>Check the report,
+check the evidence and what not.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/41-0
+00:01:35.764 --> 00:01:39.124
+<v vc-abs>This could happen like parallel when the
+situation itself is raining or not.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/45-0
+00:01:43.364 --> 00:01:45.044
+<v vc-abs>This is basically like doing some
+analysis.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/44-0
+00:01:43.524 --> 00:01:43.964
+<v srdj-abs>OK.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/51-0
+00:01:45.564 --> 00:01:50.102
+<v srdj-abs>So you are talking about the runtime flow
+diagram,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/51-1
+00:01:50.102 --> 00:01:53.484
+<v srdj-abs>the older document I created had this.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/64-0
+00:01:51.684 --> 00:01:54.774
+<v vc-abs>We will do one thing.
+I will actually complete actually the</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/64-1
+00:01:54.774 --> 00:01:57.040
+<v vc-abs>understanding first.
+Since it is recording,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/54-0
+00:01:55.644 --> 00:01:56.044
+<v srdj-abs>Yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/64-2
+00:01:57.040 --> 00:01:59.306
+<v vc-abs>the VTD file might be like helpful for
+you.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/64-3
+00:01:59.306 --> 00:02:02.345
+<v vc-abs>Once actually like this thing has
+actually been discussed,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/55-0
+00:01:59.644 --> 00:01:59.964
+<v srdj-abs>Yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/64-4
+00:02:02.345 --> 00:02:06.310
+<v vc-abs>like we will actually go through the
+documents once again after stopping the</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/58-0
+00:02:04.524 --> 00:02:04.924
+<v srdj-abs>Yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/64-5
+00:02:06.310 --> 00:02:09.091
+<v vc-abs>recording. Okay,
+so like they can like basically your</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/59-0
+00:02:06.324 --> 00:02:06.684
+<v srdj-abs>Back.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/64-6
+00:02:09.091 --> 00:02:11.564
+<v vc-abs>person can actually like inspect actually
+like.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/71-0
+00:02:11.964 --> 00:02:14.951
+<v vc-abs>Whatever is already recorded as evidence,
+okay.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/71-1
+00:02:14.951 --> 00:02:18.810
+<v vc-abs>And the 3rd thing is they can respond to
+like the agent quiz,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/71-2
+00:02:18.810 --> 00:02:23.789
+<v vc-abs>basically when the agent actually find
+out like basically the like the way that</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/71-3
+00:02:23.789 --> 00:02:27.399
+<v vc-abs>we discussed this,
+the agent will actually record selling</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/71-4
+00:02:27.399 --> 00:02:28.644
+<v vc-abs>points and the rate.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/75-0
+00:02:30.644 --> 00:02:35.057
+<v vc-abs>And then actually, so there is no event,
+basically it records actually important</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/75-1
+00:02:35.057 --> 00:02:37.290
+<v vc-abs>items.
+The human again actually like can</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/75-2
+00:02:37.290 --> 00:02:41.050
+<v vc-abs>actually discuss with the agent who
+understand actually what are the</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/75-3
+00:02:41.050 --> 00:02:45.190
+<v vc-abs>important items and the human can
+actually give it commands to like work on</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/75-4
+00:02:45.190 --> 00:02:48.078
+<v vc-abs>it. OK, basically it is an issue.
+If it is an issue,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/74-0
+00:02:46.404 --> 00:02:46.604
+<v srdj-abs>Me.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/75-5
+00:02:48.078 --> 00:02:49.604
+<v vc-abs>like the human can say like.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/76-0
+00:02:50.244 --> 00:02:55.066
+<v vc-abs>Make sure actually you test it like when
+a new disease is released or you can say</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/76-1
+00:02:55.066 --> 00:02:59.771
+<v vc-abs>actually like try to recreate the issue
+and actually let me know how stable the</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/76-2
+00:02:59.771 --> 00:03:04.358
+<v vc-abs>issue you like is basically how like
+easily you can recreate the issue. Okay,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/76-3
+00:03:04.358 --> 00:03:08.240
+<v vc-abs>those kind of things like I am not giving
+you an exhaustive list,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/76-4
+00:03:08.240 --> 00:03:12.004
+<v vc-abs>I am just give you an example of actually
+the human looking at.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/77-0
+00:03:12.244 --> 00:03:15.924
+<v vc-abs>Whatever items that are actually marked
+as important by the agent.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/79-0
+00:03:16.604 --> 00:03:17.004
+<v srdj-abs>No.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/90-0
+00:03:18.164 --> 00:03:20.815
+<v vc-abs>OK.
+And actually this also like this is</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/90-1
+00:03:20.815 --> 00:03:24.992
+<v vc-abs>actually like just actually inspecting
+the existing items, OK.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/90-2
+00:03:24.992 --> 00:03:28.373
+<v vc-abs>And the second the other thing is like
+what is it?</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/83-0
+00:03:25.724 --> 00:03:26.204
+<v srdj-abs>Mhm.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/90-3
+00:03:28.373 --> 00:03:33.080
+<v vc-abs>The human actually giving it context. OK,
+if this happens, do this OK.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/90-4
+00:03:33.080 --> 00:03:37.124
+<v vc-abs>Don't actually like worry about this
+particular bug because.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/94-0
+00:03:37.444 --> 00:03:43.556
+<v vc-abs>It is actually tested in some other place.
+Those kind of things actually could be</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/94-1
+00:03:43.556 --> 00:03:48.402
+<v vc-abs>given to the given by the human,
+either priority to the agent or</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/94-2
+00:03:48.402 --> 00:03:50.564
+<v vc-abs>reactivity to agent messages.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/93-0
+00:03:51.404 --> 00:03:51.724
+<v srdj-abs>No.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/99-0
+00:03:52.964 --> 00:03:55.574
+<v vc-abs>OK,
+these are the 3 places actually the human</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/99-1
+00:03:55.574 --> 00:03:59.432
+<v vc-abs>interacts with the agent. OK,
+and actually the agent interacts with</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/95-0
+00:03:57.564 --> 00:03:57.884
+<v srdj-abs>Okay.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/99-2
+00:03:59.432 --> 00:04:04.084
+<v vc-abs>actually 3 databases that we already know.
+One is actually recording the actions,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/99-3
+00:04:04.084 --> 00:04:08.283
+<v vc-abs>second is recording the important
+messages or whatever actually it has to</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/98-0
+00:04:07.964 --> 00:04:08.204
+<v srdj-abs>Okay.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/99-4
+00:04:08.283 --> 00:04:11.404
+<v vc-abs>happen with the human.
+The 3rd thing is its knowledge.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/100-0
+00:04:13.524 --> 00:04:17.230
+<v vc-abs>OK, apart from these 3 databases,
+the system also interacts human</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/100-1
+00:04:17.230 --> 00:04:19.364
+<v vc-abs>indirectly by recording it to table 2.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/107-0
+00:04:21.404 --> 00:04:23.558
+<v vc-abs>OK,
+so like we don't have since actually we</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/107-1
+00:04:23.558 --> 00:04:25.860
+<v vc-abs>discussed about the human interaction
+already,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/107-2
+00:04:25.860 --> 00:04:29.679
+<v vc-abs>we don't have to discuss about it.
+But that is actually like one other piece,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/107-3
+00:04:29.679 --> 00:04:32.324
+<v vc-abs>the agent interacts,
+which is the application itself.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/115-0
+00:04:34.564 --> 00:04:37.066
+<v vc-abs>So,
+that actually what if actually like and</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/115-1
+00:04:37.066 --> 00:04:40.877
+<v vc-abs>actually apart from this,
+there could be actually exploration like</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/115-2
+00:04:40.877 --> 00:04:44.517
+<v vc-abs>we can define a flow,
+but actually it is better not to do that.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/115-3
+00:04:44.517 --> 00:04:49.124
+<v vc-abs>We'll actually give it a open for saying
+that actually you explorer it yourself.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/112-0
+00:04:46.044 --> 00:04:46.524
+<v srdj-abs>Mhm.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/121-0
+00:04:51.524 --> 00:04:54.403
+<v vc-abs>This is the interior of the flow.
+So ideally,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/121-1
+00:04:54.403 --> 00:04:59.034
+<v vc-abs>like if these flows could be actually
+broken down into smaller sequences,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/121-2
+00:04:59.034 --> 00:05:02.164
+<v vc-abs>some 2 or 3 components,
+some 4 or 5 interactions.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/120-0
+00:05:02.524 --> 00:05:02.844
+<v srdj-abs>No.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/124-0
+00:05:03.604 --> 00:05:06.564
+<v vc-abs>It would be helpful in short actually
+having a large sequence diagram.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/127-0
+00:05:07.844 --> 00:05:09.650
+<v vc-abs>Passing any other questions?
+If you had some doubts,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/127-1
+00:05:09.650 --> 00:05:12.241
+<v vc-abs>you can ask or else actually if you will
+stop the recording and actually go</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/127-2
+00:05:12.241 --> 00:05:13.844
+<v vc-abs>through the sequence like and see you
+already.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/133-0
+00:05:14.124 --> 00:05:19.089
+<v srdj-abs>I think basically the majority of what
+you just explained,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/133-1
+00:05:19.089 --> 00:05:22.204
+<v srdj-abs>I think it is already may be covered.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/132-0
+00:05:22.244 --> 00:05:22.884
+<v vc-abs>Grapes.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/136-0
+00:05:23.484 --> 00:05:28.364
+<v srdj-abs>But will basically show you something.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/145-0
+00:05:34.604 --> 00:05:41.868
+<v srdj-abs>Delivery bug to phase 2 identify bugs.
+So basically it is a 4 phase delivery.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/145-1
+00:05:41.868 --> 00:05:46.431
+<v srdj-abs>I think this will answer most of your
+questions.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/145-2
+00:05:46.431 --> 00:05:53.044
+<v srdj-abs>So currently it is going to create a very
+CLI like a very minimal CLI.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/149-0
+00:05:54.084 --> 00:06:01.373
+<v srdj-abs>Where we can tell like lets say start a
+calculator, test it,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/149-1
+00:06:01.373 --> 00:06:10.932
+<v srdj-abs>explorer it with the prompt and the other
+thing could be we can provide it some</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/148-0
+00:06:02.724 --> 00:06:03.044
+<v vc-abs>Haan.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/149-2
+00:06:10.932 --> 00:06:12.964
+<v srdj-abs>like binary game.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/152-0
+00:06:13.084 --> 00:06:17.278
+<v srdj-abs>Executable app,
+executable or something and it will</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/150-0
+00:06:17.044 --> 00:06:17.364
+<v vc-abs>Okay.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/152-1
+00:06:17.278 --> 00:06:23.570
+<v srdj-abs>explorer it or it we can provide it a URL
+which it will like open browser and</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/152-2
+00:06:23.570 --> 00:06:28.894
+<v srdj-abs>explorer it. Basically, human starts it.
+If agent have questions,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/151-0
+00:06:24.164 --> 00:06:24.564
+<v vc-abs>Thank you.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/152-3
+00:06:28.894 --> 00:06:32.524
+<v srdj-abs>it will ask like what is your purpose or
+if.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/154-0
+00:06:32.604 --> 00:06:36.395
+<v srdj-abs>Purpose is part of the first session
+message itself.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/154-1
+00:06:36.395 --> 00:06:41.045
+<v srdj-abs>Then it will work according to that
+purpose and ask for queries.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/154-2
+00:06:41.045 --> 00:06:45.123
+<v srdj-abs>If there are any,
+then it will start doing things on its</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/154-3
+00:06:45.123 --> 00:06:49.773
+<v srdj-abs>own. It will explorer,
+let's say we tell it to explorer the app,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/154-4
+00:06:49.773 --> 00:06:54.924
+<v srdj-abs>it will explorer the entire app,
+it will take screenshot, it will save.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/153-0
+00:06:49.844 --> 00:06:50.244
+<v vc-abs>Okay.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/156-0
+00:06:56.444 --> 00:07:02.687
+<v srdj-abs>Like findings in the JSNL which is
+mentioned there and it will keep the</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/156-1
+00:07:02.687 --> 00:07:08.063
+<v srdj-abs>screenshot records.
+Basically it is going to keep one what do</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/155-0
+00:07:02.724 --> 00:07:02.964
+<v vc-abs>Okay.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/156-2
+00:07:08.063 --> 00:07:09.884
+<v srdj-abs>they call it journal.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/159-0
+00:07:11.484 --> 00:07:20.150
+<v srdj-abs>It is going to keep a action journal and
+communicate with user as well in between</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/159-1
+00:07:20.150 --> 00:07:25.964
+<v srdj-abs>if it is required.
+So lets say app stops working in a.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/161-0
+00:07:24.564 --> 00:07:28.875
+<v vc-abs>It doesn't have to be like in between.
+Yeah, it doesn't have to be in between.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/160-0
+00:07:28.284 --> 00:07:29.884
+<v srdj-abs>If damn.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/161-1
+00:07:28.875 --> 00:07:31.494
+<v vc-abs>So ideally,
+what I would actually suggest is if</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/161-2
+00:07:31.494 --> 00:07:32.804
+<v vc-abs>something is not moving.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/162-0
+00:07:33.684 --> 00:07:35.004
+<v srdj-abs>Only then it will.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/164-0
+00:07:34.084 --> 00:07:36.863
+<v vc-abs>Okay,
+ask it to at that I understand what I'm</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/164-1
+00:07:36.863 --> 00:07:39.764
+<v vc-abs>saying is do not actually wait for human
+input.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/163-0
+00:07:36.924 --> 00:07:37.164
+<v srdj-abs>Okay.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/165-0
+00:07:40.284 --> 00:07:40.764
+<v srdj-abs>Mhm.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/168-0
+00:07:41.924 --> 00:07:45.334
+<v vc-abs>Let it actually pass okay.
+Once actually the human gives the input,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/168-1
+00:07:45.334 --> 00:07:48.644
+<v vc-abs>it can actually like it can actually
+continue from there onwards.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/169-0
+00:07:49.164 --> 00:07:49.644
+<v srdj-abs>Mhm.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/170-0
+00:07:50.044 --> 00:07:52.804
+<v vc-abs>Because anyway,
+the session is already logged on, right?</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/170-1
+00:07:52.804 --> 00:07:54.644
+<v vc-abs>Continuing government should be there.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/172-0
+00:07:52.924 --> 00:07:56.952
+<v srdj-abs>So such session will be still there.
+Basically, if it got stuck,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/172-1
+00:07:56.952 --> 00:08:00.360
+<v srdj-abs>it will state the finding.
+Lets say the app got stuck.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/172-2
+00:08:00.360 --> 00:08:04.946
+<v srdj-abs>It will say like app got stuck.
+I don't know what to do based on your our</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/172-3
+00:08:04.946 --> 00:08:09.594
+<v srdj-abs>previous instruction or if it have
+instruction, lets say if app got stuck,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/171-0
+00:08:07.764 --> 00:08:08.204
+<v vc-abs>Thank you.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/172-4
+00:08:09.594 --> 00:08:10.524
+<v srdj-abs>it will try to.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/173-0
+00:08:11.724 --> 00:08:18.457
+<v srdj-abs>Restart it. If that even doesn't work,
+it will try. Basically it will try.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/173-1
+00:08:18.457 --> 00:08:25.369
+<v srdj-abs>So it was also covered like it will try
+to revive it, but if it not able to,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/173-2
+00:08:25.369 --> 00:08:31.564
+<v srdj-abs>then it will simply like stop and say I
+cannot continue. What to do?</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/176-0
+00:08:32.084 --> 00:08:35.187
+<v vc-abs>Yeah,
+if like so like if it cannot continue one</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/176-1
+00:08:35.187 --> 00:08:38.032
+<v vc-abs>flow,
+it can actually start become the next</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/176-2
+00:08:38.032 --> 00:08:42.493
+<v vc-abs>flow. It is stuck, of course,
+like it can actually come back to you.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/174-0
+00:08:38.044 --> 00:08:38.444
+<v srdj-abs>Yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/175-0
+00:08:41.324 --> 00:08:41.804
+<v srdj-abs>Yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/176-3
+00:08:42.493 --> 00:08:46.244
+<v vc-abs>But for the like to actually yesterday to
+actually, yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/181-0
+00:08:44.284 --> 00:08:48.122
+<v srdj-abs>Continue if it's a if it can move to the
+next flow,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/181-1
+00:08:48.122 --> 00:08:52.845
+<v srdj-abs>let's say there are like multiple flows,
+then it will, I think,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/181-2
+00:08:52.845 --> 00:08:56.093
+<v srdj-abs>continue and state the findings at the
+end.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/177-0
+00:08:53.764 --> 00:08:54.164
+<v vc-abs>Yes.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/181-3
+00:08:56.093 --> 00:09:01.850
+<v srdj-abs>Like these are the issues we have what to
+do about them. But apart from that,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/178-0
+00:08:56.564 --> 00:08:56.804
+<v vc-abs>Yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/181-4
+00:09:01.850 --> 00:09:02.884
+<v srdj-abs>everything is.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/182-0
+00:09:03.004 --> 00:09:05.244
+<v srdj-abs>Like check, tested or something, right?</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/183-0
+00:09:06.484 --> 00:09:07.124
+<v vc-abs>Yeah.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/184-0
+00:09:10.884 --> 00:09:12.564
+<v vc-abs>Yeah, that should work. Bye.
+That should work.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/185-0
+00:09:13.804 --> 00:09:14.204
+<v srdj-abs>Okay.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/186-0
+00:09:14.164 --> 00:09:17.224
+<v vc-abs>And what about actually the sequence
+itself? Could you go to the sequence,</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/186-1
+00:09:17.224 --> 00:09:18.244
+<v vc-abs>let's say you look at it.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/189-0
+00:09:19.484 --> 00:09:22.604
+<v srdj-abs>So that sequence diagram.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/194-0
+00:09:24.604 --> 00:09:30.439
+<v srdj-abs>Give me a second, where is it?
+So this is the should I stop recording</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/194-1
+00:09:30.439 --> 00:09:32.524
+<v srdj-abs>because it might pollute.</v>
+
+559453bf-2631-4ac1-9cb7-1260d4525001/195-0
+00:09:32.324 --> 00:09:33.684
+<v vc-abs>Yeah, we're not here. Yeah.</v>

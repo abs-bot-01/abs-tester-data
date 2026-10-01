@@ -1,0 +1,960 @@
+WEBVTT
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/6-0
+00:00:04.252 --> 00:00:05.932
+<v srdj-abs>Yeah, now it started recording.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/7-0
+00:00:04.572 --> 00:00:08.211
+<v vc-abs>Yeah, it's recurring.
+So the runbooks actually should be</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/7-1
+00:00:08.211 --> 00:00:10.572
+<v vc-abs>actually link to the actual runbooks.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/13-0
+00:00:11.852 --> 00:00:14.899
+<v vc-abs>Like test this test data and so on and so
+forth. OK,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/13-1
+00:00:14.899 --> 00:00:19.498
+<v vc-abs>and actually just take a look for OKF
+open knowledge format and it is better to</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/9-0
+00:00:18.652 --> 00:00:19.132
+<v srdj-abs>Mhm.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/13-2
+00:00:19.498 --> 00:00:23.809
+<v vc-abs>have the components in that format better
+to have every MG in that format.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/13-3
+00:00:23.809 --> 00:00:27.718
+<v vc-abs>It is not complicated. OK,
+it is just about having a let's say like</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/12-0
+00:00:24.652 --> 00:00:26.812
+<v srdj-abs>Okay, F okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/13-4
+00:00:27.718 --> 00:00:31.052
+<v vc-abs>a front matter with actually 3 like
+mandatory attributes.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/15-0
+00:00:32.252 --> 00:00:36.667
+<v vc-abs>And then actually use actually links to
+establish a relationship.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/15-1
+00:00:36.667 --> 00:00:40.614
+<v vc-abs>It is as simple as that.
+So if you actually go by like and</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/14-0
+00:00:38.572 --> 00:00:38.972
+<v srdj-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/15-2
+00:00:40.614 --> 00:00:45.430
+<v vc-abs>actually they have actually 2 special
+fields index.md and logs.md logs.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/15-3
+00:00:45.430 --> 00:00:48.172
+<v vc-abs>md we might not use index.md we will use.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/16-0
+00:00:50.172 --> 00:00:51.532
+<v vc-abs>Could be they are going to runs.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/19-0
+00:00:53.612 --> 00:00:57.689
+<v vc-abs>Both actually run books and runs actually
+like I cannot actually make much sense</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/19-1
+00:00:57.689 --> 00:01:00.005
+<v vc-abs>without actually looking at the inner
+fields.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/19-2
+00:01:00.005 --> 00:01:02.723
+<v vc-abs>This one evidence actually ask it to
+embed the image,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/17-0
+00:01:00.172 --> 00:01:00.572
+<v srdj-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/19-3
+00:01:02.723 --> 00:01:05.692
+<v vc-abs>don't ask it to like send a like a what
+is a linker image.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/23-0
+00:01:03.852 --> 00:01:07.325
+<v srdj-abs>Yeah, I had a question about it.
+Basically,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/23-1
+00:01:07.325 --> 00:01:10.798
+<v srdj-abs>I was it's already planned to embed
+images,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/20-0
+00:01:08.572 --> 00:01:08.892
+<v vc-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/23-2
+00:01:10.798 --> 00:01:15.612
+<v srdj-abs>but I wanted to confirm with you whether
+to embed it or not.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/21-0
+00:01:13.532 --> 00:01:13.932
+<v vc-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/22-0
+00:01:15.852 --> 00:01:16.972
+<v vc-abs>Hey, it is better to embed it.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/29-0
+00:01:17.852 --> 00:01:24.972
+<v srdj-abs>Okay, because it will be like 14,
+so let's say there are 14 steps.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/26-0
+00:01:18.732 --> 00:01:21.572
+<v vc-abs>The idea is actually from findings,
+actually it might actually link you.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/33-0
+00:01:23.372 --> 00:01:26.895
+<v vc-abs>There's another thing I told her,
+so like when we actually discuss others,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/33-1
+00:01:26.895 --> 00:01:29.619
+<v vc-abs>like the last time,
+I told you that for runs actually you</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/30-0
+00:01:28.092 --> 00:01:28.412
+<v srdj-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/33-2
+00:01:29.619 --> 00:01:30.652
+<v vc-abs>will not need an NT 5.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/34-0
+00:01:32.732 --> 00:01:35.212
+<v srdj-abs>For runs, I do not need a MD file.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/35-0
+00:01:36.172 --> 00:01:36.572
+<v vc-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/36-0
+00:01:38.492 --> 00:01:44.537
+<v vc-abs>So the findings can directly actually
+link to the runs the evidence and the</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/36-1
+00:01:44.537 --> 00:01:45.332
+<v vc-abs>runs text.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/39-0
+00:01:46.652 --> 00:01:47.772
+<v vc-abs>That is possible, am I right?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/40-0
+00:01:49.292 --> 00:01:50.092
+<v srdj-abs>I didn't correct you.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/45-0
+00:01:52.652 --> 00:01:56.501
+<v vc-abs>So, like in your findings file,
+findings actually you will be going</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/43-0
+00:01:54.972 --> 00:01:55.212
+<v srdj-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/45-1
+00:01:56.501 --> 00:02:00.067
+<v vc-abs>through it manually,
+so it makes sense to have images embedded</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/44-0
+00:01:57.852 --> 00:01:58.172
+<v srdj-abs>Hello.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/45-2
+00:02:00.067 --> 00:02:00.972
+<v vc-abs>in there itself.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/46-0
+00:02:01.292 --> 00:02:02.972
+<v srdj-abs>Okay, yeah, they are embedded.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/54-0
+00:02:03.052 --> 00:02:07.064
+<v vc-abs>But runs actually we might not actually
+there is actually one case for actually</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/54-1
+00:02:07.064 --> 00:02:10.373
+<v vc-abs>having the images in runs, OK,
+which is lets say if they explored</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/51-0
+00:02:09.292 --> 00:02:09.612
+<v srdj-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/54-2
+00:02:10.373 --> 00:02:12.780
+<v vc-abs>already,
+it will help us actually go through it</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/54-3
+00:02:12.780 --> 00:02:15.187
+<v vc-abs>properly.
+So like it is better to have actually</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/54-4
+00:02:15.187 --> 00:02:16.892
+<v vc-abs>like a files embedded in runs too.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/62-0
+00:02:17.532 --> 00:02:23.437
+<v srdj-abs>There is one reason I think maybe that is
+the reason why it did not embed it</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/57-0
+00:02:20.412 --> 00:02:20.732
+<v vc-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/62-1
+00:02:23.437 --> 00:02:28.574
+<v srdj-abs>because it was too many images.
+So this is only like this is small</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/62-2
+00:02:28.574 --> 00:02:34.172
+<v srdj-abs>explosion where there are only 14 steps.
+If lets say there are 50 steps.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/63-0
+00:02:32.332 --> 00:02:35.988
+<v vc-abs>So there is one other thing that's what I
+was up see in both cases,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/63-1
+00:02:35.988 --> 00:02:40.234
+<v vc-abs>make sure actually this one table of
+contents are there when table of contents</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/63-2
+00:02:40.234 --> 00:02:42.492
+<v vc-abs>are there, size does not matter that much.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/64-0
+00:02:44.492 --> 00:02:45.532
+<v vc-abs>At least 2 song limit.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/68-0
+00:02:44.572 --> 00:02:48.099
+<v srdj-abs>No, basically,
+like won't it be hard for a system to</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/68-1
+00:02:48.099 --> 00:02:52.092
+<v srdj-abs>render it like it will be a large MD file
+that needs to be.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/67-0
+00:02:50.572 --> 00:02:52.572
+<v vc-abs>No, boy, this can be done mechanically.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/70-0
+00:02:54.172 --> 00:02:56.311
+<v vc-abs>Both the files,
+I'm pretty much sure the runs fail as</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/69-0
+00:02:54.492 --> 00:02:54.892
+<v srdj-abs>Big.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/70-1
+00:02:56.311 --> 00:02:58.252
+<v vc-abs>well as the findings fail or ended
+mechanically.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/71-0
+00:03:01.012 --> 00:03:04.252
+<v vc-abs>What do you like anyway,
+like when you like so when you say?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/72-0
+00:03:02.732 --> 00:03:05.212
+<v srdj-abs>Standard means like right now I am
+viewing it.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/76-0
+00:03:06.012 --> 00:03:08.865
+<v vc-abs>it won't be a problem by like how many
+images it will be.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/73-0
+00:03:07.772 --> 00:03:08.972
+<v srdj-abs>It will use memory.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/76-1
+00:03:08.865 --> 00:03:12.751
+<v vc-abs>I'm pretty much we are like fine by at
+the end of the day task has to complete</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/76-2
+00:03:12.751 --> 00:03:13.292
+<v vc-abs>any, right?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/79-0
+00:03:14.812 --> 00:03:18.181
+<v vc-abs>We actually do it like one way.
+I don't think actually even with 1000</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/79-1
+00:03:18.181 --> 00:03:20.395
+<v vc-abs>images,
+so you will be like sending more than</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/79-2
+00:03:20.395 --> 00:03:20.972
+<v vc-abs>like one GB.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/80-0
+00:03:24.172 --> 00:03:24.612
+<v srdj-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/81-0
+00:03:24.772 --> 00:03:28.305
+<v vc-abs>If there is a problem,
+then we will change the coats. As of now,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/84-0
+00:03:27.692 --> 00:03:34.047
+<v srdj-abs>Because I have seen single like VS code
+extenses using lots and lots of RAM,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/81-1
+00:03:28.305 --> 00:03:31.674
+<v vc-abs>lets not worry about something that
+matter. By when it comes,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/81-2
+00:03:31.674 --> 00:03:32.652
+<v vc-abs>we will change it.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/84-1
+00:03:34.047 --> 00:03:35.532
+<v srdj-abs>RAM for our users.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/85-0
+00:03:36.412 --> 00:03:39.600
+<v vc-abs>Yeah, I don't think V School will do that.
+If it starts doing the reduction,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/85-1
+00:03:39.600 --> 00:03:41.132
+<v vc-abs>then I should think about doing this.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/92-0
+00:03:43.532 --> 00:03:46.848
+<v srdj-abs>Okay then, we were at the index.
+Basically,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/88-0
+00:03:45.452 --> 00:03:45.932
+<v vc-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/92-1
+00:03:46.848 --> 00:03:53.029
+<v srdj-abs>this format is okay like we have to embed
+the images, right? The evidence images,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/92-2
+00:03:53.029 --> 00:03:57.852
+<v srdj-abs>but you were saying something about the
+evidence, the findings.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/91-0
+00:03:53.372 --> 00:03:55.652
+<v vc-abs>The farmer just give me one minute.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/95-0
+00:04:00.012 --> 00:04:02.831
+<v vc-abs>No, like I was saying,
+actually like you don't even need</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/95-1
+00:04:02.831 --> 00:04:05.699
+<v vc-abs>actually MD here,
+you can just actually have whatever you</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/95-2
+00:04:05.699 --> 00:04:08.715
+<v vc-abs>have here in findings. But anyway,
+it is already generating.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/95-3
+00:04:08.715 --> 00:04:12.226
+<v vc-abs>Let it actually generate assists,
+but actually make sure the links are</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/95-4
+00:04:12.226 --> 00:04:12.572
+<v vc-abs>images.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/96-0
+00:04:14.652 --> 00:04:14.892
+<v srdj-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/97-0
+00:04:15.572 --> 00:04:16.092
+<v vc-abs>What next?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/98-0
+00:04:17.452 --> 00:04:22.696
+<v srdj-abs>Okay, inside the artifacts,
+those are nothing but the images that it</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/99-0
+00:04:22.572 --> 00:04:25.594
+<v vc-abs>So what are the infection of the images
+were here?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/98-1
+00:04:22.696 --> 00:04:23.532
+<v srdj-abs>is linking.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/99-1
+00:04:25.594 --> 00:04:28.972
+<v vc-abs>We can go through a run file and see like
+what happened.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/100-0
+00:04:32.492 --> 00:04:34.785
+<v vc-abs>And I ask it whether it could actually
+record the cursor too.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/100-1
+00:04:34.785 --> 00:04:36.892
+<v vc-abs>If it can record the cursor,
+I ask it to record the too.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/101-0
+00:04:38.092 --> 00:04:40.812
+<v srdj-abs>Most probably it can.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/102-0
+00:04:41.132 --> 00:04:43.692
+<v vc-abs>Yeah,
+or else it may look like a phantom image.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/106-0
+00:04:44.772 --> 00:04:50.092
+<v srdj-abs>Yeah, okay, and this is the run.
+jsonl file.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/105-0
+00:04:46.812 --> 00:04:48.252
+<v vc-abs>Okay, anything else?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/109-0
+00:04:52.252 --> 00:04:53.132
+<v srdj-abs>From which?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/110-0
+00:04:52.332 --> 00:04:54.732
+<v vc-abs>I don't mind much,
+as long as actually we have the daytime.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/113-0
+00:04:55.532 --> 00:04:58.332
+<v srdj-abs>Its basically like large SNL which.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/116-0
+00:04:58.572 --> 00:05:00.852
+<v vc-abs>Even we will be changing it actually in
+the near future,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/116-1
+00:05:00.852 --> 00:05:03.252
+<v vc-abs>so I don't care much about it.
+We can go to next statement.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/119-0
+00:05:03.812 --> 00:05:08.402
+<v srdj-abs>Okay,
+next is basically same finding JSNL which</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/119-1
+00:05:08.402 --> 00:05:14.236
+<v srdj-abs>is summarised here.
+So findings format it is basically table</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/119-2
+00:05:14.236 --> 00:05:18.252
+<v srdj-abs>of content. I think links are not correct.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/120-0
+00:05:18.652 --> 00:05:20.492
+<v vc-abs>Well,
+there should be description at least.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/123-0
+00:05:21.772 --> 00:05:25.238
+<v srdj-abs>No, basically links are not working.
+It should be working. Basically,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/123-1
+00:05:25.238 --> 00:05:26.772
+<v srdj-abs>clicking on F1 should shut off.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/127-0
+00:05:25.772 --> 00:05:28.154
+<v vc-abs>Yeah,
+there should be description at least and</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/127-1
+00:05:28.154 --> 00:05:31.852
+<v vc-abs>actually ask it to like embed some 4
+images section together as a table.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/126-0
+00:05:32.332 --> 00:05:32.812
+<v srdj-abs>Mhm.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/130-0
+00:05:33.652 --> 00:05:37.692
+<v vc-abs>When it has to embed multiple images,
+ask you to go for 4 images as a table.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/131-0
+00:05:39.612 --> 00:05:40.732
+<v vc-abs>So do you plan to scroll?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/136-0
+00:05:41.692 --> 00:05:45.255
+<v srdj-abs>Okay, 4 images. Okay, so okay, got it,
+got.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/136-1
+00:05:45.255 --> 00:05:48.412
+<v srdj-abs>Basically like grid rather than unless.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/139-0
+00:05:50.572 --> 00:05:51.372
+<v vc-abs>Yeah, you are right there.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/140-0
+00:05:51.852 --> 00:05:52.332
+<v srdj-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/145-0
+00:05:54.012 --> 00:05:57.467
+<v vc-abs>We do textual text itself,
+maybe one one cell text like one cell</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/145-1
+00:05:57.467 --> 00:05:59.911
+<v vc-abs>image,
+the other cell text like a cell effect</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/145-2
+00:05:59.911 --> 00:06:01.452
+<v vc-abs>image and so on and so forth.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/146-0
+00:06:02.172 --> 00:06:02.732
+<v srdj-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/147-0
+00:06:04.052 --> 00:06:06.412
+<v srdj-abs>OK, that part is clear. and.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/150-0
+00:06:08.172 --> 00:06:11.772
+<v srdj-abs>This is reference where it should be
+looking. and.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/152-0
+00:06:10.652 --> 00:06:15.000
+<v vc-abs>And there is one other thing,
+the screenshot thing screenshot actually,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/151-0
+00:06:13.452 --> 00:06:13.852
+<v srdj-abs>Right.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/152-1
+00:06:15.000 --> 00:06:20.012
+<v vc-abs>I would actually recommend you to ask it
+to like resize that to some lesser level.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/155-0
+00:06:19.212 --> 00:06:25.308
+<v srdj-abs>Yeah, that I totally forgot.
+Like last time when I did the experiment,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/155-1
+00:06:25.308 --> 00:06:29.772
+<v srdj-abs>I mentioned it to run the app itself at
+the 647360.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/159-0
+00:06:33.692 --> 00:06:43.452
+<v srdj-abs>So that it can basically run smoother,
+uses less resources and yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/158-0
+00:06:41.612 --> 00:06:42.652
+<v vc-abs>Yeah, if you want to do.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/160-0
+00:06:45.772 --> 00:06:51.081
+<v srdj-abs>Okay,
+and then we come back to index of a</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/160-1
+00:06:51.081 --> 00:06:52.092
+<v srdj-abs>project.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/161-0
+00:06:55.452 --> 00:06:56.892
+<v srdj-abs>That's it. Basically, these are the...</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/164-0
+00:06:58.732 --> 00:06:59.452
+<v srdj-abs>Address.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/166-0
+00:07:00.252 --> 00:07:03.571
+<v vc-abs>That's fine.
+Let's actually try to run the flows and</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/166-1
+00:07:03.571 --> 00:07:08.081
+<v vc-abs>get it working. If it is working,
+that's actually like a let's actually</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/165-0
+00:07:04.332 --> 00:07:04.652
+<v srdj-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/166-2
+00:07:08.081 --> 00:07:12.151
+<v vc-abs>like a try the other 2 flows,
+creating a runbook and following a</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/170-0
+00:07:11.052 --> 00:07:14.916
+<v srdj-abs>Okay,
+I have one more basically like me mean</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/166-3
+00:07:12.151 --> 00:07:12.652
+<v vc-abs>runbook.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/170-1
+00:07:14.916 --> 00:07:21.699
+<v srdj-abs>way I will ask that like basically like
+open outer is open claw is not able to</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/169-0
+00:07:17.052 --> 00:07:17.372
+<v vc-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/170-2
+00:07:21.699 --> 00:07:28.654
+<v srdj-abs>render the images like render the files
+like show me rendered MB files directly.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/170-3
+00:07:28.654 --> 00:07:30.972
+<v srdj-abs>What would be the solution?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/176-0
+00:07:31.852 --> 00:07:35.872
+<v srdj-abs>So I said, like,
+lets plan for it and create a plan</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/176-1
+00:07:35.872 --> 00:07:39.505
+<v srdj-abs>document. Instead,
+it started implementing it,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/173-0
+00:07:36.892 --> 00:07:37.172
+<v vc-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/176-2
+00:07:39.505 --> 00:07:44.607
+<v srdj-abs>created a Python server,
+and like which opens there like files as</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/174-0
+00:07:40.012 --> 00:07:41.812
+<v vc-abs>Sometimes it does it, yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/176-3
+00:07:44.607 --> 00:07:50.946
+<v srdj-abs>we open it in VS code like rendered mode.
+I am not sure whether we should go that</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/175-0
+00:07:49.212 --> 00:07:49.772
+<v vc-abs>Understand.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/176-4
+00:07:50.946 --> 00:07:52.492
+<v srdj-abs>route or not, but...</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/177-0
+00:07:54.052 --> 00:08:00.152
+<v srdj-abs>What should be the solution?
+And I think OpenCloud does have a plugin</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/179-0
+00:07:59.772 --> 00:08:02.975
+<v vc-abs>Now the solution is actually before.
+Give me one minute.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/177-1
+00:08:00.152 --> 00:08:01.372
+<v srdj-abs>functionality.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/179-1
+00:08:02.975 --> 00:08:07.190
+<v vc-abs>Before actually going for the solution,
+we have to understand the problem,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/178-0
+00:08:06.892 --> 00:08:07.212
+<v srdj-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/179-2
+00:08:07.190 --> 00:08:11.573
+<v vc-abs>ask it to let's say like a state your
+previous question and ask it to explain</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/179-3
+00:08:11.573 --> 00:08:16.012
+<v vc-abs>how its actions actually align with the
+question. It will use better insights.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/181-0
+00:08:19.052 --> 00:08:23.725
+<v srdj-abs>Okay, but basically, like that,
+there are like 23 solutions,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/181-1
+00:08:23.725 --> 00:08:29.852
+<v srdj-abs>like 231 of them is basically writing.
+I think we don't need a solution, maybe.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/182-0
+00:08:29.532 --> 00:08:33.712
+<v vc-abs>Mumbai for no, yeah, maybe we might not.
+That's why I am asking you to ask it</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/182-1
+00:08:33.712 --> 00:08:35.052
+<v vc-abs>actually what went wrong.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/184-0
+00:08:36.732 --> 00:08:41.689
+<v srdj-abs>so that partner I asked it like why did
+you started implementing? It says like,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/183-0
+00:08:37.372 --> 00:08:38.092
+<v vc-abs>Maybe the girl.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/184-1
+00:08:41.689 --> 00:08:43.052
+<v srdj-abs>sorry, that was on my.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/185-0
+00:08:41.692 --> 00:08:47.029
+<v vc-abs>No, that's yeah, no, that's fine.
+Like instead of actually asking it just</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/185-1
+00:08:47.029 --> 00:08:51.572
+<v vc-abs>why, ask it actually,
+how did you understand the last request?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/186-0
+00:08:52.412 --> 00:08:53.172
+<v srdj-abs>OK.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/187-0
+00:08:54.452 --> 00:08:55.332
+<v vc-abs>That would be even better.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/190-0
+00:08:54.572 --> 00:08:59.201
+<v srdj-abs>I can ask,
+I'll fork it and ask it separately so</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/188-0
+00:08:58.532 --> 00:08:59.652
+<v vc-abs>yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/190-1
+00:08:59.201 --> 00:09:06.570
+<v srdj-abs>have a better and why I was saying we
+might not need a solution is because we</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/189-0
+00:09:01.652 --> 00:09:01.972
+<v vc-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/190-2
+00:09:06.570 --> 00:09:12.332
+<v srdj-abs>are going to embed this data into what is
+it project itself.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/192-0
+00:09:14.412 --> 00:09:16.652
+<v srdj-abs>If data is there in the projects.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/191-0
+00:09:15.412 --> 00:09:16.052
+<v vc-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/197-0
+00:09:18.132 --> 00:09:24.406
+<v srdj-abs>And we users have access to it,
+so they don't need to check the dashboard,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/197-1
+00:09:24.406 --> 00:09:29.342
+<v srdj-abs>they can simply check the VS code of the
+project and yeah,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/195-0
+00:09:27.812 --> 00:09:31.092
+<v vc-abs>Yeah, forget about the dashboard,
+no dashboard, nothing.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/197-2
+00:09:29.342 --> 00:09:34.528
+<v srdj-abs>that's why basically it was going for the
+dashboard approach,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/197-3
+00:09:34.528 --> 00:09:37.372
+<v srdj-abs>but that dashboard is only needed.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/196-0
+00:09:35.172 --> 00:09:38.292
+<v vc-abs>No, its useless.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/198-0
+00:09:38.012 --> 00:09:41.932
+<v srdj-abs>When we like everything is at the remote.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/199-0
+00:09:43.092 --> 00:09:43.732
+<v vc-abs>yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/200-0
+00:09:43.332 --> 00:09:50.802
+<v srdj-abs>But our final goal is to keep this data
+at a project level and user will have</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/200-1
+00:09:50.802 --> 00:09:53.292
+<v srdj-abs>access to a project, yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/201-0
+00:09:55.012 --> 00:09:56.612
+<v vc-abs>You're right, and we don't need that.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/202-0
+00:09:59.012 --> 00:09:59.412
+<v vc-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/203-0
+00:10:04.532 --> 00:10:05.012
+<v vc-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/204-0
+00:10:05.652 --> 00:10:08.852
+<v srdj-abs>Index for open knowledge format.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/210-0
+00:10:07.972 --> 00:10:11.418
+<v vc-abs>Just actually,
+just actually I asked that is a minute,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/206-0
+00:10:10.052 --> 00:10:11.252
+<v srdj-abs>I search for it. I.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/210-1
+00:10:11.418 --> 00:10:14.612
+<v vc-abs>its only 2 minutes work by nothing more
+than that.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/209-0
+00:10:14.932 --> 00:10:15.332
+<v srdj-abs>Yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/216-0
+00:10:17.332 --> 00:10:23.605
+<v srdj-abs>Its good but saw open knowledge format.
+I saw the reference basically spec file.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/212-0
+00:10:18.212 --> 00:10:18.932
+<v vc-abs>Okay, thanks.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/216-1
+00:10:23.605 --> 00:10:27.012
+<v srdj-abs>Its way easier to like go through it.
+yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/215-0
+00:10:24.852 --> 00:10:27.252
+<v vc-abs>Yeah, its actually rather minimal, yeah.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/217-0
+00:10:29.492 --> 00:10:29.892
+<v srdj-abs>Okay.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/218-0
+00:10:29.492 --> 00:10:30.612
+<v vc-abs>Okay, sir, anything else?</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/220-0
+00:10:31.212 --> 00:10:34.686
+<v srdj-abs>Yeah,
+I will simply like stop the recording,</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/220-1
+00:10:34.686 --> 00:10:38.932
+<v srdj-abs>give it the transcript,
+and tell it to do the changes.</v>
+
+1e547731-58f1-4529-8b1b-93ff6dcce1e3/219-0
+00:10:36.612 --> 00:10:37.132
+<v vc-abs>Okay.</v>

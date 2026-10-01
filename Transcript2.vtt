@@ -1,0 +1,1851 @@
+WEBVTT
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/11-0
+00:00:03.965 --> 00:00:07.929
+<v vc-abs>The data storage, okay,
+we were talking about 3 tables, okay,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/11-1
+00:00:07.929 --> 00:00:12.917
+<v vc-abs>like we can actually first actually this
+is actually like where to store am I</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/11-2
+00:00:12.917 --> 00:00:15.987
+<v vc-abs>right?
+There is one other question which is how</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/6-0
+00:00:13.885 --> 00:00:14.365
+<v srdj-abs>Mhm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/11-3
+00:00:15.987 --> 00:00:18.992
+<v vc-abs>to store, okay, is it going to park?
+Actually,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/7-0
+00:00:16.765 --> 00:00:17.005
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/11-4
+00:00:18.992 --> 00:00:23.725
+<v vc-abs>there are actually couple of formats,
+so JSON is one and park is another.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/8-0
+00:00:23.325 --> 00:00:23.805
+<v srdj-abs>What?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/15-0
+00:00:23.805 --> 00:00:31.325
+<v vc-abs>Look, there is something called parake.
+It is spelled as parakeet, PARAQ.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/12-0
+00:00:27.485 --> 00:00:28.285
+<v srdj-abs>No, not any.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/16-0
+00:00:30.285 --> 00:00:33.495
+<v srdj-abs>Yeah, I have heard the name.
+I'm not sure what it is used for.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/17-0
+00:00:33.325 --> 00:00:36.445
+<v vc-abs>Sir, could you check that PARAQUET?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/16-1
+00:00:33.495 --> 00:00:34.005
+<v srdj-abs>How is it?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/22-0
+00:00:47.085 --> 00:00:54.175
+<v vc-abs>Just actually first 1i believe,
+just actually just actually per park data</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/22-1
+00:00:54.175 --> 00:00:55.325
+<v vc-abs>data format.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/23-0
+00:00:56.765 --> 00:00:58.045
+<v vc-abs>I'm not sure what is spelling.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/28-0
+00:01:05.485 --> 00:01:09.005
+<v vc-abs>The first one, Parker, PRQUET.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/31-0
+00:01:10.205 --> 00:01:12.557
+<v vc-abs>Okay,
+so essentially like this is like</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/31-1
+00:01:12.557 --> 00:01:14.125
+<v vc-abs>something like JSNL, okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/32-0
+00:01:17.325 --> 00:01:18.845
+<v vc-abs>Sarup, you're not audible.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/33-0
+00:01:18.445 --> 00:01:18.805
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/34-0
+00:01:20.445 --> 00:01:22.835
+<v vc-abs>Okay, fine.
+So could you actually install Parquet?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/34-1
+00:01:22.835 --> 00:01:25.085
+<v vc-abs>Could you look for actually types of
+databases?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/43-0
+00:01:36.605 --> 00:01:39.773
+<v vc-abs>We actually like if you see like the
+RDBMS,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/43-1
+00:01:39.773 --> 00:01:44.453
+<v vc-abs>the second thing is actually like no
+sequel. Please scroll down.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/43-2
+00:01:44.453 --> 00:01:49.853
+<v vc-abs>I will actually like explain you like all
+the items in like in one minute.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/43-3
+00:01:49.853 --> 00:01:54.605
+<v vc-abs>No sequel, scroll down, scroll down,
+specialist, I will leave it.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/50-0
+00:01:54.885 --> 00:02:01.203
+<v vc-abs>Not a problem actually if you see they
+have vector time series, new sequel,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/46-0
+00:02:00.485 --> 00:02:00.605
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/50-1
+00:02:01.203 --> 00:02:06.525
+<v vc-abs>a few items okay this then actually we
+have this legacy models.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/49-0
+00:02:07.245 --> 00:02:07.405
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/51-0
+00:02:07.885 --> 00:02:08.525
+<v vc-abs>Miss Kalam.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/54-0
+00:02:13.165 --> 00:02:17.376
+<v vc-abs>OK, when it's like it's over, so fine.
+So like I was actually like up to show</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/54-1
+00:02:17.376 --> 00:02:20.669
+<v vc-abs>you something else it did not answer it
+that way. But again,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/54-2
+00:02:20.669 --> 00:02:25.043
+<v vc-abs>actually what I was up to say is it is
+important to like figure out actually how</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/54-3
+00:02:25.043 --> 00:02:26.285
+<v vc-abs>do we store things too.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/57-0
+00:02:27.805 --> 00:02:31.073
+<v vc-abs>For example, like the first table,
+the actions table that we were discussing,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/57-1
+00:02:31.073 --> 00:02:32.205
+<v vc-abs>have you started recording?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/58-0
+00:02:32.925 --> 00:02:33.245
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/59-0
+00:02:34.685 --> 00:02:37.266
+<v vc-abs>OK,
+the actions table that we were discussing,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/59-1
+00:02:37.266 --> 00:02:40.177
+<v vc-abs>it is a good candidate for time series
+database. OK,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/59-2
+00:02:40.177 --> 00:02:44.406
+<v vc-abs>this happened in this time generally
+actually event logs are actually stored</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/59-3
+00:02:44.406 --> 00:02:45.725
+<v vc-abs>in time series database.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/60-0
+00:02:48.045 --> 00:02:51.065
+<v vc-abs>Okay,
+but actually that actually we should be</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/60-1
+00:02:51.065 --> 00:02:55.005
+<v vc-abs>storing this in time series if we are
+concerned about time.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/61-0
+00:02:55.725 --> 00:02:55.845
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/63-0
+00:02:56.525 --> 00:03:00.034
+<v vc-abs>For us, actually, it will not be time,
+it will be session,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/63-1
+00:03:00.034 --> 00:03:03.485
+<v vc-abs>so we can skip that part and generally
+like for actually.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/62-0
+00:03:00.245 --> 00:03:00.365
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/65-0
+00:03:01.885 --> 00:03:07.165
+<v srdj-abs>The forest is the actions matter, right?
+Its actions and actions that it takes.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/64-0
+00:03:05.885 --> 00:03:06.285
+<v vc-abs>Please.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/68-0
+00:03:09.325 --> 00:03:11.893
+<v vc-abs>Yeah,
+like we can actually group it in both</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/66-0
+00:03:09.805 --> 00:03:10.205
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/67-0
+00:03:11.885 --> 00:03:12.365
+<v srdj-abs>Thanks.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/68-1
+00:03:11.893 --> 00:03:16.621
+<v vc-abs>ways too, based on sessions or actions.
+There is one thing we are actually as we</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/68-2
+00:03:16.621 --> 00:03:21.057
+<v vc-abs>discussed earlier in the evening,
+early in the evening, this is OLAP, OLAP,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/68-3
+00:03:21.057 --> 00:03:24.092
+<v vc-abs>not OLTP. Okay,
+so generally it is better to go for</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/68-4
+00:03:24.092 --> 00:03:25.085
+<v vc-abs>common databases.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/69-0
+00:03:27.965 --> 00:03:28.765
+<v srdj-abs>Column.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/71-0
+00:03:27.965 --> 00:03:30.584
+<v vc-abs>OK,
+generally what happens is what happens is</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/71-1
+00:03:30.584 --> 00:03:34.685
+<v vc-abs>like have you heard of you have heard of
+sequel exam, already escalate.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/70-0
+00:03:35.085 --> 00:03:35.405
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/73-0
+00:03:36.925 --> 00:03:43.005
+<v vc-abs>So escalate is like your OS database.
+So with escalate, actually I say it again.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/72-0
+00:03:39.885 --> 00:03:40.925
+<v srdj-abs>It's a table.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/74-0
+00:03:43.565 --> 00:03:47.405
+<v srdj-abs>A tabular database general table form.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/77-0
+00:03:46.845 --> 00:03:49.959
+<v vc-abs>Yeah,
+like a tab can be both like row wise and</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/77-1
+00:03:49.959 --> 00:03:53.338
+<v vc-abs>column wise.
+So what happens is when you escalate,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/77-2
+00:03:53.338 --> 00:03:57.645
+<v vc-abs>actually stores data,
+it stores data like one one row at a time.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/75-0
+00:03:55.085 --> 00:03:55.485
+<v srdj-abs>Thanks.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/76-0
+00:03:58.285 --> 00:03:58.445
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/78-0
+00:03:59.725 --> 00:04:02.773
+<v vc-abs>Okay, but on the other hand,
+DuckDB when it actually stores data,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/78-1
+00:04:02.773 --> 00:04:04.205
+<v vc-abs>it stores one column at a time.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/79-0
+00:04:04.925 --> 00:04:05.365
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/80-0
+00:04:06.285 --> 00:04:08.685
+<v vc-abs>That is part of the reason these are
+called columnar databases.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/81-0
+00:04:10.045 --> 00:04:13.331
+<v vc-abs>And actually,
+generally when it comes to like OLAP</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/81-1
+00:04:13.331 --> 00:04:16.360
+<v vc-abs>analytics,
+it is better to go for this call on</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/81-2
+00:04:16.360 --> 00:04:17.005
+<v vc-abs>databases.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/84-0
+00:04:18.685 --> 00:04:22.328
+<v vc-abs>The reason is that generally,
+like when we analyze data,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/84-1
+00:04:22.328 --> 00:04:26.547
+<v vc-abs>data is actually generally filtered
+through columns. Essentially,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/82-0
+00:04:26.205 --> 00:04:26.365
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/84-2
+00:04:26.547 --> 00:04:31.469
+<v vc-abs>let's say you look for a certain type of
+actions or let's say like a certain</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/84-3
+00:04:31.469 --> 00:04:32.045
+<v vc-abs>sessions.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/83-0
+00:04:32.765 --> 00:04:33.245
+<v srdj-abs>Mhm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/85-0
+00:04:33.685 --> 00:04:38.873
+<v vc-abs>A common database can actually fill into
+the records in 1/10 of the time rather</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/85-1
+00:04:38.873 --> 00:04:40.365
+<v vc-abs>than a row as database.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/86-0
+00:04:42.445 --> 00:04:45.645
+<v vc-abs>So ideally, for that actions,
+we can go for DuckDB.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/87-0
+00:04:47.925 --> 00:04:52.629
+<v vc-abs>And your knowledge, OK,
+again we can go for WDB or else</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/87-1
+00:04:52.629 --> 00:04:57.165
+<v vc-abs>technically we should be going for
+director database.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/88-0
+00:04:59.365 --> 00:05:04.045
+<v srdj-abs>I haven't used any kind of I have heard
+of the names like what kind of.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/90-0
+00:05:03.405 --> 00:05:10.089
+<v vc-abs>We don't even have to worry about that,
+by couple of items. This is sorry,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/89-0
+00:05:06.125 --> 00:05:08.285
+<v srdj-abs>This fine give me your something.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/90-1
+00:05:10.089 --> 00:05:15.526
+<v vc-abs>but so the cat, okay,
+she has this habit of actually playing</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/90-2
+00:05:15.526 --> 00:05:16.685
+<v vc-abs>with my legs.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/91-0
+00:05:17.885 --> 00:05:21.485
+<v vc-abs>Since actually it actually like it is
+actually of her size,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/91-1
+00:05:21.485 --> 00:05:24.305
+<v vc-abs>it generally picks flights with my legs.
+Okay,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/91-2
+00:05:24.305 --> 00:05:29.165
+<v vc-abs>now actually it is late in the evening,
+she is tired so like and she has a habit</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/91-3
+00:05:29.165 --> 00:05:32.105
+<v vc-abs>of actually laying actually beneath my
+legs too.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/91-4
+00:05:32.105 --> 00:05:36.485
+<v vc-abs>So I thought that actually she came to
+play and I started actually like.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/92-0
+00:05:37.325 --> 00:05:39.085
+<v vc-abs>Padding hermit with my legs.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/93-0
+00:05:40.765 --> 00:05:45.512
+<v vc-abs>So some she usually like fights back,
+can I do that? Essentially,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/93-1
+00:05:45.512 --> 00:05:48.678
+<v vc-abs>that's what actually she comes near me
+for.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/93-2
+00:05:48.678 --> 00:05:54.073
+<v vc-abs>If she is actually trying to actually
+lets say like interact with my legs,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/93-3
+00:05:54.073 --> 00:05:57.526
+<v vc-abs>it is mostly to pick a fight.
+This time around,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/93-4
+00:05:57.526 --> 00:05:59.325
+<v vc-abs>she wasn't acting at all.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/94-0
+00:06:00.205 --> 00:06:06.050
+<v vc-abs>I got suspicious that I actually I saw I
+actually basically she actually she like</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/94-1
+00:06:06.050 --> 00:06:10.327
+<v vc-abs>lies below beneath my table.
+I will not be able to see her.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/94-2
+00:06:10.327 --> 00:06:14.461
+<v vc-abs>I will be able to feel her with my legs.
+So there was no.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/94-3
+00:06:14.461 --> 00:06:18.525
+<v vc-abs>I thought that I would look at her when I
+looked at her.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/95-0
+00:06:19.805 --> 00:06:24.402
+<v vc-abs>Actually,
+she was looking at me with a with a angry</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/95-1
+00:06:24.402 --> 00:06:24.845
+<v vc-abs>look.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/96-0
+00:06:26.245 --> 00:06:28.125
+<v vc-abs>Okay, looks like she is trying to sleep.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/97-0
+00:06:28.845 --> 00:06:29.325
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/98-0
+00:06:29.525 --> 00:06:31.565
+<v vc-abs>Hey, I did not realise it.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/100-0
+00:06:34.445 --> 00:06:37.751
+<v vc-abs>When I actually bent,
+I bent down to look at her,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/100-1
+00:06:37.751 --> 00:06:41.587
+<v vc-abs>she was actually looking me at in a
+really angry fashion.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/100-2
+00:06:41.587 --> 00:06:46.548
+<v vc-abs>Now she has moved the other way around.
+Sorry man, it made me laugh. Okay,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/100-3
+00:06:46.548 --> 00:06:49.590
+<v vc-abs>coming back, forget about these things,
+okay?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/100-4
+00:06:49.590 --> 00:06:52.765
+<v vc-abs>You don't have to understand what column
+DB is.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/99-0
+00:06:50.845 --> 00:06:51.165
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/101-0
+00:06:53.165 --> 00:06:55.521
+<v vc-abs>You don't basically,
+you don't want to understand the</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/101-1
+00:06:55.521 --> 00:06:56.045
+<v vc-abs>integrities.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/102-0
+00:06:56.445 --> 00:06:56.925
+<v srdj-abs>Hmm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/105-0
+00:06:57.645 --> 00:07:02.450
+<v vc-abs>All you have to do is to tell it actually
+like basically whenever I easily like</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/105-1
+00:07:02.450 --> 00:07:07.256
+<v vc-abs>anyway like whatever actually we record
+now like you will get a transcript okay</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/103-0
+00:07:06.925 --> 00:07:07.245
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/105-2
+00:07:07.256 --> 00:07:11.942
+<v vc-abs>so you can ask actually whether it is
+okay to go with this technologies which</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/105-3
+00:07:11.942 --> 00:07:13.805
+<v vc-abs>says yes just ask to implement.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/104-0
+00:07:14.605 --> 00:07:14.885
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/107-0
+00:07:16.365 --> 00:07:20.390
+<v vc-abs>So the idea is actually,
+I did I tell you actually what I am like,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/107-1
+00:07:20.390 --> 00:07:24.836
+<v vc-abs>I think I told you like what I am
+building, didn't I? Give me one minute.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/106-0
+00:07:23.085 --> 00:07:25.485
+<v srdj-abs>This as is.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/107-2
+00:07:24.836 --> 00:07:29.041
+<v vc-abs>I am sharing my screen here. Yeah,
+it is here. When will you be here?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/107-3
+00:07:29.041 --> 00:07:31.445
+<v vc-abs>I don't know to take a lot of your time.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/108-0
+00:07:31.565 --> 00:07:33.885
+<v srdj-abs>For another 30 minutes in place.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/109-0
+00:07:34.445 --> 00:07:35.485
+<v vc-abs>Okay, give me one minute.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/112-0
+00:07:41.365 --> 00:07:41.965
+<v vc-abs>For this one.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/117-0
+00:07:49.405 --> 00:07:51.565
+<v vc-abs>So if you see this one.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/121-0
+00:07:52.765 --> 00:07:56.537
+<v vc-abs>Hi Sarup,
+I forgot to tell you something by this</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/120-0
+00:07:55.725 --> 00:07:56.085
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/121-1
+00:07:56.537 --> 00:07:56.845
+<v vc-abs>RDM.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/122-0
+00:07:58.205 --> 00:07:59.005
+<v srdj-abs>What I do?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/123-0
+00:07:58.245 --> 00:08:01.009
+<v vc-abs>And I don't think I will be able to share
+my screen.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/123-1
+00:08:01.009 --> 00:08:05.234
+<v vc-abs>I will actually first actually show you
+this and then actually show you actually</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/124-0
+00:08:04.925 --> 00:08:08.125
+<v srdj-abs>Okay, this remote desktop manager.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/123-2
+00:08:05.234 --> 00:08:05.965
+<v vc-abs>the other one.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/129-0
+00:08:07.245 --> 00:08:12.154
+<v vc-abs>Remote desktop,
+like we might not be like needing like</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/129-1
+00:08:12.154 --> 00:08:15.725
+<v vc-abs>any tool like immediately. Okay, I will.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/132-0
+00:08:21.485 --> 00:08:21.685
+<v vc-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/135-0
+00:08:23.245 --> 00:08:25.645
+<v vc-abs>So what are we trying to do here is...</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/138-0
+00:08:27.645 --> 00:08:29.565
+<v vc-abs>So this is not.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/143-0
+00:08:31.885 --> 00:08:36.675
+<v vc-abs>So there are like a repo is actually made
+up made out of components. Okay,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/143-1
+00:08:36.675 --> 00:08:39.805
+<v vc-abs>so if you see this is the component I
+that give.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/144-0
+00:08:40.765 --> 00:08:41.245
+<v srdj-abs>Mhm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/149-0
+00:08:41.405 --> 00:08:44.683
+<v vc-abs>So the idea is if you click on actually
+the one of these things,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/149-1
+00:08:44.683 --> 00:08:48.011
+<v vc-abs>it should actually take us to the next
+diagram we are working on,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/149-2
+00:08:48.011 --> 00:08:51.391
+<v vc-abs>it will be done today. Okay, as of now,
+Instagram is looking here,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/149-3
+00:08:51.391 --> 00:08:55.526
+<v vc-abs>I am clicking here on the actually I will
+tell you it's not rendering okay, fine.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/149-4
+00:08:55.526 --> 00:08:59.208
+<v vc-abs>There should be some sort of document
+diagram here, it is not rendering,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/149-5
+00:08:59.208 --> 00:08:59.965
+<v vc-abs>leave it let's.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/152-0
+00:09:00.125 --> 00:09:04.424
+<v vc-abs>Say this is the list of skills and if you
+actually go into this skills,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/152-1
+00:09:04.424 --> 00:09:08.365
+<v vc-abs>it will actually have a have the design
+of this particular skill.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/153-0
+00:09:11.325 --> 00:09:11.885
+<v vc-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/154-0
+00:09:13.565 --> 00:09:14.285
+<v vc-abs>Self.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/155-0
+00:09:14.525 --> 00:09:15.005
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/156-0
+00:09:16.365 --> 00:09:20.349
+<v vc-abs>So like the idea is these documents are
+what we care about,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/156-1
+00:09:20.349 --> 00:09:23.405
+<v vc-abs>we do not care about what the
+implementation.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/158-0
+00:09:24.125 --> 00:09:24.285
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/161-0
+00:09:25.645 --> 00:09:30.987
+<v vc-abs>As long as, let's say,
+let's say like a good model or agent can</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/161-1
+00:09:30.987 --> 00:09:37.248
+<v vc-abs>compare the implementation with the
+design and it can attest that actually</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/161-2
+00:09:37.248 --> 00:09:39.085
+<v vc-abs>these 2 things are in.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/160-0
+00:09:40.125 --> 00:09:40.365
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/162-0
+00:09:40.445 --> 00:09:42.045
+<v vc-abs>We will not worry about the
+implementation.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/163-0
+00:09:44.365 --> 00:09:47.992
+<v vc-abs>So the idea is,
+like as actually the people who develop,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/163-1
+00:09:47.992 --> 00:09:52.765
+<v vc-abs>you should be able to understand actually
+what this box is supposed to do.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/166-0
+00:09:53.965 --> 00:09:54.845
+<v vc-abs>Not how it works.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/167-0
+00:10:07.805 --> 00:10:08.285
+<v srdj-abs>Mhm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/170-0
+00:10:09.725 --> 00:10:12.791
+<v vc-abs>OK,
+so like that should actually be stored in</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/170-1
+00:10:12.791 --> 00:10:14.125
+<v vc-abs>the column database.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/171-0
+00:10:14.845 --> 00:10:15.165
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/174-0
+00:10:15.805 --> 00:10:19.467
+<v vc-abs>You don't even have to worry about
+actually why you should like basically it</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/174-1
+00:10:19.467 --> 00:10:22.701
+<v vc-abs>is actually the database is large and
+actually it is analytic data,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/174-2
+00:10:22.701 --> 00:10:24.889
+<v vc-abs>it should actually go to a columnar
+database.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/174-3
+00:10:24.889 --> 00:10:27.077
+<v vc-abs>That is the only thing that you have to
+know.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/174-4
+00:10:27.077 --> 00:10:30.739
+<v vc-abs>You don't have to like worry about
+actually how the columnar database itself</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/174-5
+00:10:30.739 --> 00:10:33.688
+<v vc-abs>runs or how it works.
+And actually that's the same thing goes</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/173-0
+00:10:31.645 --> 00:10:31.885
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/174-6
+00:10:33.688 --> 00:10:34.925
+<v vc-abs>for the other 2 items too.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/175-0
+00:10:36.765 --> 00:10:40.914
+<v vc-abs>On the other 2 items were like at the
+second table, the first is actions. Okay,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/175-1
+00:10:40.914 --> 00:10:45.011
+<v vc-abs>the second is let's say like a basically
+issues like we can actually called as</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/175-2
+00:10:45.011 --> 00:10:47.605
+<v vc-abs>issues or we'll actually give it some
+other name.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/177-0
+00:10:49.085 --> 00:10:52.480
+<v vc-abs>OK, the 3rd item is knowledge issues.
+Actually,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/177-1
+00:10:52.480 --> 00:10:57.645
+<v vc-abs>it is better to store it in traditional
+database, for example, escalate.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/176-0
+00:10:58.285 --> 00:10:58.605
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/178-0
+00:10:59.965 --> 00:11:02.556
+<v vc-abs>OK,
+the idea is like when it comes to issues,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/178-1
+00:11:02.556 --> 00:11:05.824
+<v vc-abs>it is not analytics,
+it is to track actually like a data.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/178-2
+00:11:05.824 --> 00:11:09.881
+<v vc-abs>Basically, I found something,
+I actually like raised it up to the user,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/178-3
+00:11:09.881 --> 00:11:13.092
+<v vc-abs>the user give a fake feedback.
+I am closing this record.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/178-4
+00:11:13.092 --> 00:11:17.768
+<v vc-abs>So there is that is transaction data that
+comes into like one other different kind</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/178-5
+00:11:17.768 --> 00:11:18.445
+<v vc-abs>of database.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/179-0
+00:11:19.725 --> 00:11:23.245
+<v vc-abs>And the 3rd thing is the knowledge thing
+I was talking about na.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/180-0
+00:11:26.205 --> 00:11:26.845
+<v vc-abs>Sarpa Naru.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/181-0
+00:11:27.325 --> 00:11:28.285
+<v srdj-abs>Yeah, you are audible.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/182-0
+00:11:29.325 --> 00:11:33.085
+<v vc-abs>I should be actually take this sometime
+later.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/182-1
+00:11:33.085 --> 00:11:36.045
+<v vc-abs>I think you are not like I think you.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/188-0
+00:11:34.685 --> 00:11:41.793
+<v srdj-abs>What's the power 8 days like in my
+microphone volume got decreased by 27%.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/188-1
+00:11:41.793 --> 00:11:43.405
+<v srdj-abs>Am I audible now?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/185-0
+00:11:42.525 --> 00:11:43.165
+<v vc-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/189-0
+00:11:44.525 --> 00:11:46.685
+<v vc-abs>Now you are now with this. Now you are.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/192-0
+00:11:45.085 --> 00:11:48.565
+<v srdj-abs>Not sure what happened,
+like I am acknowledging,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/192-1
+00:11:48.565 --> 00:11:52.685
+<v srdj-abs>but you are not hearing it,
+so not sure what's happening.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/201-0
+00:11:52.125 --> 00:11:56.574
+<v vc-abs>Like I'm not able to listen,
+I'm not able to listen to you.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/201-1
+00:11:56.574 --> 00:12:01.320
+<v vc-abs>So if you see this one,
+so like this is a simple representation</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/201-2
+00:12:01.320 --> 00:12:05.546
+<v vc-abs>of vector database. Okay,
+like I'll show you this. Okay,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/201-3
+00:12:05.546 --> 00:12:11.034
+<v vc-abs>so like this is like essentially
+essentially vector database what happens</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/201-4
+00:12:11.034 --> 00:12:11.405
+<v vc-abs>this.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/202-0
+00:12:11.805 --> 00:12:17.539
+<v vc-abs>Data is exactly stored like in a whatever
+you are seeing in the image is a 3</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/202-1
+00:12:17.539 --> 00:12:18.805
+<v vc-abs>dimension vector.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/203-0
+00:12:20.845 --> 00:12:22.845
+<v vc-abs>Okay,
+one of the dimensions could be weight.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/204-0
+00:12:23.405 --> 00:12:23.725
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/207-0
+00:12:24.445 --> 00:12:26.507
+<v vc-abs>Okay,
+one of the dimension could be affinity to</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/207-1
+00:12:26.507 --> 00:12:26.765
+<v vc-abs>water.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/208-0
+00:12:27.885 --> 00:12:30.125
+<v vc-abs>One of the time one should be affinity to
+forest.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/209-0
+00:12:32.125 --> 00:12:34.570
+<v vc-abs>OK,
+vector database actually stores actually</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/209-1
+00:12:34.570 --> 00:12:37.124
+<v vc-abs>each and every data point in these
+dimensions.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/209-2
+00:12:37.124 --> 00:12:40.765
+<v vc-abs>So if you see generally actually like 2
+cats will be really close.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/210-0
+00:12:42.685 --> 00:12:42.925
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/212-0
+00:12:44.205 --> 00:12:47.114
+<v vc-abs>Okay,
+like a 2 cats will be really close and a</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/212-1
+00:12:47.114 --> 00:12:50.023
+<v vc-abs>cat and actually tiger will be somewhat
+close.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/212-2
+00:12:50.023 --> 00:12:53.675
+<v vc-abs>A cat and a dog will be like somewhat
+close in some areas,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/212-3
+00:12:53.675 --> 00:12:58.380
+<v vc-abs>somewhere like basically a cat and tiger
+will be close in some areas. Okay,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/211-0
+00:12:57.285 --> 00:12:57.405
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/212-4
+00:12:58.380 --> 00:13:03.085
+<v vc-abs>but when it comes to actually living
+location, a cat and dog will be close.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/213-0
+00:13:03.165 --> 00:13:03.885
+<v vc-abs>Not a tiger.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/214-0
+00:13:05.005 --> 00:13:05.485
+<v srdj-abs>Got it.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/215-0
+00:13:06.205 --> 00:13:09.251
+<v vc-abs>OK,
+so what happens is like when actually you</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/215-1
+00:13:09.251 --> 00:13:12.363
+<v vc-abs>actually store knowledge in a vector
+database,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/215-2
+00:13:12.363 --> 00:13:16.734
+<v vc-abs>it can actually store things like in
+relation to one one another.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/215-3
+00:13:16.734 --> 00:13:20.045
+<v vc-abs>So generally when you want to do semantic
+search.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/217-0
+00:13:22.045 --> 00:13:26.970
+<v vc-abs>Lets say you have a cat, you have a dog,
+actually you have animal too. Basically,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/217-1
+00:13:26.970 --> 00:13:31.775
+<v vc-abs>cat, dog, and animal will be close. OK,
+lets say like you already have a cat in</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/217-2
+00:13:31.775 --> 00:13:34.658
+<v vc-abs>one of your queries,
+you ask for similar items.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/217-3
+00:13:34.658 --> 00:13:39.523
+<v vc-abs>Now we can fetch the dog for you because
+the dog lies actually closer to the cat</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/217-4
+00:13:39.523 --> 00:13:40.725
+<v vc-abs>in the vector space.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/216-0
+00:13:41.405 --> 00:13:41.965
+<v srdj-abs>Good.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/218-0
+00:13:43.085 --> 00:13:45.911
+<v vc-abs>So generally,
+knowledge actually should be stored in</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/218-1
+00:13:45.911 --> 00:13:47.085
+<v vc-abs>like rental databases.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/220-0
+00:13:48.045 --> 00:13:52.445
+<v srdj-abs>As I tried making one vector DB,
+I was working on this.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/219-0
+00:13:48.525 --> 00:13:49.325
+<v vc-abs>So.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/221-0
+00:13:55.005 --> 00:13:55.405
+<v srdj-abs>What?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/222-0
+00:13:56.765 --> 00:14:00.285
+<v vc-abs>Why to reinvent the wheels?
+Did you try to build actually something</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/225-0
+00:13:58.605 --> 00:14:04.641
+<v srdj-abs>No, not build the system,
+just I was trying to work on a app where</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/222-1
+00:14:00.285 --> 00:14:01.165
+<v vc-abs>or use something?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/223-0
+00:14:03.565 --> 00:14:04.005
+<v vc-abs>Ha ha.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/225-1
+00:14:04.641 --> 00:14:08.785
+<v srdj-abs>I had to basically store data in a vector
+DB.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/225-2
+00:14:08.785 --> 00:14:15.632
+<v srdj-abs>I was trying to basically this I was
+trying to understand like how this rag</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/224-0
+00:14:11.405 --> 00:14:11.645
+<v vc-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/225-3
+00:14:15.632 --> 00:14:18.605
+<v srdj-abs>system works where like how this.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/226-0
+00:14:18.045 --> 00:14:22.488
+<v vc-abs>Yeah,
+that is what I was actually like saying.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/228-0
+00:14:19.165 --> 00:14:24.139
+<v srdj-abs>Index DB, factory DB,
+and all works not a actual system,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/226-1
+00:14:22.488 --> 00:14:25.325
+<v vc-abs>Yeah, this is going to be the.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/228-1
+00:14:24.139 --> 00:14:31.295
+<v srdj-abs>but how to utilise it kind of way you are
+storing a entire book in it in a vector</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/227-0
+00:14:30.205 --> 00:14:30.485
+<v vc-abs>And.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/228-2
+00:14:31.295 --> 00:14:34.525
+<v srdj-abs>fair manner, so it is easy to search.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/229-0
+00:14:35.885 --> 00:14:37.965
+<v vc-abs>So this is actually something like.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/230-0
+00:14:36.285 --> 00:14:42.125
+<v srdj-abs>I didn't finish it because it was getting
+out of too much.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/232-0
+00:14:41.645 --> 00:14:44.342
+<v vc-abs>Yeah,
+this is something that actually the</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/232-1
+00:14:44.342 --> 00:14:49.415
+<v vc-abs>industry is going to struggle for the
+next couple of years, at least 34 years,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/231-0
+00:14:47.645 --> 00:14:47.925
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/232-2
+00:14:49.415 --> 00:14:52.305
+<v vc-abs>OK,
+which is like people at every level will</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/232-3
+00:14:52.305 --> 00:14:55.645
+<v vc-abs>struggle to accept that knowledge is of
+less value.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/233-0
+00:14:58.365 --> 00:14:59.005
+<v srdj-abs>Means.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/234-0
+00:15:01.325 --> 00:15:05.631
+<v vc-abs>So, okay, I will give you examples. Okay,
+so like I am actually be working on a</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/234-1
+00:15:05.631 --> 00:15:07.085
+<v vc-abs>particular thing for Tiger.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/236-0
+00:15:08.925 --> 00:15:11.088
+<v vc-abs>OK,
+the person who delegates the work to me</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/236-1
+00:15:11.088 --> 00:15:14.923
+<v vc-abs>essentially, like in this case, my boss,
+at least the project level boss, OK,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/236-2
+00:15:14.923 --> 00:15:18.757
+<v vc-abs>like he actually went through documents
+and he actually asked actually like a</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/235-0
+00:15:15.885 --> 00:15:15.965
+<v srdj-abs>No.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/236-3
+00:15:18.757 --> 00:15:22.051
+<v vc-abs>questions about a few items.
+I told him actually there is a lot of</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/236-4
+00:15:22.051 --> 00:15:26.083
+<v vc-abs>documents. I did not actually remember it.
+I will go through it and I will try to</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/236-5
+00:15:26.083 --> 00:15:27.165
+<v vc-abs>explain things to him.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/239-0
+00:15:29.325 --> 00:15:31.992
+<v vc-abs>OK,
+the reason is actually I generated some</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/239-1
+00:15:31.992 --> 00:15:35.205
+<v vc-abs>150 documents.
+I will not be able to remember all of</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/239-2
+00:15:35.205 --> 00:15:37.085
+<v vc-abs>those items. I cannot actually.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/240-0
+00:15:37.565 --> 00:15:41.885
+<v srdj-abs>Its impossible like unless you have a
+photographic memory.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/244-0
+00:15:40.125 --> 00:15:43.517
+<v vc-abs>So, but actually, the thing again,
+the thing is,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/244-1
+00:15:43.517 --> 00:15:48.087
+<v vc-abs>even he wasn't actually like asking for,
+let's say, like details,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/244-2
+00:15:48.087 --> 00:15:51.965
+<v vc-abs>he wanted to overview.
+I wasn't even able to give that.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/243-0
+00:15:50.205 --> 00:15:50.445
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/245-0
+00:15:53.965 --> 00:15:56.841
+<v vc-abs>Because I generated the document,
+I did not actually review it.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/245-1
+00:15:56.841 --> 00:16:00.346
+<v vc-abs>Part of the reason is actually like a
+it's like a large thing which has to be</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/246-0
+00:16:00.125 --> 00:16:02.285
+<v srdj-abs>How much will you review? like?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/245-2
+00:16:00.346 --> 00:16:01.245
+<v vc-abs>like done in chunks.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/249-0
+00:16:03.645 --> 00:16:07.290
+<v vc-abs>Like that I understand why that I like
+the actually there are reasons,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/247-0
+00:16:03.805 --> 00:16:04.445
+<v srdj-abs>That's.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/248-0
+00:16:05.965 --> 00:16:06.365
+<v srdj-abs>Like.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/249-1
+00:16:07.290 --> 00:16:10.679
+<v vc-abs>but what I was saying to convey is
+actually from his perspective,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/249-2
+00:16:10.679 --> 00:16:14.685
+<v vc-abs>like people are actually creating things
+without actually understanding them.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/250-0
+00:16:16.285 --> 00:16:21.442
+<v vc-abs>But actually, the point is actually,
+I know actually what the document is for.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/250-1
+00:16:21.442 --> 00:16:24.445
+<v vc-abs>I know the sections,
+I do not know the items.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/251-0
+00:16:25.085 --> 00:16:25.565
+<v srdj-abs>Mhm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/252-0
+00:16:25.805 --> 00:16:29.012
+<v vc-abs>I trust actually he to fill the items
+correctly,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/252-1
+00:16:29.012 --> 00:16:33.725
+<v vc-abs>but the problem is actually he is not
+comfortable in letting it happen.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/253-0
+00:16:36.205 --> 00:16:39.260
+<v vc-abs>Essentially,
+he want actually people to go through the</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/253-1
+00:16:39.260 --> 00:16:42.205
+<v vc-abs>line items too and actually he says he is
+my senior.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/254-0
+00:16:40.365 --> 00:16:44.770
+<v srdj-abs>Yeah,
+it's the same thing used to happen with</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/254-1
+00:16:44.770 --> 00:16:47.165
+<v srdj-abs>the software development.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/256-0
+00:16:48.765 --> 00:16:55.111
+<v srdj-abs>So when I started go dot now,
+it used to happen like good with go dot</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/256-1
+00:16:55.111 --> 00:16:55.565
+<v srdj-abs>like.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/255-0
+00:16:55.565 --> 00:16:55.805
+<v vc-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/257-0
+00:16:57.085 --> 00:17:00.498
+<v srdj-abs>They basically in good,
+I can drag and drop things and make the</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/257-1
+00:17:00.498 --> 00:17:00.765
+<v srdj-abs>game.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/260-0
+00:17:02.445 --> 00:17:06.472
+<v srdj-abs>And if visual scripting is there,
+I can simply drag and drop,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/260-1
+00:17:06.472 --> 00:17:11.605
+<v srdj-abs>or if there is a like existing system,
+if lets say there is a existing code on</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/258-0
+00:17:09.165 --> 00:17:09.565
+<v vc-abs>Me.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/260-2
+00:17:11.605 --> 00:17:16.932
+<v srdj-abs>the stack overflow, I can copy paste it.
+I face the same thing whenever I am like</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/260-3
+00:17:16.932 --> 00:17:20.765
+<v srdj-abs>my senior ask me like how did you come up
+with the system?</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/259-0
+00:17:19.645 --> 00:17:19.965
+<v vc-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/267-0
+00:17:21.245 --> 00:17:26.782
+<v srdj-abs>Did you stole it from the Internet?
+I was like truthful like I stole it from</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/261-0
+00:17:23.965 --> 00:17:24.445
+<v vc-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/267-1
+00:17:26.782 --> 00:17:32.608
+<v srdj-abs>the Internet. I learned it how it works.
+I like I know how it works on the upper</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/264-0
+00:17:30.005 --> 00:17:30.605
+<v vc-abs>Mhm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/267-2
+00:17:32.608 --> 00:17:37.787
+<v srdj-abs>level. I didn't implement it,
+but I know if I have to implement it from</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/267-3
+00:17:37.787 --> 00:17:42.605
+<v srdj-abs>the scratch, I will be able to,
+but I still copy pasted it so like</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/267-4
+00:17:42.605 --> 00:17:43.325
+<v srdj-abs>basically.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/268-0
+00:17:44.845 --> 00:17:49.069
+<v srdj-abs>For him,
+if I don't code it from my like using</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/268-1
+00:17:49.069 --> 00:17:52.125
+<v srdj-abs>like my own thing, I don't own it.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/270-0
+00:17:54.365 --> 00:17:59.989
+<v srdj-abs>You have the same resources as I have.
+If you cannot utilise them,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/270-1
+00:17:59.989 --> 00:18:04.773
+<v srdj-abs>it is not my problem.
+If you don't want to utilise them,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/270-2
+00:18:04.773 --> 00:18:09.810
+<v srdj-abs>you have the problem.
+That kind of scenario will stay there</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/269-0
+00:18:07.645 --> 00:18:09.565
+<v vc-abs>Yeah, that is.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/270-3
+00:18:09.810 --> 00:18:11.405
+<v srdj-abs>everywhere forever.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/274-0
+00:18:11.565 --> 00:18:14.855
+<v vc-abs>so actually like whatever actually he
+expects,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/274-1
+00:18:14.855 --> 00:18:20.385
+<v vc-abs>it makes sense only in very rare places.
+Let us say we are actually building a</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/274-2
+00:18:20.385 --> 00:18:25.705
+<v vc-abs>customer facing code which where actually
+security and the other things are</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/271-0
+00:18:21.485 --> 00:18:21.965
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/272-0
+00:18:24.285 --> 00:18:24.605
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/274-3
+00:18:25.705 --> 00:18:28.925
+<v vc-abs>important,
+then we have to be doubly careful.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/273-0
+00:18:27.725 --> 00:18:28.205
+<v srdj-abs>yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/275-0
+00:18:30.365 --> 00:18:34.550
+<v vc-abs>But actually most like we are building
+internal tools which may not be exposed</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/275-1
+00:18:34.550 --> 00:18:37.094
+<v vc-abs>anywhere.
+So here actually it is actually OK to</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/275-2
+00:18:37.094 --> 00:18:38.525
+<v vc-abs>like give a lot of control.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/276-0
+00:18:40.285 --> 00:18:44.538
+<v vc-abs>So the reason actually I was actually
+trying to like elaborate this is like you</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/276-1
+00:18:44.538 --> 00:18:48.845
+<v vc-abs>don't have to understand actually vector
+databases to implement a vector system.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/280-0
+00:18:50.845 --> 00:18:54.376
+<v vc-abs>Essentially,
+we have to ask actually ask it to like</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/280-1
+00:18:54.376 --> 00:18:58.586
+<v vc-abs>choose the right DB.
+All actually we have to know is actually</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/280-2
+00:18:58.586 --> 00:19:03.204
+<v vc-abs>like there should be a function that is
+exposed for us to query it,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/280-3
+00:19:03.204 --> 00:19:08.365
+<v vc-abs>how it stores it like as long as the
+answers are correct, like we are good.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/279-0
+00:19:03.565 --> 00:19:03.965
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/284-0
+00:19:09.005 --> 00:19:15.544
+<v srdj-abs>Yeah, it doesn't matter.
+I only dropped it because the book was</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/283-0
+00:19:11.165 --> 00:19:13.405
+<v vc-abs>So it doesn't look, yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/284-1
+00:19:15.544 --> 00:19:21.062
+<v srdj-abs>very large.
+It did not have a PDF with the text in it</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/284-2
+00:19:21.062 --> 00:19:26.477
+<v srdj-abs>was images.
+I had to use OCR to convert entire book.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/284-3
+00:19:26.477 --> 00:19:30.565
+<v srdj-abs>It was getting too boring, so I dropped.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/285-0
+00:19:30.645 --> 00:19:31.005
+<v srdj-abs>Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/286-0
+00:19:32.205 --> 00:19:35.912
+<v vc-abs>Yeah, that's what I was saying. Okay,
+knowledge actually does not hold any</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/286-1
+00:19:35.912 --> 00:19:36.605
+<v vc-abs>value anymore.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/288-0
+00:19:37.165 --> 00:19:37.565
+<v srdj-abs>yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/287-0
+00:19:37.965 --> 00:19:38.765
+<v vc-abs>Understanding this.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/291-0
+00:19:39.805 --> 00:19:41.662
+<v vc-abs>Essentially, we have to understand.
+Basically,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/291-1
+00:19:41.662 --> 00:19:43.085
+<v vc-abs>we should be able to reason through.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/292-0
+00:19:43.565 --> 00:19:44.125
+<v srdj-abs>Mhm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/295-0
+00:19:44.765 --> 00:19:47.559
+<v vc-abs>Essentially,
+if like what I was telling you,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/295-1
+00:19:47.559 --> 00:19:50.353
+<v vc-abs>like actually like become actually one
+data,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/295-2
+00:19:50.353 --> 00:19:53.645
+<v vc-abs>the actions data which is actually OLTP,
+sorry OLTP,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/295-3
+00:19:53.645 --> 00:19:57.930
+<v vc-abs>and we have actually this issues actually
+it is actually OLTP, okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/295-4
+00:19:57.930 --> 00:20:01.780
+<v vc-abs>For the first one,
+the candidate could be WB, the second one,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/295-5
+00:20:01.780 --> 00:20:04.947
+<v vc-abs>the candidate could be CQL 8,
+and for the 3rd one,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/295-6
+00:20:04.947 --> 00:20:07.245
+<v vc-abs>actually we have to ask it for again.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/296-0
+00:20:08.045 --> 00:20:08.765
+<v vc-abs>For knowledge.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/297-0
+00:20:17.245 --> 00:20:17.965
+<v srdj-abs>Mhm.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/298-0
+00:20:18.005 --> 00:20:20.285
+<v vc-abs>Yes, actually it is good.
+We will ask it to implement it.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/299-0
+00:20:21.205 --> 00:20:21.645
+<v srdj-abs>Right.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/300-0
+00:20:23.165 --> 00:20:25.085
+<v vc-abs>We don't actually very much about like
+what is there.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/302-0
+00:20:26.925 --> 00:20:29.645
+<v vc-abs>And actually the thing is actually all
+you have to know is to.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/304-0
+00:20:31.725 --> 00:20:34.413
+<v vc-abs>First,
+actually you should be able to like</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/304-1
+00:20:34.413 --> 00:20:39.539
+<v vc-abs>understand that we are storing knowledge
+and then you should be able to recognise</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/303-0
+00:20:36.285 --> 00:20:36.685
+<v srdj-abs>Yeah.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/304-2
+00:20:39.539 --> 00:20:43.165
+<v vc-abs>actually like what is it like vector is
+the right choice.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/305-0
+00:20:44.445 --> 00:20:49.224
+<v vc-abs>Even then, this one, what is it?
+Like this you don't have to know.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/305-1
+00:20:49.224 --> 00:20:53.005
+<v vc-abs>If it proposes,
+you should be able to like go ahead.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/308-0
+00:20:54.205 --> 00:20:58.791
+<v srdj-abs>No, I got a less silent.
+Its my mother most probably like when</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/307-0
+00:20:54.445 --> 00:20:56.605
+<v vc-abs>Should I wait? Okay.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/308-1
+00:20:58.791 --> 00:21:01.485
+<v srdj-abs>will I go down? I will call her. but.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/309-0
+00:21:00.685 --> 00:21:04.461
+<v vc-abs>Okay, I will try to close it.
+So what is it like just actually if</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/309-1
+00:21:04.461 --> 00:21:07.151
+<v vc-abs>actually its proposal make sense that is
+fine.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/309-2
+00:21:07.151 --> 00:21:11.615
+<v vc-abs>This open source thing it was actually
+discussing whatever you are showing it</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/309-3
+00:21:11.615 --> 00:21:15.735
+<v vc-abs>was and there is one other thing it
+actually cares a lot about actually</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/309-4
+00:21:15.735 --> 00:21:16.365
+<v vc-abs>encryption.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/310-0
+00:21:19.005 --> 00:21:21.627
+<v vc-abs>It cares about encryption,
+data privacy and what not,</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/310-1
+00:21:21.627 --> 00:21:25.511
+<v vc-abs>because actually people were actually
+paranoid about that for the past actually</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/310-2
+00:21:25.511 --> 00:21:27.988
+<v vc-abs>6 to 10 years.
+I believe a lot of open source code</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/310-3
+00:21:27.988 --> 00:21:30.125
+<v vc-abs>actually places a lot of value in this
+one.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/311-0
+00:21:31.965 --> 00:21:35.245
+<v srdj-abs>The encryption say data security.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/312-0
+00:21:32.765 --> 00:21:36.872
+<v vc-abs>Encryption,
+so just actually ask it to not to worry</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/312-1
+00:21:36.872 --> 00:21:39.005
+<v vc-abs>about encryption and stuff.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/313-0
+00:21:42.605 --> 00:21:44.245
+<v vc-abs>Okay, good.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/314-0
+00:21:42.845 --> 00:21:49.120
+<v srdj-abs>We just need a simple backup like even R
+sync with even S3 like one script with</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/314-1
+00:21:49.120 --> 00:21:54.925
+<v srdj-abs>the S3 could work like if you want to do
+just a back git up or something.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/316-0
+00:21:56.285 --> 00:22:03.245
+<v srdj-abs>Or D to Dvc like some like script basic
+script which can simply like a.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/315-0
+00:21:56.525 --> 00:21:57.725
+<v vc-abs>I'm not getting a disease again.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/317-0
+00:22:02.445 --> 00:22:05.805
+<v vc-abs>Give me one minute, man.
+I am being pulled. I have to drop.</v>
+
+9d4d31b5-4b30-4786-8b5a-6b069c12b255/318-0
+00:22:06.365 --> 00:22:06.645
+<v srdj-abs>Yeah.</v>
