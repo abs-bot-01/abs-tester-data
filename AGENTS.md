@@ -11,7 +11,7 @@ and runbooks. Do not treat this repository as an application under test.
    otherwise ask whether to create one.
 2. Read the project's `tester-data/projects/<project>/setup.md`,
    `knowledge/index.md`, and existing findings before testing.
-3. Read `pi-agent/TESTING_INSTRUCTIONS.md` and the relevant sections of
+3. Read `pi-agent/testing-instructions.md` and the relevant sections of
    `architecture.md` and `implementation-plan.md`.
 4. Use the local `bin/pi-tester-tool` wrapper for all store operations. Do not
    write run JSONL or generated reports by hand.

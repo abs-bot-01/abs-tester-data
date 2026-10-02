@@ -6,7 +6,7 @@ findings, runbooks, and knowledge in plain Open Knowledge Format (OKF v0.2)
 Markdown — no database, no front-end, files a human can read anywhere.
 
 This folder is the project's paper trail and the Pi-agent tester setup:
-transcripts, `Notes.md`, the design contract (`architecture.md`), the
+transcripts, `notes.md`, the design contract (`architecture.md`), the
 implementation plan, project instructions (`AGENTS.md`), Pi-agent execution
 instructions, and the portable store/desktop wrappers.
 
@@ -33,7 +33,7 @@ a run. Required host tools are Python 3, Xvfb, `xdpyinfo`, ImageMagick
 ## Current state (working)
 
 - **Pi-agent project entry point**: `AGENTS.md` and
-  `pi-agent/TESTING_INSTRUCTIONS.md` define the tester's workflow, safety
+  `pi-agent/testing-instructions.md` define the tester's workflow, safety
   boundary, evidence contract, and conversational behavior.
 - **Portable store implemented** (`tester-tools.py`, pure Python stdlib):
   project-scoped runs (append-only JSONL + generated OKF reports), findings
@@ -84,7 +84,7 @@ a run. Required host tools are Python 3, Xvfb, `xdpyinfo`, ImageMagick
 |---|---|
 | Design contracts (OKF, runbook flow) | `architecture.md` |
 | Implementation plan and status | `implementation-plan.md` |
-| Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/TESTING_INSTRUCTIONS.md` |
+| Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md` |
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
 | Project-scoped test data | `tester-data/projects/<project>/` |
 | Session transcript (design history) | `open-knowledge-format-and-embedded-evidence-009.vtt` |

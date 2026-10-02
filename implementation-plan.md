@@ -15,7 +15,7 @@ A working POC already runs on `abs-bot-01`:
 | Pi-agent tester with local desktop wrappers | Working locally; disposable Xvfb display `:1042`; launch/stop/capture/tool wrappers are in `bin/` |
 | `tester-tools.py` | Working store with subcommands: `run-start`, `action`, `poi`, `finding`, `run-complete`, `history`, `validate`, `knowledge-add` |
 | Storage | `tester-data/journals/<run-id>/run.jsonl`, `tester-data/artifacts/<run-id>/`, `tester-data/reports/<run-id>.md`, `pois.jsonl`, `findings.jsonl`, `knowledge.md`, `index.md` |
-| Agent instructions | `AGENTS.md` and `pi-agent/TESTING_INSTRUCTIONS.md` with workflow, safety, finding policy, and storage rules |
+| Agent instructions | `AGENTS.md` and `pi-agent/testing-instructions.md` with workflow, safety, finding policy, and storage rules |
 | Existing data | 4 real runs (GD-Math), 1 POI, 1 finding (drag anomaly), a live knowledge.md |
 
 The POC's concepts survive; the work below restructures storage, adds the missing documents, and changes the agent's workflow instructions to match the design.
@@ -87,7 +87,7 @@ Tasks:
 6. `validate` gains run checks: first/last event kinds, increasing `seq`, artifact paths resolving, exactly one header/footer.
 7. Findings' run anchors switch to the new path form (`runs/<run-id>/run.jsonl#seq=N`).
 
-Files touched: `tester-tools.py`, `bin/pi-tester-capture`, `AGENTS.md`, and `pi-agent/TESTING_INSTRUCTIONS.md`.
+Files touched: `tester-tools.py`, `bin/pi-tester-capture`, `AGENTS.md`, and `pi-agent/testing-instructions.md`.
 
 Acceptance: a new run produces one folder with `run.jsonl`, `artifacts/`, and after `run-report` an `index.md`; the report reads as a narrative with inline artifact references; validation passes.
 

@@ -148,7 +148,7 @@ The implementation includes:
 - Data validation.
 - Local disposable Xvfb desktop support using Pi-agent UI interaction tools.
 - Local wrappers for launching apps, stopping apps, and taking screenshots.
-- Pi-agent instructions in `AGENTS.md` and `pi-agent/TESTING_INSTRUCTIONS.md`.
+- Pi-agent instructions in `AGENTS.md` and `pi-agent/testing-instructions.md`.
 
 The setup is local to this repository and does not require a gateway, global
 agent profile, or system-wide skill installation.
