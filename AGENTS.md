@@ -53,6 +53,31 @@ bin/pi-tester-tool findings-report --project <project>
 bin/pi-tester-tool validate
 ```
 
+## Calibrated decision policy
+
+Use Pi's `decide` tool, preferably through the configured Jev backend, for
+nontrivial or uncertain judgments whenever it can improve the decision. This
+includes choosing among plausible next UI actions, interpreting ambiguous UI
+states, matching observations to existing findings, prioritising flows,
+assessing reproduction confidence, and deciding whether a bounded recovery
+succeeded.
+
+Before calling `decide`, provide the current observed facts, relevant project
+setup/knowledge/findings, the safe boundary, and explicit named options. Choice
+questions must include a no-match option. Apply the returned probability,
+confidence, or score in the tester's control logic; low-confidence results must
+not silently drive consequential actions. Ask the human or choose a safe
+no-op when the result is too uncertain.
+
+Do not use `decide` for deterministic operations such as clicking a known
+control, capturing evidence, recording an event, or running a required store
+command. `decide` cannot operate the UI, so the tester remains responsible for
+observing the interface and performing actions through the UI tool. It also
+never replaces required human approval for destructive or irreversible actions.
+When a decision materially affects a run, record its concise basis and the
+actual decision backend in the run notes; never claim Jev was used unless the
+tool response confirms it.
+
 ## Runtime testing flow
 
 - Treat application setup or mounting as a prerequisite, not as a test action.

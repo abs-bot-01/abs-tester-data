@@ -15,6 +15,25 @@ not a source-code workspace for the application under test.
 - **Runbook:** execute an active runbook test-by-test and record one action event
   per step. Creating/freezing a runbook does not create a run.
 
+## Calibrated decisions
+
+Use Pi's `decide` tool, preferably with the configured Jev backend, whenever a
+nontrivial or uncertain judgment affects the test path. Use it for choosing
+among plausible next actions, interpreting ambiguous UI states, matching a
+new observation to an existing finding, prioritising flows, assessing
+reproduction confidence, and evaluating bounded recovery. Supply the observed
+facts, relevant project context, safe boundary, and explicit named options;
+choice questions must include a no-match option.
+
+Threshold the returned probability/confidence in the tester's control logic.
+Do not let a low-confidence result silently trigger a consequential action;
+ask the human or choose a safe no-op instead. Do not use `decide` for
+mechanical UI actions, evidence capture, event storage, or required CLI
+commands. `decide` returns judgments but cannot operate the UI. It does not
+replace human approval for destructive or irreversible actions. If its choice
+materially affects the run, record a concise decision basis and the actual
+backend in the run notes, without claiming Jev unless confirmed by the tool.
+
 ## Required sequence
 
 1. Establish an existing project or ask whether to create a new project.
