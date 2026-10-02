@@ -10,7 +10,7 @@ The tester agent tests desktop applications like a human QA tester. Testing prod
 
 ### 1.1 System interaction
 
-The interaction is shown as four small diagrams instead of one tangled one: the core testing flow, the knowledge flow, the runbook's two directions, and where documents live.
+The interaction is shown as small diagrams instead of one tangled one: the core testing flow, the detailed runtime testing flow, the knowledge flow, the runbook's two directions, and where documents live.
 
 **(a) Core testing flow** — the human talks to the tester; the tester records what it does and what it notices:
 
@@ -21,6 +21,40 @@ flowchart LR
     T -->|in parallel, during the run| F[Findings]
     H -->|triage: ignore / act / correct| F
 ```
+
+**Runtime testing flow** — the run is more than a list of tester actions. Setup or mounting the application is a one-time prerequisite, not a test interaction. Once the human starts a run with its purpose and boundary, the tester proceeds autonomously while recording the complete event history locally and the selected test flow durably:
+
+```mermaid
+flowchart TD
+    S[Application setup / mount<br/>outside the run] --> H[Human starts run<br/>purpose + safe boundary]
+    H --> O[Open or launch application]
+    O --> L[Observe loading and initial state]
+    L --> A[Perform one meaningful action<br/>or observe an app event]
+    A --> E[Record event locally<br/>action, app, state-change, observation]
+    E --> C{Meaningful state/context<br/>change or important event?}
+    C -->|yes| D[Select event and capture evidence<br/>for the flow/report]
+    C -->|no| N[Keep local only]
+    D --> F{Deviation, anomaly, doubt,<br/>or blocked flow?}
+    N --> F
+    F -->|yes| FI[Record finding immediately<br/>while the run is live]
+    F -->|no| Q{More steps or flows?}
+    FI --> Q
+    Q -->|yes| A
+    Q -->|no| R[Complete run]
+    R --> P[Generate flow.md<br/>selected flow + evidence]
+    P --> M[Human reviews report/findings<br/>during or after the run]
+    M --> K[Human triages findings:<br/>retest, act, correct, or approve knowledge]
+```
+
+The human may monitor status and inspect evidence while the run is active or
+after it completes, but the tester should not pause for human input at every
+step. It communicates when a bounded recovery fails, the application is
+blocked, or a decision is required. A stuck flow is recorded as a finding; if
+another independent flow is safe to run, the tester may continue with it and
+summarise the blocked flow at completion. The durable `flow.md` is the selected
+test flow described in the transcript. `report.md` is retained as a generated
+compatibility copy for existing consumers. A bug-reproduction flow is the
+evidence exception: record the extra steps and screenshots needed to recreate it.
 
 **(b) Knowledge flow** — knowledge reaches the tester only through the human, and every run starts with what the KBs know. The human decides whether a fact belongs to one project or to every project:
 
@@ -90,8 +124,8 @@ tester-data/
         ├── index.md              ← directory listing: setup, runs, findings, knowledge, runbooks
         ├── setup.md              ← app location, how to launch, setup notes
         ├── runs/                 ← one folder per run (section 3)
-        ├── findings.md           ← human-readable findings (section 4)
-        ├── findings.jsonl        ← machine record behind findings.md
+        ├── findings.md           ← human-readable findings (section 4; durable)
+        ├── findings.jsonl        ← local machine record behind findings.md; never committed
         ├── knowledge/            ← project KB (section 5)
         └── runbooks/             ← one markdown file per runbook (section 6)
 ```
@@ -140,7 +174,7 @@ execution time.
 
 ## 3. Document 1 — Run
 
-**Purpose.** The factual, immutable record of one testing session. It is evidence, not opinion.
+**Purpose.** The factual record of one testing session while its local event history is retained. It is evidence, not opinion.
 
 **Producer.** The tester, automatically, while testing.
 **Consumers.** The human (to verify a finding's evidence) and the tester (in continue mode, to replicate prior steps).
@@ -151,10 +185,17 @@ One folder per run; the raw record, the human report, and the evidence live toge
 
 ```
 runs/<run-id>/
-├── run.jsonl        ← raw events, one JSON object per line (machine record)
-├── report.md        ← consolidated human-readable report (OKF concept)
-└── artifacts/       ← screenshots and captures referenced by events
+├── events.jsonl      ← local, high-volume event stream; one JSON object per line
+├── flow.md           ← selected human-readable test flow (OKF concept; durable)
+├── report.md         ← generated compatibility copy of flow.md
+└── artifacts/        ← selected screenshots and captures referenced by events
 ```
+
+`events.jsonl` is working storage, not a repository artefact. It may instead be
+materialised in a local database, but the logical stream is called **events**,
+not actions: an action is only one kind of event. JSON/JSONL machine records
+are never committed; see section 10. The report contains only selected events,
+so it is not a second copy of the high-volume stream.
 
 Screenshots are taken on a 1280×720 virtual display with the pointer position
 overlaid on the capture — a screenshot without a cursor makes pointer-driven
@@ -164,9 +205,17 @@ usually accept `--resolution 1280x720`).
 
 `run-id` format: `YYYYMMDD-HHMM-<slug>` (e.g. `20260901-1300-gd-math`). Run ids are unique and never reused.
 
-### 3.2 Event records (run.jsonl)
+### 3.2 Event records (events.jsonl)
 
-The atomic unit of the run is the **event**. The file contains three event kinds in order.
+The atomic unit of a run is an **event**, not an action. The stream records
+what happened during testing, including facts that were not caused by the
+tester: the app opened, loading continued for 15 seconds, a screen changed, a
+popup appeared, the app crashed, or a level loaded. A tester action (for
+example, selecting Play) is also an event. Events describe observed facts in
+past tense; they do not assert an interpretation that was not observed.
+
+The stream is append-only while the run is live and contains three record
+shapes in order.
 
 **Run header** — exactly one, first line:
 
@@ -174,27 +223,35 @@ The atomic unit of the run is the **event**. The file contains three event kinds
 |-------|----------|-------|
 | `event` | yes | `"run_started"` |
 | `run_id` | yes | as above |
-| `target` | yes | executable path (from project index) |
+| `target` | yes | executable path (from project setup) |
 | `project` | yes | project name |
 | `purpose` | yes | what this session is for |
 | `mode` | yes | `explore` \| `continue` \| `runbook` |
 | `boundary` | yes | the confirmed safe scope |
 | `status` | yes | `open` |
 
-**Action events** — zero or more:
+**Event entries** — zero or more, for every meaningful observed happening or
+action:
 
 | Field | Required | Value |
 |-------|----------|-------|
-| `seq` | yes | integer, strictly increasing, never reused |
-| `event` | yes | `"action"` |
+| `seq` | yes | integer, strictly increasing, never reused during the run |
+| `event` | yes | `"event"` |
 | `timestamp` | yes | ISO-8601 UTC |
-| `action` | yes | what was done |
-| `target` | no | UI element acted on |
+| `kind` | yes | `action` \| `app` \| `state-change` \| `observation` \| `system` |
+| `summary` | yes | concise, factual, past-tense description of what happened |
+| `actor` | no | `tester` \| `app` \| `human` \| `system` |
+| `target` | no | UI element or application state involved |
 | `expected` | no | what should have happened |
 | `observed` | no | what was actually seen |
-| `result` | yes | `passed` \| `failed` \| `blocked` \| `skipped` |
-| `artifacts` | no | relative paths into the run's `artifacts/` — **screenshots are attached to the event that produced them**, never orphaned in the folder |
-| `notes` | no | |
+| `result` | conditional | `passed` \| `failed` \| `blocked` \| `skipped`; required for a test action or outcome |
+| `artifacts` | no | relative paths into the run's `artifacts/`; a screenshot is attached to the event that produced it, never orphaned |
+| `notes` | no | additional factual context |
+
+Routine low-value interaction may still be retained in the local stream, but
+it must not automatically become a report entry or screenshot. A selected
+event is one that is important, records a context/state change, establishes a
+finding, or is needed to reproduce a bug.
 
 **Run footer** — exactly one, last line:
 
@@ -205,22 +262,43 @@ The atomic unit of the run is the **event**. The file contains three event kinds
 | `summary` | yes | one-paragraph human summary |
 | `timestamp` | yes | ISO-8601 UTC |
 
-### 3.3 Consolidated report (report.md)
+### 3.3 Consolidated flow (flow.md)
 
-After the run ends, the tester consolidates `run.jsonl` into `report.md`: an OKF frontmatter header (type `Run`, target, purpose, mode, boundary, result), a table of contents with per-step anchors, a coverage narrative in reading order with **evidence images embedded inline** (a step with several images lays them out as a table — chunks of four, one row per image with a notes cell beside it), a blocked-work list, and a summary. The raw JSONL is never deleted; the MD is generated from it. A front-end is not required — if run data ever grew too large to read as Markdown, the collection itself would be the problem.
+After the run ends, the tester consolidates the selected entries from the local
+event stream into `flow.md`: an OKF frontmatter header (type `Run`, target,
+purpose, mode, boundary, result), a table of contents with anchors, a coverage
+narrative in reading order, a meaningful-flow/state-change section, a
+blocked-work list, and a summary. The flow is a human-readable account of
+important events, not a line-for-line rendering of `events.jsonl`.
 
-Images are embedded, not linked, in both the run report and the findings document: these documents are read by a human scanning for what happened, and the files are generated mechanically, so document size is not a concern. When runbook mode was used, the report links back to the runbook it executed.
+The tooling also writes the same generated content to `report.md` as a
+compatibility copy for existing links and consumers.
+
+Screenshots are normally taken for important events and context/state changes:
+app opened or loaded, a new level or screen, a popup, a meaningful transition,
+or a finding. Do not take ten screenshots for ten routine moves when an initial
+state and the state immediately before the final transition explain the flow.
+A bug report is an explicit exception: capture the steps and states needed to
+make that bug reproducible, even when this produces more evidence than the
+normal sampling policy.
+
+Evidence images are embedded inline in the report and findings document. A
+step with several images lays them out as a table — chunks of four, one row per
+image with a notes cell beside it. The raw JSONL is not copied into the report
+and is not committed; it remains local working data or is retained in the local
+event database according to the retention policy. When runbook mode was used,
+the report links back to the runbook it executed.
 
 ### 3.4 Run result is transient
 
-The overall pass/fail outcome is communicated in chat at the end of a run and is **not persisted** as a separate artefact. A run delivers exactly two links: `runs/<run-id>/report.md` and `findings.md`. A failure worth keeping becomes a finding when the human asks for it to be recorded.
+The overall pass/fail outcome is communicated in chat at the end of a run and is **not persisted** as a separate artefact. A run delivers exactly two primary links: `runs/<run-id>/flow.md` and `findings.md`. `report.md` remains available as a compatibility copy. A failure worth keeping becomes a finding when the human asks for it to be recorded.
 
 ### 3.5 Rules
 
-1. Append-only. A written event line is never modified or deleted.
+1. Append-only while retained. A written event line is never modified; old local event data may be rotated or expired under the retention policy.
 2. Event `seq` numbers are unique and monotonically increasing per run.
 3. Every artifact path in an event must resolve inside that run's `artifacts/` folder.
-4. Findings reference run evidence by anchor: `runs/<run-id>/run.jsonl#seq=N` (or a range).
+4. Findings reference the durable selected section in `runs/<run-id>/flow.md`; they may also reference the local raw event by `runs/<run-id>/run.jsonl#seq=N` (or a range) when it is available.
 
 ---
 
@@ -233,8 +311,8 @@ The overall pass/fail outcome is communicated in chat at the end of a run and is
 
 ### 4.1 Two representations
 
-- `findings.jsonl` — machine record, append-style with fingerprint-based merging (one record per distinct issue, updated in place when re-observed). This is what the tester and future agents consume.
-- `findings.md` — the human document, **consolidated from the JSONL** and regenerated as findings change. The human reads only this.
+- `findings.jsonl` — local machine record, append-style with fingerprint-based merging (one record per distinct issue, updated in place when re-observed). This is what the tester and future agents consume while the local store is available; it is not committed.
+- `findings.md` — the durable human document, **consolidated from the local JSONL** and regenerated as findings change. The human reads only this; confirmed issues and knowledge-relevant decisions must survive in Markdown.
 
 ### 4.2 Findings document format (findings.md)
 
@@ -271,9 +349,11 @@ Several images in one section are laid out four per table — each row is one
 image with a notes cell beside it — instead of a long vertical list. Images are
 embedded with project-relative paths so the document renders correctly in any
 Markdown viewer, and each section links back to the run that produced it
-(`report.md`).
+(`flow.md`).
 
-**references:** `runs/20260831-1938-gd-math/run.jsonl#seq=4-7`
+**references:** `runs/20260831-1938-gd-math/flow.md#level-2-drag-and-drop`
+
+Optional local detail: `runs/20260831-1938-gd-math/events.jsonl#seq=4-7`
 
 **seen in:** 2 runs (first: 20260831-1938-gd-math, latest: 20260901-1400-gd-math)
 
@@ -363,6 +443,7 @@ Each entry is a claim with its source and review date, in behavioural present te
 3. KB entries are written as behaviour ("tap on X does Y when Z"), not as conversation logs.
 4. KB is the only legitimate way a finding gets suppressed — the suppression is recorded as a visible KB entry.
 5. KB content narrows, never widens, the tester's safety boundaries.
+6. Project KB Markdown is durable and committed; any machine index or JSON representation remains local.
 
 ---
 
@@ -437,12 +518,12 @@ Tasks (issues derived from findings, handed to a fixing agent) are a real part o
 
 | Document | Human reads via | Agent reads via |
 |----------|----------------|-----------------|
-| Run | chat summary with inline screenshots; `runs/<run-id>/report.md` | `run.jsonl` (continue mode) |
-| Findings | chat: one line per new finding; `findings.md` TOC | `findings.jsonl` |
+| Run | chat summary with selected inline screenshots; `runs/<run-id>/flow.md` | local `run.jsonl` or event database (continue mode) |
+| Findings | chat: one line per new finding; `findings.md` TOC | local `findings.jsonl` |
 | KB | the folder like personal notes; dictation happens in chat | `knowledge/index.md` + topic docs at session start |
 | Runbook | the file, or chat execution results test-by-test | the runbook file at execution |
 
-After any run the tester returns exactly two links: the run report and the findings document. Everything else is optional digging.
+After any run the tester returns exactly two primary links: the flow document and the findings document. The compatibility report and raw event record are optional digging.
 
 The data shrinks as it rises: a run may hold a hundred events, the findings ten entries, the KB one accepted fact. That funnel is the point — the human lives at the findings and KB level and only opens a run to verify a specific claim.
 
@@ -450,9 +531,62 @@ The data shrinks as it rises: a run may hold a hundred events, the findings ten 
 
 ## 9. Design principles
 
-1. **Facts are never rewritten.** Journals and findings are append-only; corrections happen as new records or in the KB, never by editing history.
-2. **Machine record inside, human document outside.** Every human-facing document is Markdown consolidated from a machine record; the machine record is never removed.
+1. **Facts are never rewritten.** The local event stream is append-only while retained; corrections happen as new records or in the KB, never by editing history.
+2. **Machine record inside, human document outside.** The local event stream is the factual working record; human-facing documents are Markdown distilled from selected events. The stream is not a repository artefact and may be retained in a local database or expired after its useful retention period.
 3. **The human owns the KB.** The tester may transcribe and propose; only the human confirms.
-4. **Evidence over inference.** Evidence is what happened, not what was concluded. Encouraged everywhere, mandatory nowhere.
+4. **Evidence over inference.** Evidence is what happened, not what was concluded. Important events and state changes are recorded; routine detail is sampled, and bug reproduction is the explicit exception.
 5. **Everything is project-scoped.** Documents outside a project are invalid; the global KB is the single, explicitly defined exception.
 6. **No front-end.** If tester data grows large enough to need one, the collection itself is wrong. Human-readable Markdown files are the interface.
+
+---
+
+## 10. Event storage and file-commit policy
+
+The event stream is intentionally high-volume. A long exploration can produce
+thousands of events, and an unbounded JSON file can grow until it consumes the
+machine's disk. The repository therefore stores conclusions and selected human
+context, not the raw telemetry.
+
+### 10.1 Local machine data
+
+- `events.jsonl` (or its local database equivalent) records all observed events,
+  including actions, application state changes, loading, crashes, popups, and
+  other factual observations. It is append-only while a run is active.
+- `findings.jsonl` is the local machine representation used for fingerprinting,
+  recurrence tracking, and regeneration of `findings.md`.
+- JSON/JSONL files are local working data and are never committed. They are
+  gitignored, stored per run or in the local event database, and may be
+  rotated, overwritten, or expired under a documented retention limit. If a
+  machine-readable history must be shared, it belongs in the database/store,
+  not in the repository as a large JSON file.
+- Local cleanup must not remove a durable Markdown finding, confirmed issue,
+  accepted knowledge entry, or the evidence image referenced by a committed
+  document.
+
+### 10.2 Durable Markdown data
+
+Markdown is the human-facing, reviewable record and may be committed. The
+following are required durable artefacts when they exist:
+
+- project and bundle indexes, setup, runbooks, and KB topic documents;
+- `runs/<run-id>/flow.md`, containing only selected important events and
+  state/context transitions; `report.md` is its compatibility copy; and
+- `findings.md`, especially confirmed issues, bugs, and decisions that affect
+  future testing.
+
+Issues/bugs and accepted knowledge **must** be committed because future agents
+need them after the test run and on another machine. Raw event JSON must not be
+committed merely to make a report reproducible: the report and its selected
+evidence are the reproducible human record. A Markdown file must not mirror all
+JSON events just to justify committing the JSON.
+
+### 10.3 Selection and evidence rules
+
+The tester selects events for Markdown when they are important, change the
+application's state or testing context, establish a meaningful flow boundary,
+or support a finding/bug. For example, record the app opening, completion of
+loading, entry into settings, a new level, the state before a final move, and a
+crash. Do not record every move or screenshot every intermediate board unless
+that detail is necessary to explain or reproduce a bug. Findings link back to
+the selected report section and, when available locally, to the precise event
+anchor.

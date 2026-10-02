@@ -36,7 +36,7 @@ a run. Required host tools are Python 3, Xvfb, `xdpyinfo`, ImageMagick
   `pi-agent/testing-instructions.md` define the tester's workflow, safety
   boundary, evidence contract, and conversational behavior.
 - **Portable store implemented** (`tester-tools.py`, pure Python stdlib):
-  project-scoped runs (append-only JSONL + generated OKF reports), findings
+  project-scoped runs (append-only JSONL + generated OKF flows/reports), findings
   (fingerprint-merged recurrence), project + global knowledge, runbooks
   (freeze → execute), history search, and OKF validation.
 - **Local wrappers included** under `bin/`: `pi-tester-tool`,
@@ -46,7 +46,7 @@ a run. Required host tools are Python 3, Xvfb, `xdpyinfo`, ImageMagick
   title, description, tags, generated-provenance); `index.md` files are plain
   listings; links are relationships (finding ↔ run, runbook ↔ run).
 - **Evidence pipeline**: screenshots on a disposable 1280×720 Xvfb display
-  with the cursor overlaid, capped at 1280px; run reports embed evidence
+  with the cursor overlaid, capped at 1280px; run flows/reports embed evidence
   inline (multiple images render 4-per-table).
 - **Launching works for supplied binaries and PATH commands** through the
   local Pi-agent launcher; extra arguments pass through to the application.
@@ -86,5 +86,5 @@ a run. Required host tools are Python 3, Xvfb, `xdpyinfo`, ImageMagick
 | Implementation plan and status | `implementation-plan.md` |
 | Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md` |
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
-| Project-scoped test data | `tester-data/projects/<project>/` |
+| Project-scoped test data | `tester-data/projects/<project>/` (runs contain `run.jsonl`, `flow.md`, compatibility `report.md`, and `artifacts/`) |
 | Session transcript (design history) | `open-knowledge-format-and-embedded-evidence-009.vtt` |

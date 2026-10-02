@@ -159,7 +159,7 @@ Acceptance: starting a session without project context produces the project ques
 - **`tester-tools.py`** is the single store implementation; all phases touch it. New subcommand surface after the plan: `project-create`, `project-list`, `run-start`, `action`, `run-complete`, `run-report`, `finding`, `finding-status`, `findings-report`, `kb-propose`, `kb-accept`, `kb-reject`, `runbook-create`, `runbook-validate`, `history`, `validate`. The `poi` and separate-report paths are removed.
 - **Agent instructions** (`AGENTS.md`, `TOOLS.md`, `RUNBOOK.md`) are updated in the same phase as the tooling they describe — the tester must never be instructed to use a command that no longer exists, and vice versa.
 - **Migration is one-way and scripted.** A single migration step (Phase 0) moves all existing data; no dual-format period. The pre-migration tree is archived, not deleted.
-- **Naming decision:** run folders are `runs/<run-id>/` with the report as `index.md` inside it (design §3.1 note resolved).
+- **Naming decision:** run folders are `runs/<run-id>/` with the selected flow as `flow.md` and a generated compatibility copy as `report.md`.
 - **Media delivery:** screenshots continue to be surfaced inline in chat via the existing allowed-roots mechanism; artifact copies inside project runs do not change that path.
 
 ---

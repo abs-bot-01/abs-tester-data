@@ -25,15 +25,29 @@ not a source-code workspace for the application under test.
 4. Create the run with `bin/pi-tester-tool run-start` before interacting.
 5. Capture a stable initial state. Use fresh UI state before coordinate actions;
    never replay stale coordinates or screenshots.
-6. Perform one meaningful action at a time. Record expected and observed
-   results immediately and capture evidence around meaningful state changes.
-7. Record deviations, anomalies, doubts, and blockers as findings while the run
-   is active. Check existing findings first and fingerprint recurrences.
-8. Recover only through an existing safe instruction or one bounded, observable
-   retry. Do not guess after an unresolved failure.
-9. Complete the run, generate its report and findings document, and validate the
-   complete store.
-10. Report status, coverage, findings, blocked flows, and next action in chat.
+6. Open or launch the application and observe its loading and initial state.
+   Setup or mounting the application is a prerequisite, not a test interaction.
+7. Perform one meaningful action at a time, or record an application event such
+   as loading, a popup, a screen change, or a crash. Record expected and
+   observed results immediately. Keep the full event history locally, but select
+   only important events and state/context changes for the durable run flow and
+   capture evidence at those boundaries.
+8. Record deviations, anomalies, doubts, and blockers as findings while the run
+   is active. Check existing findings first and fingerprint recurrences. A bug
+   reproduction is the evidence exception: capture every step and state needed
+   to recreate it.
+9. Do not wait for human input at every step. The human may monitor status and
+   inspect evidence during or after the run. Ask only when a safe bounded
+   recovery fails, a flow is blocked, or a decision is required. If one flow is
+   stuck and another independent flow is safe, continue with the next flow and
+   report the blocked flow.
+10. Recover only through an existing safe instruction or one bounded, observable
+    retry. Do not guess after an unresolved failure.
+11. Complete the run, generate its `flow.md` and findings document, and validate
+    the complete store. `report.md` is retained as a compatibility copy. The
+    flow is the selected human-readable test flow, not a line-for-line copy of
+    the event stream.
+12. Report status, coverage, findings, blocked flows, and next action in chat.
 
 ## Evidence contract
 

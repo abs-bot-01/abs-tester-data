@@ -13,8 +13,9 @@ Layout:
       index.md                          directory listing (OKF index, no frontmatter)
       setup.md                          launch + setup notes (OKF concept)
       runs/<run-id>/run.jsonl           append-only events (machine record)
-      runs/<run-id>/report.md           consolidated human report (OKF concept, generated)
-      runs/<run-id>/artifacts/          screenshots, bound to their events
+      runs/<run-id>/flow.md             selected human-readable test flow (OKF concept, generated)
+      runs/<run-id>/report.md            compatibility copy of the generated flow report
+      runs/<run-id>/artifacts/           screenshots, bound to their events
       findings.jsonl                    machine record behind findings.md
       findings.md                       human document (OKF concept, generated)
       knowledge/index.md + <topic>.md   project KB (topics are OKF concepts)
@@ -150,9 +151,11 @@ def rebuild_project_index(p):
     if runs:
         for jp in runs:
             rid=jp.parent.name
-            rep=jp.parent/"report.md"
-            desc=fm_field(rep.read_text(encoding="utf-8"),"description") if rep.exists() else ""
-            target=f"runs/{rid}/report.md" if rep.exists() else f"runs/{rid}/run.jsonl"
+            flow=jp.parent/"flow.md"
+            report=jp.parent/"report.md"
+            doc=flow if flow.exists() else report
+            desc=fm_field(doc.read_text(encoding="utf-8"),"description") if doc.exists() else ""
+            target=f"runs/{rid}/{doc.name}" if doc.exists() else f"runs/{rid}/run.jsonl"
             out.append(f"* [Run {rid}]({target}) - {desc or 'exploration/test run'}\n")
     else:
         out.append("No runs yet.\n")
@@ -274,9 +277,15 @@ def cmd_report(a):
     if arts:
         out.append("\n## Evidence\n\n")
         out+= "".join(f"- [{Path(x).name}]({x})\n" for x in arts)
-    atomic_write(rd/"report.md", "".join(out))
+    # flow.md is the canonical selected flow. Keep report.md as a generated
+    # compatibility copy for existing links and consumers.
+    content="".join(out)
+    atomic_write(rd/"flow.md", content)
+    atomic_write(rd/"report.md", content)
     rebuild_project_index(p)
-    print(json.dumps({"report":str((rd/'report.md').relative_to(ROOT)),"events":len(ev)}))
+    print(json.dumps({"flow":str((rd/'flow.md').relative_to(ROOT)),
+                      "report":str((rd/'report.md').relative_to(ROOT)),
+                      "events":len(ev)}))
 
 # ---------- findings ----------
 
@@ -343,7 +352,7 @@ def cmd_findings_report(a):
     out.append("\n")
     for i,x in enumerate(rows,1):
         out.append(f'<a id="f{i}"></a>\n\n## F{i} — {x.get("title")}\n\n')
-        out.append(f'**run:** [{x.get("run_id")}](runs/{x.get("run_id")}/report.md)\n\n')
+        out.append(f'**run:** [{x.get("run_id")}](runs/{x.get("run_id")}/flow.md)\n\n')
         if x.get("description"): out.append(f"**description:** {x['description']}\n\n")
         if x.get("steps"):
             out.append("**steps:**\n"); out+= "".join(f"{n}. {s}\n" for n,s in enumerate(x["steps"],1)); out.append("\n")
@@ -459,7 +468,7 @@ def cmd_runbook_freeze(a):
         extra=["status: draft", "version: 1",
                "sources:", f"  - id: run-{a.run_id}", f"    resource: runs/{a.run_id}/run.jsonl", f"    title: source run {a.run_id}"])
     out=[fmtext, f"# Runbook — {a.runbook_id}\n\n",
-         f"**source run:** [{a.run_id}](../runs/{a.run_id}/report.md) — purpose: {purpose}\n\n",
+         f"**source run:** [{a.run_id}](../runs/{a.run_id}/flow.md) — purpose: {purpose}\n\n",
          "## Setup\n\n- preconditions, test data, and window sizing (fill in from the source run)\n\n## Tests\n\n"]
     n=0
     for e in ev:
@@ -540,8 +549,8 @@ def cmd_validate(a):
                     for art in e.get("artifacts",[]):
                         if not (rdir/art).is_file(): problems.append(f"{rdir.name}: missing artifact {art}")
                 if e.get("event")=="run_completed" and i!=len(ev)-1: problems.append(f"{rdir.name}: run_completed is not last")
-            if ev and ev[-1].get("event")=="run_completed" and not (rdir/"report.md").is_file():
-                problems.append(f"{rdir.name}: completed run has no report.md (run-report)")
+            if ev and ev[-1].get("event")=="run_completed" and not (rdir/"flow.md").is_file():
+                problems.append(f"{rdir.name}: completed run has no flow.md (run-report)")
             checked.append(str(jp))
     print(json.dumps({"valid":not problems,"problems":problems},ensure_ascii=False))
     if problems: sys.exit(1)

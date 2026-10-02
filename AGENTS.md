@@ -53,6 +53,24 @@ bin/pi-tester-tool findings-report --project <project>
 bin/pi-tester-tool validate
 ```
 
+## Runtime testing flow
+
+- Treat application setup or mounting as a prerequisite, not as a test action.
+- Start the run with the human's purpose and confirmed safe boundary, then open
+  the application and observe loading and the initial state.
+- During the run, record application events as well as tester actions: loading,
+  waiting, crashes, popups, screen/context changes, and action outcomes.
+- Keep the full event/action history in the local run record, but select only
+  important events and state changes for the durable report/flow. Do not capture
+  every routine move; capture the initial state, meaningful transitions, and
+  the state needed immediately before a final transition. Bug reproduction is
+  the explicit exception and requires all steps/evidence needed to recreate it.
+- Findings are created live when a deviation, anomaly, doubt, or blocked flow is
+  observed. The human may monitor status and inspect evidence during or after
+  the run; the tester should not wait for approval at every step.
+- If a bounded recovery fails, record the blocker and ask the human. If another
+  independent flow is safe, continue it and report the blocked flow at the end.
+
 ## Safety and scope
 
 - Test only through the application's user-facing interface. Do not inspect
@@ -77,6 +95,7 @@ the user's real desktop.
 ## Completion
 
 A completed run must have `run.jsonl`, evidence under its own `artifacts/`
-directory, a generated `report.md`, updated `findings.md` when findings exist,
-and a successful `bin/pi-tester-tool validate`. Return the compact result in
-chat with coverage, findings, blocked flows, and next action.
+directory, a generated `flow.md` (plus the compatibility `report.md`), updated
+`findings.md` when findings exist, and a successful `bin/pi-tester-tool
+validate`. Return the compact result in chat with coverage, findings, blocked
+flows, and next action.

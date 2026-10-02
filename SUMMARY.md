@@ -28,6 +28,17 @@ There are three testing modes:
 
 Every real test session creates a **run record**. Creating a runbook does not create a run record.
 
+### Runtime flow of a test
+
+1. Application setup or mounting happens first; it is a prerequisite, not a test interaction.
+2. The human starts a run with its purpose and safe boundary.
+3. The tester opens the application, observes loading and the initial state, then explores or executes the selected flow.
+4. Every meaningful action **and application event** is recorded locally. This includes loading, waiting, crashes, popups, screen changes, and tester actions.
+5. Only important events and state/context changes are selected for the Markdown flow/report. Routine moves stay in local event storage. Evidence is sampled at meaningful boundaries rather than captured for every move.
+6. Findings are recorded live when a deviation, anomaly, doubt, or blocker appears. Bug reproduction is the exception and gets all steps and evidence needed to recreate it.
+7. The tester continues safe independent flows when one flow is blocked; otherwise it performs one bounded recovery or asks the human. The human can monitor status and inspect evidence during or after the run without approving every step.
+8. At completion, the tester generates the selected flow/report, findings document, and chat summary. Human triage determines whether findings are retested, treated as bugs, corrected with context, or promoted to knowledge.
+
 ## What gets stored
 
 The system keeps four main types of documents.
@@ -38,14 +49,14 @@ A run is the complete history of one test session.
 
 It stores:
 
-- Every important action.
+- Every important action and application event.
 - What was expected.
 - What actually happened.
 - Whether the action passed, failed, was blocked, or was skipped.
 - Screenshots and other evidence.
 - A generated human-readable report.
 
-The raw actions are stored as JSONL. The report is stored as Markdown.
+The raw events are stored as local JSONL. The durable selected flow is stored in `flow.md`; `report.md` is retained as a compatibility copy.
 
 ### 2. Findings
 
@@ -113,7 +124,7 @@ The screenshots include the mouse cursor, which makes pointer actions easier to 
 
 Evidence is stored inside the relevant run folder and embedded into:
 
-- Run reports.
+- Run flows/reports.
 - Finding reports.
 
 The final human-facing documents use plain Markdown and the Open Knowledge Format, so they can be read without a special database or web application.
@@ -139,7 +150,7 @@ The implementation includes:
 - A Python tool called `tester-tools.py`.
 - Project-scoped storage.
 - Append-only JSONL run logs.
-- Generated Markdown reports.
+- Generated Markdown flows/reports.
 - Screenshot capture.
 - Finding recurrence tracking.
 - Project and global knowledge.
