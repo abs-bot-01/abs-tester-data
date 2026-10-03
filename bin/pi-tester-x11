@@ -1,0 +1,169 @@
+#!/bin/sh
+# Verified native X11 input and capture helper for Pi-agent desktop runs.
+set -eu
+
+DISPLAY_NAME=${PI_TESTER_DISPLAY:-:1042}
+TIMEOUT_SECONDS=${PI_TESTER_X11_TIMEOUT:-3}
+
+usage() {
+  cat >&2 <<'EOF'
+usage:
+  pi-tester-x11 [--display DISPLAY] verify
+  pi-tester-x11 [--display DISPLAY] pointer
+  pi-tester-x11 [--display DISPLAY] click X Y [BUTTON]
+  pi-tester-x11 [--display DISPLAY] type TEXT
+  pi-tester-x11 [--display DISPLAY] key KEY [KEY ...]
+  pi-tester-x11 [--display DISPLAY] drag SX SY W1X W1Y W2X W2Y TX TY [HOLD] [STEP] [SETTLE]
+  pi-tester-x11 [--display DISPLAY] capture OUTPUT.png
+
+Drag requires two intermediate waypoints. Coordinates must come from a fresh
+screenshot on the validated display.
+EOF
+  exit 2
+}
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --display)
+      [ "$#" -ge 2 ] || usage
+      DISPLAY_NAME=$2
+      shift 2
+      ;;
+    --help|-h)
+      usage
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+for required_tool in /usr/bin/xdpyinfo /usr/bin/xdotool /usr/bin/import /usr/bin/timeout; do
+  [ -x "$required_tool" ] || { echo "missing required tool: $required_tool" >&2; exit 10; }
+done
+
+verify_display() {
+  /usr/bin/xdpyinfo -display "$DISPLAY_NAME" >/dev/null 2>&1 || {
+    echo "display is unavailable: $DISPLAY_NAME" >&2
+    exit 11
+  }
+}
+
+run_xdotool() {
+  DISPLAY="$DISPLAY_NAME" /usr/bin/timeout --signal=TERM "${TIMEOUT_SECONDS}s" \
+    /usr/bin/xdotool "$@"
+}
+
+is_int() {
+  case "$1" in
+    ''|*[!0-9-]*) return 1 ;;
+    *) return 0 ;;
+  esac
+}
+
+require_ints() {
+  for value in "$@"; do
+    is_int "$value" || { echo "coordinate/number must be an integer: $value" >&2; exit 2; }
+  done
+}
+
+capture_screen() {
+  output=$1
+  case "$output" in
+    *.png) : ;;
+    *) echo "capture output must end in .png: $output" >&2; exit 2 ;;
+  esac
+  mkdir -p "$(dirname -- "$output")"
+  /usr/bin/import -display "$DISPLAY_NAME" -window root -quality 90 "$output"
+  printf '{"display":"%s","backend":"ImageMagick import","artifact":"%s"}\n' "$DISPLAY_NAME" "$output"
+}
+
+[ "$#" -ge 1 ] || usage
+command=$1
+shift
+
+case "$command" in
+  verify)
+    [ "$#" -eq 0 ] || usage
+    verify_display
+    geometry=$(run_xdotool getdisplaygeometry)
+    printf '{"display":"%s","geometry":"%s","input_backend":"xdotool","screenshot_backend":"ImageMagick import","computer_use_invoked":false}\n' \
+      "$DISPLAY_NAME" "$geometry"
+    ;;
+
+  pointer)
+    [ "$#" -eq 0 ] || usage
+    verify_display
+    run_xdotool getmouselocation
+    ;;
+
+  click)
+    [ "$#" -ge 2 ] && [ "$#" -le 3 ] || usage
+    x=$1; y=$2; button=${3:-1}
+    require_ints "$x" "$y" "$button"
+    verify_display
+    run_xdotool mousemove --sync "$x" "$y"
+    run_xdotool click "$button"
+    printf '{"display":"%s","action":"click","x":%s,"y":%s,"button":%s,"input_backend":"xdotool"}\n' \
+      "$DISPLAY_NAME" "$x" "$y" "$button"
+    ;;
+
+  type)
+    [ "$#" -eq 1 ] || usage
+    verify_display
+    run_xdotool type --clearmodifiers "$1"
+    printf '{"display":"%s","action":"type","input_backend":"xdotool"}\n' "$DISPLAY_NAME"
+    ;;
+
+  key)
+    [ "$#" -ge 1 ] || usage
+    verify_display
+    run_xdotool key --clearmodifiers "$@"
+    printf '{"display":"%s","action":"key","input_backend":"xdotool"}\n' "$DISPLAY_NAME"
+    ;;
+
+  drag)
+    [ "$#" -ge 8 ] && [ "$#" -le 11 ] || usage
+    sx=$1; sy=$2; w1x=$3; w1y=$4; w2x=$5; w2y=$6; tx=$7; ty=$8
+    hold=${9:-0.20}; step=${10:-0.15}; settle=${11:-0.50}
+    require_ints "$sx" "$sy" "$w1x" "$w1y" "$w2x" "$w2y" "$tx" "$ty"
+    verify_display
+
+    pressed=0
+    release_pointer() {
+      if [ "$pressed" -eq 1 ]; then
+        run_xdotool mouseup 1 >/dev/null 2>&1 || true
+        pressed=0
+      fi
+    }
+    trap release_pointer EXIT INT TERM
+
+    run_xdotool mousemove --sync "$sx" "$sy"
+    run_xdotool mousedown 1
+    pressed=1
+    sleep "$hold"
+    run_xdotool mousemove --sync "$w1x" "$w1y"
+    sleep "$step"
+    run_xdotool mousemove --sync "$w2x" "$w2y"
+    sleep "$step"
+    run_xdotool mousemove --sync "$tx" "$ty"
+    sleep "$step"
+    run_xdotool mouseup 1
+    pressed=0
+    sleep "$settle"
+    trap - EXIT INT TERM
+    printf '{"display":"%s","action":"drag","source":[%s,%s],"waypoints":[[%s,%s],[%s,%s]],"target":[%s,%s],"input_backend":"xdotool"}\n' \
+      "$DISPLAY_NAME" "$sx" "$sy" "$w1x" "$w1y" "$w2x" "$w2y" "$tx" "$ty"
+    ;;
+
+  capture)
+    [ "$#" -eq 1 ] || usage
+    verify_display
+    capture_screen "$1"
+    ;;
+
+  *)
+    echo "unknown command: $command" >&2
+    usage
+    ;;
+esac

@@ -26,7 +26,8 @@ bin/pi-tester-tool validate
 For a desktop session, use `bin/pi-tester-display`, launch only the supplied
 application with `bin/pi-tester-launch`, and follow `AGENTS.md` before creating
 a run. Required host tools are Python 3, Xvfb, `xdpyinfo`, ImageMagick
-(`import`, `convert`, `mogrify`), and `xdotool`.
+(`import`, `convert`, `mogrify`), and `xdotool`. Native X11 input is provided
+by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 
 ---
 
@@ -40,14 +41,15 @@ a run. Required host tools are Python 3, Xvfb, `xdpyinfo`, ImageMagick
   (fingerprint-merged recurrence), project + global knowledge, runbooks
   (freeze → execute), history search, and OKF validation.
 - **Local wrappers included** under `bin/`: `pi-tester-tool`,
-  `pi-tester-display`, `pi-tester-launch`, `pi-tester-capture`, and
-  `pi-tester-stop`.
+  `pi-tester-display`, `pi-tester-launch`, `pi-tester-capture`,
+  `pi-tester-x11`, and `pi-tester-stop`.
 - **Documents in OKF v0.2**: every concept file carries frontmatter (`type`,
   title, description, tags, generated-provenance); `index.md` files are plain
   listings; links are relationships (finding ↔ run, runbook ↔ run).
 - **Evidence pipeline**: screenshots on a disposable 1280×720 Xvfb display
   with the cursor overlaid, capped at 1280px; run flows/reports embed evidence
-  inline (multiple images render 4-per-table).
+  inline (multiple images render 4-per-table). Native input and raw capture
+  are available through `bin/pi-tester-x11`.
 - **Launching works for supplied binaries and PATH commands** through the
   local Pi-agent launcher; extra arguments pass through to the application.
 
@@ -84,7 +86,7 @@ a run. Required host tools are Python 3, Xvfb, `xdpyinfo`, ImageMagick
 |---|---|
 | Design contracts (OKF, runbook flow) | `architecture.md` |
 | Implementation plan and status | `implementation-plan.md` |
-| Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md` |
+| Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md`, `pi-agent/native-x11.md` |
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
 | Project-scoped test data | `tester-data/projects/<project>/` (runs contain `run.jsonl`, `flow.md`, compatibility `report.md`, and `artifacts/`) |
 | Session transcript (design history) | `open-knowledge-format-and-embedded-evidence-009.vtt` |

@@ -34,8 +34,11 @@ bin/pi-tester-tool run-start --project <project> --run-id <run-id> \
   --target <target> --purpose <purpose> --mode explore
 ```
 
-Use Pi-agent's UI interaction capability for the supplied application's visible
-interface. Capture meaningful states with:
+Use the repository's native X11 helper for the supplied application's visible
+interface; do not use `computer_use` for this project. Read
+`pi-agent/native-x11.md` first, verify the display with
+`bin/pi-tester-x11 verify`, and use fresh screenshot-derived coordinates for
+input. Capture meaningful states with:
 
 ```bash
 bin/pi-tester-capture <project> <run-id> <label>
@@ -112,10 +115,13 @@ tool response confirms it.
 
 ## Backend provenance
 
-Record the actual interaction and screenshot backend in the run notes. Do not
-claim a backend merely because a tool exists. The default local display is
-Xvfb at `:1042`, 1280x720x24; it is disposable and must not be confused with
-the user's real desktop.
+Record the actual interaction and screenshot backend in the run notes. For
+native X11 runs use `input_backend=xdotool`,
+`screenshot_backend=ImageMagick import`, and
+`computer_use_invoked=false`. Do not claim a backend merely because a tool
+exists. The default local display is Xvfb at `:1042`, 1280x720x24; it is
+disposable and must not be confused with the user's real desktop. See
+`pi-agent/native-x11.md` for the command contract.
 
 ## Completion
 

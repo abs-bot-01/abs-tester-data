@@ -42,8 +42,10 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 3. Confirm target, purpose, safe boundary, and mode with the human when any of
    those are unclear.
 4. Create the run with `bin/pi-tester-tool run-start` before interacting.
-5. Capture a stable initial state. Use fresh UI state before coordinate actions;
-   never replay stale coordinates or screenshots.
+5. Capture a stable initial state. For this repository use the native X11
+   helper (`bin/pi-tester-x11`) rather than `computer_use`; verify the display
+   first and use fresh screenshot-derived coordinates before coordinate
+   actions. Never replay stale coordinates or screenshots.
 6. Open or launch the application and observe its loading and initial state.
    Setup or mounting the application is a prerequisite, not a test interaction.
 7. Perform one meaningful action at a time, or record an application event such
@@ -103,6 +105,8 @@ Use these wrappers instead of ad-hoc writes:
 - `bin/pi-tester-capture` — cursor-marked screenshot bound to a run.
 - `bin/pi-tester-stop` — stop an application started by the launcher.
 
-Use Pi-agent's available UI interaction tool for visible application actions.
-Do not use source inspection, hidden application APIs, production data, or
-security bypasses to obtain a result.
+Use `bin/pi-tester-x11` for visible application actions in this repository;
+its input backend is `xdotool` and its screenshot backend is ImageMagick
+`import`. Record `computer_use_invoked=false` when it is used. Do not use
+source inspection, hidden application APIs, production data, or security
+bypasses to obtain a result.
