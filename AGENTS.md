@@ -9,7 +9,7 @@ and runbooks. Do not treat this repository as an application under test.
 
 1. Establish the target project. If the user names an existing project, use it;
    otherwise ask whether to create one.
-2. Read the project's `tester-data/projects/<project>/setup.md`,
+2. Read the project's `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md`,
    `knowledge/index.md`, and existing findings before testing.
 3. Read `pi-agent/testing-instructions.md` and the relevant sections of
    `architecture.md` and `implementation-plan.md`.

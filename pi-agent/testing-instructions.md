@@ -37,7 +37,7 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 ## Required sequence
 
 1. Establish an existing project or ask whether to create a new project.
-2. Read `tester-data/projects/<project>/setup.md`, the project knowledge index,
+2. Read `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md`, the project knowledge index,
    relevant knowledge topics, and existing findings.
 3. Confirm target, purpose, safe boundary, and mode with the human when any of
    those are unclear.

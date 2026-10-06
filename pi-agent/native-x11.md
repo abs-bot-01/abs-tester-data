@@ -42,7 +42,7 @@ only after a fresh screenshot confirms it.
 Capture a raw root screenshot with:
 
 ```bash
-bin/pi-tester-x11 capture tester-data/projects/<project>/runs/<run-id>/artifacts/<label>.png
+bin/pi-tester-x11 capture /home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/runs/<run-id>/artifacts/<label>.png
 ```
 
 For the normal cursor-marked run artifact, prefer:

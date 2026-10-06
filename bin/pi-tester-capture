@@ -12,7 +12,8 @@ label=$3
 case "$project" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid project" >&2; exit 3 ;; esac
 case "$run_id" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid run id" >&2; exit 3 ;; esac
 case "$label" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid label" >&2; exit 3 ;; esac
-run_dir="$ROOT/tester-data/projects/$project/runs/$run_id"
+DATA_ROOT=${PI_TESTER_DATA_ROOT:-/home/abs-bot-01/dev/gd-math-config/testing}
+run_dir="$DATA_ROOT/projects/$project/runs/$run_id"
 out="$run_dir/artifacts/$label.png"
 [ -d "$run_dir" ] || { echo "run not found: $project/$run_id" >&2; exit 4; }
 mkdir -p "$run_dir/artifacts"

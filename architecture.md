@@ -116,7 +116,7 @@ All tester work is scoped to a **project** — one application under test. Every
 ### 2.1 Project folder
 
 ```
-tester-data/
+/home/abs-bot-01/dev/gd-math-config/testing/
 ├── index.md                 ← bundle-root listing (the only file allowed to carry okf_version)
 ├── global-knowledge.md      ← cross-project KB (section 8; the only document outside project scope)
 └── projects/
@@ -168,7 +168,7 @@ execution time.
 1. Every conversation with the tester starts with a project context.
 2. If the human hands the tester an application with no matching project, the tester **creates the project first**: records how to run it in `setup.md`, then proceeds.
 3. If a request arrives without project context, the tester asks: work with an existing project, or create a new one?
-4. Project folders sit under a single parent (`tester-data/projects/`). A future migration into a repository is expected; the parent-folder layout must not preclude it.
+4. Project folders sit under the external store root (`/home/abs-bot-01/dev/gd-math-config/testing/projects/`), separate from this tester repository.
 
 ---
 

@@ -19,7 +19,7 @@ Pi-agent project and used without a global agent workspace or installation.
 cd /home/abs-bot-01/dev/abs-tester-data
 bin/pi-tester-tool project-list
 bin/pi-tester-tool project-create --name <project>
-# Edit tester-data/projects/<project>/setup.md with the supplied app details.
+# Edit /home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md with the supplied app details.
 bin/pi-tester-tool validate
 ```
 
@@ -88,5 +88,7 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 | Implementation plan and status | `implementation-plan.md` |
 | Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md`, `pi-agent/native-x11.md` |
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
-| Project-scoped test data | `tester-data/projects/<project>/` (runs contain `run.jsonl`, `flow.md`, compatibility `report.md`, and `artifacts/`) |
+| Project-scoped test data | `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/` (runs contain `run.jsonl`, `flow.md`, compatibility `report.md`, and `artifacts/`) |
+
+The store root can be overridden for isolated runs with `PI_TESTER_DATA_ROOT`.
 | Session transcript (design history) | `open-knowledge-format-and-embedded-evidence-009.vtt` |

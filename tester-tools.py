@@ -5,21 +5,18 @@ Project-scoped documents; machine records (JSONL) inside, human documents
 (Markdown) outside. This script is the contract enforcer for machine records;
 the agent owns everything judgment-shaped.
 
-Layout:
-  tester-data/
-    index.md                            bundle-root listing (okf_version, OKF index)
-    global-knowledge.md                 cross-project KB (OKF concept)
-    projects/<project>/
-      index.md                          directory listing (OKF index, no frontmatter)
-      setup.md                          launch + setup notes (OKF concept)
-      runs/<run-id>/run.jsonl           append-only events (machine record)
-      runs/<run-id>/flow.md             selected human-readable test flow (OKF concept, generated)
-      runs/<run-id>/report.md            compatibility copy of the generated flow report
-      runs/<run-id>/artifacts/           screenshots, bound to their events
-      findings.jsonl                    machine record behind findings.md
-      findings.md                       human document (OKF concept, generated)
-      knowledge/index.md + <topic>.md   project KB (topics are OKF concepts)
-      runbooks/<runbook-id>.md          test plans (OKF concepts)
+Layout (under the configured external store root):
+  projects/<project>/
+    index.md                          directory listing (OKF index, no frontmatter)
+    setup.md                          launch + setup notes (OKF concept)
+    runs/<run-id>/run.jsonl           append-only events (machine record)
+    runs/<run-id>/flow.md             selected human-readable test flow (OKF concept, generated)
+    runs/<run-id>/report.md           compatibility copy of the generated flow report
+    runs/<run-id>/artifacts/          screenshots, bound to their events
+    findings.jsonl                    machine record behind findings.md
+    findings.md                       human document (OKF concept, generated)
+    knowledge/index.md + <topic>.md  project KB (topics are OKF concepts)
+    runbooks/<runbook-id>.md          test plans (OKF concepts)
 
 Markdown documents follow the Open Knowledge Format (OKF v0.2): every
 concept file carries YAML frontmatter with a `type` (plus title,
@@ -30,7 +27,8 @@ import argparse, datetime as dt, fcntl, hashlib, json, os, re, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DATA = ROOT / "tester-data"
+DEFAULT_DATA_ROOT = Path("/home/abs-bot-01/dev/gd-math-config/testing")
+DATA = Path(os.environ.get("PI_TESTER_DATA_ROOT", str(DEFAULT_DATA_ROOT))).expanduser()
 PROJECTS = DATA / "projects"
 GLOBAL_KB = DATA / "global-knowledge.md"
 NAME_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{2,100}$")
@@ -99,7 +97,7 @@ def parse_json(value, default):
 def rel_project_path(path, pname):
     """Normalize an image path so it resolves relative to project-root markdown files."""
     p = str(path).strip()
-    for pref in (f"tester-data/projects/{pname}/", "tester-data/"):
+    for pref in (f"projects/{pname}/", "projects/"):
         if p.startswith(pref): return p[len(pref):]
     return p
 
@@ -200,7 +198,7 @@ def cmd_project_create(a):
     rebuild_kb_index(p/"knowledge", s)
     rebuild_project_index(p)
     rebuild_root_index()
-    print(json.dumps({"project":s,"root":str(p.relative_to(ROOT))}))
+    print(json.dumps({"project":s,"root":str(p.relative_to(DATA))}))
 
 def cmd_project_list(a):
     out=[]
@@ -222,7 +220,7 @@ def cmd_start(a):
         if not a.runbook_id: die("runbook mode requires --runbook-id")
         header["runbook_id"]=slug(a.runbook_id) or die("invalid runbook id")
     append(rd/"run.jsonl", header)
-    print(json.dumps({"run_id":rid,"run_dir":str(rd.relative_to(ROOT)),"artifacts":str((rd/'artifacts').relative_to(ROOT))}))
+    print(json.dumps({"run_id":rid,"run_dir":str(rd.relative_to(DATA)),"artifacts":str((rd/'artifacts').relative_to(DATA))}))
 
 def cmd_action(a):
     ev=active_run(a.project, a.run_id); rd=project_dir(a.project)/"runs"/slug(a.run_id)
@@ -283,8 +281,8 @@ def cmd_report(a):
     atomic_write(rd/"flow.md", content)
     atomic_write(rd/"report.md", content)
     rebuild_project_index(p)
-    print(json.dumps({"flow":str((rd/'flow.md').relative_to(ROOT)),
-                      "report":str((rd/'report.md').relative_to(ROOT)),
+    print(json.dumps({"flow":str((rd/'flow.md').relative_to(DATA)),
+                      "report":str((rd/'report.md').relative_to(DATA)),
                       "events":len(ev)}))
 
 # ---------- findings ----------
@@ -373,7 +371,7 @@ def cmd_findings_report(a):
             out.append(f"**proposed for KB:** {x['proposed_for_kb']} *(awaiting human confirmation)*\n\n")
     atomic_write(p/"findings.md", "".join(out))
     rebuild_project_index(p)
-    print(json.dumps({"report":str((p/'findings.md').relative_to(ROOT)),"findings":len(rows)}))
+    print(json.dumps({"report":str((p/'findings.md').relative_to(DATA)),"findings":len(rows)}))
 
 # ---------- knowledge ----------
 
@@ -396,14 +394,14 @@ def cmd_kb_add(a):
         if not GLOBAL_KB.exists():
             atomic_write(GLOBAL_KB, fm("Knowledge", "Global knowledge", "Cross-project knowledge: standing decisions, environment facts, and rules that apply beyond a single project.", tags=["knowledge","global"]))
         with GLOBAL_KB.open("a",encoding="utf-8") as f: f.write("\n" + entry)
-        print(json.dumps({"saved":str(GLOBAL_KB.relative_to(ROOT)),"scope":"global"}))
+        print(json.dumps({"saved":str(GLOBAL_KB.relative_to(DATA)),"scope":"global"}))
         return
     kb=project_dir(a.project)/"knowledge"
     topic=slug(a.topic) or die("invalid topic slug")
     if a.topic not in KB_TOPICS: die(f"topic must be one of {KB_TOPICS}")
     with (kb/f"{topic}.md").open("a",encoding="utf-8") as f: f.write("\n"+entry)
     rebuild_kb_index(kb, a.project)
-    print(json.dumps({"saved":str((kb/f'{topic}.md').relative_to(ROOT)),"topic":topic}))
+    print(json.dumps({"saved":str((kb/f'{topic}.md').relative_to(DATA)),"topic":topic}))
 
 def cmd_kb_propose(a):
     p=project_dir(a.project); rows=lines(p/"findings.jsonl")
@@ -454,7 +452,7 @@ def cmd_runbook_create(a):
                    f"created_by: {'human' if a.human else ACTOR}"])
         atomic_write(rb, fmtext + f"# Runbook — {a.title}\n\n## Setup\n\n(preconditions)\n\n## Tests\n\n### T1 — (title)\n\n- **objective:**\n- **steps:** 1.\n- **expected:**\n- **evidence:**\n")
     rebuild_project_index(p)
-    print(json.dumps({"runbook":str(rb.relative_to(ROOT)),"status":"created"}))
+    print(json.dumps({"runbook":str(rb.relative_to(DATA)),"status":"created"}))
 
 def cmd_runbook_freeze(a):
     p=project_dir(a.project); rd=p/"runs"/slug(a.run_id); ev=run_events(rd)
@@ -483,7 +481,7 @@ def cmd_runbook_freeze(a):
         out.append("\n")
     atomic_write(rb, "".join(out))
     rebuild_project_index(p)
-    print(json.dumps({"runbook":str(rb.relative_to(ROOT)),"tests":n,"status":"draft"}))
+    print(json.dumps({"runbook":str(rb.relative_to(DATA)),"tests":n,"status":"draft"}))
 
 def cmd_runbook_validate(a):
     targets=[(a.runbook_id,)] if a.runbook_id else [(p.name,) for p in sorted((project_dir(a.project)/'runbooks').glob('*.md'))]
@@ -510,7 +508,7 @@ def cmd_history(a):
     q=a.query.casefold(); hits=[]
     for f in DATA.rglob("*"):
         if f.is_file() and f.suffix in (".jsonl",".md") and q in f.read_text(encoding="utf-8",errors="replace").casefold():
-            hits.append(str(f.relative_to(ROOT)))
+            hits.append(str(f.relative_to(DATA)))
     print(json.dumps({"query":a.query,"matches":sorted(set(hits))},ensure_ascii=False))
 
 def cmd_validate(a):
@@ -518,7 +516,7 @@ def cmd_validate(a):
     if not GLOBAL_KB.exists(): problems.append("missing global-knowledge.md")
     elif not fm_field(GLOBAL_KB.read_text(encoding="utf-8"),"type"): problems.append("global-knowledge.md: missing OKF frontmatter/type")
     if (DATA/"index.md").exists():
-        checked.append("tester-data/index.md (bundle root)")
+        checked.append("index.md (bundle root)")
     for p in sorted(PROJECTS.glob("*")):
         if not p.is_dir(): continue
         for sub,why in (("index.md","project index.md"),("knowledge/index.md","knowledge index"),("setup.md","setup.md")):
