@@ -1,0 +1,484 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.000
+Speaker 1: It shouldn't be here, right? Because it's not specifically needed for this global knowledge in tester data, in this testing.
+
+00:00:05.000 --> 00:00:14.000
+Speaker 1: Global knowledge is like, what do I say? Where is the short filter in the system? Okay. Like what if the CPU is used a lot? What to do in such cases? Global knowledge across projects.
+
+00:00:14.000 --> 00:00:17.000
+Speaker 1: But there should be project-specific knowledge filter.
+
+00:00:17.000 --> 00:00:18.000
+Speaker 1: Okay, Anna.
+
+00:00:18.000 --> 00:00:27.000
+Speaker 1: That's it. Otherwise, is the folder structure created correctly? Everything is correct. So far, there are no findings. But if it costs 2 rupees, they checked only one level. Only one board is the introduction.
+
+00:00:27.000 --> 00:00:29.000
+Speaker 1: Have we started using zip? Not using zip?
+
+00:00:29.000 --> 00:00:32.000
+Speaker 1: No, he just said it's in his file normally.
+
+00:00:32.000 --> 00:00:35.000
+Soumya: Soumya, what do you say?
+
+00:00:35.000 --> 00:00:40.000
+Soumya: She said it's for the decision tool. It will run if we test it now. It will work.
+
+00:00:40.000 --> 00:00:44.000
+Speaker 1: Did he deploy something called a decision tool?
+
+00:00:44.000 --> 00:00:51.000
+Speaker 1: Yes, they said so today. But I thought it should take decisions generally for everything. That's how it should be done, right?
+
+00:00:51.000 --> 00:00:55.000
+Speaker 1: The tool comes when running the test. It runs inside.
+
+00:00:55.000 --> 00:00:58.000
+Speaker 1: Okay. So I think the errors are coming from that, Anna.
+
+00:00:58.000 --> 00:01:04.000
+Speaker 1: Okay. I saw the estimate and thought if I could reduce it. You are talking about a second board, right?
+
+00:01:05.000 --> 00:01:11.000
+Speaker 1: Did it cost 2 rupees to test just one board? Or did you divide 20 by testing one level?
+
+00:01:11.000 --> 00:01:14.000
+Speaker 1: No, no, no. It was only one board, not divided into 20 levels.
+
+00:01:14.000 --> 00:01:17.000
+Speaker 1: Was that level only one board? Introduction level.
+
+00:01:17.000 --> 00:01:21.000
+Speaker 1: Just checking if it works. I even mentioned that base cost, remember?
+
+00:01:21.000 --> 00:01:27.000
+Anna: Base cost plus the fixed cost and variable cost. Fixed cost is like the base cost, and variable cost depends on the unit.
+
+00:01:27.000 --> 00:01:33.000
+Speaker 1: Looking at it, there are like 20 boards in the level, or maybe not. There are 5 boards in 10 levels. 3 each, with 6 boards.
+
+00:01:33.000 --> 00:01:36.000
+Speaker 1: See, take any board. Try doing it for two or three.
+
+00:01:36.000 --> 00:01:39.000
+Speaker 1: There are 3 boards, right? How much does it cost for 3 boards? How much for 6 boards? The levels should be somewhat similar.
+
+00:01:39.000 --> 00:01:43.000
+Anna: Okay.
+
+00:01:43.000 --> 00:01:50.000
+Speaker 1: Okay, measure that. Then I will update you. Yes, yes. We also need to know what the fixed cost and variable cost are.
+
+00:01:50.000 --> 00:01:55.000
+Speaker 1: That is, what is your cost to start the level? Okay. I need to know the cost to complete each individual board.
+
+00:01:55.000 --> 00:02:00.000
+Speaker 1: Actually, our target is, if we give 2 rupees, it won't work. Just a minute, I'll be right back.
+
+00:02:00.000 --> 00:02:03.000
+Speaker 1: We can look at it that way. One way or another, again.
+
+00:02:03.000 --> 00:02:05.000
+Speaker 1: Vijaya.
+
+00:02:05.000 --> 00:02:11.000
+Speaker 1: Actually, for this, one way or another, how are you taking the reduction? We have based the reduction on 600 levels, right?
+
+00:02:11.000 --> 00:02:16.000
+Speaker 1: Okay, 600 into 20 would be 12,000 rupees initially, because of the Euro cost.
+
+00:02:16.000 --> 00:02:19.000
+Speaker 1: Okay, if we need 2 now, it will cost 1200 rupees.
+
+00:02:19.000 --> 00:02:25.000
+Speaker 1: I'm fine with a complete reduction of 120 rupees. Sachin.
+
+00:02:25.000 --> 00:02:32.000
+Speaker 1: Now we can reduce it by 10 times. That is, this can be further reduced by 10 times. If that seems impossible, then there are representative levels, right?
+
+00:02:32.000 --> 00:02:40.000
+Speaker 1: For the representative levels, instead of listing them, we can try to reduce the board count alone to automate them.
+
+00:02:40.000 --> 00:02:41.000
+Anna: Okay, Anna. Okay.
+
+00:02:41.000 --> 00:02:47.000
+Speaker 1: So, instead of testing everything, if the cost is reduced, we will drop these levels.
+
+00:02:47.000 --> 00:02:53.000
+Speaker 1: Board count. Now, that is, if it's for everything, there are up to 40 levels. That is, at the current price, it costs 1200 rupees.
+
+00:02:53.000 --> 00:02:59.000
+Speaker 1: Okay, if you reduce the board count to 1/10th, that is, instead of 20 boards, you sell 2 boards, it will cost 120 rupees now.
+
+00:02:59.000 --> 00:03:07.000
+Speaker 1: Still, we need to develop this. That is, before the product was published, we can run this test.
+
+00:03:07.000 --> 00:03:08.000
+Anna: Okay.
+
+00:03:08.000 --> 00:03:13.000
+Speaker 1: Besides that, let's see. But let's see if the cost can be further reduced. Okay.
+
+00:03:13.000 --> 00:03:14.000
+Anna: What is this?
+
+00:03:14.000 --> 00:03:16.000
+Speaker 1: That one.
+
+00:03:16.000 --> 00:03:17.000
+Speaker 1: Next is.
+
+00:03:17.000 --> 00:03:19.000
+Speaker 1: Okay, okay. That one.
+
+00:03:19.000 --> 00:03:23.000
+Speaker 1: Next, I thought you asked something, but it's not here.
+
+00:03:23.000 --> 00:03:26.000
+Speaker 1: Next is.
+
+00:03:26.000 --> 00:03:31.000
+Speaker 1: For now, we will only apply the positive case. That is, assuming it will pass and move on.
+
+00:03:31.000 --> 00:03:37.000
+Speaker 1: Can we move it incorrectly and see if it bounces when put in a slot? Take that test once and ask for a screenshot.
+
+00:03:37.000 --> 00:03:38.000
+Anna: Okay, Anna. Okay.
+
+00:03:38.000 --> 00:03:43.000
+Speaker 1: But we don't need to store it while speaking, right? Because they haven't done it yet.
+
+00:03:43.000 --> 00:03:46.000
+Speaker 1: We can do this.
+
+00:03:46.000 --> 00:03:48.000
+Anna: Screenshot.
+
+00:03:48.000 --> 00:03:50.000
+Speaker 1: To submit, to store, is that different, Anna?
+
+00:03:50.000 --> 00:03:51.000
+Anna: Okay, okay, okay.
+
+00:03:51.000 --> 00:03:52.000
+Anna: Okay, Anna.
+
+00:03:52.000 --> 00:03:56.000
+Speaker 1: To submit, to store, is different. So, what's the matter is, you, like, screenshot.
+
+00:03:56.000 --> 00:04:01.000
+Speaker 1: So, keep this. The data within the run will mostly not be used.
+
+00:04:01.000 --> 00:04:06.000
+Speaker 1: How? Like, across, like, you don't need to see the run they executed.
+
+00:04:06.000 --> 00:04:10.000
+Speaker 1: Okay. So what can be done is, the runner, right? Keep a folder for the runs generally.
+
+00:04:10.000 --> 00:04:15.000
+Speaker 1: And commit that entire folder to Git. Okay. But the issue is, only the findings are there, right?
+
+00:04:15.000 --> 00:04:20.000
+Speaker 1: How should the findings and knowledge be committed? Okay. Knowledge issues, all that should be committed. Things that are used in the long run.
+
+00:04:20.000 --> 00:04:22.000
+Speaker 1: One second.
+
+00:04:22.000 --> 00:04:25.000
+Anna: Okay, Anna.
+
+00:04:25.000 --> 00:04:31.000
+Speaker 1: If the same run is committed, and if that run is needed for some reason, put it in the database or something. Like, if you need to see their run, take a screenshot. If it's still needed beyond that.
+
+00:04:31.000 --> 00:04:36.000
+Speaker 1: We will find another way to work on it. Okay.
+
+00:04:36.000 --> 00:04:37.000
+Anna: Okay, Anna.
+
+00:04:37.000 --> 00:04:38.000
+Speaker 1: Okay, Anna.
+
+00:04:38.000 --> 00:04:43.000
+Anna: Now, for example, you are saying that when I put the wrong thing in the slot, I need to check if it's rejected.
+
+00:04:43.000 --> 00:04:48.000
+Anna: It has been checked and tested. But if it doesn't report it as a finding, because it's working correctly. Or if it reports it as incorrect.
+
+00:04:48.000 --> 00:04:54.000
+Speaker 1: A finding is something that is not normal, out of the ordinary. Now, this.
+
+00:04:54.000 --> 00:04:58.000
+Speaker 1: Just a moment. That is.
+
+00:04:58.000 --> 00:05:01.000
+Speaker 1: Okay, I'm listening. I'll tell you after that.
+
+00:05:01.000 --> 00:05:10.000
+Speaker 1: Now, for now, let's move what we are finding to this particular knowledge folder. This is knowledge. We should move it to here so that it is knowledge and will continue to happen like this in the future, right?
+
+00:05:10.000 --> 00:05:13.000
+Speaker 1: It won't be within the overall GT math context.
+
+00:05:13.000 --> 00:05:17.000
+Speaker 1: Because we already discussed what context means the other day.
+
+00:05:17.000 --> 00:05:20.000
+Speaker 1: Both can exist, Anna. Actually, the gameplay mechanics, right?
+
+00:05:20.000 --> 00:05:22.000
+Speaker 1: It's very simple.
+
+00:05:22.000 --> 00:05:24.000
+Speaker 1: Don't give duplicates.
+
+00:05:24.000 --> 00:05:26.000
+Anna: It should not be duplicate data. Okay.
+
+00:05:26.000 --> 00:05:30.000
+Speaker 1: Wherever there are duplicates, try to avoid them, sister.
+
+00:05:30.000 --> 00:05:31.000
+Anna: Hmm.
+
+00:05:31.000 --> 00:05:36.000
+Speaker 1: Okay. So, the board is as it is now. How to play it? If you put it here, it will bounce.
+
+00:05:36.000 --> 00:05:40.000
+Speaker 1: Okay. How the objects will work.
+
+00:05:40.000 --> 00:05:42.000
+Speaker 1: Hmm.
+
+00:05:42.000 --> 00:05:45.000
+Speaker 1: Okay, all this is testing, right?
+
+00:05:45.000 --> 00:05:46.000
+Anna: Yes, brother.
+
+00:05:46.000 --> 00:05:50.000
+Speaker 1: You need all this for development, right?
+
+00:05:50.000 --> 00:05:51.000
+Anna: Hmm.
+
+00:05:51.000 --> 00:05:52.000
+Anna: Yes.
+
+00:05:52.000 --> 00:05:58.000
+Speaker 1: Because if you make a change in development, it will work in testing. That's what we discussed a long time ago. I remember what we were talking about.
+
+00:05:58.000 --> 00:06:03.000
+Speaker 1: I was walking through the village, and then I went towards the borewell, I don't know if you know that area.
+
+00:06:03.000 --> 00:06:07.000
+Speaker 1: What I was talking about was how testing should be done. That is, requirements will be worked on. That is, requirements will be stated. Implementation will be done.
+
+00:06:07.000 --> 00:06:12.000
+Speaker 1: At the place where requirements are stated, both the tester and the developer should be present. Okay.
+
+00:06:12.000 --> 00:06:17.000
+Speaker 1: So that everyone is on the same page. When the tester tests, they will know if the developer has met the requirements, right?
+
+00:06:17.000 --> 00:06:19.000
+Anna: Yes, brother.
+
+00:06:19.000 --> 00:06:25.000
+Speaker 1: So the important thing here is that the requirements should be understandable to both the developer and the tester. When the developer develops in the future, the same thing should come to this testing agent as your agent.
+
+00:06:25.000 --> 00:06:26.000
+Anna: Input.
+
+00:06:26.000 --> 00:06:30.000
+Speaker 1: So, what is it, we haven't discussed anything yet. What we discussed was, like, this.
+
+00:06:30.000 --> 00:06:36.000
+Speaker 1: What to say, like, where the extra knowledge for this testing will come from, we haven't configured that yet.
+
+00:06:36.000 --> 00:06:39.000
+Speaker 1: This project, the project, this folder name might change.
+
+00:06:39.000 --> 00:06:41.000
+Anna: Hmm.
+
+00:06:41.000 --> 00:06:45.000
+Speaker 1: So that will also need to be configured and considered for this folder. Others should not be.
+
+00:06:45.000 --> 00:06:49.000
+Speaker 1: Actually, the problem is that you already have the code.
+
+00:06:49.000 --> 00:06:53.000
+Speaker 1: Hmm. When you lift and put it in the config, the problem is that the code itself can understand other folders too.
+
+00:06:53.000 --> 00:06:57.000
+Speaker 1: Hmm. So, you know, that testing, that thing, right? That tool, right?
+
+00:06:57.000 --> 00:07:02.000
+Speaker 1: That tool should be able to say, like, you should not look at folders outside of this one folder.
+
+00:07:02.000 --> 00:07:07.000
+Speaker 1: Unless the user explicitly says that the context is in this folder, it should not do that.
+
+00:07:07.000 --> 00:07:11.000
+Speaker 1: So, storing that context information in a JSON file or a YAML file is what we need to commit.
+
+00:07:11.000 --> 00:07:14.000
+Anna: Hmm.
+
+00:07:14.000 --> 00:07:17.000
+Speaker 1: It will mostly be a relative path since it's within the same project.
+
+00:07:17.000 --> 00:07:19.000
+Anna: Okay.
+
+00:07:19.000 --> 00:07:24.000
+Speaker 1: So, instead of calling it 'tester data' as they might have short-handed, we should state it as knowledge globally.
+
+00:07:24.000 --> 00:07:29.000
+Speaker 1: You should not check that folder either. If the user says the context file is here, then only do that.
+
+00:07:29.000 --> 00:07:34.000
+Speaker 1: So, the context for GT math is here, and that can be set up within the GT math testing folder or within the reading of this project itself.
+
+00:07:34.000 --> 00:07:37.000
+Anna: Yes, it can be in the reading within that testing folder, or as an identity data point.
+
+00:07:37.000 --> 00:07:40.000
+Speaker 1: It's better to have it in a JSON file.
+
+00:07:40.000 --> 00:07:41.000
+Anna: Okay.
+
+00:07:41.000 --> 00:07:42.000
+Anna: Okay.
+
+00:07:42.000 --> 00:07:47.000
+Speaker 1: The JSON structure will not change across projects. That is, the keys in the JSON will be the same, but the values might change depending on the project.
+
+00:07:47.000 --> 00:07:51.000
+Speaker 1: Since we committed it, it will be almost the same across projects.
+
+00:07:51.000 --> 00:07:55.000
+Speaker 1: Technically, the value might change. For one, the context might come from the root directory.
+
+00:07:55.000 --> 00:08:00.000
+Speaker 1: That is, telling it to take the entire root directory as context. In another project, it might be just within a folder named 'requirements'.
+
+00:08:00.000 --> 00:08:02.000
+Anna: Mmm.
+
+00:08:02.000 --> 00:08:07.000
+Speaker 1: Now, this is context. This knowledge, which is specific to testing.
+
+00:08:07.000 --> 00:08:16.000
+Speaker 1: Okay. What it means is, you know, I need to create a separate list for the representative levels, right?
+
+00:08:16.000 --> 00:08:18.000
+Anna: Ah.
+
+00:08:18.000 --> 00:08:26.000
+Speaker 1: Instead of creating a separate list, you can actually simplify it. If representative levels are there, you only need to test two boards when you are testing.
+
+00:08:26.000 --> 00:08:27.000
+Anna: Mmm.
+
+00:08:27.000 --> 00:08:28.000
+Anna: Okay, okay, okay.
+
+00:08:28.000 --> 00:08:37.000
+Speaker 1: The board is for casting, so it's not representative. Generally, instead of testing the entire level explicitly, if asked to test just that level, test only two boards.
+
+00:10:00.000 --> 00:10:03.000
+Speaker 1: knowledge.
+
+00:10:03.000 --> 00:10:04.000
+Speaker 1: Okay anna, okay.
+
+00:10:04.000 --> 00:10:07.000
+Speaker 1: No, how to open the spinner will come at the project level tomorrow.
+
+00:10:07.000 --> 00:10:10.000
+Speaker 1: Project specific, project testing specific.
+
+00:10:10.000 --> 00:10:11.000
+Speaker 1: Okay.
+
+00:10:11.000 --> 00:10:13.000
+Speaker 1: Project specific content will come.
+
+00:10:13.000 --> 00:10:14.000
+Speaker 1: Okay, okay.
+
+00:10:14.000 --> 00:10:17.000
+Speaker 1: This is testing specific, that's all it can be inside the testing folder.
+
+00:10:17.000 --> 00:10:19.000
+Speaker 1: So testing specific knowledge.
+
+00:10:19.000 --> 00:10:21.000
+Speaker 1: When you say knowledge, testing specific knowledge.
+
+00:10:21.000 --> 00:10:23.000
+Speaker 1: Okay anna, so you asked to put the data that this project specific knowledge is here in the JSON, right?
+
+00:10:23.000 --> 00:10:24.000
+Speaker 1: Yes anna.
+
+00:10:24.000 --> 00:10:25.000
+Speaker 1: Okay.
+
+00:10:25.000 --> 00:10:31.000
+Speaker 1: Okay, that is the name of the data in that JSON. For example, if it is context.json, then the data for the relative path where the context is.
+
+00:10:31.000 --> 00:10:34.000
+Speaker 1: It should not be in context.json. It should be in data.json, config.json.
+
+00:10:34.000 --> 00:10:36.000
+Speaker 1: There, it should be put as context path in an array with this path.
+
+00:10:36.000 --> 00:10:37.000
+Speaker 1: Right.
+
+00:10:37.000 --> 00:10:38.000
+Speaker 1: Because there are multiple paths for it.
+
+00:10:38.000 --> 00:10:39.000
+Speaker 1: Okay anna.
+
+00:10:39.000 --> 00:10:41.000
+Speaker 1: It should not be in context.json. context.json means that file is inside the context.
+
+00:10:41.000 --> 00:10:43.000
+Speaker 1: That file name goes into our context.
+
+00:10:43.000 --> 00:10:45.000
+Speaker 1: The path for the file is context for everything.
+
+00:10:45.000 --> 00:10:46.000
+Speaker 1: Right anna, okay.
+
+00:10:46.000 --> 00:10:48.000
+Speaker 1: I understand up to this point.
+
+00:10:48.000 --> 00:10:50.000
+Speaker 1: This is what has been done so far, anna.
+
+00:10:50.000 --> 00:10:52.000
+Speaker 1: They have just completed the full setup.
+
+00:10:52.000 --> 00:10:53.000
+Speaker 1: Next, this needs to be done.
+
+00:10:53.000 --> 00:10:56.000
+Speaker 1: Recording needs to be done and then it needs to be done.
+
+00:10:56.000 --> 00:10:59.000
+Speaker 1: We will prepare some path here.
+
+00:10:59.000 --> 00:11:03.000
+Speaker 1: We will bring that up and provide you with what you need.
