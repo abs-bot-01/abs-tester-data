@@ -16,10 +16,12 @@ Pi-agent project and used without a global agent workspace or installation.
 ## Quick start
 
 ```bash
-cd /home/abs-bot-01/dev/abs-tester-data
+cd /home/abs-bot-01/dev/pi-agent-tester
 bin/pi-tester-tool project-list
-bin/pi-tester-tool project-create --name <project>
-# Edit /home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md with the supplied app details.
+bin/pi-tester-tool project-create --name <project> \
+  [--context-path <project-relative-directory>]  # repeat as needed
+# Edit /home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md
+# with the supplied app details, then validate the project.
 bin/pi-tester-tool validate
 ```
 
@@ -37,9 +39,11 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
   `pi-agent/testing-instructions.md` define the tester's workflow, safety
   boundary, evidence contract, and conversational behavior.
 - **Portable store implemented** (`tester-tools.py`, pure Python stdlib):
-  project-scoped runs (append-only JSONL + generated OKF flows/reports), findings
-  (fingerprint-merged recurrence), project + global knowledge, runbooks
-  (freeze → execute), history search, and OKF validation.
+  project-scoped runs (`run.jsonl` plus generated `flow.md` and compatibility
+  `report.md`), live findings with fingerprint-merged recurrence, separate
+  `findings.md`/`bugs.md`/`issues.md` documents, project + global knowledge,
+  runbooks (freeze → execute), approved `data.json` context paths, history
+  search, and OKF validation.
 - **Local wrappers included** under `bin/`: `pi-tester-tool`,
   `pi-tester-display`, `pi-tester-launch`, `pi-tester-capture`,
   `pi-tester-x11`, and `pi-tester-stop`.
@@ -47,9 +51,10 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
   title, description, tags, generated-provenance); `index.md` files are plain
   listings; links are relationships (finding ↔ run, runbook ↔ run).
 - **Evidence pipeline**: screenshots on a disposable 1280×720 Xvfb display
-  with the cursor overlaid, capped at 1280px; run flows/reports embed evidence
-  inline (multiple images render 4-per-table). Native input and raw capture
-  are available through `bin/pi-tester-x11`.
+  with the cursor overlaid, capped at 1280px; selected run flows/reports and
+  finding documents embed evidence inline (multiple images render four per
+  table). Native input and raw capture are available through
+  `bin/pi-tester-x11`.
 - **Launching works for supplied binaries and PATH commands** through the
   local Pi-agent launcher; extra arguments pass through to the application.
 
@@ -69,7 +74,9 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
    evidence, and runbooks remain project-scoped.
 3. **Global KB remains explicit**: cross-project facts live in the tester
    bundle, while project knowledge stays with its project.
-4. **Prove the end-to-end loop** on a real non-production application before
+4. **Findings remain human-owned**: new observations enter `findings.md`, and
+   only human classification moves them to `bugs.md` or `issues.md`.
+5. **Prove the end-to-end loop** on a real non-production application before
    adding abstractions or a front-end.
 
 ### What that implies next (not started)
@@ -88,7 +95,9 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 | Implementation plan and status | `implementation-plan.md` |
 | Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md`, `pi-agent/native-x11.md` |
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
-| Project-scoped test data | `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/` (runs contain `run.jsonl`, `flow.md`, compatibility `report.md`, and `artifacts/`) |
+| Project-scoped test data | `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/` (`setup.md`, `data.json`, findings/category documents, knowledge, runbooks, and runs) |
+| A run | `runs/<run-id>/run.jsonl`, selected `flow.md`, compatibility `report.md`, and `artifacts/` |
+| Findings and triage | `findings.jsonl` (local), `findings.md` (unclassified intake), `bugs.md`, and `issues.md` |
+| Session transcript (design history) | `transcript/open-knowledge-format-and-embedded-evidence-009.vtt` |
 
 The store root can be overridden for isolated runs with `PI_TESTER_DATA_ROOT`.
-| Session transcript (design history) | `open-knowledge-format-and-embedded-evidence-009.vtt` |

@@ -37,8 +37,11 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 ## Required sequence
 
 1. Establish an existing project or ask whether to create a new project.
-2. Read `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md`, the project knowledge index,
-   relevant knowledge topics, and existing findings.
+2. Read `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md`,
+   `data.json` (approved relative context directories), the project knowledge
+   index, relevant knowledge topics, `findings.md`, and the durable `bugs.md`
+   and `issues.md`. Use local `findings.jsonl` when available for recurrence;
+   the Markdown documents are the committed fallback.
 3. Confirm target, purpose, safe boundary, and mode with the human when any of
    those are unclear.
 4. Create the run with `bin/pi-tester-tool run-start` before interacting.
@@ -64,8 +67,9 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
    report the blocked flow.
 10. Recover only through an existing safe instruction or one bounded, observable
     retry. Do not guess after an unresolved failure.
-11. Complete the run, generate its `flow.md` and findings document, and validate
-    the complete store. `report.md` is retained as a compatibility copy. The
+11. Complete the run, generate its `flow.md` and `findings.md`, and validate
+    the complete store. Human classification then renders the finding in
+    `bugs.md` or `issues.md`; `report.md` is retained as a compatibility copy. The
     flow is the selected human-readable test flow, not a line-for-line copy of
     the event stream.
 12. Report status, coverage, findings, blocked flows, and next action in chat.
@@ -82,9 +86,13 @@ screenshot path or claim an action was accepted without observing the result.
 ## Findings and knowledge
 
 Finding statuses are `new`, `needs-retest`, `confirmed`, `not-a-bug`,
-`suppressed`, and `fixed`. A human owns triage. The tester may propose a
+`suppressed`, and `fixed`. New findings start unclassified in `findings.md`.
+A human owns triage: confirmed bugs are classified into `bugs.md`, while
+uncertain observations are classified into `issues.md`. The tester may propose a
 knowledge entry, but only an explicit human decision can add it to project or
-global knowledge. Nothing is silently deleted or suppressed.
+global knowledge. Nothing is silently deleted or suppressed. When local
+finding JSONL is unavailable, read the committed category documents rather
+than treating the missing machine record as an empty history.
 
 ## Runbooks
 

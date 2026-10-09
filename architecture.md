@@ -111,21 +111,24 @@ Every test session runs in exactly one of three modes:
 
 ## 2. Projects
 
-All tester work is scoped to a **project** — one application under test. Every document belongs to a project; there are no valid tester documents outside project scope (the global KB, section 8, is the only exception).
+All tester work is scoped to a **project** — one application under test. Every document belongs to a project; there are no valid tester documents outside project scope (the global KB, described in section 5.1, is the only exception).
 
 ### 2.1 Project folder
 
 ```
 /home/abs-bot-01/dev/gd-math-config/testing/
 ├── index.md                 ← bundle-root listing (the only file allowed to carry okf_version)
-├── global-knowledge.md      ← cross-project KB (section 8; the only document outside project scope)
+├── global-knowledge.md      ← cross-project KB (section 5.1; the only document outside project scope)
 └── projects/
     └── gd-math/
         ├── index.md              ← directory listing: setup, runs, findings, knowledge, runbooks
         ├── setup.md              ← app location, how to launch, setup notes
+        ├── data.json             ← project config: approved context_paths
         ├── runs/                 ← one folder per run (section 3)
-        ├── findings.md           ← human-readable findings (section 4; durable)
-        ├── findings.jsonl        ← local machine record behind findings.md; never committed
+        ├── findings.md           ← findings index (section 4; durable)
+        ├── bugs.md               ← categorized bug findings
+        ├── issues.md             ← categorized issue findings
+        ├── findings.jsonl        ← local machine record behind the findings docs; never committed
         ├── knowledge/            ← project KB (section 5)
         └── runbooks/             ← one markdown file per runbook (section 6)
 ```
@@ -158,12 +161,11 @@ for Setup, Runs, Findings, Knowledge, and Runbooks. Launch instructions and
 setup notes live in `setup.md`, so the index stays a listing and the setup
 details stay an editable concept document.
 
-A runbook does not repeat the target — it resolves it from `setup.md` at
-execution time.
+A runbook does not repeat the target — it resolves its target from `setup.md`
+at execution time. The project root also contains `data.json`, which is
+specified as Document 5 below.
 
 ### 2.4 Project lifecycle rules
-
-### 2.3 Project lifecycle rules
 
 1. Every conversation with the tester starts with a project context.
 2. If the human hands the tester an application with no matching project, the tester **creates the project first**: records how to run it in `setup.md`, then proceeds.
@@ -194,7 +196,7 @@ runs/<run-id>/
 `events.jsonl` is working storage, not a repository artefact. It may instead be
 materialised in a local database, but the logical stream is called **events**,
 not actions: an action is only one kind of event. JSON/JSONL machine records
-are never committed; see section 10. The report contains only selected events,
+are never committed; see section 13. The report contains only selected events,
 so it is not a second copy of the high-volume stream.
 
 Screenshots are taken on a 1280×720 virtual display with the pointer position
@@ -311,12 +313,26 @@ The overall pass/fail outcome is communicated in chat at the end of a run and is
 
 ### 4.1 Two representations
 
-- `findings.jsonl` — local machine record, append-style with fingerprint-based merging (one record per distinct issue, updated in place when re-observed). This is what the tester and future agents consume while the local store is available; it is not committed.
-- `findings.md` — the durable human document, **consolidated from the local JSONL** and regenerated as findings change. The human reads only this; confirmed issues and knowledge-relevant decisions must survive in Markdown.
+- `findings.jsonl` — local machine record, append-style with fingerprint-based merging (one record per distinct finding, updated in place when re-observed). This is what the tester consumes while the local store is available; it is not committed.
+- `findings.md` — the durable intake and review index, **consolidated from the local JSONL** and regenerated as findings change. New tester observations remain here until a human classifies them.
+- `bugs.md` and `issues.md` — durable categorized finding documents maintained separately after human review. They are the fallback source for future agents when the local JSONL is unavailable; confirmed issues and knowledge-relevant decisions must survive in these Markdown files.
 
-### 4.2 Findings document format (findings.md)
+### 4.2 Findings document format
 
-The document opens with a **table of contents**; each finding is a section. Every TOC entry carries a short description and a working anchor link, so the human can scan it, jump to the interesting finding, and ignore the rest.
+`findings.md` is the intake and review document. It contains only new tester
+findings that have not yet been classified. After human review, the finding is
+removed from `findings.md`; the separate bug and issue documents are described
+in Documents 6 and 7. Each finding carries a short description and a working
+anchor link, so the human can scan it, jump to the interesting finding, and
+review it before classification.
+
+The generated intake document is:
+
+```text
+findings.md
+```
+
+The separate `bugs.md` and `issues.md` documents are generated only after human classification.
 
 ```markdown
 # Findings — GD-Math
@@ -366,6 +382,7 @@ human confirmation before adding to the KB.
 | Field | Required | Value |
 |-------|----------|-------|
 | `finding_id` | yes | stable identifier |
+| `category` | yes | `finding` before human review, then `bug` or `issue`; selects the durable category document after classification |
 | `fingerprint` | yes | hash of normalised title — re-observations update the existing finding (recurrence count, last-seen run) instead of creating duplicates |
 | `run_id` | yes | run where seen |
 | `title` | yes | |
@@ -389,7 +406,7 @@ Evidence is something that **happened**, not something the tester inferred. Evid
 The human moves each finding's status:
 
 - **Doesn't matter** → `not-a-bug` or `suppressed`, with a KB note so it stops being re-reported.
-- **Needs action** → `confirmed` / `needs-retest`; later becomes builder work (deferred — section 9).
+- **Needs action** → `confirmed` / `needs-retest`; later becomes builder work (deferred — section 10).
 - **The tester misunderstood the app** → `not-a-bug` plus a KB correction so it doesn't recur.
 
 Nothing is ever deleted; statuses and reasoning stay visible with their references.
@@ -508,28 +525,86 @@ Style: keys in bold (dictionary style). The target is not stored in the runbook 
 
 ---
 
-## 7. Tasks — deferred
+## 7. Document 5 — Data
+
+**Purpose.** The project configuration that names the approved context folders the tester may read. It is machine-readable configuration, not a context document and not a substitute for the human-facing project documents.
+
+**Producer.** The project tooling, with additional paths added only through an explicit project configuration change.
+**Consumer.** The tester before context retrieval and before starting a run.
+
+### 7.1 Format
+
+The project root contains exactly one `data.json`. It must contain only a
+`context_paths` array. Every entry is a relative **directory** path from the
+project directory (the parent directory of `data.json`), never an absolute path
+or a path to an individual context file:
+
+```json
+{
+  "context_paths": [
+    "../../docs/context",
+    "../../levelData"
+  ]
+}
+```
+
+### 7.2 Rules
+
+1. Each configured path must resolve to an existing directory.
+2. Paths must remain inside the approved project/context boundary; symlink escapes are not allowed.
+3. The tester reads project context only through these approved directories.
+4. `data.json` contains no event history, run data, or human-facing document content.
+5. A runbook stores repeatable tests; it does not duplicate the context configuration from Document 5.
+
+---
+
+## 8. Document 6 — Bugs
+
+**Purpose.** The durable human-readable record of confirmed or suspected application bugs. It contains only findings whose `category` is `bug`.
+
+**Producer.** The human classification step, rendered by the tester from `findings.jsonl` during `findings-report`.
+**Consumer.** The human and any future fixing workflow. Future agents read the local category records when available and otherwise read this committed Markdown document.
+
+`bugs.md` is a standalone OKF concept document. It is listed separately in the project index, is not nested inside a `findings/` folder, and does not contain issue-category findings. Each entry preserves the finding description, reproduction steps, expected and observed behaviour, evidence, references, recurrence, and triage status.
+
+---
+
+## 9. Document 7 — Issues
+
+**Purpose.** The durable human-readable record of anomalies, doubts, blockers, and other non-bug findings. It contains only findings whose `category` is `issue`.
+
+**Producer.** The human classification step, rendered by the tester from `findings.jsonl` during `findings-report`.
+**Consumer.** The human and the tester during future triage and exploration. Future agents read the local category records when available and otherwise read this committed Markdown document.
+
+`issues.md` is a standalone OKF concept document. It is listed separately in the project index, is not nested inside a `findings/` folder, and does not contain bug-category findings. Each entry preserves the finding description, reproduction steps, expected and observed behaviour, evidence, references, recurrence, and triage status.
+
+---
+
+## 10. Tasks — deferred
 
 Tasks (issues derived from findings, handed to a fixing agent) are a real part of the eventual system, but the builder agent is a separate, not-yet-existing component, and task creation may ultimately live on the builder's side. No task format, storage, or tooling is designed here. When the builder's interface is defined, tasks will be specified against it; nothing in this design blocks that.
 
 ---
 
-## 8. Reading paths — who reads what, and how
+## 11. Reading paths — who reads what, and how
 
 | Document | Human reads via | Agent reads via |
 |----------|----------------|-----------------|
 | Run | chat summary with selected inline screenshots; `runs/<run-id>/flow.md` | local `run.jsonl` or event database (continue mode) |
-| Findings | chat: one line per new finding; `findings.md` TOC | local `findings.jsonl` |
-| KB | the folder like personal notes; dictation happens in chat | `knowledge/index.md` + topic docs at session start |
+| Findings | chat: one line per new finding; `findings.md` TOC | local `findings.jsonl`; fall back to committed `findings.md` for unclassified history |
+| Bugs | standalone `bugs.md` document | bug-category records in local `findings.jsonl`; fall back to committed `bugs.md` |
+| Issues | standalone `issues.md` document | issue-category records in local `findings.jsonl`; fall back to committed `issues.md` |
+| KB | the folder like personal notes; dictation happens in chat | `knowledge/index.md` + relevant topic docs at session start |
+| Data | the project's `data.json` configuration | validate and read `data.json` before context retrieval and before starting a run; read only the listed directories |
 | Runbook | the file, or chat execution results test-by-test | the runbook file at execution |
 
 After any run the tester returns exactly two primary links: the flow document and the findings document. The compatibility report and raw event record are optional digging.
 
-The data shrinks as it rises: a run may hold a hundred events, the findings ten entries, the KB one accepted fact. That funnel is the point — the human lives at the findings and KB level and only opens a run to verify a specific claim.
+The data shrinks as it rises: a run may hold a hundred events, the findings ten entries, the KB one accepted fact. That funnel is the point — the human lives at the findings and KB level and only opens a run to verify a specific claim. Category documents remain readable without the local JSONL: they are the durable hand-off for bugs and issues, while `data.json` remains the explicit, committed configuration needed to decide what context the tester may read.
 
 ---
 
-## 9. Design principles
+## 12. Design principles
 
 1. **Facts are never rewritten.** The local event stream is append-only while retained; corrections happen as new records or in the KB, never by editing history.
 2. **Machine record inside, human document outside.** The local event stream is the factual working record; human-facing documents are Markdown distilled from selected events. The stream is not a repository artefact and may be retained in a local database or expired after its useful retention period.
@@ -540,30 +615,35 @@ The data shrinks as it rises: a run may hold a hundred events, the findings ten 
 
 ---
 
-## 10. Event storage and file-commit policy
+## 13. Event storage and file-commit policy
 
 The event stream is intentionally high-volume. A long exploration can produce
 thousands of events, and an unbounded JSON file can grow until it consumes the
 machine's disk. The repository therefore stores conclusions and selected human
 context, not the raw telemetry.
 
-### 10.1 Local machine data
+### 13.1 Local machine data
 
-- `events.jsonl` (or its local database equivalent) records all observed events,
-  including actions, application state changes, loading, crashes, popups, and
-  other factual observations. It is append-only while a run is active.
+- `run.jsonl` (the local event stream, or its local database equivalent)
+  records all observed events, including actions, application state changes,
+  loading, crashes, popups, and other factual observations. It is append-only
+  while a run is active.
 - `findings.jsonl` is the local machine representation used for fingerprinting,
   recurrence tracking, and regeneration of `findings.md`.
-- JSON/JSONL files are local working data and are never committed. They are
-  gitignored, stored per run or in the local event database, and may be
-  rotated, overwritten, or expired under a documented retention limit. If a
+- Event and finding JSONL files are local working data and are never committed.
+  They are gitignored, stored per run or in the local event database, and may
+  be rotated, overwritten, or expired under a documented retention limit. If a
   machine-readable history must be shared, it belongs in the database/store,
   not in the repository as a large JSON file.
+- `data.json` is the explicit exception: it is durable project configuration,
+  is committed with the project, and contains only approved `context_paths`.
+  It must not contain event history or replace the human-readable project
+  documents.
 - Local cleanup must not remove a durable Markdown finding, confirmed issue,
-  accepted knowledge entry, or the evidence image referenced by a committed
-  document.
+  accepted knowledge entry, the project `data.json`, or the evidence image
+  referenced by a committed document.
 
-### 10.2 Durable Markdown data
+### 13.2 Durable Markdown data
 
 Markdown is the human-facing, reviewable record and may be committed. The
 following are required durable artefacts when they exist:
@@ -580,7 +660,7 @@ committed merely to make a report reproducible: the report and its selected
 evidence are the reproducible human record. A Markdown file must not mirror all
 JSON events just to justify committing the JSON.
 
-### 10.3 Selection and evidence rules
+### 13.3 Selection and evidence rules
 
 The tester selects events for Markdown when they are important, change the
 application's state or testing context, establish a meaningful flow boundary,

@@ -41,7 +41,7 @@ Every real test session creates a **run record**. Creating a runbook does not cr
 
 ## What gets stored
 
-The system keeps four main types of documents.
+The system keeps seven project-scoped document/configuration types, plus the global knowledge document.
 
 ### 1. Runs
 
@@ -83,6 +83,24 @@ A finding can be marked as:
 
 The human decides the final status.
 
+`findings.md` is the intake and review index. Every new tester finding is added there first with category `finding`.
+
+The human then reviews it and classifies it with `finding-status`:
+
+- Confirmed bug → category `bug`, rendered in `bugs.md`.
+- Doubt, anomaly, or blocker → category `issue`, rendered in `issues.md`.
+
+For example:
+
+```bash
+bin/pi-tester-tool finding-status --project <project> \
+  --finding-id <finding-id> --status confirmed --category bug \
+  --reason "Confirmed application defect"
+```
+
+The status command regenerates the documents, so the reviewed finding is
+removed from `findings.md` and appears in its separate category document.
+
 ### 3. Knowledge base
 
 The knowledge base contains facts that should affect future testing.
@@ -115,6 +133,21 @@ It contains:
 - A version and lifecycle status.
 
 A useful exploration can be “frozen” into a runbook and replayed later. This turns exploratory testing into a regression test.
+
+### 5. Project data
+
+Each project has a `data.json` file containing only `context_paths`. These are
+folder-relative paths to existing, approved context directories. The tester
+validates them before context retrieval and before starting a run. The file
+contains no absolute paths, event history, or human-facing document content.
+
+### 6. Bugs
+
+`bugs.md` is a standalone document containing confirmed or suspected application bugs. It is generated from findings whose category is `bug`.
+
+### 7. Issues
+
+`issues.md` is a standalone document containing anomalies, doubts, blockers, and other non-bug findings. It is generated from findings whose category is `issue`.
 
 ## Evidence and reports
 
@@ -157,8 +190,11 @@ The implementation includes:
 - Runbook creation and validation.
 - History search.
 - Data validation.
-- Local disposable Xvfb desktop support using Pi-agent UI interaction tools.
+- Local disposable Xvfb desktop support using the repository's native X11
+  helper (`xdotool` input and ImageMagick `import` screenshots).
 - Local wrappers for launching apps, stopping apps, and taking screenshots.
+- Project `data.json` validation and separate human-classified bug/issue
+  documents.
 - Pi-agent instructions in `AGENTS.md` and `pi-agent/testing-instructions.md`.
 
 The setup is local to this repository and does not require a gateway, global

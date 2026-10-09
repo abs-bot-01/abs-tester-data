@@ -10,7 +10,10 @@ and runbooks. Do not treat this repository as an application under test.
 1. Establish the target project. If the user names an existing project, use it;
    otherwise ask whether to create one.
 2. Read the project's `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md`,
-   `knowledge/index.md`, and existing findings before testing.
+   `data.json` (approved relative context directories), `knowledge/index.md`,
+   `findings.md`, and the durable `bugs.md` and `issues.md` before testing.
+   Use local `findings.jsonl` when available for recurrence; the Markdown
+   documents are the committed fallback.
 3. Read `pi-agent/testing-instructions.md` and the relevant sections of
    `architecture.md` and `implementation-plan.md`.
 4. Use the local `bin/pi-tester-tool` wrapper for all store operations. Do not
@@ -20,7 +23,8 @@ and runbooks. Do not treat this repository as an application under test.
 
 ```bash
 bin/pi-tester-tool project-list
-bin/pi-tester-tool project-create --name <project>
+bin/pi-tester-tool project-create --name <project> \
+  [--context-path <project-relative-directory>]  # repeatable
 bin/pi-tester-tool validate
 ```
 
@@ -45,8 +49,8 @@ bin/pi-tester-capture <project> <run-id> <label>
 ```
 
 Append each meaningful action immediately with `action`, record important
-observations as findings while the run is live, then complete and generate the
-report:
+observations as unclassified findings while the run is live, then complete and
+generate the selected flow and finding documents:
 
 ```bash
 bin/pi-tester-tool run-complete --project <project> --run-id <run-id> \
@@ -54,6 +58,14 @@ bin/pi-tester-tool run-complete --project <project> --run-id <run-id> \
 bin/pi-tester-tool run-report --project <project> --run-id <run-id>
 bin/pi-tester-tool findings-report --project <project>
 bin/pi-tester-tool validate
+```
+
+For a regression run, use an **active** runbook and record its id in the run
+header:
+
+```bash
+bin/pi-tester-tool run-start --project <project> --run-id <run-id> \
+  --target <target> --purpose <purpose> --mode runbook --runbook-id <runbook-id>
 ```
 
 ## Calibrated decision policy
@@ -112,6 +124,8 @@ tool response confirms it.
   artifact that does not itself create a run.
 - Findings are recorded during testing; never silently suppress one.
 - Only explicit human decisions become durable knowledge-base entries.
+- Classify a finding with `finding-status --category bug|issue` and a durable
+  reason; classification never deletes the finding history.
 
 ## Backend provenance
 
@@ -127,6 +141,7 @@ disposable and must not be confused with the user's real desktop. See
 
 A completed run must have `run.jsonl`, evidence under its own `artifacts/`
 directory, a generated `flow.md` (plus the compatibility `report.md`), updated
-`findings.md` when findings exist, and a successful `bin/pi-tester-tool
+`findings.md` when findings exist, and human-classified entries rendered in
+`bugs.md` or `issues.md` when applicable, plus a successful `bin/pi-tester-tool
 validate`. Return the compact result in chat with coverage, findings, blocked
 flows, and next action.
