@@ -39,7 +39,7 @@ The POC's concepts survive; the work below restructures storage, adds the missin
 | Events (§3.2) | Historical records were action-only | Retain an append-only event stream with project/run identity and event-bound artifacts |
 | Run report (§3.3) | Historical reports were written separately | `run-report` consolidates selected events into canonical `flow.md` and compatibility `report.md` |
 | Transient result (§3.4) | Historical reports persisted the outcome as a separate concept | Communicate the overall result in chat; keep selected evidence and summary in the flow |
-| Findings (§4) | Historical POC had POIs and one findings record | Findings are the only observation concept; human classification renders `bugs.md` or `issues.md` |
+| Findings (§4) | Historical POC had POIs and one findings record | Findings are the only observation concept; human classification renders `bugs/index.md` or `issues/index.md` |
 | Findings MD (§4.2) | JSONL only | `findings.md` with TOC, sections, captioned images, references, `proposed_for_kb` |
 | Evidence policy (§4.4) | Evidence expected on findings | Make optional-but-encouraged in the machine record and the agent instructions |
 | Project KB (§5.2) | Single `knowledge.md` | `knowledge/` folder with `index.md` + topic docs |
@@ -100,14 +100,14 @@ Acceptance: a new run produces one folder with `run.jsonl`, `artifacts/`, and af
 Tasks:
 1. Remove `poi-id` from the finding record; drop the POI vocabulary everywhere (instructions, TOOLS.md, reports).
 2. `finding`: make `--images` accept `path|caption` pairs (each image carries a caption per design §4.2); add `--references` (run anchors etc.); add `--proposed-for-kb` flag storing the candidate text; evidence fields (`images`, `references`) become optional, with the record still storing whatever exists.
-3. New `findings-report`: regenerates `projects/<project>/findings.md` plus the separate `bugs.md` and `issues.md` documents from `findings.jsonl` per design §4.2 — new findings remain in the intake document until human classification, then are removed from it and rendered in the appropriate category document with the description, steps, expected/observed, captioned images, references, recurrence line, and any `proposed_for_kb` block. Regeneration is idempotent.
+3. New `findings-report`: regenerates `projects/<project>/findings.md` plus `bugs/index.md` and `issues/index.md` from `findings.jsonl` per design §4.2 — new findings remain in the intake document until human classification, then are removed from it and rendered in the appropriate category document with the description, steps, expected/observed, captioned images, references, recurrence line, and any `proposed_for_kb` block. Regeneration is idempotent.
 4. New `finding-status`: human-triage status and category updates (`new|needs-retest|confirmed|not-a-bug|suppressed|fixed` plus `bug|issue`) are recorded with a reason, never deleting anything.
 5. Findings files live in the project folder; each tester observation starts as `finding`, then the human classifies it as `bug` or `issue`. Per-project fingerprints keep the same app finding as one record within a project.
 6. The run flow emits findings during the run — no "after run completes" step in the workflow instructions.
 
 Files touched: `tester-tools.py`, `AGENTS.md` (finding policy section rewrite: evidence optional but encouraged, proposals allowed), `TOOLS.md`.
 
-Acceptance: new observations first appear in `findings.md`; human classification as `bug` or `issue` moves the rendered detail to `bugs.md` or `issues.md`; each category document renders a TOC with clickable sections; the migrated drag anomaly appears with its captioned image and run anchor; a status and category change is visible in both JSONL and Markdown without deleting history.
+Acceptance: new observations first appear in `findings.md`; human classification as `bug` or `issue` moves the rendered detail to `bugs/index.md` or `issues/index.md`; each category document renders a TOC with clickable sections; the migrated drag anomaly appears with its captioned image and run anchor; a status and category change is visible in both JSONL and Markdown without deleting history.
 
 ### Phase 3 — Knowledge Base restructure
 

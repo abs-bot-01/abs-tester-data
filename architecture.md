@@ -126,8 +126,10 @@ All tester work is scoped to a **project** — one application under test. Every
         ├── data.json             ← project config: approved context_paths
         ├── runs/                 ← one folder per run (section 3)
         ├── findings.md           ← findings index (section 4; durable)
-        ├── bugs.md               ← categorized bug findings
-        ├── issues.md             ← categorized issue findings
+        ├── bugs/                 ← categorized bug findings
+        │   └── index.md
+        ├── issues/               ← categorized issue findings
+        │   └── index.md
         ├── findings.jsonl        ← local machine record behind the findings docs; never committed
         ├── knowledge/            ← project KB (section 5)
         └── runbooks/             ← one markdown file per runbook (section 6)
@@ -315,7 +317,7 @@ The overall pass/fail outcome is communicated in chat at the end of a run and is
 
 - `findings.jsonl` — local machine record, append-style with fingerprint-based merging (one record per distinct finding, updated in place when re-observed). This is what the tester consumes while the local store is available; it is not committed.
 - `findings.md` — the durable intake and review index, **consolidated from the local JSONL** and regenerated as findings change. New tester observations remain here until a human classifies them.
-- `bugs.md` and `issues.md` — durable categorized finding documents maintained separately after human review. They are the fallback source for future agents when the local JSONL is unavailable; confirmed issues and knowledge-relevant decisions must survive in these Markdown files.
+- `bugs/index.md` and `issues/index.md` — durable categorized finding documents maintained separately after human review. They are the fallback source for future agents when the local JSONL is unavailable; confirmed issues and knowledge-relevant decisions must survive in these Markdown files.
 
 ### 4.2 Findings document format
 
@@ -332,7 +334,7 @@ The generated intake document is:
 findings.md
 ```
 
-The separate `bugs.md` and `issues.md` documents are generated only after human classification.
+The separate `bugs/index.md` and `issues/index.md` documents are generated only after human classification.
 
 ```markdown
 # Findings — GD-Math
@@ -565,7 +567,7 @@ or a path to an individual context file:
 **Producer.** The human classification step, rendered by the tester from `findings.jsonl` during `findings-report`.
 **Consumer.** The human and any future fixing workflow. Future agents read the local category records when available and otherwise read this committed Markdown document.
 
-`bugs.md` is a standalone OKF concept document. It is listed separately in the project index, is not nested inside a `findings/` folder, and does not contain issue-category findings. Each entry preserves the finding description, reproduction steps, expected and observed behaviour, evidence, references, recurrence, and triage status.
+`bugs/index.md` is the categorized bug document inside the `bugs/` directory. It is listed separately in the project index, does not contain issue-category findings, and preserves each finding's description, reproduction steps, expected and observed behaviour, evidence, references, recurrence, and triage status.
 
 ---
 
@@ -576,7 +578,7 @@ or a path to an individual context file:
 **Producer.** The human classification step, rendered by the tester from `findings.jsonl` during `findings-report`.
 **Consumer.** The human and the tester during future triage and exploration. Future agents read the local category records when available and otherwise read this committed Markdown document.
 
-`issues.md` is a standalone OKF concept document. It is listed separately in the project index, is not nested inside a `findings/` folder, and does not contain bug-category findings. Each entry preserves the finding description, reproduction steps, expected and observed behaviour, evidence, references, recurrence, and triage status.
+`issues/index.md` is the categorized issue document inside the `issues/` directory. It is listed separately in the project index, does not contain bug-category findings, and preserves each finding's description, reproduction steps, expected and observed behaviour, evidence, references, recurrence, and triage status.
 
 ---
 
@@ -592,8 +594,8 @@ Tasks (issues derived from findings, handed to a fixing agent) are a real part o
 |----------|----------------|-----------------|
 | Run | chat summary with selected inline screenshots; `runs/<run-id>/flow.md` | local `run.jsonl` or event database (continue mode) |
 | Findings | chat: one line per new finding; `findings.md` TOC | local `findings.jsonl`; fall back to committed `findings.md` for unclassified history |
-| Bugs | standalone `bugs.md` document | bug-category records in local `findings.jsonl`; fall back to committed `bugs.md` |
-| Issues | standalone `issues.md` document | issue-category records in local `findings.jsonl`; fall back to committed `issues.md` |
+| Bugs | `bugs/index.md` category document | bug-category records in local `findings.jsonl`; fall back to committed `bugs/index.md` |
+| Issues | `issues/index.md` category document | issue-category records in local `findings.jsonl`; fall back to committed `issues/index.md` |
 | KB | the folder like personal notes; dictation happens in chat | `knowledge/index.md` + relevant topic docs at session start |
 | Data | the project's `data.json` configuration | validate and read `data.json` before context retrieval and before starting a run; read only the listed directories |
 | Runbook | the file, or chat execution results test-by-test | the runbook file at execution |

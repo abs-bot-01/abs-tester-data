@@ -11,7 +11,7 @@ and runbooks. Do not treat this repository as an application under test.
    otherwise ask whether to create one.
 2. Read the project's `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md`,
    `data.json` (approved relative context directories), `knowledge/index.md`,
-   `findings.md`, and the durable `bugs.md` and `issues.md` before testing.
+   `findings.md`, and the durable `bugs/index.md` and `issues/index.md` before testing.
    Use local `findings.jsonl` when available for recurrence; the Markdown
    documents are the committed fallback.
 3. Read `pi-agent/testing-instructions.md` and the relevant sections of
@@ -142,6 +142,6 @@ disposable and must not be confused with the user's real desktop. See
 A completed run must have `run.jsonl`, evidence under its own `artifacts/`
 directory, a generated `flow.md` (plus the compatibility `report.md`), updated
 `findings.md` when findings exist, and human-classified entries rendered in
-`bugs.md` or `issues.md` when applicable, plus a successful `bin/pi-tester-tool
+`bugs/index.md` or `issues/index.md` when applicable, plus a successful `bin/pi-tester-tool
 validate`. Return the compact result in chat with coverage, findings, blocked
 flows, and next action.

@@ -41,7 +41,7 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 - **Portable store implemented** (`tester-tools.py`, pure Python stdlib):
   project-scoped runs (`run.jsonl` plus generated `flow.md` and compatibility
   `report.md`), live findings with fingerprint-merged recurrence, separate
-  `findings.md`/`bugs.md`/`issues.md` documents, project + global knowledge,
+  `findings.md` plus `bugs/index.md` and `issues/index.md`, project + global knowledge,
   runbooks (freeze → execute), approved `data.json` context paths, history
   search, and OKF validation.
 - **Local wrappers included** under `bin/`: `pi-tester-tool`,
@@ -75,7 +75,7 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 3. **Global KB remains explicit**: cross-project facts live in the tester
    bundle, while project knowledge stays with its project.
 4. **Findings remain human-owned**: new observations enter `findings.md`, and
-   only human classification moves them to `bugs.md` or `issues.md`.
+   only human classification moves them to `bugs/index.md` or `issues/index.md`.
 5. **Prove the end-to-end loop** on a real non-production application before
    adding abstractions or a front-end.
 
@@ -97,7 +97,7 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
 | Project-scoped test data | `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/` (`setup.md`, `data.json`, findings/category documents, knowledge, runbooks, and runs) |
 | A run | `runs/<run-id>/run.jsonl`, selected `flow.md`, compatibility `report.md`, and `artifacts/` |
-| Findings and triage | `findings.jsonl` (local), `findings.md` (unclassified intake), `bugs.md`, and `issues.md` |
+| Findings and triage | `findings.jsonl` (local), `findings.md` (unclassified intake), `bugs/index.md`, and `issues/index.md` |
 | Session transcript (design history) | `transcript/open-knowledge-format-and-embedded-evidence-009.vtt` |
 
 The store root can be overridden for isolated runs with `PI_TESTER_DATA_ROOT`.

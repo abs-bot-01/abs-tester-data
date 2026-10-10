@@ -87,8 +87,8 @@ The human decides the final status.
 
 The human then reviews it and classifies it with `finding-status`:
 
-- Confirmed bug → category `bug`, rendered in `bugs.md`.
-- Doubt, anomaly, or blocker → category `issue`, rendered in `issues.md`.
+- Confirmed bug → category `bug`, rendered in `bugs/index.md`.
+- Doubt, anomaly, or blocker → category `issue`, rendered in `issues/index.md`.
 
 For example:
 
@@ -143,11 +143,11 @@ contains no absolute paths, event history, or human-facing document content.
 
 ### 6. Bugs
 
-`bugs.md` is a standalone document containing confirmed or suspected application bugs. It is generated from findings whose category is `bug`.
+`bugs/index.md` is the categorized document containing confirmed or suspected application bugs. It is generated from findings whose category is `bug`.
 
 ### 7. Issues
 
-`issues.md` is a standalone document containing anomalies, doubts, blockers, and other non-bug findings. It is generated from findings whose category is `issue`.
+`issues/index.md` is the categorized document containing anomalies, doubts, blockers, and other non-bug findings. It is generated from findings whose category is `issue`.
 
 ## Evidence and reports
 

@@ -15,7 +15,7 @@ Layout (under the configured external store root):
     runs/<run-id>/artifacts/          screenshots, bound to their events
     findings.jsonl                    machine record behind findings.md
     findings.md                       unreviewed findings document (OKF concept, generated)
-    bugs.md + issues.md               categorized finding documents
+    bugs/index.md + issues/index.md   categorized finding documents
     knowledge/index.md + <topic>.md  project KB (topics are OKF concepts)
     data.json                         approved relative context directories
     runbooks/<runbook-id>.md          test plans (OKF concepts)
@@ -223,7 +223,7 @@ def rebuild_project_index(p):
     for category in FINDING_CATEGORIES:
         count=sum(finding_category(row)==category for row in finding_rows)
         if count:
-            label=finding_document(category)[:-3].title()
+            label=category.title() + " findings"
             out.append(f"* [{label}]({finding_document(category)}) - {count} classified finding(s)\n")
     if not finding_rows:
         out.append("No findings yet.\n")
@@ -261,7 +261,7 @@ def cmd_project_create(a):
     s=slug(a.name) or die("invalid project name")
     p=PROJECTS/s
     if p.exists(): die(f"project already exists: {s}")
-    for sub in ("runs","knowledge","runbooks"): (p/sub).mkdir(parents=True, exist_ok=True)
+    for sub in ("runs","knowledge","runbooks","bugs","issues"): (p/sub).mkdir(parents=True, exist_ok=True)
     write_project_config(p, a.context_path)
     atomic_write(p/"setup.md", fm("App Setup", s, f"How to launch and configure {s} under test.", tags=["setup"])
         + f"# Setup — {s}\n\n- **application:** (name)\n- **executable:** (path to the supplied binary)\n- **launch:** approved `bin/pi-tester-launch <executable>`\n- **environment:** Linux desktop on disposable Xvfb display :1042 (1280x720)\n- **setup notes:** profiles, save data, window sizing\n")
@@ -443,7 +443,18 @@ def finding_category(row):
 
 
 def finding_document(category):
-    return f"{category}s.md"
+    """Return the category index inside its findings directory."""
+    return f"{category}s/index.md"
+
+
+def migrate_legacy_category_documents(project):
+    """Move legacy flat category documents into their category directories."""
+    for category in FINDING_CATEGORIES:
+        legacy = project / f"{category}s.md"
+        current = project / finding_document(category)
+        if legacy.is_file() and not current.exists():
+            current.parent.mkdir(parents=True, exist_ok=True)
+            os.replace(legacy, current)
 
 
 def render_findings_document(project, entries, category=None):
@@ -489,8 +500,10 @@ def render_findings_document(project, entries, category=None):
 
 
 def rebuild_findings_documents(project, rows):
-    """Write the unreviewed findings document and separate bug/issue documents."""
-    p=project; entries=list(enumerate(rows,1))
+    """Write findings.md and category indexes under bugs/ and issues/."""
+    p=project
+    migrate_legacy_category_documents(p)
+    entries=list(enumerate(rows,1))
     pending=[entry for entry in entries if finding_category(entry[1])==UNCLASSIFIED_CATEGORY]
     atomic_write(p/"findings.md", render_findings_document(p, pending))
     for category in FINDING_CATEGORIES:
@@ -661,7 +674,8 @@ def cmd_validate(a):
         for sub,why in (("index.md","project index.md"),("knowledge/index.md","knowledge index"),("setup.md","setup.md"),("data.json","data.json"),("findings.md","findings.md")):
             if not (p/sub).exists(): problems.append(f"{p.name}: missing {why}")
         for category in FINDING_CATEGORIES:
-            if not (p/finding_document(category)).is_file():
+            category_index = p/finding_document(category)
+            if not category_index.is_file():
                 problems.append(f"{p.name}: missing {finding_document(category)}")
         if (p/"data.json").is_file():
             try:
