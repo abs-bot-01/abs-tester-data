@@ -76,35 +76,15 @@ flowchart LR
     RB -->|replay test-by-test| T
 ```
 
-**(d) Where the documents live** — the tester store has a bundle index and a global KB at its root; application-specific documents live under one project. Local JSONL records are working data, while the Markdown documents and evidence are the durable project record:
+**(d) Where the documents live** — everything inside a project; the global KB is the single exception:
 
 ```mermaid
 flowchart TD
-    ROOT["Testing store<br/>/home/abs-bot-01/dev/gd-math-config/testing/"]
-    ROOT --> BI["index.md<br/>bundle-root listing"]
-    ROOT --> GK["global-knowledge.md<br/>global KB"]
-    ROOT --> PS["projects/"]
-
-    PS --> P["<project>/"]
-    P --> PI["index.md<br/>project listing"]
-    P --> SETUP["setup.md<br/>application setup"]
-    P --> DATA["data.json<br/>approved context paths"]
-    P --> RUNS["runs/"]
-    P --> FIND["findings.md<br/>unclassified intake"]
-    P --> BUGS["bugs/index.md<br/>categorized bugs"]
-    P --> ISSUES["issues/index.md<br/>categorized issues"]
-    P --> KB["knowledge/"]
-    P --> RB["runbooks/"]
-    P -. local .-> FINDINGS_LOCAL["findings.jsonl"]
-
-    RUNS --> RUN["<run-id>/"]
-    RUN --> EVENTS_LOCAL["run.jsonl<br/>local event stream"]
-    RUN --> FLOW["flow.md<br/>selected durable flow"]
-    RUN --> REPORT["report.md<br/>compatibility copy"]
-    RUN --> ART["artifacts/"]
-
-    KB --> KBI["index.md + topic documents"]
-    RB --> RBF["<runbook-id>.md"]
+    P[Project folder] --> R[runs/]
+    P --> F[findings.md]
+    P --> K[knowledge/]
+    P --> RB[runbooks/]
+    GK[Global KB — outside every project]
 ```
 
 ### 1.2 Roles
