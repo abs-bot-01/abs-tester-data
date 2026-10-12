@@ -1,27 +1,98 @@
 #!/bin/sh
-# Start the disposable Pi-agent Xvfb display used by desktop tests.
+# Start one per-user disposable Pi-agent Xvfb display.
 set -eu
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-DISPLAY_NAME=${PI_TESTER_DISPLAY:-:1042}
-RUNTIME="$ROOT/.runtime"
-PID_FILE="$RUNTIME/xvfb.pid"
-LOG_FILE="$RUNTIME/xvfb.log"
-mkdir -p "$RUNTIME"
+. "$ROOT/bin/pi-tester-runtime"
+runtime=$(pi_tester_prepare_runtime)
+display_file="$runtime/display"
+auth_file=$(pi_tester_auth_file)
+lock_dir="$runtime/display.lock"
+log_file="$runtime/xvfb.log"
+pid_file="$runtime/xvfb.pid"
 
-if /usr/bin/xdpyinfo -display "$DISPLAY_NAME" >/dev/null 2>&1; then
-  printf '{"display":"%s","status":"already-running"}\n' "$DISPLAY_NAME"
-  exit 0
+# Use an atomic directory lock so no helper process remains holding a lock
+# after this script exits.
+while ! mkdir -- "$lock_dir" 2>/dev/null; do
+  owner=$(cat "$lock_dir/pid" 2>/dev/null || true)
+  if [ -n "$owner" ] && ! kill -0 "$owner" 2>/dev/null; then
+    rm -rf -- "$lock_dir"
+  else
+    sleep 0.1
+  fi
+done
+printf '%s\n' "$$" >"$lock_dir/pid"
+cleanup_lock() { rm -rf -- "$lock_dir"; }
+trap cleanup_lock EXIT INT TERM
+
+if [ -n "${PI_TESTER_DISPLAY:-}" ]; then
+  requested_display=$PI_TESTER_DISPLAY
+else
+  requested_display=""
 fi
 
-/usr/bin/Xvfb "$DISPLAY_NAME" -screen 0 1280x720x24 -ac -nolisten tcp +extension RANDR >"$LOG_FILE" 2>&1 &
-printf '%s\n' "$!" >"$PID_FILE"
-for _ in $(seq 1 40); do
-  if /usr/bin/xdpyinfo -display "$DISPLAY_NAME" >/dev/null 2>&1; then
-    printf '{"display":"%s","status":"started","pid":%s}\n' "$DISPLAY_NAME" "$(cat "$PID_FILE")"
+if [ -s "$display_file" ] && [ -f "$pid_file" ]; then
+  display=$(head -n 1 -- "$display_file")
+  pid=$(head -n 1 -- "$pid_file")
+  if DISPLAY="$display" XAUTHORITY="$auth_file" /usr/bin/xdpyinfo >/dev/null 2>&1 && kill -0 "$pid" 2>/dev/null; then
+    printf '{"display":"%s","status":"already-running","runtime":"%s","xauthority":"%s"}\n' \
+      "$display" "$runtime" "$auth_file"
     exit 0
   fi
-  sleep 0.2
-done
+  rm -f -- "$display_file" "$pid_file"
+fi
 
-echo "Pi-agent Xvfb display failed: $DISPLAY_NAME (see $LOG_FILE)" >&2
+uid=${UID:-$(id -u)}
+# Keep displays out of the traditional low-numbered range. The per-user base
+# avoids normal collisions; the loop handles another process using a candidate.
+base=$((20000 + (uid % 10000) * 2))
+last=$((base + 199))
+if [ -n "$requested_display" ]; then
+  candidates="$requested_display"
+else
+  candidates=""
+  n=$base
+  while [ "$n" -le "$last" ]; do
+    candidates="$candidates :$n"
+    n=$((n + 1))
+  done
+fi
+
+old_umask=$(umask)
+umask 077
+for display in $candidates; do
+  case "$display" in :[0-9]*) ;; *) echo "invalid display: $display" >&2; exit 2 ;; esac
+  if /usr/bin/xdpyinfo -display "$display" >/dev/null 2>&1; then
+    [ -n "$requested_display" ] && {
+      printf '{"display":"%s","status":"already-running","runtime":"%s"}\n' "$display" "$runtime"
+      exit 0
+    }
+    continue
+  fi
+
+  cookie=$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')
+  : >"$auth_file"
+  chmod 600 -- "$auth_file"
+  /usr/bin/xauth -f "$auth_file" add "$display" MIT-MAGIC-COOKIE-1 "$cookie" >/dev/null 2>&1
+  /usr/bin/Xvfb "$display" -screen 0 1280x720x24 -auth "$auth_file" \
+    -nolisten tcp +extension RANDR >"$log_file" 2>&1 &
+  pid=$!
+  printf '%s\n' "$pid" >"$pid_file"
+  for _ in $(seq 1 40); do
+    if DISPLAY="$display" XAUTHORITY="$auth_file" /usr/bin/xdpyinfo >/dev/null 2>&1; then
+      printf '%s\n' "$display" >"$display_file"
+      chmod 600 -- "$display_file" "$pid_file" "$log_file"
+      umask "$old_umask"
+      printf '{"display":"%s","status":"started","pid":%s,"runtime":"%s","xauthority":"%s"}\n' \
+        "$display" "$pid" "$runtime" "$auth_file"
+      exit 0
+    fi
+    sleep 0.2
+  done
+  kill "$pid" 2>/dev/null || true
+  wait "$pid" 2>/dev/null || true
+  rm -f -- "$display_file" "$pid_file"
+  [ -n "$requested_display" ] && break
+done
+umask "$old_umask"
+echo "Pi-agent Xvfb display could not be started" >&2
 exit 1

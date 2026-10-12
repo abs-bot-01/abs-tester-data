@@ -2,7 +2,9 @@
 # Verified native X11 input and capture helper for Pi-agent desktop runs.
 set -eu
 
-DISPLAY_NAME=${PI_TESTER_DISPLAY:-:1042}
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+. "$ROOT/bin/pi-tester-runtime"
+DISPLAY_NAME=${PI_TESTER_DISPLAY:-}
 TIMEOUT_SECONDS=${PI_TESTER_X11_TIMEOUT:-3}
 
 usage() {
@@ -38,19 +40,24 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 
+if [ -z "$DISPLAY_NAME" ]; then
+  DISPLAY_NAME=$(pi_tester_resolve_display)
+fi
+AUTH_FILE=$(pi_tester_auth_file)
+
 for required_tool in /usr/bin/xdpyinfo /usr/bin/xdotool /usr/bin/import /usr/bin/timeout; do
   [ -x "$required_tool" ] || { echo "missing required tool: $required_tool" >&2; exit 10; }
 done
 
 verify_display() {
-  /usr/bin/xdpyinfo -display "$DISPLAY_NAME" >/dev/null 2>&1 || {
+  DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/xdpyinfo >/dev/null 2>&1 || {
     echo "display is unavailable: $DISPLAY_NAME" >&2
     exit 11
   }
 }
 
 run_xdotool() {
-  DISPLAY="$DISPLAY_NAME" /usr/bin/timeout --signal=TERM "${TIMEOUT_SECONDS}s" \
+  DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/timeout --signal=TERM "${TIMEOUT_SECONDS}s" \
     /usr/bin/xdotool "$@"
 }
 
@@ -74,7 +81,7 @@ capture_screen() {
     *) echo "capture output must end in .png: $output" >&2; exit 2 ;;
   esac
   mkdir -p "$(dirname -- "$output")"
-  /usr/bin/import -display "$DISPLAY_NAME" -window root -quality 90 "$output"
+  DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/import -window root -quality 90 "$output"
   printf '{"display":"%s","backend":"ImageMagick import","artifact":"%s"}\n' "$DISPLAY_NAME" "$output"
 }
 

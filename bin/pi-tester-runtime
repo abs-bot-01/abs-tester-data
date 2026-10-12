@@ -1,0 +1,60 @@
+#!/bin/sh
+# Shared, per-user runtime helpers. This file must remain read-only with the
+# installation; all state goes under the user's runtime directory.
+
+pi_tester_runtime_dir() {
+  if [ -n "${PI_TESTER_RUNTIME_DIR:-}" ]; then
+    printf '%s\n' "$PI_TESTER_RUNTIME_DIR"
+    return
+  fi
+  uid=${UID:-$(id -u)}
+  base=${XDG_RUNTIME_DIR:-/tmp}
+  printf '%s/pi-agent-tester-%s\n' "$base" "$uid"
+}
+
+pi_tester_prepare_runtime() {
+  runtime=$(pi_tester_runtime_dir)
+  mkdir -p -- "$runtime"
+  chmod 700 -- "$runtime"
+  mkdir -p -- "$runtime/apps"
+  chmod 700 -- "$runtime/apps"
+  printf '%s\n' "$runtime"
+}
+
+pi_tester_display_file() {
+  printf '%s/display\n' "$(pi_tester_runtime_dir)"
+}
+
+pi_tester_auth_file() {
+  if [ -n "${PI_TESTER_XAUTHORITY:-}" ]; then
+    printf '%s\n' "$PI_TESTER_XAUTHORITY"
+  else
+    printf '%s/Xauthority\n' "$(pi_tester_runtime_dir)"
+  fi
+}
+
+pi_tester_resolve_display() {
+  if [ -n "${PI_TESTER_DISPLAY:-}" ]; then
+    printf '%s\n' "$PI_TESTER_DISPLAY"
+    return
+  fi
+  file=$(pi_tester_display_file)
+  if [ -s "$file" ]; then
+    display=$(head -n 1 -- "$file")
+    case "$display" in
+      :[0-9]*) printf '%s\n' "$display"; return ;;
+    esac
+  fi
+  echo "no Pi-agent display is configured; run bin/pi-tester-display first" >&2
+  return 1
+}
+
+pi_tester_data_root() {
+  if [ -n "${PI_TESTER_DATA_ROOT:-}" ]; then
+    printf '%s\n' "$PI_TESTER_DATA_ROOT"
+  elif [ -n "${XDG_STATE_HOME:-}" ]; then
+    printf '%s/pi-agent-tester\n' "$XDG_STATE_HOME"
+  else
+    printf '%s/.local/state/pi-agent-tester\n' "${HOME:?HOME is not set}"
+  fi
+}

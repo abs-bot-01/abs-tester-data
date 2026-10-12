@@ -25,14 +25,30 @@ concept file carries YAML frontmatter with a `type` (plus title,
 description, tags, generated provenance); `index.md` files are plain
 directory listings without frontmatter; links express relationships."""
 from __future__ import annotations
-import argparse, datetime as dt, fcntl, hashlib, json, os, re, sys, tempfile
+import argparse, datetime as dt, fcntl, getpass, hashlib, json, os, re, socket, sys, tempfile
+from contextlib import contextmanager
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_DATA_ROOT = Path("/home/abs-bot-01/dev/gd-math-config/testing")
-DATA = Path(os.environ.get("PI_TESTER_DATA_ROOT", str(DEFAULT_DATA_ROOT))).expanduser()
+
+def default_data_root():
+    """Return a user-local store unless a shared store was explicitly configured."""
+    configured = os.environ.get("PI_TESTER_DATA_ROOT")
+    if configured:
+        return Path(configured).expanduser()
+    state_home = os.environ.get("XDG_STATE_HOME")
+    if state_home:
+        return Path(state_home).expanduser() / "pi-agent-tester"
+    return Path.home() / ".local" / "state" / "pi-agent-tester"
+
+DATA = default_data_root()
 PROJECTS = DATA / "projects"
 GLOBAL_KB = DATA / "global-knowledge.md"
+STORE_SHARED = os.environ.get("PI_TESTER_SHARED_STORE", "").lower() in {"1", "true", "yes"}
+FILE_MODE = 0o660 if STORE_SHARED else 0o600
+# The default is private. A deliberately configured shared store can use the
+# caller's group permissions instead (normally with umask 0007).
+os.umask(0o007 if STORE_SHARED else 0o077)
 NAME_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{2,100}$")
 RESULTS = ("passed", "failed", "blocked", "skipped")
 RUN_STATUSES = ("passed", "failed", "partial", "blocked")
@@ -66,10 +82,30 @@ def atomic_write(path, text):
     path.parent.mkdir(parents=True, exist_ok=True)
     fd,tmp=tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
     try:
-        with os.fdopen(fd,"w",encoding="utf-8") as f: f.write(text); f.flush(); os.fsync(f.fileno())
+        with os.fdopen(fd,"w",encoding="utf-8") as f:
+            f.write(text); f.flush(); os.fsync(f.fileno())
+        os.chmod(tmp, FILE_MODE)
         os.replace(tmp,path)
     finally:
         if os.path.exists(tmp): os.unlink(tmp)
+
+def store_lock_path():
+    return DATA / ".store.lock"
+
+@contextmanager
+def store_lock():
+    """Serialize compound store operations across users sharing one store."""
+    DATA.mkdir(parents=True, exist_ok=True)
+    with store_lock_path().open("a+") as f:
+        os.chmod(store_lock_path(), FILE_MODE)
+        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+
+def current_identity():
+    return {"user": getpass.getuser(), "uid": os.getuid(), "host": socket.gethostname()}
 
 def project_dir(name):
     s=slug(name) or die("invalid project name")
@@ -158,6 +194,14 @@ def rel_project_path(path, pname):
     for pref in (f"projects/{pname}/", "projects/"):
         if p.startswith(pref): return p[len(pref):]
     return p
+
+def artifact_name(value):
+    """Accept only a simple artifact filename inside the current run."""
+    name = str(value).strip()
+    path = Path(name)
+    if not name or path.is_absolute() or path.name != name or name in {".", ".."}:
+        die(f"invalid artifact name: {name}")
+    return name
 
 def split_pairs(value, sep=";"):
     return [x.strip() for x in (value or "").split(sep) if x.strip()]
@@ -264,7 +308,7 @@ def cmd_project_create(a):
     for sub in ("runs","knowledge","runbooks","bugs","issues"): (p/sub).mkdir(parents=True, exist_ok=True)
     write_project_config(p, a.context_path)
     atomic_write(p/"setup.md", fm("App Setup", s, f"How to launch and configure {s} under test.", tags=["setup"])
-        + f"# Setup — {s}\n\n- **application:** (name)\n- **executable:** (path to the supplied binary)\n- **launch:** approved `bin/pi-tester-launch <executable>`\n- **environment:** Linux desktop on disposable Xvfb display :1042 (1280x720)\n- **setup notes:** profiles, save data, window sizing\n")
+        + f"# Setup — {s}\n\n- **application:** (name)\n- **executable:** (path to the supplied binary)\n- **launch:** approved `bin/pi-tester-launch <executable>`\n- **environment:** Linux desktop on the per-user disposable Xvfb display reported by `bin/pi-tester-display` (1280x720)\n- **setup notes:** profiles, save data, window sizing\n")
     for topic in KB_TOPICS:
         tf=p/"knowledge"/f"{topic}.md"
         if not tf.exists():
@@ -283,6 +327,15 @@ def cmd_project_list(a):
         out.append({"project":p.name,"runs":len(list((p/'runs').glob('*/run.jsonl'))),"findings":len(lines(p/'findings.jsonl')) if (p/'findings.jsonl').exists() else 0,"runbooks":len(list((p/'runbooks').glob('*.md')))})
     print(json.dumps({"projects":out},ensure_ascii=False))
 
+def cmd_paths(a):
+    print(json.dumps({
+        "install_root": str(ROOT),
+        "data_root": str(DATA),
+        "shared_store": STORE_SHARED,
+        "runtime_root": os.environ.get("PI_TESTER_RUNTIME_DIR") or
+            str(Path(os.environ.get("XDG_RUNTIME_DIR", "/tmp")) / f"pi-agent-tester-{os.getuid()}"),
+    }, ensure_ascii=False))
+
 # ---------- run ----------
 
 def cmd_start(a):
@@ -292,7 +345,8 @@ def cmd_start(a):
     if (rd/"run.jsonl").exists() and lines(rd/"run.jsonl"): die(f"run already exists: {rid}")
     (rd/"artifacts").mkdir(parents=True, exist_ok=True)
     header={"event":"run_started","run_id":rid,"project":a.project,"target":a.target,"purpose":a.purpose,
-            "boundary":a.boundary,"environment":a.environment,"mode":a.mode,"status":"open","timestamp":now()}
+            "boundary":a.boundary,"environment":a.environment,"mode":a.mode,"status":"open","timestamp":now(),
+            "identity":current_identity()}
     if a.mode=="runbook":
         if not a.runbook_id: die("runbook mode requires --runbook-id")
         runbook_id=slug(a.runbook_id) or die("invalid runbook id")
@@ -307,9 +361,10 @@ def cmd_start(a):
 def cmd_action(a):
     ev=active_run(a.project, a.run_id); rd=project_dir(a.project)/"runs"/slug(a.run_id)
     artifacts=[]
-    for name in split_pairs(a.artifacts, ","):
+    for raw_name in split_pairs(a.artifacts, ","):
+        name=artifact_name(raw_name)
         f=rd/"artifacts"/name
-        if not f.is_file(): die(f"artifact does not exist in run artifacts dir: {name}")
+        if not f.is_file() or f.is_symlink(): die(f"artifact does not exist in run artifacts dir: {name}")
         artifacts.append("artifacts/"+name)
     obj={"seq":max((x.get("seq",0) for x in ev if isinstance(x.get("seq"),int)),default=0)+1,
          "event":"action","timestamp":now(),"action":a.action,"result":a.result}
@@ -426,7 +481,7 @@ def cmd_finding_status(a):
     idx=next((i for i,x in enumerate(rows) if x.get("finding_id")==a.finding_id), None)
     if idx is None: die(f"finding not found: {a.finding_id}")
     row=rows[idx]
-    log={"from":row.get("status"),"status":a.status,"reason":reason,"by":"human","at":now()}
+    log={"from":row.get("status"),"status":a.status,"reason":reason,"by":"human","identity":current_identity(),"at":now()}
     if a.category:
         log["category_from"]=finding_category(row); log["category_to"]=a.category
         row["category"]=a.category
@@ -728,10 +783,11 @@ def parser():
                    help="approved existing directory relative to the project directory (repeatable)")
     x.set_defaults(fn=cmd_project_create)
     x=s.add_parser("project-list"); x.set_defaults(fn=cmd_project_list)
+    x=s.add_parser("paths"); x.set_defaults(fn=cmd_paths)
     x=s.add_parser("run-start"); x.add_argument("--project",required=True); x.add_argument("--run-id",required=True)
     x.add_argument("--target",required=True); x.add_argument("--purpose",required=True)
     x.add_argument("--boundary",default="User-facing interface only; no source access; no irreversible actions")
-    x.add_argument("--environment",default="Linux desktop on disposable Xvfb display :1042")
+    x.add_argument("--environment",default="Linux desktop on per-user disposable Xvfb display (1280x720x24)")
     x.add_argument("--mode",default="explore",choices=MODES); x.add_argument("--runbook-id"); x.set_defaults(fn=cmd_start)
     x=s.add_parser("action"); x.add_argument("--project",required=True); x.add_argument("--run-id",required=True)
     x.add_argument("--action",required=True); x.add_argument("--result",required=True,choices=RESULTS)
@@ -768,4 +824,9 @@ def parser():
     return p
 
 if __name__=="__main__":
-    a=parser().parse_args(); a.fn(a)
+    a=parser().parse_args()
+    # A single store lock protects read/modify/rebuild transactions, not just
+    # individual append operations. This prevents lost findings and duplicate
+    # event sequence numbers when several users share a data root.
+    with store_lock():
+        a.fn(a)

@@ -80,7 +80,7 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    ROOT["Testing store<br/>/home/abs-bot-01/dev/gd-math-config/testing/"]
+    ROOT["Testing store<br/><data-root>/"]
     ROOT --> BI["index.md<br/>bundle-root listing"]
     ROOT --> GK["global-knowledge.md<br/>global KB"]
     ROOT --> PS["projects/"]
@@ -136,7 +136,7 @@ All tester work is scoped to a **project** — one application under test. Every
 ### 2.1 Project folder
 
 ```
-/home/abs-bot-01/dev/gd-math-config/testing/
+<data-root>/
 ├── index.md                 ← bundle-root listing (the only file allowed to carry okf_version)
 ├── global-knowledge.md      ← cross-project KB (section 5.1; the only document outside project scope)
 └── projects/
@@ -192,7 +192,7 @@ specified as Document 5 below.
 1. Every conversation with the tester starts with a project context.
 2. If the human hands the tester an application with no matching project, the tester **creates the project first**: records how to run it in `setup.md`, then proceeds.
 3. If a request arrives without project context, the tester asks: work with an existing project, or create a new one?
-4. Project folders sit under the external store root (`/home/abs-bot-01/dev/gd-math-config/testing/projects/`), separate from this tester repository.
+4. Project folders sit under the configured external store root (`<data-root>/projects/`), separate from this tester repository. The installation is shareable and read-only; the default data root is user-local, with a shared store requiring explicit configuration.
 
 ---
 

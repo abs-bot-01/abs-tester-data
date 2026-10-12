@@ -13,11 +13,12 @@ bin/pi-tester-display
 bin/pi-tester-x11 verify
 ```
 
-The display defaults to `PI_TESTER_DISPLAY` or `:1042`. Every command verifies
-that display before sending input. Override it explicitly when needed:
+The display defaults to `PI_TESTER_DISPLAY` or the per-user display recorded by
+`bin/pi-tester-display`. Every command verifies that display before sending
+input. Override it explicitly when needed:
 
 ```bash
-bin/pi-tester-x11 --display :1042 verify
+bin/pi-tester-x11 --display :12345 verify
 ```
 
 ## Input commands
@@ -42,7 +43,7 @@ only after a fresh screenshot confirms it.
 Capture a raw root screenshot with:
 
 ```bash
-bin/pi-tester-x11 capture /home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/runs/<run-id>/artifacts/<label>.png
+bin/pi-tester-x11 capture <data-root>/projects/<project>/runs/<run-id>/artifacts/<label>.png
 ```
 
 For the normal cursor-marked run artifact, prefer:

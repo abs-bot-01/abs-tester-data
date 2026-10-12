@@ -16,14 +16,20 @@ Pi-agent project and used without a global agent workspace or installation.
 ## Quick start
 
 ```bash
-cd /home/abs-bot-01/dev/pi-agent-tester
+cd /shared/pi-agent-tester
+bin/pi-tester-tool paths
 bin/pi-tester-tool project-list
 bin/pi-tester-tool project-create --name <project> \
   [--context-path <project-relative-directory>]  # repeat as needed
-# Edit /home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md
-# with the supplied app details, then validate the project.
+# Edit the project setup.md under the data_root reported by `paths`.
 bin/pi-tester-tool validate
 ```
+
+The installation is read-only and can be shared by multiple users. Mutable
+store data defaults to `$XDG_STATE_HOME/pi-agent-tester` or
+`~/.local/state/pi-agent-tester`; set `PI_TESTER_DATA_ROOT` explicitly for a
+team-owned store. Set `PI_TESTER_SHARED_STORE=1` when using a group-managed
+store so generated files receive group-readable permissions.
 
 For a desktop session, use `bin/pi-tester-display`, launch only the supplied
 application with `bin/pi-tester-launch`, and follow `AGENTS.md` before creating
@@ -95,9 +101,9 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 | Implementation plan and status | `implementation-plan.md` |
 | Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md`, `pi-agent/native-x11.md` |
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
-| Project-scoped test data | `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/` (`setup.md`, `data.json`, findings/category documents, knowledge, runbooks, and runs) |
+| Project-scoped test data | `<data-root>/projects/<project>/` (`data.json`, setup, findings/category documents, knowledge, runbooks, and runs); run `bin/pi-tester-tool paths` to resolve `<data-root>` |
 | A run | `runs/<run-id>/run.jsonl`, selected `flow.md`, compatibility `report.md`, and `artifacts/` |
 | Findings and triage | `findings.jsonl` (local), `findings.md` (unclassified intake), `bugs/index.md`, and `issues/index.md` |
 | Session transcript (design history) | `transcript/open-knowledge-format-and-embedded-evidence-009.vtt` |
 
-The store root can be overridden for isolated runs with `PI_TESTER_DATA_ROOT`.
+The store root can be overridden for isolated or team-shared runs with `PI_TESTER_DATA_ROOT`. Desktop runtime files and Xvfb displays are per-user under `$XDG_RUNTIME_DIR` (or a private `/tmp` fallback), not in this installation.

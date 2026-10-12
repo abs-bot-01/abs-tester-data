@@ -37,9 +37,10 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 ## Required sequence
 
 1. Establish an existing project or ask whether to create a new project.
-2. Read `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md`,
-   `data.json` (approved relative context directories), the project knowledge
-   index, relevant knowledge topics, `findings.md`, and the durable `bugs/index.md`
+2. Resolve the configured tester data root with `bin/pi-tester-tool paths`, then read
+   the project's `<data-root>/projects/<project>/setup.md`, `data.json`
+   (approved relative context directories), the project knowledge index, relevant
+   knowledge topics, `findings.md`, and the durable `bugs/index.md`
    and `issues/index.md`. Use local `findings.jsonl` when available for recurrence;
    the Markdown documents are the committed fallback.
 3. Confirm target, purpose, safe boundary, and mode with the human when any of
@@ -107,7 +108,7 @@ Use these wrappers instead of ad-hoc writes:
 
 - `bin/pi-tester-tool` — project, run, finding, knowledge, runbook, history,
   and validation operations.
-- `bin/pi-tester-display` — disposable 1280x720 Xvfb display.
+- `bin/pi-tester-display` — per-user disposable 1280x720 Xvfb display.
 - `bin/pi-tester-launch` — launch only the supplied executable or command on
   that display.
 - `bin/pi-tester-capture` — cursor-marked screenshot bound to a run.

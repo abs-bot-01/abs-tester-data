@@ -9,9 +9,10 @@ and runbooks. Do not treat this repository as an application under test.
 
 1. Establish the target project. If the user names an existing project, use it;
    otherwise ask whether to create one.
-2. Read the project's `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/setup.md`,
-   `data.json` (approved relative context directories), `knowledge/index.md`,
-   `findings.md`, and the durable `bugs/index.md` and `issues/index.md` before testing.
+2. Resolve the configured tester data root with `bin/pi-tester-tool paths`, then read
+   the project's `<data-root>/projects/<project>/setup.md`, `data.json`
+   (approved relative context directories), `knowledge/index.md`, `findings.md`,
+   and the durable `bugs/index.md` and `issues/index.md` before testing.
    Use local `findings.jsonl` when available for recurrence; the Markdown
    documents are the committed fallback.
 3. Read `pi-agent/testing-instructions.md` and the relevant sections of
@@ -133,9 +134,10 @@ Record the actual interaction and screenshot backend in the run notes. For
 native X11 runs use `input_backend=xdotool`,
 `screenshot_backend=ImageMagick import`, and
 `computer_use_invoked=false`. Do not claim a backend merely because a tool
-exists. The default local display is Xvfb at `:1042`, 1280x720x24; it is
-disposable and must not be confused with the user's real desktop. See
-`pi-agent/native-x11.md` for the command contract.
+exists. The default local display is a per-user disposable Xvfb display at
+1280x720x24; `bin/pi-tester-display` reports its allocated display and keeps
+runtime state under the user's runtime directory. It must not be confused with
+the user's real desktop. See `pi-agent/native-x11.md` for the command contract.
 
 ## Completion
 

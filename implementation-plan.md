@@ -12,9 +12,9 @@ A working POC already runs on `abs-bot-01`:
 
 | Component | State today |
 |-----------|-------------|
-| Pi-agent tester with local desktop wrappers | Working locally; disposable Xvfb display `:1042`; launch/stop/capture/tool wrappers are in `bin/` |
+| Pi-agent tester with local desktop wrappers | Working locally; per-user disposable Xvfb display; launch/stop/capture/tool wrappers are in `bin/` |
 | `tester-tools.py` | Working store with project, run, finding, knowledge, runbook, history, and validation commands; no POI command |
-| Storage | `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/` with `setup.md`, `data.json`, run folders, findings/category documents, knowledge, and runbooks |
+| Storage | Configured `<data-root>/projects/<project>/` with `setup.md`, `data.json`, run folders, findings/category documents, knowledge, and runbooks |
 | Agent instructions | `AGENTS.md` and `pi-agent/testing-instructions.md` with workflow, safety, finding policy, and storage rules |
 | Existing data | Historical GD-Math data is the migration source; new projects are created with the complete layout |
 
@@ -24,7 +24,7 @@ The POC's concepts survive; the work below restructures storage, adds the missin
 
 - **Tasks and the builder** — deferred until the builder agent's interface exists (design section 10).
 - **Front-end** — permanently out of scope by design.
-- **Store location** — project folders stay under `/home/abs-bot-01/dev/gd-math-config/testing/projects/`, outside this tester repository.
+- **Store location** — project folders stay under the configured `<data-root>/projects/`, outside this tester repository; the default is user-local and a shared root is explicit.
 - **Global-KB internals** — the global KB exists as tester instructions/memory; only its minimal read/write path is built here.
 
 ---
@@ -57,7 +57,7 @@ Order matters: every later phase stores data inside a project, so projects come 
 
 ### Phase 0 — Project scaffolding and data migration
 
-**Goal:** every document lives inside `/home/abs-bot-01/dev/gd-math-config/testing/projects/<project>/`; the POC's historical data moves there intact.
+**Goal:** every document lives inside the configured `<data-root>/projects/<project>/`; the POC's historical data moves there intact.
 
 Tasks:
 1. Create the layout from design §2.1 for the existing GD-Math work as project `gd-math`.
@@ -69,7 +69,7 @@ Tasks:
 7. Split `knowledge.md`: project-specific entries → `projects/gd-math/knowledge/…`; cross-project entries (tooling, environment behaviour, standing workflow decisions) → the tester-level global memory file. Create both `knowledge/index.md` files.
 8. Delete the `poi` subcommand; keep historical ids only as references inside findings.
 
-Files touched: `tester-tools.py` (paths, validate), `/home/abs-bot-01/dev/gd-math-config/testing/*` (migration script or one-off commands), workspace `TOOLS.md`.
+Files touched: `tester-tools.py` (paths, validate), the configured `<data-root>/*` (migration script or one-off commands), workspace `TOOLS.md`.
 
 Acceptance:
 - `validate` passes against the new tree.

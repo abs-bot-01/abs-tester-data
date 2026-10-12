@@ -6,26 +6,29 @@ if [ "$#" -ne 3 ]; then
   exit 2
 fi
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+. "$ROOT/bin/pi-tester-runtime"
 project=$1
 run_id=$2
 label=$3
 case "$project" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid project" >&2; exit 3 ;; esac
 case "$run_id" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid run id" >&2; exit 3 ;; esac
 case "$label" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid label" >&2; exit 3 ;; esac
-DATA_ROOT=${PI_TESTER_DATA_ROOT:-/home/abs-bot-01/dev/gd-math-config/testing}
+DATA_ROOT=$(pi_tester_data_root)
 run_dir="$DATA_ROOT/projects/$project/runs/$run_id"
 out="$run_dir/artifacts/$label.png"
 [ -d "$run_dir" ] || { echo "run not found: $project/$run_id" >&2; exit 4; }
-mkdir -p "$run_dir/artifacts"
-DISPLAY_NAME=${PI_TESTER_DISPLAY:-:1042}
-/usr/bin/import -display "$DISPLAY_NAME" -window root -quality 90 "$out"
-cur=$(/usr/bin/xdotool -display "$DISPLAY_NAME" getmouselocation 2>/dev/null || true)
+mkdir -p -- "$run_dir/artifacts"
+DISPLAY_NAME=$(pi_tester_resolve_display)
+AUTH_FILE=$(pi_tester_auth_file)
+DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/import -window root -quality 90 "$out"
+cur=$(DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/xdotool getmouselocation 2>/dev/null || true)
 x=$(printf '%s' "$cur" | tr ' ' '\n' | sed -n 's/^x://p' | head -n1)
 y=$(printf '%s' "$cur" | tr ' ' '\n' | sed -n 's/^y://p' | head -n1)
 if [ -n "${x:-}" ] && [ -n "${y:-}" ]; then
-  /usr/bin/convert "$out" \
+  DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/convert "$out" \
     -stroke white -strokewidth 2 -fill none -draw "circle $x,$y $((x+9)),$y" \
     -fill red -stroke none -draw "circle $x,$y $((x+5)),$y" "$out"
 fi
 /usr/bin/mogrify -resize '1280>' "$out"
-printf '{"project":"%s","run":"%s","artifact":"%s","cursor":"%s,%s"}\n' "$project" "$run_id" "artifacts/$label.png" "${x:-none}" "${y:-none}"
+printf '{"project":"%s","run":"%s","artifact":"%s","display":"%s","cursor":"%s,%s"}\n' \
+  "$project" "$run_id" "artifacts/$label.png" "$DISPLAY_NAME" "${x:-none}" "${y:-none}"
