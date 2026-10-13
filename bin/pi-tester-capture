@@ -1,5 +1,6 @@
 #!/bin/sh
-# Capture a cursor-marked screenshot into a project run's artifacts folder.
+# Capture a cursor-marked screenshot into a numbered project-run artifact.
+# The numeric prefix is allocated per run so lexical filename order is capture order.
 set -eu
 if [ "$#" -ne 3 ]; then
   echo "usage: pi-tester-capture <project> <run-id> <label>" >&2
@@ -12,12 +13,41 @@ run_id=$2
 label=$3
 case "$project" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid project" >&2; exit 3 ;; esac
 case "$run_id" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid run id" >&2; exit 3 ;; esac
-case "$label" in [A-Za-z0-9][A-Za-z0-9_.-]*) : ;; *) echo "invalid label" >&2; exit 3 ;; esac
+case "$label" in
+  ''|*[!A-Za-z0-9._-]*) echo "label must contain only letters, numbers, dots, underscores, and hyphens" >&2; exit 3 ;;
+esac
+# Callers may include a prefix for readability; the wrapper owns the sequence.
+label=$(printf '%s' "$label" | sed 's/^[0-9][0-9][0-9]-//')
+[ -n "$label" ] || { echo "label is empty after removing a sequence prefix" >&2; exit 3; }
 DATA_ROOT=$(pi_tester_data_root)
 run_dir="$DATA_ROOT/projects/$project/runs/$run_id"
-out="$run_dir/artifacts/$label.png"
+out_dir="$run_dir/artifacts"
 [ -d "$run_dir" ] || { echo "run not found: $project/$run_id" >&2; exit 4; }
-mkdir -p -- "$run_dir/artifacts"
+mkdir -p -- "$out_dir"
+
+# Reserve a filename before importing so two capture calls cannot overwrite one
+# another. The lock is removed by the trap even when ImageMagick fails.
+next=1
+for existing in "$out_dir"/*; do
+  [ -f "$existing" ] || continue
+  base=${existing##*/}
+  prefix=${base%%-*}
+  case "$prefix" in
+    ''|*[!0-9]*) ;;
+    *) [ "$prefix" -ge "$next" ] && next=$((prefix + 1)) ;;
+  esac
+done
+while :; do
+  filename=$(printf '%03d-%s.png' "$next" "$label")
+  lock="$out_dir/.${filename}.lock"
+  if mkdir -- "$lock" 2>/dev/null; then
+    break
+  fi
+  next=$((next + 1))
+done
+cleanup() { rmdir -- "$lock" 2>/dev/null || true; }
+trap cleanup EXIT HUP INT TERM
+out="$out_dir/$filename"
 DISPLAY_NAME=$(pi_tester_resolve_display)
 AUTH_FILE=$(pi_tester_auth_file)
 DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/import -window root -quality 90 "$out"
@@ -30,5 +60,7 @@ if [ -n "${x:-}" ] && [ -n "${y:-}" ]; then
     -fill red -stroke none -draw "circle $x,$y $((x+5)),$y" "$out"
 fi
 /usr/bin/mogrify -resize '1280>' "$out"
-printf '{"project":"%s","run":"%s","artifact":"%s","display":"%s","cursor":"%s,%s"}\n' \
-  "$project" "$run_id" "artifacts/$label.png" "$DISPLAY_NAME" "${x:-none}" "${y:-none}"
+trap - EXIT HUP INT TERM
+cleanup
+printf '{"project":"%s","run":"%s","sequence":%d,"artifact":"artifacts/%s","display":"%s","cursor":"%s,%s"}\n' \
+  "$project" "$run_id" "$next" "$filename" "$DISPLAY_NAME" "${x:-none}" "${y:-none}"

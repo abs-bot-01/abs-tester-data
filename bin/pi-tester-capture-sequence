@@ -1,0 +1,23 @@
+#!/bin/sh
+# Capture a timed sequence of cursor-marked screenshots for one run.
+set -eu
+if [ "$#" -lt 4 ] || [ "$#" -gt 5 ]; then
+  echo "usage: pi-tester-capture-sequence <project> <run-id> <label> <count> [interval-seconds]" >&2
+  exit 2
+fi
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+project=$1
+run_id=$2
+label=$3
+count=$4
+interval=${5:-1}
+case "$count" in ''|*[!0-9]*|0) echo "count must be a positive integer" >&2; exit 2 ;; esac
+case "$interval" in ''|*[!0-9.]*|.*|*.*.*) echo "interval must be a non-negative number" >&2; exit 2 ;; esac
+case "$label" in ''|*[!A-Za-z0-9._-]*) echo "label must contain only letters, numbers, dots, underscores, and hyphens" >&2; exit 2 ;; esac
+i=1
+while [ "$i" -le "$count" ]; do
+  suffix=$(printf '%02d' "$i")
+  "$ROOT/bin/pi-tester-capture" "$project" "$run_id" "${label}-frame-${suffix}"
+  if [ "$i" -lt "$count" ]; then sleep "$interval"; fi
+  i=$((i + 1))
+done

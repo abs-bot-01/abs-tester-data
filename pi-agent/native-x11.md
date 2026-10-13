@@ -43,14 +43,26 @@ only after a fresh screenshot confirms it.
 Capture a raw root screenshot with:
 
 ```bash
-bin/pi-tester-x11 capture <data-root>/projects/<project>/runs/<run-id>/artifacts/<label>.png
+bin/pi-tester-x11 capture <data-root>/projects/<project>/runs/<run-id>/artifacts/<NNN>-<label>.png
 ```
 
-For the normal cursor-marked run artifact, prefer:
+The raw command above is useful for diagnostics, but it does not allocate a
+run sequence. For normal run evidence, prefer the numbered wrapper:
 
 ```bash
 bin/pi-tester-capture <project> <run-id> <label>
 ```
+
+The wrapper allocates the next run-local sequence and writes a filename such as
+`003-mergeNumberUpTo7_board01_action02_after.png`; do not manually choose an
+unnumbered filename. For a timed series rather than a video, use:
+
+```bash
+bin/pi-tester-capture-sequence <project> <run-id> <label> <count> [interval-seconds]
+```
+
+The numbered files in the run's `artifacts/` directory are the complete image
+sequence and can be opened individually during review.
 
 Record these fields in run notes when native X11 is used:
 

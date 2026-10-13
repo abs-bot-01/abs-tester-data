@@ -47,7 +47,12 @@ input. Capture meaningful states with:
 
 ```bash
 bin/pi-tester-capture <project> <run-id> <label>
+# Optional timed screenshot sequence:
+bin/pi-tester-capture-sequence <project> <run-id> <label> <count> [interval-seconds]
 ```
+
+Captures are written as run-local, chronologically sortable
+`NNN-<label>.png` artifacts.
 
 Append each meaningful action immediately with `action`, record important
 observations as unclassified findings while the run is live, then complete and
@@ -104,8 +109,10 @@ tool response confirms it.
 - Keep the full event/action history in the local run record, but select only
   important events and state changes for the durable report/flow. Do not capture
   every routine move; capture the initial state, meaningful transitions, and
-  the state needed immediately before a final transition. Bug reproduction is
-  the explicit exception and requires all steps/evidence needed to recreate it.
+  the state needed immediately before a final transition. Use the sequential
+  screenshot workflow rather than relying on video, and review the complete
+  sequence by its numbered artifact filenames. Bug reproduction is the explicit
+  exception and requires all steps/evidence needed to recreate it.
 - Findings are created live when a deviation, anomaly, doubt, or blocked flow is
   observed. The human may monitor status and inspect evidence during or after
   the run; the tester should not wait for approval at every step.

@@ -52,15 +52,15 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
   search, and OKF validation.
 - **Local wrappers included** under `bin/`: `pi-tester-tool`,
   `pi-tester-display`, `pi-tester-launch`, `pi-tester-capture`,
-  `pi-tester-x11`, and `pi-tester-stop`.
+  `pi-tester-capture-sequence`, `pi-tester-x11`, and `pi-tester-stop`.
 - **Documents in OKF v0.2**: every concept file carries frontmatter (`type`,
   title, description, tags, generated-provenance); `index.md` files are plain
   listings; links are relationships (finding ↔ run, runbook ↔ run).
-- **Evidence pipeline**: screenshots on a disposable 1280×720 Xvfb display
-  with the cursor overlaid, capped at 1280px; selected run flows/reports and
-  finding documents embed evidence inline (multiple images render four per
-  table). Native input and raw capture are available through
-  `bin/pi-tester-x11`.
+- **Evidence pipeline**: sequential, cursor-marked screenshots on a disposable
+  1280×720 Xvfb display, capped at 1280px and named `NNN-<label>.png`.
+  Selected run flows/reports and finding documents embed evidence inline
+  (multiple images render four per table). Native input and raw capture are
+  available through `bin/pi-tester-x11`.
 - **Launching works for supplied binaries and PATH commands** through the
   local Pi-agent launcher; extra arguments pass through to the application.
 
@@ -102,7 +102,7 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 | Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md`, `pi-agent/native-x11.md` |
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
 | Project-scoped test data | `<data-root>/projects/<project>/` (`data.json`, setup, findings/category documents, knowledge, runbooks, and runs); run `bin/pi-tester-tool paths` to resolve `<data-root>` |
-| A run | `runs/<run-id>/run.jsonl`, selected `flow.md`, compatibility `report.md`, and `artifacts/` |
+| A run | `runs/<run-id>/run.jsonl`, selected `flow.md`, compatibility `report.md`, and numbered `artifacts/` |
 | Findings and triage | `findings.jsonl` (local), `findings.md` (unclassified intake), `bugs/index.md`, and `issues/index.md` |
 | Session transcript (design history) | `transcript/open-knowledge-format-and-embedded-evidence-009.vtt` |
 

@@ -12,7 +12,7 @@ Layout (under the configured external store root):
     runs/<run-id>/run.jsonl           append-only events (machine record)
     runs/<run-id>/flow.md             selected human-readable test flow (OKF concept, generated)
     runs/<run-id>/report.md           compatibility copy of the generated flow report
-    runs/<run-id>/artifacts/          screenshots, bound to their events
+    runs/<run-id>/artifacts/          numbered screenshots and captures, bound to events
     findings.jsonl                    machine record behind findings.md
     findings.md                       unreviewed findings document (OKF concept, generated)
     bugs/index.md + issues/index.md   categorized finding documents

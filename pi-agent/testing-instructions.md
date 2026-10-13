@@ -80,7 +80,9 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 Every action event must describe what was done and its result (`passed`,
 `failed`, `blocked`, or `skipped`). Screenshots belong under the current run's
 `artifacts/` directory and are referenced by the event that produced them.
-Reports and findings use relative paths and embed evidence where generated.
+`bin/pi-tester-capture` assigns a run-local zero-padded sequence prefix so
+screenshots are chronologically sortable without relying on video or directory
+order. Reports and findings use relative paths and embed evidence where generated.
 Evidence is optional for a finding but strongly encouraged. Never invent a
 screenshot path or claim an action was accepted without observing the result.
 
@@ -111,7 +113,8 @@ Use these wrappers instead of ad-hoc writes:
 - `bin/pi-tester-display` — per-user disposable 1280x720 Xvfb display.
 - `bin/pi-tester-launch` — launch only the supplied executable or command on
   that display.
-- `bin/pi-tester-capture` — cursor-marked screenshot bound to a run.
+- `bin/pi-tester-capture` — cursor-marked, sequentially numbered screenshot bound to a run; filenames are `NNN-<label>.png`.
+- `bin/pi-tester-capture-sequence` — optional timed series of numbered screenshots for exploratory/reproduction evidence.
 - `bin/pi-tester-stop` — stop an application started by the launcher.
 
 Use `bin/pi-tester-x11` for visible application actions in this repository;
