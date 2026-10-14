@@ -43,6 +43,9 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
    `bugs/index.md` and `issues/index.md`. When `PI_TESTER_SINGLE_PROJECT` is set,
    the data root itself is the project store. Use local `findings.jsonl` when
    available for recurrence; the Markdown documents are the committed fallback.
+   Read the configured project's `index.md` and every linked `Instructions`
+   document before testing. Project-specific instructions define the required
+   evidence checkpoints and override generic screenshot defaults.
 3. Confirm target, purpose, safe boundary, and mode with the human when any of
    those are unclear.
 4. Create the run with `bin/pi-tester-tool run-start` before interacting.
@@ -83,8 +86,10 @@ Every action event must describe what was done and its result (`passed`,
 `bin/pi-tester-capture` assigns a run-local zero-padded sequence prefix so
 screenshots are chronologically sortable without relying on video or directory
 order. Reports and findings use relative paths and embed evidence where generated.
-Evidence is optional for a finding but strongly encouraged. Never invent a
-screenshot path or claim an action was accepted without observing the result.
+Evidence is optional for a finding but strongly encouraged. Follow the
+project-specific screenshot instructions for required checkpoints, labels, and
+retention. Never invent a screenshot path or claim an action was accepted
+without observing the result.
 
 ## Findings and knowledge
 

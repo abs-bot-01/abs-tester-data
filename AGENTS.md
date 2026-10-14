@@ -16,6 +16,9 @@ and runbooks. Do not treat this repository as an application under test.
    the data root itself is the project store.
    Use local `findings.jsonl` when available for recurrence; the Markdown
    documents are the committed fallback.
+   Read the configured project's `index.md` and every linked `Instructions`
+   document before testing. Project-specific instructions define the required
+   evidence checkpoints and override generic screenshot defaults.
 3. Read `pi-agent/testing-instructions.md` and the relevant sections of
    `architecture.md` and `implementation-plan.md`.
 4. Use the local `bin/pi-tester-tool` wrapper for all store operations. Do not
