@@ -76,28 +76,25 @@ flowchart LR
     RB -->|replay test-by-test| T
 ```
 
-**(d) Where the documents live** — the tester store has a bundle index and a global KB at its root; application-specific documents live under one project. Local JSONL records are working data, while the Markdown documents and evidence are the durable project record:
+**(d) Where the documents live** — the configured single-project tester store keeps the project documents directly at its root. Local JSONL records are working data, while the Markdown documents and evidence are the durable project record:
 
 ```mermaid
 flowchart TD
     ROOT["Testing store<br/><data-root>/"]
     ROOT --> BI["index.md<br/>bundle-root listing"]
     ROOT --> GK["global-knowledge.md<br/>global KB"]
-    ROOT --> PS["projects/"]
-
-    PS --> P["<project>/"]
-    P --> PI["index.md<br/>project listing"]
-    P --> SETUP["setup.md<br/>application setup"]
-    P --> DATA["data.json<br/>approved context paths"]
-    P --> RUNS["runs/"]
-    P --> FIND["findings.md<br/>unclassified intake"]
-    P --> BUGS["bugs/bugs.md<br/>confirmed bugs"]
-    P --> BUG_INDEX["bugs/index.md<br/>bug definition"]
-    P --> ISSUES["issues/issues.md<br/>issue records"]
-    P --> ISSUE_INDEX["issues/index.md<br/>issue notes"]
-    P --> KB["knowledge/"]
-    P --> RB["runbooks/"]
-    P -. local .-> FINDINGS_LOCAL["findings.jsonl"]
+    ROOT --> PI["index.md<br/>project listing"]
+    ROOT --> SETUP["setup.md<br/>application setup"]
+    ROOT --> DATA["data.json<br/>source, runtime, and tester context"]
+    ROOT --> RUNS["runs/"]
+    ROOT --> FIND["findings.md<br/>unclassified intake"]
+    ROOT --> BUGS["bugs/bugs.md<br/>confirmed bugs"]
+    ROOT --> BUG_INDEX["bugs/index.md<br/>bug definition"]
+    ROOT --> ISSUES["issues/issues.md<br/>issue records"]
+    ROOT --> ISSUE_INDEX["issues/index.md<br/>issue notes"]
+    ROOT --> KB["knowledge/"]
+    ROOT --> RB["runbooks/"]
+    ROOT -. local .-> FINDINGS_LOCAL["findings.jsonl"]
 
     RUNS --> RUN["<run-id>/"]
     RUN --> EVENTS_LOCAL["run.jsonl<br/>local event stream"]
@@ -137,27 +134,29 @@ All tester work is scoped to a **project** — one application under test. Every
 
 ### 2.1 Project folder
 
+For a configured single-project store, the data root is the project root. GD Math
+uses this portable flat layout:
+
 ```
 <data-root>/
-├── index.md                 ← bundle-root listing (the only file allowed to carry okf_version)
-├── global-knowledge.md      ← cross-project KB (section 5.1; the only document outside project scope)
-└── projects/
-    └── gd-math/
-        ├── index.md              ← directory listing: setup, runs, findings, knowledge, runbooks
-        ├── setup.md              ← app location, how to launch, setup notes
-        ├── data.json             ← project config: approved context_paths
-        ├── runs/                 ← one folder per run (section 3)
-        ├── findings.md           ← findings index (section 4; durable)
-        ├── bugs/                 ← bug reference and confirmed bug records
-        │   ├── index.md           ← definition of a bug
-        │   └── bugs.md            ← confirmed bug records
-        ├── issues/               ← issue notes and triage material
-        │   ├── index.md           ← issue notes
-        │   └── issues.md          ← issue records
-        ├── findings.jsonl        ← local machine record behind the findings docs; never committed
-        ├── knowledge/            ← project KB (section 5)
-        └── runbooks/             ← one markdown file per runbook (section 6)
+├── index.md                 ← project directory listing
+├── setup.md                 ← app location and launch instructions
+├── data.json                ← approved source, runtime, and tester context
+├── runs/                    ← one run folder per run (section 3)
+├── findings.md              ← findings index (section 4; durable)
+├── bugs/                    ← bug reference and confirmed bug records
+│   ├── index.md             ← definition of a bug
+│   └── bugs.md              ← confirmed bug records
+├── issues/                  ← issue notes and triage material
+│   ├── index.md             ← issue notes
+│   └── issues.md            ← issue records
+├── findings.jsonl           ← local machine record behind the findings docs; never committed
+├── knowledge/               ← project KB (section 5)
+└── runbooks/                ← one markdown file per runbook (section 6)
 ```
+
+The active project is identified by `PI_TESTER_SINGLE_PROJECT`; command-line
+operations retain `--project` for compatibility and must use that configured ID.
 
 ### 2.2 Markdown follows the Open Knowledge Format (OKF v0.2)
 
@@ -199,7 +198,10 @@ specified as Document 5 below.
 1. Every conversation with the tester starts with a project context.
 2. If the human hands the tester an application with no matching project, the tester **creates the project first**: records how to run it in `setup.md`, then proceeds.
 3. If a request arrives without project context, the tester asks: work with an existing project, or create a new one?
-4. Project folders sit under the configured external store root (`<data-root>/projects/`), separate from this tester repository. The installation is shareable and read-only; the default data root is user-local, with a shared store requiring explicit configuration.
+4. The configured single project lives directly under the external store root
+   (`<data-root>/`), separate from this tester repository. The installation is
+   shareable and read-only; the default data root is user-local, with a shared
+   store requiring explicit configuration.
 
 ---
 

@@ -6,19 +6,20 @@ Project-scoped documents; machine records (JSONL) inside, human documents
 the agent owns everything judgment-shaped.
 
 Layout (under the configured external store root):
-  projects/<project>/
-    index.md                          directory listing (OKF index, no frontmatter)
-    setup.md                          launch + setup notes (OKF concept)
-    runs/<run-id>/run.jsonl           append-only events (machine record)
-    runs/<run-id>/flow.md             selected human-readable test flow (OKF concept, generated)
-    runs/<run-id>/report.md           compatibility copy of the generated flow report
-    runs/<run-id>/artifacts/          numbered screenshots and captures, bound to events
-    findings.jsonl                    machine record behind findings.md
-    findings.md                       unreviewed findings document (OKF concept, generated)
-    bugs/index.md + issues/index.md   categorized finding documents
-    knowledge/index.md + <topic>.md  project KB (topics are OKF concepts)
-    data.json                         approved relative context directories
-    runbooks/<runbook-id>.md          test plans (OKF concepts)
+  setup.md                          launch + setup notes (OKF concept)
+  runs/<run-id>/run.jsonl           append-only events (machine record)
+  runs/<run-id>/flow.md             selected human-readable test flow (OKF concept, generated)
+  runs/<run-id>/report.md           compatibility copy of the generated flow report
+  runs/<run-id>/artifacts/          numbered screenshots and captures, bound to events
+  findings.jsonl                    machine record behind findings.md
+  findings.md                       unreviewed findings document (OKF concept, generated)
+  bugs/index.md + issues/index.md   categorized finding documents
+  knowledge/index.md + <topic>.md  project KB (topics are OKF concepts)
+  data.json                         source, runtime, and tester context
+  runbooks/<runbook-id>.md          test plans (OKF concepts)
+
+When PI_TESTER_SINGLE_PROJECT is set, the configured data root is the project
+root. The --project argument remains a compatibility identifier.
 
 Markdown documents follow the Open Knowledge Format (OKF v0.2): every
 concept file carries YAML frontmatter with a `type` (plus title,
@@ -43,6 +44,7 @@ def default_data_root():
 
 DATA = default_data_root()
 PROJECTS = DATA / "projects"
+SINGLE_PROJECT = os.environ.get("PI_TESTER_SINGLE_PROJECT", "").strip()
 GLOBAL_KB = DATA / "global-knowledge.md"
 STORE_SHARED = os.environ.get("PI_TESTER_SHARED_STORE", "").lower() in {"1", "true", "yes"}
 FILE_MODE = 0o660 if STORE_SHARED else 0o600
@@ -107,11 +109,26 @@ def store_lock():
 def current_identity():
     return {"user": getpass.getuser(), "uid": os.getuid(), "host": socket.gethostname()}
 
+def flat_layout():
+    return bool(SINGLE_PROJECT)
+
+
 def project_dir(name):
     s=slug(name) or die("invalid project name")
-    p=PROJECTS/s
+    if flat_layout():
+        if s != SINGLE_PROJECT:
+            die(f"project does not exist: {s} (configured project: {SINGLE_PROJECT})")
+        p=DATA
+    else:
+        p=PROJECTS/s
     if not p.is_dir(): die(f"project does not exist: {s} (project-create first)")
     return p
+
+
+def project_entries():
+    if flat_layout():
+        return [(SINGLE_PROJECT, DATA)]
+    return [(p.name, p) for p in sorted(PROJECTS.glob("*")) if p.is_dir()]
 
 
 def checked_context_paths(project, values):
@@ -157,6 +174,10 @@ def read_project_config(project):
         value = json.loads(config.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         die(f"invalid project data.json: {exc}")
+    if flat_layout() and project.resolve() == DATA.resolve():
+        # The flat GD Math store keeps its richer QA manifest in data.json.
+        # The tester still treats the root as the single configured project.
+        return {"context_paths": []}
     if not isinstance(value, dict) or set(value) != {"context_paths"}:
         die("data.json must contain only the context_paths array")
     return {"context_paths": checked_context_paths(project, value["context_paths"])}
@@ -283,10 +304,15 @@ def rebuild_project_index(p):
     atomic_write(p/"index.md", "".join(out))
 
 def rebuild_root_index():
-    """Bundle-root index; per OKF it may carry okf_version."""
-    # A valid store always has the cross-project KB, even before the first
-    # entry is added.  Otherwise the documented project-create -> validate
-    # workflow leaves a freshly-created store invalid.
+    """Maintain bundle metadata for the project or flat store layout."""
+    if flat_layout():
+        if not GLOBAL_KB.exists():
+            atomic_write(GLOBAL_KB, fm(
+                "Knowledge", "Global knowledge",
+                "Cross-project knowledge for the configured tester store.",
+                tags=["knowledge", "global"],
+            ) + "# Global knowledge\n\nNo entries yet.\n")
+        return
     if not GLOBAL_KB.exists():
         atomic_write(GLOBAL_KB, fm(
             "Knowledge",
@@ -303,6 +329,24 @@ def rebuild_root_index():
 
 def cmd_project_create(a):
     s=slug(a.name) or die("invalid project name")
+    if flat_layout():
+        if s != SINGLE_PROJECT:
+            die(f"configured project is {SINGLE_PROJECT}, not {s}")
+        p=DATA
+        for sub in ("runs","knowledge","runbooks","bugs","issues"): (p/sub).mkdir(parents=True, exist_ok=True)
+        if not (p/"data.json").exists():
+            write_project_config(p, a.context_path)
+        for topic in KB_TOPICS:
+            tf=p/"knowledge"/f"{topic}.md"
+            if not tf.exists():
+                atomic_write(tf, fm("Knowledge", f"{topic} — {s}", topic.replace("-"," ") + f" for project {s}.", tags=["knowledge", topic])
+                    + f"# {topic.replace('-',' ').title()}\n\nNo entries yet.\n")
+        rebuild_kb_index(p/"knowledge", s)
+        rebuild_findings_documents(p, lines(p/"findings.jsonl") if (p/"findings.jsonl").exists() else [])
+        rebuild_project_index(p)
+        rebuild_root_index()
+        print(json.dumps({"project":s,"root":"."}))
+        return
     p=PROJECTS/s
     if p.exists(): die(f"project already exists: {s}")
     for sub in ("runs","knowledge","runbooks","bugs","issues"): (p/sub).mkdir(parents=True, exist_ok=True)
@@ -322,9 +366,8 @@ def cmd_project_create(a):
 
 def cmd_project_list(a):
     out=[]
-    for p in sorted(PROJECTS.glob("*")) if PROJECTS.exists() else []:
-        if not p.is_dir(): continue
-        out.append({"project":p.name,"runs":len(list((p/'runs').glob('*/run.jsonl'))),"findings":len(lines(p/'findings.jsonl')) if (p/'findings.jsonl').exists() else 0,"runbooks":len(list((p/'runbooks').glob('*.md')))})
+    for name,p in project_entries():
+        out.append({"project":name,"runs":len(list((p/'runs').glob('*/run.jsonl'))),"findings":len(lines(p/'findings.jsonl')) if (p/'findings.jsonl').exists() else 0,"runbooks":len(list((p/'runbooks').glob('*.md')))})
     print(json.dumps({"projects":out},ensure_ascii=False))
 
 def cmd_paths(a):
@@ -724,40 +767,41 @@ def cmd_validate(a):
     elif not fm_field(GLOBAL_KB.read_text(encoding="utf-8"),"type"): problems.append("global-knowledge.md: missing OKF frontmatter/type")
     if (DATA/"index.md").exists():
         checked.append("index.md (bundle root)")
-    for p in sorted(PROJECTS.glob("*")):
+    for project_name,p in project_entries():
         if not p.is_dir(): continue
         for sub,why in (("index.md","project index.md"),("knowledge/index.md","knowledge index"),("setup.md","setup.md"),("data.json","data.json"),("findings.md","findings.md")):
-            if not (p/sub).exists(): problems.append(f"{p.name}: missing {why}")
+            if not (p/sub).exists(): problems.append(f"{project_name}: missing {why}")
         for category in FINDING_CATEGORIES:
             category_index = p/finding_document(category)
             if not category_index.is_file():
                 problems.append(f"{p.name}: missing {finding_document(category)}")
-        if (p/"data.json").is_file():
+        if (p/"data.json").is_file() and not (flat_layout() and p.resolve() == DATA.resolve()):
             try:
                 config=json.loads((p/"data.json").read_text(encoding="utf-8"))
                 if not isinstance(config,dict) or set(config) != {"context_paths"}:
-                    problems.append(f"{p.name}/data.json: must contain only the context_paths array")
+                    problems.append(f"{project_name}/data.json: must contain only the context_paths array")
                 else:
                     try:
                         checked_context_paths(p, config["context_paths"])
                     except SystemExit as exc:
-                        problems.append(f"{p.name}/data.json: {exc}")
+                        problems.append(f"{project_name}/data.json: {exc}")
             except (OSError, json.JSONDecodeError) as exc:
-                problems.append(f"{p.name}/data.json: invalid JSON ({exc})")
+                problems.append(f"{project_name}/data.json: invalid JSON ({exc})")
         for md in sorted(p.rglob("*.md")):
             if md.name in ("index.md","log.md"): continue
             if not fm_field(md.read_text(encoding="utf-8"),"type"):
-                problems.append(f"{p.name}/{md.relative_to(p)}: missing OKF frontmatter/type")
+                problems.append(f"{project_name}/{md.relative_to(p)}: missing OKF frontmatter/type")
         fp=p/"findings.jsonl"
         if fp.exists():
             for row in lines(fp):
                 for im in row.get("images",[]):
                     if not (p/rel_project_path(im.get("path",""), p.name)).is_file():
-                        problems.append(f"{p.name}: finding {row.get('finding_id')} image not found: {im.get('path')}")
+                        problems.append(f"{project_name}: finding {row.get('finding_id')} image not found: {im.get('path')}")
         for rb in (p/"runbooks").glob("*.md"):
             text=rb.read_text(encoding="utf-8")
             st=re.search(r"(?m)^status:\s*(\S+)\s*$", text)
-            if not st or st.group(1) not in ("draft","active","retired"): problems.append(f"{p.name}/{rb.name}: missing/invalid status")
+            if (not st or st.group(1) not in ("draft","active","retired")) and not flat_layout():
+                problems.append(f"{project_name}/{rb.name}: missing/invalid status")
         for jp in sorted((p/"runs").glob("*/run.jsonl")):
             rdir=jp.parent; ev=lines(jp)
             last_seq=0

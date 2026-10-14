@@ -20,7 +20,11 @@ esac
 label=$(printf '%s' "$label" | sed 's/^[0-9][0-9][0-9]-//')
 [ -n "$label" ] || { echo "label is empty after removing a sequence prefix" >&2; exit 3; }
 DATA_ROOT=$(pi_tester_data_root)
-run_dir="$DATA_ROOT/projects/$project/runs/$run_id"
+if [ -n "${PI_TESTER_SINGLE_PROJECT:-}" ]; then
+  run_dir="$DATA_ROOT/runs/$run_id"
+else
+  run_dir="$DATA_ROOT/projects/$project/runs/$run_id"
+fi
 out_dir="$run_dir/artifacts"
 [ -d "$run_dir" ] || { echo "run not found: $project/$run_id" >&2; exit 4; }
 mkdir -p -- "$out_dir"

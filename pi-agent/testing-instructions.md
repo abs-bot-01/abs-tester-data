@@ -38,11 +38,11 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 
 1. Establish an existing project or ask whether to create a new project.
 2. Resolve the configured tester data root with `bin/pi-tester-tool paths`, then read
-   the project's `<data-root>/projects/<project>/setup.md`, `data.json`
-   (approved relative context directories), the project knowledge index, relevant
-   knowledge topics, `findings.md`, and the durable `bugs/index.md`
-   and `issues/index.md`. Use local `findings.jsonl` when available for recurrence;
-   the Markdown documents are the committed fallback.
+   the configured project's `<data-root>/setup.md`, `data.json`,
+   `knowledge/index.md`, relevant knowledge topics, `findings.md`, and the durable
+   `bugs/index.md` and `issues/index.md`. When `PI_TESTER_SINGLE_PROJECT` is set,
+   the data root itself is the project store. Use local `findings.jsonl` when
+   available for recurrence; the Markdown documents are the committed fallback.
 3. Confirm target, purpose, safe boundary, and mode with the human when any of
    those are unclear.
 4. Create the run with `bin/pi-tester-tool run-start` before interacting.

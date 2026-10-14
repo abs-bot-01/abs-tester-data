@@ -10,9 +10,10 @@ and runbooks. Do not treat this repository as an application under test.
 1. Establish the target project. If the user names an existing project, use it;
    otherwise ask whether to create one.
 2. Resolve the configured tester data root with `bin/pi-tester-tool paths`, then read
-   the project's `<data-root>/projects/<project>/setup.md`, `data.json`
-   (approved relative context directories), `knowledge/index.md`, `findings.md`,
-   and the durable `bugs/index.md` and `issues/index.md` before testing.
+   the configured project's `<data-root>/setup.md`, `data.json`,
+   `knowledge/index.md`, `findings.md`, and the durable `bugs/index.md` and
+   `issues/index.md` before testing. When `PI_TESTER_SINGLE_PROJECT` is set,
+   the data root itself is the project store.
    Use local `findings.jsonl` when available for recurrence; the Markdown
    documents are the committed fallback.
 3. Read `pi-agent/testing-instructions.md` and the relevant sections of
@@ -25,7 +26,7 @@ and runbooks. Do not treat this repository as an application under test.
 ```bash
 bin/pi-tester-tool project-list
 bin/pi-tester-tool project-create --name <project> \
-  [--context-path <project-relative-directory>]  # repeatable
+  [--context-path <project-relative-directory>]  # repeatable; flat stores scaffold at <data-root>
 bin/pi-tester-tool validate
 ```
 
