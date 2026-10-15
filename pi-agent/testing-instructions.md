@@ -40,7 +40,9 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 2. Resolve the configured tester data root with `bin/pi-tester-tool paths`, then read
    the configured project's `<data-root>/setup.md`, `data.json`,
    `knowledge/index.md`, relevant knowledge topics, `findings.md`, and the durable
-   `bugs/index.md` and `issues/index.md`. When `PI_TESTER_SINGLE_PROJECT` is set,
+   `bugs/bugs.md` and `issues/issues.md` records. The `bugs/index.md` and
+   `issues/index.md` files are definition/reference pages. When
+   `PI_TESTER_SINGLE_PROJECT` is set,
    the data root itself is the project store. Use local `findings.jsonl` when
    available for recurrence; the Markdown documents are the committed fallback.
    Read the configured project's `index.md` and every linked `Instructions`
@@ -71,11 +73,15 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
    report the blocked flow.
 10. Recover only through an existing safe instruction or one bounded, observable
     retry. Do not guess after an unresolved failure.
-11. Complete the run, generate its `flow.md` and `findings.md`, and validate
-    the complete store. Human classification then renders the finding in
-    `bugs/index.md` or `issues/index.md`; `report.md` is retained as a compatibility copy. The
-    flow is the selected human-readable test flow, not a line-for-line copy of
-    the event stream.
+11. Complete the run, generate its complete `flow.md` and reader-facing
+    `report.md`, and validate the complete store. Record findings in
+    `findings.jsonl` and `findings.md` only when findings exist; never add a
+    `No findings` placeholder. Human classification then renders bug details in
+    `bugs/bugs.md` or issue details in `issues/issues.md`; `bugs/index.md` and
+    `issues/index.md` remain definition/reference pages. The flow contains
+    every tested board and its expected and observed result; the report
+    summarizes the run, retained evidence, limitations, and final QA result.
+    Neither document is a line-for-line copy of the event stream.
 12. Report status, coverage, findings, blocked flows, and next action in chat.
 
 ## Evidence contract
@@ -94,13 +100,16 @@ without observing the result.
 ## Findings and knowledge
 
 Finding statuses are `new`, `needs-retest`, `confirmed`, `not-a-bug`,
-`suppressed`, and `fixed`. New findings start unclassified in `findings.md`.
-A human owns triage: confirmed bugs are classified into `bugs/index.md`, while
-uncertain observations are classified into `issues/index.md`. The tester may propose a
-knowledge entry, but only an explicit human decision can add it to project or
-global knowledge. Nothing is silently deleted or suppressed. When local
-finding JSONL is unavailable, read the committed category documents rather
-than treating the missing machine record as an empty history.
+`suppressed`, and `fixed`. New findings start unclassified in `findings.md` and
+`findings.jsonl` when they exist; do not write an empty-category placeholder.
+A human owns triage: confirmed bugs are classified into `bugs/bugs.md`, while
+uncertain observations are classified into `issues/issues.md`. The
+`bugs/index.md` and `issues/index.md` files only define those categories. The
+tester may propose a knowledge entry, but only an explicit human decision can
+add it to project or global knowledge. Nothing is silently deleted or
+suppressed. When local finding JSONL is unavailable, read the committed
+`findings.md`, `bugs/bugs.md`, and `issues/issues.md` records rather than
+assuming an empty history.
 
 ## Runbooks
 

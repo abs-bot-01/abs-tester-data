@@ -11,8 +11,10 @@ and runbooks. Do not treat this repository as an application under test.
    otherwise ask whether to create one.
 2. Resolve the configured tester data root with `bin/pi-tester-tool paths`, then read
    the configured project's `<data-root>/setup.md`, `data.json`,
-   `knowledge/index.md`, `findings.md`, and the durable `bugs/index.md` and
-   `issues/index.md` before testing. When `PI_TESTER_SINGLE_PROJECT` is set,
+   `knowledge/index.md`, `findings.md`, and the durable `bugs/bugs.md` and
+   `issues/issues.md` records before testing. The `bugs/index.md` and
+   `issues/index.md` files are definition/reference pages. When
+   `PI_TESTER_SINGLE_PROJECT` is set,
    the data root itself is the project store.
    Use local `findings.jsonl` when available for recurrence; the Markdown
    documents are the committed fallback.
@@ -60,7 +62,7 @@ Captures are written as run-local, chronologically sortable
 
 Append each meaningful action immediately with `action`, record important
 observations as unclassified findings while the run is live, then complete and
-generate the selected flow and finding documents:
+generate the complete flow, reader-facing report, and finding documents:
 
 ```bash
 bin/pi-tester-tool run-complete --project <project> --run-id <run-id> \
@@ -153,8 +155,11 @@ the user's real desktop. See `pi-agent/native-x11.md` for the command contract.
 ## Completion
 
 A completed run must have `run.jsonl`, evidence under its own `artifacts/`
-directory, a generated `flow.md` (plus the compatibility `report.md`), updated
-`findings.md` when findings exist, and human-classified entries rendered in
-`bugs/index.md` or `issues/index.md` when applicable, plus a successful `bin/pi-tester-tool
-validate`. Return the compact result in chat with coverage, findings, blocked
-flows, and next action.
+directory, a generated `flow.md` containing the complete testing path, and a
+`report.md` containing the reader-facing summary. Record findings in
+`findings.jsonl` and `findings.md` only when findings exist; do not add `No
+findings` placeholders. Human-classified bug records belong in `bugs/bugs.md`
+and issue records belong in `issues/issues.md`; `bugs/index.md` and
+`issues/index.md` remain definition/reference pages. Omit empty categories from
+reports. Finish with a successful `bin/pi-tester-tool validate`. Return the
+compact result in chat with coverage, findings, blocked flows, and next action.

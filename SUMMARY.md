@@ -34,10 +34,10 @@ Every real test session creates a **run record**. Creating a runbook does not cr
 2. The human starts a run with its purpose and safe boundary.
 3. The tester opens the application, observes loading and the initial state, then explores or executes the selected flow.
 4. Every meaningful action **and application event** is recorded locally. This includes loading, waiting, crashes, popups, screen changes, and tester actions.
-5. Only important events and state/context changes are selected for the Markdown flow/report. Routine moves stay in local event storage. Evidence is sampled at meaningful boundaries rather than captured for every move.
+5. Only important events and state/context changes are selected for the Markdown flow/report. Routine moves stay in local event storage. Evidence is sampled at meaningful boundaries rather than captured for every move. The flow keeps the complete board-by-board path; the report is the concise reader-facing summary.
 6. Findings are recorded live when a deviation, anomaly, doubt, or blocker appears. Bug reproduction is the exception and gets all steps and evidence needed to recreate it.
 7. The tester continues safe independent flows when one flow is blocked; otherwise it performs one bounded recovery or asks the human. The human can monitor status and inspect evidence during or after the run without approving every step.
-8. At completion, the tester generates the selected flow/report, findings document, and chat summary. Human triage determines whether findings are retested, treated as bugs, corrected with context, or promoted to knowledge.
+8. At completion, the tester generates the complete `flow.md`, reader-facing `report.md`, findings document, and chat summary. Human triage determines whether findings are retested, treated as bugs, corrected with context, or promoted to knowledge.
 
 ## What gets stored
 
@@ -56,7 +56,7 @@ It stores:
 - Screenshots and other evidence.
 - A generated human-readable report.
 
-The raw events are stored as local JSONL. The durable selected flow is stored in `flow.md`; `report.md` is retained as a compatibility copy.
+The raw events are stored as local JSONL. The complete human-readable testing path is stored in `flow.md`; `report.md` contains the reader-facing summary, retained artifact links, limitations, and final QA result.
 
 ### 2. Findings
 
@@ -87,8 +87,9 @@ The human decides the final status.
 
 The human then reviews it and classifies it with `finding-status`:
 
-- Confirmed bug → category `bug`, rendered in `bugs/index.md`.
-- Doubt, anomaly, or blocker → category `issue`, rendered in `issues/index.md`.
+- Confirmed bug → category `bug`, rendered in `bugs/bugs.md`.
+- Doubt, anomaly, or blocker → category `issue`, rendered in `issues/issues.md`.
+- `bugs/index.md` and `issues/index.md` only define the categories.
 
 For example:
 
@@ -143,11 +144,11 @@ contains no absolute paths, event history, or human-facing document content.
 
 ### 6. Bugs
 
-`bugs/index.md` is the categorized document containing confirmed or suspected application bugs. It is generated from findings whose category is `bug`.
+`bugs/bugs.md` is the categorized document containing confirmed or suspected application bugs. It is generated from findings whose category is `bug`; `bugs/index.md` is definition-only.
 
 ### 7. Issues
 
-`issues/index.md` is the categorized document containing anomalies, doubts, blockers, and other non-bug findings. It is generated from findings whose category is `issue`.
+`issues/issues.md` is the categorized document containing anomalies, doubts, blockers, and other non-bug findings. It is generated from findings whose category is `issue`; `issues/index.md` is definition-only.
 
 ## Evidence and reports
 

@@ -37,9 +37,9 @@ The POC's concepts survive; the work below restructures storage, adds the missin
 | Project `index.md` (§2.2) | Nothing | New: launch/setup metadata maintained by tester |
 | Run folder layout (§3.1) | Historical POC used separate journal, artifact, and report locations | One folder containing `run.jsonl`, `flow.md`, `report.md`, and `artifacts/` |
 | Events (§3.2) | Historical records were action-only | Retain an append-only event stream with project/run identity and event-bound artifacts |
-| Run report (§3.3) | Historical reports were written separately | `run-report` consolidates selected events into canonical `flow.md` and compatibility `report.md` |
-| Transient result (§3.4) | Historical reports persisted the outcome as a separate concept | Communicate the overall result in chat; keep selected evidence and summary in the flow |
-| Findings (§4) | Historical POC had POIs and one findings record | Findings are the only observation concept; human classification renders `bugs/index.md` or `issues/index.md` |
+| Run documents (§3.3) | Historical reports were written separately | `run-report` generates the complete `flow.md` and separate reader-facing `report.md` from selected events |
+| Transient result (§3.4) | Historical reports persisted the outcome as a separate concept | Communicate the overall result in chat; keep detailed coverage in the flow and the concise summary in the report |
+| Findings (§4) | Historical POC had POIs and one findings record | Findings are the only observation concept; human classification renders `bugs/bugs.md` or `issues/issues.md`, while category indexes remain definitions |
 | Findings MD (§4.2) | JSONL only | `findings.md` with TOC, sections, captioned images, references, `proposed_for_kb` |
 | Evidence policy (§4.4) | Evidence expected on findings | Make optional-but-encouraged in the machine record and the agent instructions |
 | Project KB (§5.2) | Single `knowledge.md` | `knowledge/` folder with `index.md` + topic docs |
@@ -84,14 +84,14 @@ Tasks:
 1. `run-start`: add required `--project`; write `project` into the header event; change `--mode` choices to `explore|continue|runbook`; create the run folder as `projects/<project>/runs/<run-id>/` with `artifacts/` inside it.
 2. `action`: add `"event":"action"` field; treat `--evidence` paths as event-bound artifacts (store paths relative to the run folder; copy/rename captures into the run's `artifacts/`); keep `seq` semantics unchanged.
 3. `run-complete`: unchanged semantics, but it must no longer write a separate file.
-4. New `run-report`: consolidates `run.jsonl` into the selected `flow.md` and generated compatibility `report.md` per design §3.3 (header block, coverage narrative in sequence order, artifact references inline, footer). Regeneration is idempotent.
+4. New `run-report`: consolidates `run.jsonl` into the complete `flow.md` and separate reader-facing `report.md` per design §3.3. The flow contains ordered coverage and evidence references; the report contains the Level summary, scope/environment, screenshot policy, retained artifacts, limitations, blocked work, and final QA result. Regeneration is idempotent.
 5. Update `bin/pi-tester-capture` so screenshots land directly in the active run's `artifacts/` and are returned with the path for event binding.
 6. `validate` gains run checks: first/last event kinds, increasing `seq`, artifact paths resolving, exactly one header/footer.
 7. Findings' run anchors switch to the new path form (`runs/<run-id>/run.jsonl#seq=N`).
 
 Files touched: `tester-tools.py`, `bin/pi-tester-capture`, `AGENTS.md`, and `pi-agent/testing-instructions.md`.
 
-Acceptance: a new run produces one folder with `run.jsonl`, `artifacts/`, and after `run-report` a `flow.md` plus compatibility `report.md`; the flow reads as a narrative with inline artifact references; validation passes.
+Acceptance: a new run produces one folder with `run.jsonl`, `artifacts/`, and after `run-report` a complete `flow.md` plus a distinct reader-facing `report.md`; the flow reads as a narrative with inline artifact references, the report contains the required Level summary, and validation passes.
 
 ### Phase 2 — Findings v2
 
@@ -100,14 +100,14 @@ Acceptance: a new run produces one folder with `run.jsonl`, `artifacts/`, and af
 Tasks:
 1. Remove `poi-id` from the finding record; drop the POI vocabulary everywhere (instructions, TOOLS.md, reports).
 2. `finding`: make `--images` accept `path|caption` pairs (each image carries a caption per design §4.2); add `--references` (run anchors etc.); add `--proposed-for-kb` flag storing the candidate text; evidence fields (`images`, `references`) become optional, with the record still storing whatever exists.
-3. New `findings-report`: regenerates `projects/<project>/findings.md` plus `bugs/index.md` and `issues/index.md` from `findings.jsonl` per design §4.2 — new findings remain in the intake document until human classification, then are removed from it and rendered in the appropriate category document with the description, steps, expected/observed, captioned images, references, recurrence line, and any `proposed_for_kb` block. Regeneration is idempotent.
+3. New `findings-report`: regenerates `projects/<project>/findings.md` plus `bugs/bugs.md` and `issues/issues.md` from `findings.jsonl` per design §4.2 — new findings remain in the intake document until human classification, then are removed from it and rendered in the appropriate category record document with the description, steps, expected/observed, captioned images, references, recurrence line, and any `proposed_for_kb` block. Category `index.md` files remain definitions. Regeneration is idempotent.
 4. New `finding-status`: human-triage status and category updates (`new|needs-retest|confirmed|not-a-bug|suppressed|fixed` plus `bug|issue`) are recorded with a reason, never deleting anything.
 5. Findings files live in the project folder; each tester observation starts as `finding`, then the human classifies it as `bug` or `issue`. Per-project fingerprints keep the same app finding as one record within a project.
 6. The run flow emits findings during the run — no "after run completes" step in the workflow instructions.
 
 Files touched: `tester-tools.py`, `AGENTS.md` (finding policy section rewrite: evidence optional but encouraged, proposals allowed), `TOOLS.md`.
 
-Acceptance: new observations first appear in `findings.md`; human classification as `bug` or `issue` moves the rendered detail to `bugs/index.md` or `issues/index.md`; each category document renders a TOC with clickable sections; the migrated drag anomaly appears with its captioned image and run anchor; a status and category change is visible in both JSONL and Markdown without deleting history.
+Acceptance: new observations first appear in `findings.md`; human classification as `bug` or `issue` moves the rendered detail to `bugs/bugs.md` or `issues/issues.md`; category indexes remain definition-only; each category document renders a TOC with clickable sections; the migrated drag anomaly appears with its captioned image and run anchor; a status and category change is visible in both JSONL and Markdown without deleting history. Empty categories do not receive `No findings` placeholders.
 
 ### Phase 3 — Knowledge Base restructure
 
@@ -161,7 +161,7 @@ Acceptance: starting a session without project context produces the project ques
 - **`tester-tools.py`** is the single store implementation; all phases touch it. Current subcommands: `project-create`, `project-list`, `run-start`, `action`, `run-complete`, `run-report`, `finding`, `finding-status`, `findings-report`, `kb-add`, `kb-propose`, `kb-accept`, `kb-reject`, `runbook-create`, `runbook-freeze`, `runbook-validate`, `history`, and `validate`. The POI and separate-report paths are removed.
 - **Agent instructions** (`AGENTS.md`, `TOOLS.md`, `RUNBOOK.md`) are updated in the same phase as the tooling they describe — the tester must never be instructed to use a command that no longer exists, and vice versa.
 - **Migration is one-way and scripted.** A single migration step (Phase 0) moves all existing data; no dual-format period. The pre-migration tree is archived, not deleted.
-- **Naming decision:** run folders are `runs/<run-id>/` with the selected flow as `flow.md` and a generated compatibility copy as `report.md`.
+- **Naming decision:** run folders are `runs/<run-id>/` with the complete testing flow as `flow.md` and a separate reader-facing summary as `report.md`.
 - **Media delivery:** screenshots continue to be surfaced inline in chat via the existing allowed-roots mechanism; artifact copies inside project runs do not change that path.
 
 ---
@@ -173,7 +173,7 @@ Run end-to-end after all phases:
 1. Ask for a test without project context → tester asks for a project or offers to create one.
 2. Hand over a new binary → tester creates a project, fills `setup.md`, then runs an explore-mode session.
 3. During the run: events appear in `run.jsonl` with screenshots inside the run's `artifacts/`; findings are emitted during (not after) the run.
-4. After the run: chat shows the outcome and the tester links exactly two primary documents — `runs/<run-id>/flow.md` and `findings.md`. `report.md` remains a compatibility copy.
+4. After the run: chat shows the outcome and the tester links the complete flow, reader-facing report, and findings document — `runs/<run-id>/flow.md`, `runs/<run-id>/report.md`, and `findings.md`.
 5. `findings.md` shows a TOC, and each finding carries description, steps, expected/observed, captioned images, and run references.
 6. Tell the tester a fact → it lands in the project KB (or global KB, if the human says it applies everywhere) with source and review date; a finding-proposed candidate can be accepted or rejected explicitly.
 7. Ask to freeze the exploration → a draft runbook appears; the authoring produced no run document.

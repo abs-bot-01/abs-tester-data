@@ -45,9 +45,10 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
   `pi-agent/testing-instructions.md` define the tester's workflow, safety
   boundary, evidence contract, and conversational behavior.
 - **Portable store implemented** (`tester-tools.py`, pure Python stdlib):
-  project-scoped runs (`run.jsonl` plus generated `flow.md` and compatibility
-  `report.md`), live findings with fingerprint-merged recurrence, separate
-  `findings.md` plus `bugs/index.md` and `issues/index.md`, project + global knowledge,
+  project-scoped runs (`run.jsonl` plus generated complete `flow.md` and
+  reader-facing `report.md`), live findings with fingerprint-merged recurrence, separate
+  `findings.md` plus `bugs/bugs.md` and `issues/issues.md` records (with
+  definition-only `index.md` pages), project + global knowledge,
   runbooks (freeze → execute), approved `data.json` context paths, history
   search, and OKF validation.
 - **Local wrappers included** under `bin/`: `pi-tester-tool`,
@@ -58,9 +59,9 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
   listings; links are relationships (finding ↔ run, runbook ↔ run).
 - **Evidence pipeline**: sequential, cursor-marked screenshots on a disposable
   1280×720 Xvfb display, capped at 1280px and named `NNN-<label>.png`.
-  Selected run flows/reports and finding documents embed evidence inline
-  (multiple images render four per table). Native input and raw capture are
-  available through `bin/pi-tester-x11`.
+  Flow and finding documents embed selected evidence inline (multiple images
+  render four per table); reports summarize and link retained artifacts. Native
+  input and raw capture are available through `bin/pi-tester-x11`.
 - **Launching works for supplied binaries and PATH commands** through the
   local Pi-agent launcher; extra arguments pass through to the application.
 
@@ -80,8 +81,10 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
    evidence, and runbooks remain project-scoped.
 3. **Global KB remains explicit**: cross-project facts live in the tester
    bundle, while project knowledge stays with its project.
-4. **Findings remain human-owned**: new observations enter `findings.md`, and
-   only human classification moves them to `bugs/index.md` or `issues/index.md`.
+4. **Findings remain human-owned**: new observations enter `findings.md` and
+   `findings.jsonl` when they exist; human classification moves bug details to
+   `bugs/bugs.md` or issue details to `issues/issues.md`. The category
+   `index.md` files remain definitions and never contain records.
 5. **Prove the end-to-end loop** on a real non-production application before
    adding abstractions or a front-end.
 
@@ -102,8 +105,8 @@ by `bin/pi-tester-x11`; see `pi-agent/native-x11.md`.
 | Pi-agent instructions and entry point | `AGENTS.md`, `pi-agent/testing-instructions.md`, `pi-agent/native-x11.md` |
 | Portable store and wrappers | `tester-tools.py`, `bin/` |
 | Project-scoped test data | `<data-root>/projects/<project>/` (`data.json`, setup, findings/category documents, knowledge, runbooks, and runs); run `bin/pi-tester-tool paths` to resolve `<data-root>` |
-| A run | `runs/<run-id>/run.jsonl`, selected `flow.md`, compatibility `report.md`, and numbered `artifacts/` |
-| Findings and triage | `findings.jsonl` (local), `findings.md` (unclassified intake), `bugs/index.md`, and `issues/index.md` |
+| A run | `runs/<run-id>/run.jsonl`, complete `flow.md`, reader-facing `report.md`, and numbered `artifacts/` |
+| Findings and triage | `findings.jsonl` (local), `findings.md` (unclassified intake), `bugs/bugs.md`, `issues/issues.md`, and definition-only category indexes |
 | Session transcript (design history) | `transcript/open-knowledge-format-and-embedded-evidence-009.vtt` |
 
 The store root can be overridden for isolated or team-shared runs with `PI_TESTER_DATA_ROOT`. Desktop runtime files and Xvfb displays are per-user under `$XDG_RUNTIME_DIR` (or a private `/tmp` fallback), not in this installation.

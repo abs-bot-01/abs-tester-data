@@ -41,8 +41,8 @@ flowchart TD
     FI --> Q
     Q -->|yes| A
     Q -->|no| R[Complete run]
-    R --> P[Generate flow.md<br/>selected flow + evidence]
-    P --> M[Human reviews report/findings<br/>during or after the run]
+    R --> P[Generate flow.md + report.md<br/>full flow + reader-facing summary]
+    P --> M[Human reviews flow/report/findings<br/>during or after the run]
     M --> K[Human triages findings:<br/>retest, act, correct, or approve knowledge]
 ```
 
@@ -51,10 +51,12 @@ after it completes, but the tester should not pause for human input at every
 step. It communicates when a bounded recovery fails, the application is
 blocked, or a decision is required. A stuck flow is recorded as a finding; if
 another independent flow is safe to run, the tester may continue with it and
-summarise the blocked flow at completion. The durable `flow.md` is the selected
-test flow described in the transcript. `report.md` is retained as a generated
-compatibility copy for existing consumers. A bug-reproduction flow is the
-evidence exception: record the extra steps and screenshots needed to recreate it.
+summarise the blocked flow at completion. The durable `flow.md` is the complete
+human-readable test flow described in the transcript, including the result of
+every tested board. `report.md` is the reader-facing summary: it points to the
+flow, findings, and retained evidence without replacing the board coverage in
+`flow.md`. A bug-reproduction flow is the evidence exception: record the extra
+steps and screenshots needed to recreate it.
 
 **(b) Knowledge flow** — knowledge reaches the tester only through the human, and every run starts with what the KBs know. The human decides whether a fact belongs to one project or to every project:
 
@@ -98,8 +100,8 @@ flowchart TD
 
     RUNS --> RUN["<run-id>/"]
     RUN --> EVENTS_LOCAL["run.jsonl<br/>local event stream"]
-    RUN --> FLOW["flow.md<br/>selected durable flow"]
-    RUN --> REPORT["report.md<br/>compatibility copy"]
+    RUN --> FLOW["flow.md<br/>complete durable flow"]
+    RUN --> REPORT["report.md<br/>reader-facing summary"]
     RUN --> ART["artifacts/"]
 
     KB --> KBI["index.md + topic documents"]
@@ -218,17 +220,18 @@ One folder per run; the raw record, the human report, and the evidence live toge
 
 ```
 runs/<run-id>/
-├── events.jsonl      ← local, high-volume event stream; one JSON object per line
-├── flow.md           ← selected human-readable test flow (OKF concept; durable)
-├── report.md         ← generated compatibility copy of flow.md
-└── artifacts/        ← numbered screenshots/captures referenced by events
+├── run.jsonl       ← local, high-volume event stream; one JSON object per line
+├── flow.md         ← complete human-readable test flow (OKF concept; durable)
+├── report.md       ← reader-facing summary of the run (OKF concept; durable)
+└── artifacts/      ← numbered screenshots/captures referenced by events
 ```
 
-`events.jsonl` is working storage, not a repository artefact. It may instead be
+`run.jsonl` is working storage, not a repository artefact. It may instead be
 materialised in a local database, but the logical stream is called **events**,
-not actions: an action is only one kind of event. JSON/JSONL machine records
-are never committed; see section 13. The report contains only selected events,
-so it is not a second copy of the high-volume stream.
+not actions: an action is only one kind of event. JSON/JSONL machine records are
+never committed; see section 13. `flow.md` and `report.md` are both generated
+from selected events, but they have different audiences: the flow preserves the
+complete board-by-board path, while the report gives the concise run summary.
 
 Screenshots are taken on a 1280×720 virtual display with the pointer position
 overlaid on the capture — a screenshot without a cursor makes pointer-driven
@@ -241,7 +244,7 @@ capture wrapper must not overwrite an existing artifact.
 
 `run-id` format: `YYYYMMDD-HHMM-<slug>` (e.g. `20260901-1300-gd-math`). Run ids are unique and never reused.
 
-### 3.2 Event records (events.jsonl)
+### 3.2 Event records (`run.jsonl`)
 
 The atomic unit of a run is an **event**, not an action. The stream records
 what happened during testing, including facts that were not caused by the
@@ -298,17 +301,29 @@ finding, or is needed to reproduce a bug.
 | `summary` | yes | one-paragraph human summary |
 | `timestamp` | yes | ISO-8601 UTC |
 
-### 3.3 Consolidated flow (flow.md)
+### 3.3 Consolidated flow and report (`flow.md`, `report.md`)
 
-After the run ends, the tester consolidates the selected entries from the local
-event stream into `flow.md`: an OKF frontmatter header (type `Run`, target,
-purpose, mode, boundary, result), a table of contents with anchors, a coverage
-narrative in reading order, a meaningful-flow/state-change section, a
-blocked-work list, and a summary. The flow is a human-readable account of
-important events, not a line-for-line rendering of `events.jsonl`.
+After the run ends, the tester consolidates selected entries from the local
+event stream into two related Markdown documents. Both carry OKF frontmatter
+(type `Run`, target, purpose, mode, boundary, and result), but they serve
+different reading needs.
 
-The tooling also writes the same generated content to `report.md` as a
-compatibility copy for existing links and consumers.
+`flow.md` is the complete human-readable testing flow. It contains a table of
+contents with anchors, the coverage narrative in reading order, and every
+board's expected and observed result. Routine actions that remain in the same
+visible context may be grouped, but a tested board must not disappear from the
+flow. It also records launch, transitions, configured Training and Speedrun
+scope, findings, blocked work, shutdown, and the final summary. It is not a
+line-for-line rendering of `run.jsonl`.
+
+`report.md` is the reader-facing summary and must not replace the detailed
+coverage in `flow.md`. It begins with a **Level summary** table containing the
+level ID and title, overall QA result, Training result, Speedrun result (or
+`not_applicable`), audio/TTS/SFX status, and links to `flow.md` and the project
+`findings.md`. It then summarizes the testing scope and environment, screenshot
+policy, retained artifacts and their links, boards verified without screenshots,
+findings, limitations, blocked work, and the final QA result. The report may
+link to detailed flow sections rather than repeating their action narrative.
 
 Screenshots are normally taken for important events and context/state changes:
 app opened or loaded, a new level or screen, a popup, a meaningful transition,
@@ -318,9 +333,11 @@ A bug report is an explicit exception: capture the steps and states needed to
 make that bug reproducible, even when this produces more evidence than the
 normal sampling policy.
 
-Evidence images are embedded inline in the report and findings document. A
-step with several images lays them out as a table — chunks of four, one row per
-image with a notes cell beside it.
+Evidence images are embedded inline in the flow and findings documents when
+they support the selected record. The report links retained artifacts in its
+summary rather than repeating the detailed evidence. A step with several images
+lays them out as a table — chunks of four, one row per image with a notes cell
+beside it.
 
 Run artifact filenames use `<sequence>-<label>.<extension>`, where `sequence` is
 three-digit zero-padded (`001`, `002`, …) and is allocated within that run. The
@@ -329,14 +346,14 @@ the level/activity, board, action or sum, step, and state where known (for
 example, `003-mergeNumberUpTo7_board01_action02_after.png`). The sequence comes
 before semantic text so ordinary filename sorting is chronological. Legacy
 unnumbered artifacts remain readable, but new captures must use this convention.
-The raw JSONL is not copied into the report and is not committed; it remains
-local working data or is retained in the local event database according to the
-retention policy. When runbook mode was used, the report links back to the
-runbook it executed.
+The raw JSONL is not copied into either Markdown document and is not committed;
+it remains local working data or is retained in the local event database
+according to the retention policy. When runbook mode was used, the report and
+flow link back to the runbook it executed.
 
 ### 3.4 Run result is transient
 
-The overall pass/fail outcome is communicated in chat at the end of a run and is **not persisted** as a separate artefact. A run delivers exactly two primary links: `runs/<run-id>/flow.md` and `findings.md`. `report.md` remains available as a compatibility copy. A failure worth keeping becomes a finding when the human asks for it to be recorded.
+The overall pass/fail outcome is communicated in chat at the end of a run and is **not persisted** as a separate artefact. A run exposes three related human-facing records: `runs/<run-id>/flow.md` for the complete test path, `runs/<run-id>/report.md` for the reader-facing summary, and the project `findings.md` for triage. A failure worth keeping becomes a finding when the human asks for it to be recorded.
 
 ### 3.5 Rules
 
@@ -344,7 +361,7 @@ The overall pass/fail outcome is communicated in chat at the end of a run and is
 2. Event `seq` numbers are unique and monotonically increasing per run.
 3. Every artifact path in an event must resolve inside that run's `artifacts/` folder.
 4. New captured artifacts use the run-local numbered filename convention; sequence numbers are never reused within a run.
-5. Findings reference the durable selected section in `runs/<run-id>/flow.md`; they may also reference the local raw event by `runs/<run-id>/run.jsonl#seq=N` (or a range) when it is available.
+5. Findings reference the durable selected section in `runs/<run-id>/flow.md` or `runs/<run-id>/report.md`; they may also reference the local raw event by `runs/<run-id>/run.jsonl#seq=N` (or a range) when it is available.
 
 ---
 
@@ -418,7 +435,7 @@ Markdown viewer, and each section links back to the run that produced it
 
 **references:** `runs/20260831-1938-gd-math/flow.md#level-2-drag-and-drop`
 
-Optional local detail: `runs/20260831-1938-gd-math/events.jsonl#seq=4-7`
+Optional local detail: `runs/20260831-1938-gd-math/run.jsonl#seq=4-7`
 
 **seen in:** 2 runs (first: 20260831-1938-gd-math, latest: 20260901-1400-gd-math)
 
@@ -644,7 +661,7 @@ Tasks (issues derived from findings, handed to a fixing agent) are a real part o
 
 | Document | Human reads via | Agent reads via |
 |----------|----------------|-----------------|
-| Run | chat summary with selected inline screenshots; `runs/<run-id>/flow.md` | local `run.jsonl` or event database (continue mode) |
+| Run | chat summary with selected inline screenshots; `runs/<run-id>/flow.md` and `runs/<run-id>/report.md` | local `run.jsonl` or event database (continue mode) |
 | Findings | chat: one line per new finding; `findings.md` TOC | local `findings.jsonl`; fall back to committed `findings.md` for unclassified history |
 | Bugs | `bugs/index.md` definition and `bugs/bugs.md` records | bug-category records in local `findings.jsonl`; fall back to committed `bugs/bugs.md` |
 | Issues | `issues/index.md` notes and `issues/issues.md` records | issue-category records in local `findings.jsonl`; fall back to committed `issues/issues.md` |
@@ -652,7 +669,7 @@ Tasks (issues derived from findings, handed to a fixing agent) are a real part o
 | Data | the project's `data.json` configuration | validate and read `data.json` before context retrieval and before starting a run; read only the listed directories |
 | Runbook | the file, or chat execution results test-by-test | the runbook file at execution |
 
-After any run the tester returns exactly two primary links: the flow document and the findings document. The compatibility report and raw event record are optional digging.
+After any run the tester returns the flow document and the reader-facing report, together with the findings document when findings exist. The raw event record is optional digging for continue mode or detailed audit.
 
 The data shrinks as it rises: a run may hold a hundred events, the findings ten entries, the KB one accepted fact. That funnel is the point — the human lives at the findings and KB level and only opens a run to verify a specific claim. Category documents remain readable without the local JSONL: they are the durable hand-off for bugs and issues, while `data.json` remains the explicit, committed configuration needed to decide what context the tester may read.
 
@@ -703,8 +720,10 @@ Markdown is the human-facing, reviewable record and may be committed. The
 following are required durable artefacts when they exist:
 
 - project and bundle indexes, setup, runbooks, and KB topic documents;
-- `runs/<run-id>/flow.md`, containing only selected important events and
-  state/context transitions; `report.md` is its compatibility copy; and
+- `runs/<run-id>/flow.md`, containing the complete selected testing flow and
+  board coverage;
+- `runs/<run-id>/report.md`, containing the reader-facing summary, retained
+  artifact links, limitations, and final QA result; and
 - `findings.md`, especially confirmed issues, bugs, and decisions that affect
   future testing.
 

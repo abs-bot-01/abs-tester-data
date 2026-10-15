@@ -8,12 +8,13 @@ the agent owns everything judgment-shaped.
 Layout (under the configured external store root):
   setup.md                          launch + setup notes (OKF concept)
   runs/<run-id>/run.jsonl           append-only events (machine record)
-  runs/<run-id>/flow.md             selected human-readable test flow (OKF concept, generated)
-  runs/<run-id>/report.md           compatibility copy of the generated flow report
+  runs/<run-id>/flow.md             complete human-readable test flow (OKF concept, generated)
+  runs/<run-id>/report.md           reader-facing summary of the run (OKF concept, generated)
   runs/<run-id>/artifacts/          numbered screenshots and captures, bound to events
   findings.jsonl                    machine record behind findings.md
   findings.md                       unreviewed findings document (OKF concept, generated)
-  bugs/index.md + issues/index.md   categorized finding documents
+  bugs/bugs.md + issues/issues.md   categorized bug and issue records
+  bugs/index.md + issues/index.md   category definitions/reference pages
   knowledge/index.md + <topic>.md  project KB (topics are OKF concepts)
   data.json                         source, runtime, and tester context
   runbooks/<runbook-id>.md          test plans (OKF concepts)
@@ -272,12 +273,17 @@ def rebuild_project_index(p):
     if runs:
         for jp in runs:
             rid=jp.parent.name
+            if "representative-levels" in rid:
+                continue
             flow=jp.parent/"flow.md"
             report=jp.parent/"report.md"
             doc=flow if flow.exists() else report
             desc=fm_field(doc.read_text(encoding="utf-8"),"description") if doc.exists() else ""
             target=f"runs/{rid}/{doc.name}" if doc.exists() else f"runs/{rid}/run.jsonl"
-            out.append(f"* [Run {rid}]({target}) - {desc or 'exploration/test run'}\n")
+            links=f"[Run {rid}]({target})"
+            if flow.exists() and report.exists():
+                links += f" · [report](runs/{rid}/report.md)"
+            out.append(f"* {links} - {desc or 'exploration/test run'}\n")
     else:
         out.append("No runs yet.\n")
     out.append("\n# Findings\n\n")
@@ -288,10 +294,8 @@ def rebuild_project_index(p):
     for category in FINDING_CATEGORIES:
         count=sum(finding_category(row)==category for row in finding_rows)
         if count:
-            label=category.title() + " findings"
-            out.append(f"* [{label}]({finding_document(category)}) - {count} classified finding(s)\n")
-    if not finding_rows:
-        out.append("No findings yet.\n")
+            label, _ = category_definition(category)
+            out.append(f"* [{label}]({finding_document(category)}) - {count} classified record(s)\n")
     out.append("\n# Knowledge\n\n* [Knowledge index](knowledge/index.md) - reviewed project knowledge\n\n")
     out.append("# Runbooks\n\n")
     rbs=sorted((p/"runbooks").glob("*.md"))
@@ -301,6 +305,15 @@ def rebuild_project_index(p):
             out.append(f"* [{rb.stem}](runbooks/{rb.name}) - {d}\n")
     else:
         out.append("No runbooks yet.\n")
+    out.append("\n# Instructions\n\n")
+    for name, description in (
+        ("index.md", "QA instruction index"),
+        ("screenshot-evidence.md", "screenshot checkpoints and retention"),
+        ("flow-and-report.md", "run flow, reports, and persistence rules"),
+    ):
+        instruction = p / "instructions" / name
+        if instruction.exists():
+            out.append(f"* [{description}]({instruction.relative_to(p)}) - {description}\n")
     atomic_write(p/"index.md", "".join(out))
 
 def rebuild_root_index():
@@ -390,6 +403,13 @@ def cmd_start(a):
     header={"event":"run_started","run_id":rid,"project":a.project,"target":a.target,"purpose":a.purpose,
             "boundary":a.boundary,"environment":a.environment,"mode":a.mode,"status":"open","timestamp":now(),
             "identity":current_identity()}
+    metadata=(
+        ("level_id", a.level_id), ("level_title", a.level_title),
+        ("configured_segments", a.configured_segments), ("board_count", a.board_count),
+        ("board_time", a.board_time), ("training_result", a.training_result),
+        ("speedrun_result", a.speedrun_result), ("audio_status", a.audio_status),
+    )
+    header.update({key: value for key, value in metadata if value not in (None, "")})
     if a.mode=="runbook":
         if not a.runbook_id: die("runbook mode requires --runbook-id")
         runbook_id=slug(a.runbook_id) or die("invalid runbook id")
@@ -421,28 +441,51 @@ def cmd_complete(a):
     obj={"event":"run_completed","run_id":a.run_id,"project":a.project,"status":a.status,"summary":a.summary,"timestamp":now()}
     append(rd/"run.jsonl", obj); print(json.dumps(obj,ensure_ascii=False))
 
-def cmd_report(a):
-    p=project_dir(a.project); rd=p/"runs"/slug(a.run_id); ev=run_events(rd)
-    if not ev or ev[0].get("event")!="run_started": die("run has no header event")
-    head=ev[0]; acts=[e for e in ev if e.get("event")=="action"]
-    last=ev[-1]; done=last.get("event")=="run_completed"
-    purpose=head.get("purpose","") or a.run_id
-    extra=[f'result: {last.get("status") if done else "open"}']
-    if head.get("runbook_id"): extra.append(f'source_runbook: {head["runbook_id"]}')
-    out=[fm("Run", f"Run {a.run_id}", purpose, f"runs/{a.run_id}/run.jsonl", ["run", head.get("mode","explore")], extra),
-         f"# Run {a.run_id} — {purpose}\n\n",
-         f"- **project:** [{head.get('project')}](../../index.md)\n- **target:** `{head.get('target')}`\n- **mode:** {head.get('mode')}"
-         + (f" — runbook: [{head['runbook_id']}](../../runbooks/{head['runbook_id']}.md)" if head.get("runbook_id") else "") + "\n",
-         f"- **boundary:** {head.get('boundary')}\n- **environment:** {head.get('environment')}\n- **started:** {head.get('timestamp')}\n"]
-    if done: out.append(f"- **status:** {last.get('status')} — {last.get('summary','')}\n")
-    out.append("\n## Contents\n\n- [Coverage](#coverage)\n- [Blocked work](#blocked-work)\n- [Summary](#summary)\n- [Evidence](#evidence)\n\n")
+def run_metadata_value(head, key, default="not recorded"):
+    value=head.get(key)
+    return str(value) if value not in (None, "") else default
+
+
+def run_document_header(a, head, last, title, description):
+    result=last.get("status") if last.get("event")=="run_completed" else "open"
+    extra=[f"result: {result}"]
+    if head.get("runbook_id"): extra.append(f"source_runbook: {head['runbook_id']}")
+    return fm("Run", title, description, f"runs/{a.run_id}/run.jsonl",
+              ["run", head.get("mode", "explore")], extra)
+
+
+def render_run_context(a, head, last, title):
+    out=[f"# {title}\n\n",
+         f"- **project:** [{head.get('project')}](../../index.md)\n",
+         f"- **target:** `{head.get('target')}`\n",
+         f"- **mode:** {head.get('mode')}" +
+         (f" — runbook: [{head['runbook_id']}](../../runbooks/{head['runbook_id']}.md)" if head.get("runbook_id") else "") + "\n",
+         f"- **boundary:** {head.get('boundary')}\n",
+         f"- **environment:** {head.get('environment')}\n",
+         f"- **started:** {head.get('timestamp')}\n"]
+    if last.get("event")=="run_completed":
+        out.append(f"- **status:** {last.get('status')} — {last.get('summary','')}\n")
+    return "".join(out)
+
+
+def render_flow(a, head, acts, last):
+    purpose=head.get("purpose", "") or a.run_id
+    title=f"Run {a.run_id} — {purpose}"
+    out=[run_document_header(a, head, last, title, purpose), render_run_context(a, head, last, title),
+         "\n## Scope\n\n",
+         f"- **level ID:** {run_metadata_value(head, 'level_id')}\n",
+         f"- **title:** {run_metadata_value(head, 'level_title')}\n",
+         f"- **configured segments:** {run_metadata_value(head, 'configured_segments')}\n",
+         f"- **board count:** {run_metadata_value(head, 'board_count')}\n",
+         f"- **board time:** {run_metadata_value(head, 'board_time')}\n",
+         "\n## Contents\n\n- [Scope](#scope)\n- [Coverage](#coverage)\n- [Blocked work](#blocked-work)\n- [Summary](#summary)\n- [Evidence](#evidence)\n\n"]
     if acts: out.append("Step anchors: " + " · ".join(f"[{e['seq']}](#seq-{e['seq']})" for e in acts) + "\n\n")
     out.append("## Coverage\n\n")
     for e in acts:
         out.append(f'<a id="seq-{e["seq"]}"></a>\n\n### {e["seq"]} — {e["action"]} (`{e["result"]}`)\n\n')
-        for k in ("test","expected","observed","notes"):
+        for k in ("test", "expected", "observed", "notes"):
             if e.get(k): out.append(f"**{k}:** {e[k]}\n\n")
-        imgs=e.get("artifacts",[])
+        imgs=e.get("artifacts", [])
         if len(imgs)==1:
             stem=Path(imgs[0]).stem
             out.append(f"![{stem}]({imgs[0]})\n\n*{stem} — {e.get('action','')}*\n\n")
@@ -450,16 +493,69 @@ def cmd_report(a):
             out.append(image_grid([(rp, f"seq {e['seq']}: {e.get('action','evidence')}") for rp in imgs]))
     blocked=[e for e in acts if e.get("result")=="blocked"]
     out.append("## Blocked work\n\n" + ("\n".join(f"- seq {e['seq']}: {e['action']}" for e in blocked)+"\n" if blocked else "None.\n"))
-    out.append("\n## Summary\n\n" + ((last.get("summary","")+"\n") if done else "(run still open)\n"))
-    arts=[art for e in acts for art in e.get("artifacts",[])]
+    out.append("\n## Summary\n\n" + ((last.get("summary", "")+"\n") if last.get("event")=="run_completed" else "(run still open)\n"))
+    arts=[art for e in acts for art in e.get("artifacts", [])]
+    out.append("\n## Evidence\n\n" + ("".join(f"- [{Path(x).name}]({x})\n" for x in arts) if arts else "None retained.\n"))
+    return "".join(out)
+
+
+def render_report(a, head, acts, last):
+    purpose=head.get("purpose", "") or a.run_id
+    title=f"Run {a.run_id} — {purpose}"
+    result=last.get("status") if last.get("event")=="run_completed" else "open"
+    arts=[art for e in acts for art in e.get("artifacts", [])]
+    blocked=[e for e in acts if e.get("result")=="blocked"]
+    without_images=[e for e in acts if not e.get("artifacts")]
+    out=[run_document_header(a, head, last, title, purpose), render_run_context(a, head, last, title),
+         "\n## Level summary\n\n",
+         "| Field | Summary |\n|---|---|\n",
+         f"| **Level ID** | {run_metadata_value(head, 'level_id')} |\n",
+         f"| **Title** | {run_metadata_value(head, 'level_title')} |\n",
+         f"| **Overall QA result** | **{result}** |\n",
+         f"| **Training** | {run_metadata_value(head, 'training_result')} |\n",
+         f"| **Speedrun** | {run_metadata_value(head, 'speedrun_result', 'not_applicable')} |\n",
+         f"| **Audio/TTS/SFX** | {run_metadata_value(head, 'audio_status')} |\n",
+         "\n[Open the complete testing flow](flow.md) · [Open findings](../../findings.md)\n",
+         "\n## Testing scope and environment\n\n",
+         f"- **Purpose:** {purpose}\n",
+         f"- **Boundary:** {head.get('boundary')}\n",
+         f"- **Environment:** {head.get('environment')}\n",
+         f"- **Configured segments:** {run_metadata_value(head, 'configured_segments')}\n",
+         f"- **Board count:** {run_metadata_value(head, 'board_count')}\n",
+         "\n## Screenshot policy\n\n",
+         "Screenshots are retained for the initial state, meaningful context or state changes, transitions, and findings. Routine actions may be verified in `flow.md` without a separate screenshot.\n",
+         "\n## Retained artifacts\n\n"]
     if arts:
-        out.append("\n## Evidence\n\n")
-        out+= "".join(f"- [{Path(x).name}]({x})\n" for x in arts)
-    # flow.md is the canonical selected flow. Keep report.md as a generated
-    # compatibility copy for existing links and consumers.
-    content="".join(out)
-    atomic_write(rd/"flow.md", content)
-    atomic_write(rd/"report.md", content)
+        out.append("\n".join(f"- [{Path(x).name}]({x})" for x in arts)+"\n")
+    else:
+        out.append("None retained.\n")
+    out.append("\n## Boards verified without screenshots\n\n")
+    if without_images:
+        out.append("\n".join(f"- seq {e['seq']}: {e.get('test') or e.get('action','unnamed')} (`{e.get('result','not recorded')}`)" for e in without_images)+"\n")
+    else:
+        out.append("None.\n")
+    out.append("\n## Findings, limitations, and blocked work\n\n")
+    if blocked:
+        out.append("Blocked actions:\n\n" + "\n".join(f"- seq {e['seq']}: {e.get('action','unnamed')} — {e.get('observed','blocked')}" for e in blocked)+"\n\n")
+    else:
+        out.append("No blocked actions recorded in this run.\n\n")
+    if run_metadata_value(head, "audio_status") not in ("verified", "not_applicable"):
+        out.append(f"Audio/TTS/SFX limitation: {run_metadata_value(head, 'audio_status')}.\n\n")
+    out.append("See the complete flow and project findings for detailed observations and evidence.\n")
+    out.append("\n## Final QA result\n\n")
+    out.append(f"**{result}** — {last.get('summary', '(run still open)')}\n")
+    return "".join(out)
+
+
+def cmd_report(a):
+    p=project_dir(a.project); rd=p/"runs"/slug(a.run_id); ev=run_events(rd)
+    if not ev or ev[0].get("event")!="run_started": die("run has no header event")
+    head=ev[0]; acts=[e for e in ev if e.get("event")=="action"]
+    last=ev[-1]
+    flow=render_flow(a, head, acts, last)
+    report=render_report(a, head, acts, last)
+    atomic_write(rd/"flow.md", flow)
+    atomic_write(rd/"report.md", report)
     rebuild_project_index(p)
     print(json.dumps({"flow":str((rd/'flow.md').relative_to(DATA)),
                       "report":str((rd/'report.md').relative_to(DATA)),
@@ -541,37 +637,62 @@ def finding_category(row):
 
 
 def finding_document(category):
-    """Return the category index inside its findings directory."""
+    """Return the categorized record document inside its findings directory."""
+    return f"{category}s/{category}s.md"
+
+
+def finding_index(category):
+    """Return the stable category definition/reference page."""
     return f"{category}s/index.md"
 
 
+def category_definition(category):
+    if category == "bug":
+        return ("Bugs", "A confirmed, reproducible deviation between expected and actual application behavior. "
+                "Detailed bug records are stored in bugs.md.")
+    return ("Issues", "An anomaly, doubt, blocker, or other observation that is not yet a confirmed bug. "
+            "Detailed issue records are stored in issues.md.")
+
+
+def ensure_category_index(project, category):
+    path = project / finding_index(category)
+    if path.exists():
+        return
+    label, definition = category_definition(category)
+    atomic_write(path, f"# {label} — {project.name}\n\n{definition}\n")
+
+
 def migrate_legacy_category_documents(project):
-    """Move legacy flat category documents into their category directories."""
+    """Move only legacy root category records into category record documents."""
     for category in FINDING_CATEGORIES:
         legacy = project / f"{category}s.md"
         current = project / finding_document(category)
         if legacy.is_file() and not current.exists():
             current.parent.mkdir(parents=True, exist_ok=True)
             os.replace(legacy, current)
+        ensure_category_index(project, category)
 
 
 def render_findings_document(project, entries, category=None):
-    """Render the root findings index or one categorized findings document."""
+    """Render the root findings document or one categorized record document."""
     p=project
-    prefix=""
-    label=category.title() + " findings" if category else "Findings"
+    prefix="../" if category else ""
+    if category:
+        label, description = category_definition(category)
+        doc_type = label
+    else:
+        label, description, doc_type = "Findings", f"Human-readable findings for project {p.name}.", "Findings"
     resource="findings.jsonl"
     extra=[f"category: {category}"] if category else []
-    out=[fm("Findings", f"{label} — {p.name}", f"Human-readable {label.casefold()} for project {p.name}.", resource, ["findings"] + ([category] if category else []), extra),
-         f"# {label} — {p.name}\n\n",
-         "| # | Finding | Description | Severity | Status |\n|---|---------|-------------|----------|--------|\n"]
-    if not entries:
-        out.append("| — | No findings | No findings in this category yet. | — | — |\n\n")
+    out=[fm(doc_type, f"{label} — {p.name}", description, resource, ["findings"] + ([category] if category else []), extra),
+         f"# {label} — {p.name}\n\n"]
+    if entries:
+        out.append("| # | Finding | Description | Severity | Status |\n|---|---------|-------------|----------|--------|\n")
     for i,x in entries:
         desc=(x.get("description") or x.get("observed") or "").replace("|","\\|")
         if len(desc)>110: desc=desc[:107]+"…"
         out.append(f'| {i} | [F{i}](#f{i}) | {desc} | {x.get("severity")} | {x.get("status")} |\n')
-    out.append("\n")
+        out.append("\n")
     for i,x in entries:
         out.append(f'<a id="f{i}"></a>\n\n## F{i} — {x.get("title")}\n\n')
         out.append(f'**category:** {finding_category(x)}\n\n')
@@ -598,7 +719,7 @@ def render_findings_document(project, entries, category=None):
 
 
 def rebuild_findings_documents(project, rows):
-    """Write findings.md and category indexes under bugs/ and issues/."""
+    """Write findings.md and categorized records under bugs/bugs.md and issues/issues.md."""
     p=project
     migrate_legacy_category_documents(p)
     entries=list(enumerate(rows,1))
@@ -606,6 +727,7 @@ def rebuild_findings_documents(project, rows):
     atomic_write(p/"findings.md", render_findings_document(p, pending))
     for category in FINDING_CATEGORIES:
         category_entries=[entry for entry in entries if finding_category(entry[1])==category]
+        ensure_category_index(p, category)
         atomic_write(p/finding_document(category), render_findings_document(p, category_entries, category))
 
 
@@ -814,8 +936,16 @@ def cmd_validate(a):
                     for art in e.get("artifacts",[]):
                         if not (rdir/art).is_file(): problems.append(f"{rdir.name}: missing artifact {art}")
                 if e.get("event")=="run_completed" and i!=len(ev)-1: problems.append(f"{rdir.name}: run_completed is not last")
-            if ev and ev[-1].get("event")=="run_completed" and not (rdir/"flow.md").is_file():
-                problems.append(f"{rdir.name}: completed run has no flow.md (run-report)")
+            if ev and ev[-1].get("event")=="run_completed":
+                for document in ("flow.md", "report.md"):
+                    path=rdir/document
+                    if not path.is_file():
+                        problems.append(f"{rdir.name}: completed run has no {document} (run-report)")
+                    elif not fm_field(path.read_text(encoding="utf-8"), "type"):
+                        problems.append(f"{rdir.name}/{document}: missing OKF frontmatter/type")
+                report=rdir/"report.md"
+                if report.is_file() and "## Level summary" not in report.read_text(encoding="utf-8"):
+                    problems.append(f"{rdir.name}/report.md: missing Level summary")
             checked.append(str(jp))
     print(json.dumps({"valid":not problems,"problems":problems},ensure_ascii=False))
     if problems: sys.exit(1)
@@ -832,6 +962,9 @@ def parser():
     x.add_argument("--target",required=True); x.add_argument("--purpose",required=True)
     x.add_argument("--boundary",default="User-facing interface only; no source access; no irreversible actions")
     x.add_argument("--environment",default="Linux desktop on per-user disposable Xvfb display (1280x720x24)")
+    x.add_argument("--level-id"); x.add_argument("--level-title"); x.add_argument("--configured-segments")
+    x.add_argument("--board-count"); x.add_argument("--board-time"); x.add_argument("--training-result")
+    x.add_argument("--speedrun-result"); x.add_argument("--audio-status",choices=("verified", "not_applicable", "blocked"))
     x.add_argument("--mode",default="explore",choices=MODES); x.add_argument("--runbook-id"); x.set_defaults(fn=cmd_start)
     x=s.add_parser("action"); x.add_argument("--project",required=True); x.add_argument("--run-id",required=True)
     x.add_argument("--action",required=True); x.add_argument("--result",required=True,choices=RESULTS)
