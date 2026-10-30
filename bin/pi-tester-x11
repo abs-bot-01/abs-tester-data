@@ -6,6 +6,7 @@ ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 . "$ROOT/bin/pi-tester-runtime"
 DISPLAY_NAME=${PI_TESTER_DISPLAY:-}
 TIMEOUT_SECONDS=${PI_TESTER_X11_TIMEOUT:-3}
+KILL_AFTER_SECONDS=${PI_TESTER_X11_KILL_AFTER:-1}
 
 usage() {
   cat >&2 <<'EOF'
@@ -57,7 +58,8 @@ verify_display() {
 }
 
 run_xdotool() {
-  DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/timeout --signal=TERM "${TIMEOUT_SECONDS}s" \
+  DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/timeout \
+    --signal=TERM --kill-after="${KILL_AFTER_SECONDS}s" "${TIMEOUT_SECONDS}s" \
     /usr/bin/xdotool "$@"
 }
 

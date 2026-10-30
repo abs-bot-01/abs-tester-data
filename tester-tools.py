@@ -268,25 +268,7 @@ def rebuild_project_index(p):
     """Project index.md is an OKF directory listing (no frontmatter)."""
     out=[f"# Project index — {p.name}\n\n"]
     out.append("# Setup\n\n* [Setup](setup.md) - how to launch and configure the app under test\n\n")
-    out.append("# Runs\n\n")
-    runs=sorted((p/"runs").glob("*/run.jsonl"))
-    if runs:
-        for jp in runs:
-            rid=jp.parent.name
-            if "representative-levels" in rid:
-                continue
-            flow=jp.parent/"flow.md"
-            report=jp.parent/"report.md"
-            doc=flow if flow.exists() else report
-            desc=fm_field(doc.read_text(encoding="utf-8"),"description") if doc.exists() else ""
-            target=f"runs/{rid}/{doc.name}" if doc.exists() else f"runs/{rid}/run.jsonl"
-            links=f"[Run {rid}]({target})"
-            if flow.exists() and report.exists():
-                links += f" · [report](runs/{rid}/report.md)"
-            out.append(f"* {links} - {desc or 'exploration/test run'}\n")
-    else:
-        out.append("No runs yet.\n")
-    out.append("\n# Findings\n\n")
+    out.append("# Findings\n\n")
     finding_rows=lines(p/"findings.jsonl") if (p/"findings.jsonl").exists() else []
     pending_count=sum(finding_category(row)==UNCLASSIFIED_CATEGORY for row in finding_rows)
     if (p/"findings.md").exists():
@@ -627,7 +609,7 @@ def cmd_finding_status(a):
     row.setdefault("status_log",[]).append(log)
     row["status"]=a.status; row["updated_at"]=now()
     atomic_write(p/"findings.jsonl", "".join(json.dumps(x,ensure_ascii=False,separators=(",",":"))+"\n" for x in rows))
-    rebuild_findings_documents(p, rows)
+    rebuild_findings_documents(p, rows, include_classified=bool(a.category))
     rebuild_project_index(p)
     print(json.dumps(row,ensure_ascii=False))
 
@@ -718,17 +700,18 @@ def render_findings_document(project, entries, category=None):
     return "".join(out)
 
 
-def rebuild_findings_documents(project, rows):
-    """Write findings.md and categorized records under bugs/bugs.md and issues/issues.md."""
+def rebuild_findings_documents(project, rows, include_classified=False):
+    """Write only unclassified findings unless a human classification requested categorized records."""
     p=project
-    migrate_legacy_category_documents(p)
     entries=list(enumerate(rows,1))
     pending=[entry for entry in entries if finding_category(entry[1])==UNCLASSIFIED_CATEGORY]
     atomic_write(p/"findings.md", render_findings_document(p, pending))
-    for category in FINDING_CATEGORIES:
-        category_entries=[entry for entry in entries if finding_category(entry[1])==category]
-        ensure_category_index(p, category)
-        atomic_write(p/finding_document(category), render_findings_document(p, category_entries, category))
+    if include_classified:
+        migrate_legacy_category_documents(p)
+        for category in FINDING_CATEGORIES:
+            category_entries=[entry for entry in entries if finding_category(entry[1])==category]
+            ensure_category_index(p, category)
+            atomic_write(p/finding_document(category), render_findings_document(p, category_entries, category))
 
 
 def cmd_findings_report(a):
@@ -736,7 +719,7 @@ def cmd_findings_report(a):
     rebuild_findings_documents(p, rows)
     rebuild_project_index(p)
     print(json.dumps({"report":str((p/'findings.md').relative_to(DATA)),
-                      "documents":[str((p/finding_document(category)).relative_to(DATA)) for category in FINDING_CATEGORIES],
+                      "documents":[str((p/'findings.md').relative_to(DATA))],
                       "findings":len(rows)}))
 
 # ---------- knowledge ----------
