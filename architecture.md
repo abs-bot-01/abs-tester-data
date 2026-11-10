@@ -90,10 +90,8 @@ flowchart TD
     ROOT --> DATA["data.json<br/>source, runtime, and tester context"]
     ROOT --> RUNS["runs/"]
     ROOT --> FIND["findings.md<br/>unclassified intake"]
-    ROOT --> BUGS["bugs/bugs.md<br/>confirmed bugs"]
+    ROOT --> BUGS["bugs/bugs.md<br/>confirmed and unresolved bug records"]
     ROOT --> BUG_INDEX["bugs/index.md<br/>bug definition"]
-    ROOT --> ISSUES["issues/issues.md<br/>issue records"]
-    ROOT --> ISSUE_INDEX["issues/index.md<br/>issue notes"]
     ROOT --> KB["knowledge/"]
     ROOT --> RB["runbooks/"]
     ROOT -. local .-> FINDINGS_LOCAL["findings.jsonl"]
@@ -145,13 +143,10 @@ uses this portable flat layout:
 ├── setup.md                 ← app location and launch instructions
 ├── data.json                ← approved source, runtime, and tester context
 ├── runs/                    ← one run folder per run (section 3)
-├── findings.md              ← findings index (section 4; durable)
-├── bugs/                    ← bug reference and confirmed bug records
+├── findings.md              ← local findings intake and review view (uncommitted)
+├── bugs/                    ← confirmed and unresolved bug records
 │   ├── index.md             ← definition of a bug
-│   └── bugs.md              ← confirmed bug records
-├── issues/                  ← issue notes and triage material
-│   ├── index.md             ← issue notes
-│   └── issues.md            ← issue records
+│   └── bugs.md              ← single bug record file
 ├── findings.jsonl           ← local machine record behind the findings docs; never committed
 ├── knowledge/               ← project KB (section 5)
 └── runbooks/                ← one markdown file per runbook (section 6)
@@ -175,7 +170,7 @@ a machine-identifiable type and provenance for free.
 - Bundle-root, project, and knowledge `index.md` files are **directory listings**
   without frontmatter — one link per line with a short description, grouped
   under section headings. Category indexes such as `bugs/index.md` and
-  `issues/index.md` may instead contain a short definition or reference note.
+  `bugs/index.md` may instead contain a short definition or reference note.
   The bundle-root `index.md` may carry `okf_version`.
 - **Links are relationships**: run report ↔ project index, finding ↔ run,
   runbook ↔ source run (in its `sources` frontmatter and body).
@@ -185,7 +180,7 @@ a machine-identifiable type and provenance for free.
 ### 2.3 Project index.md
 
 The project `index.md` is the QA directory listing. It links to Setup,
-Findings, Issues, Knowledge, and Runbooks; category-specific material remains
+Findings, Bugs, Knowledge, and Runbooks; category-specific material remains
 in its own folder. The current QA index does not place bug details or run
 artifacts inline. Launch instructions and setup notes live in `setup.md`, so
 the index stays a listing and the setup details stay an editable concept
@@ -216,14 +211,15 @@ specified as Document 5 below.
 
 ### 3.1 Location and layout
 
-One folder per run; the raw record, the human report, and the evidence live together so a run is moved or archived as a unit:
+One folder per run; the raw record, human reports, and local evidence live together so a run is moved or archived as a unit:
 
 ```
 runs/<run-id>/
-├── run.jsonl       ← local, high-volume event stream; one JSON object per line
+├── run.jsonl       ← local, high-volume event stream; no evidence references
+├── evidence.jsonl  ← local action-sequence to artifact links
 ├── flow.md         ← complete human-readable test flow (OKF concept; durable)
 ├── report.md       ← reader-facing summary of the run (OKF concept; durable)
-└── artifacts/      ← numbered screenshots/captures referenced by events
+└── artifacts/      ← numbered screenshots/captures
 ```
 
 `run.jsonl` is working storage, not a repository artefact. It may instead be
@@ -233,6 +229,10 @@ never committed; see section 13. `flow.md` and `report.md` are both generated
 from selected events, but they have different audiences: the flow preserves the
 complete board-by-board path, while the report gives the concise run summary.
 
+Evidence links are deliberately kept out of `run.jsonl`; the tester writes them
+into `evidence.jsonl` and joins them when generating `flow.md` and `report.md`.
+Screenshots captured for findings remain in the run's `artifacts/` directory and
+are committed for future reference; routine screenshots remain local.
 Screenshots are taken on a 1280×720 virtual display with the pointer position
 overlaid on the capture — a screenshot without a cursor makes pointer-driven
 actions look like phantom effects. Captures are capped at 1280px width; the
@@ -374,21 +374,19 @@ The overall pass/fail outcome is communicated in chat at the end of a run and is
 
 ### 4.1 Two representations
 
-- `findings.jsonl` — local machine record, append-style with fingerprint-based merging (one record per distinct finding, updated in place when re-observed). This is what the tester consumes while the local store is available; it is not committed.
-- `findings.md` — the durable intake and review index, **consolidated from the local JSONL** and regenerated as findings change. New tester observations remain here until a human classifies them.
-- `bugs/bugs.md` — durable confirmed bug records, containing bug details only.
+- `findings.jsonl` — local, uncommitted machine intake record, append-style with fingerprint-based merging (one record per distinct finding, updated in place when re-observed).
+- `findings.md` — local intake and review view, **consolidated from the local JSONL** and regenerated as findings change. New tester observations remain here until a human classifies them.
+- `bugs/bugs.md` — durable confirmed and unresolved bug records, containing status, confidence, severity, and required evidence.
 - `bugs/index.md` — short bug definition/reference text.
-- `issues/index.md` — short issue notes and triage context.
-- `issues/issues.md` — durable issue records, containing issue details only.
 
-These Markdown files are the fallback source for future agents when the local JSONL is unavailable; confirmed bugs, issues, and knowledge-relevant decisions must survive in them.
+These Markdown files are the fallback source for future agents when the local JSONL is unavailable; confirmed and unresolved bugs and knowledge-relevant decisions must survive in them.
 
 ### 4.2 Findings document format
 
 `findings.md` is the intake and review document. It contains only new tester
 findings that have not yet been classified. After human review, the finding is
-removed from `findings.md`; the separate bug and issue documents are described
-in Documents 6 and 7. Each finding carries a short description and a working
+removed from `findings.md`; the single bug document and project knowledge topics
+are maintained after human classification. Each finding carries a short description and a working
 anchor link, so the human can scan it, jump to the interesting finding, and
 review it before classification.
 
@@ -398,7 +396,7 @@ The generated intake document is:
 findings.md
 ```
 
-The separate bug and issue documents are maintained after human classification. Bug details are stored in `bugs/bugs.md`; issue details are stored in `issues/issues.md`. The `bugs/index.md` and `issues/index.md` files remain short category definition/reference pages.
+The single bug document is maintained after human classification. Confirmed and unresolved bug details are stored in `bugs/bugs.md`; accepted known behavior is stored in a project knowledge topic. The `bugs/index.md` file remains a short category definition/reference page.
 
 ```markdown
 # Findings — GD-Math
@@ -448,12 +446,12 @@ human confirmation before adding to the KB.
 | Field | Required | Value |
 |-------|----------|-------|
 | `finding_id` | yes | stable identifier |
-| `category` | yes | `finding` before human review, then `bug` or `issue`; selects the durable category document after classification |
+| `category` | yes | `finding` before human review, then `bug` or `knowledge`; selects the durable destination after classification |
 | `fingerprint` | yes | hash of normalised title — re-observations update the existing finding (recurrence count, last-seen run) instead of creating duplicates |
 | `run_id` | yes | run where seen |
 | `title` | yes | |
 | `severity` | yes | `low` \| `medium` \| `high` |
-| `confidence` | yes | `low` \| `medium` \| `high` |
+| `confidence` | for a bug | integer from `0` to `100` |
 | `status` | yes | `new` \| `needs-retest` \| `confirmed` \| `not-a-bug` \| `suppressed` \| `fixed` |
 | `description` | yes | |
 | `steps` | yes | ordered repro steps |
@@ -469,13 +467,16 @@ Evidence is something that **happened**, not something the tester inferred. Evid
 
 ### 4.5 Triage flow (human-driven)
 
-The human moves each finding's status:
+The human classifies each finding into one durable outcome. Finding screenshots
+remain in the local run's `artifacts/` directory and are committed with the
+selected durable bug or knowledge record:
 
-- **Doesn't matter** → `not-a-bug` or `suppressed`, with a KB note so it stops being re-reported.
-- **Needs action** → `confirmed` / `needs-retest`; later becomes builder work (deferred — section 10).
-- **The tester misunderstood the app** → `not-a-bug` plus a KB correction so it doesn't recur.
+- **Bug** → `finding-status --category bug` with numeric confidence, severity, and evidence; render to `bugs/bugs.md`.
+- **Unresolved bug** → `finding-status --category bug` with `needs-retest` or `investigating` status; render to `bugs/bugs.md`.
+- **Knowledge** → `finding-status --category knowledge --topic <topic>` when the behavior is intentional or otherwise should not be reported again; append to a reviewed project KB topic.
 
-Nothing is ever deleted; statuses and reasoning stay visible with their references.
+Nothing is ever silently deleted. The local finding keeps its status history and
+reason; only the selected durable classification is committed.
 
 ---
 
@@ -631,29 +632,29 @@ or a path to an individual context file:
 
 ## 8. Document 6 — Bugs
 
-**Purpose.** The durable human-readable record of confirmed or suspected application bugs. It contains only findings whose `category` is `bug`.
+**Purpose.** The durable human-readable record of confirmed and unresolved application bugs. It contains findings whose category is `bug`, with numeric confidence, severity, status, and evidence.
 
 **Producer.** The tester records a confirmed bug after human review, using evidence from the run or configuration inspection.
 **Consumer.** The human and any future fixing workflow. Future agents read `bugs/bugs.md` for confirmed bug records and `bugs/index.md` for the bug definition.
 
-The `bugs/` folder contains bug records only. `bugs/index.md` is a short reference page whose definition is: “A bug is a confirmed, reproducible deviation between the expected application behavior and the actual behavior. It must be supported by clear reproduction steps and evidence from a QA run, configuration inspection, or both.” Confirmed bug details are stored in `bugs/bugs.md`, including the level ID and the observed configuration or gameplay problem. The folder must not contain issues, runbooks, or general notes.
+The `bugs/` folder contains all confirmed and unresolved bug records. `bugs/index.md` is a short reference page whose definition is: “A bug is a confirmed, reproducible deviation between the expected application behavior and the actual behavior. It must be supported by clear reproduction steps and evidence from a QA run, configuration inspection, or both.” Confirmed and unresolved bug details are stored in `bugs/bugs.md`, including the level ID, observed configuration or gameplay problem, status, confidence, severity, and evidence. There is no separate issue folder.
 
 ---
 
-## 9. Document 7 — Issues
+## 9. Unresolved bug records
 
-**Purpose.** The durable human-readable record of anomalies, doubts, blockers, and other non-bug findings. It contains only findings whose `category` is `issue`.
+Unconfirmed anomalies, doubts, blockers, and retest requests are not a separate category; they remain in `bugs/bugs.md` with an unresolved status.
 
-**Producer.** The tester and human during triage. The tester records issue notes only after the observation has been reviewed as an issue rather than a confirmed bug.
-**Consumer.** The human and the tester during future triage and exploration. Future agents read `issues/issues.md` for durable issue records and `issues/index.md` for the issue reference notes.
-
-The `issues/` folder contains issue records only. `issues/index.md` is a short reference page for issue notes and triage context. Confirmed or reviewed issue details are stored in `issues/issues.md`. It does not contain bug-category records or bug definitions, and it does not include a stale “no unresolved tester doubts” statement when there are no issue entries.
+Unconfirmed anomalies, doubts, blockers, and retest requests are not a separate
+category. They are stored in `bugs/bugs.md` with an unresolved status such as
+`needs-retest` or `investigating`. This keeps all builder-facing QA work in one
+file while still distinguishing confirmed and unresolved records.
 
 ---
 
 ## 10. Tasks — deferred
 
-Tasks (issues derived from findings, handed to a fixing agent) are a real part of the eventual system, but the builder agent is a separate, not-yet-existing component, and task creation may ultimately live on the builder's side. No task format, storage, or tooling is designed here. When the builder's interface is defined, tasks will be specified against it; nothing in this design blocks that.
+Tasks derived from bug records and handed to a fixing agent are a real part of the eventual system, but the builder agent is a separate, not-yet-existing component, and task creation may ultimately live on the builder's side. No task format, storage, or tooling is designed here. When the builder's interface is defined, tasks will be specified against it; nothing in this design blocks that.
 
 ---
 
@@ -662,16 +663,15 @@ Tasks (issues derived from findings, handed to a fixing agent) are a real part o
 | Document | Human reads via | Agent reads via |
 |----------|----------------|-----------------|
 | Run | chat summary with selected inline screenshots; `runs/<run-id>/flow.md` and `runs/<run-id>/report.md` | local `run.jsonl` or event database (continue mode) |
-| Findings | chat: one line per new finding; `findings.md` TOC | local `findings.jsonl`; fall back to committed `findings.md` for unclassified history |
-| Bugs | `bugs/index.md` definition and `bugs/bugs.md` records | bug-category records in local `findings.jsonl`; fall back to committed `bugs/bugs.md` |
-| Issues | `issues/index.md` notes and `issues/issues.md` records | issue-category records in local `findings.jsonl`; fall back to committed `issues/issues.md` |
+| Findings | chat: one line per new finding; local `findings.md` TOC | local `findings.jsonl`; no committed intake fallback |
+| Bugs | `bugs/index.md` definition and `bugs/bugs.md` records | bug-category records in local `findings.jsonl`; durable `bugs/bugs.md` |
 | KB | the folder like personal notes; dictation happens in chat | `knowledge/index.md` + relevant topic docs at session start |
 | Data | the project's `data.json` configuration | validate and read `data.json` before context retrieval and before starting a run; read only the listed directories |
 | Runbook | the file, or chat execution results test-by-test | the runbook file at execution |
 
 After any run the tester returns the flow document and the reader-facing report, together with the findings document when findings exist. The raw event record is optional digging for continue mode or detailed audit.
 
-The data shrinks as it rises: a run may hold a hundred events, the findings ten entries, the KB one accepted fact. That funnel is the point — the human lives at the findings and KB level and only opens a run to verify a specific claim. Category documents remain readable without the local JSONL: they are the durable hand-off for bugs and issues, while `data.json` remains the explicit, committed configuration needed to decide what context the tester may read.
+The data shrinks as it rises: a run may hold a hundred events, the findings ten entries, the KB one accepted fact. That funnel is the point — the human lives at the findings and KB level and only opens a run to verify a specific claim. The bug document and knowledge topics remain readable without the local JSONL: they are the durable hand-off for QA work, while `data.json` remains the explicit, committed configuration needed to decide what context the tester may read.
 
 ---
 
@@ -710,9 +710,9 @@ context, not the raw telemetry.
   is committed with the project, and contains only approved `context_paths`.
   It must not contain event history or replace the human-readable project
   documents.
-- Local cleanup must not remove a durable Markdown finding, confirmed issue,
-  accepted knowledge entry, the project `data.json`, or the evidence image
-  referenced by a committed document.
+- Local cleanup must not remove a confirmed bug, triage issue, accepted
+  knowledge entry, the project `data.json`, or the evidence image referenced by
+  a committed document.
 
 ### 13.2 Durable Markdown data
 
@@ -724,10 +724,10 @@ following are required durable artefacts when they exist:
   board coverage;
 - `runs/<run-id>/report.md`, containing the reader-facing summary, retained
   artifact links, limitations, and final QA result; and
-- `findings.md`, especially confirmed issues, bugs, and decisions that affect
-  future testing.
+- confirmed bug records, triage issue records, and accepted knowledge topic
+  documents. The local `findings.md` intake is not a durable artefact.
 
-Issues/bugs and accepted knowledge **must** be committed because future agents
+Bug records and accepted knowledge **must** be committed because future agents
 need them after the test run and on another machine. Raw event JSON must not be
 committed merely to make a report reproducible: the report and its selected
 evidence are the reproducible human record. A Markdown file must not mirror all

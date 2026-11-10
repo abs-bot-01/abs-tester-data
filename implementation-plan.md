@@ -39,7 +39,7 @@ The POC's concepts survive; the work below restructures storage, adds the missin
 | Events (§3.2) | Historical records were action-only | Retain an append-only event stream with project/run identity and event-bound artifacts |
 | Run documents (§3.3) | Historical reports were written separately | `run-report` generates the complete `flow.md` and separate reader-facing `report.md` from selected events |
 | Transient result (§3.4) | Historical reports persisted the outcome as a separate concept | Communicate the overall result in chat; keep detailed coverage in the flow and the concise summary in the report |
-| Findings (§4) | Historical POC had POIs and one findings record | Findings are the only observation concept; human classification renders `bugs/bugs.md` or `issues/issues.md`, while category indexes remain definitions |
+| Findings (§4) | Historical POC had POIs and one findings record | Findings are the only observation concept; human classification renders the single `bugs/bugs.md` record or accepts knowledge, while the bug index remains a definition |
 | Findings MD (§4.2) | JSONL only | `findings.md` with TOC, sections, captioned images, references, `proposed_for_kb` |
 | Evidence policy (§4.4) | Evidence expected on findings | Make optional-but-encouraged in the machine record and the agent instructions |
 | Project KB (§5.2) | Single `knowledge.md` | `knowledge/` folder with `index.md` + topic docs |
@@ -95,19 +95,19 @@ Acceptance: a new run produces one folder with `run.jsonl`, `artifacts/`, and af
 
 ### Phase 2 — Findings v2
 
-**Goal:** one findings machine record, one findings intake index, and human-classified bug and issue documents.
+**Goal:** one local findings intake record and human-classified bug, issue, or knowledge documents.
 
 Tasks:
 1. Remove `poi-id` from the finding record; drop the POI vocabulary everywhere (instructions, TOOLS.md, reports).
 2. `finding`: make `--images` accept `path|caption` pairs (each image carries a caption per design §4.2); add `--references` (run anchors etc.); add `--proposed-for-kb` flag storing the candidate text; evidence fields (`images`, `references`) become optional, with the record still storing whatever exists.
-3. New `findings-report`: regenerates `projects/<project>/findings.md` plus `bugs/bugs.md` and `issues/issues.md` from `findings.jsonl` per design §4.2 — new findings remain in the intake document until human classification, then are removed from it and rendered in the appropriate category record document with the description, steps, expected/observed, captioned images, references, recurrence line, and any `proposed_for_kb` block. Category `index.md` files remain definitions. Regeneration is idempotent.
-4. New `finding-status`: human-triage status and category updates (`new|needs-retest|confirmed|not-a-bug|suppressed|fixed` plus `bug|issue`) are recorded with a reason, never deleting anything.
-5. Findings files live in the project folder; each tester observation starts as `finding`, then the human classifies it as `bug` or `issue`. Per-project fingerprints keep the same app finding as one record within a project.
+3. New `findings-report`: regenerates the local `projects/<project>/findings.md` from `findings.jsonl`; human classification renders confirmed or unresolved bug details in the single `bugs/bugs.md` file, or explicitly accepts a finding into a knowledge topic. Regeneration is idempotent.
+4. New `finding-status`: human-triage status and category updates (`new|needs-retest|confirmed|not-a-bug|suppressed|fixed` plus `bug|knowledge`) are recorded with a reason, never deleting anything. Bug moves require numeric confidence and severity; knowledge moves require a topic.
+5. Findings files live in the local project store and are not committed; each tester observation starts as `finding`, then the human classifies it as `bug` or `knowledge`. Confirmed and unresolved bugs share the single `bugs/bugs.md` file and use status to distinguish them. Bug classification records numeric confidence and severity. Per-project fingerprints keep the same app finding as one record within a project.
 6. The run flow emits findings during the run — no "after run completes" step in the workflow instructions.
 
 Files touched: `tester-tools.py`, `AGENTS.md` (finding policy section rewrite: evidence optional but encouraged, proposals allowed), `TOOLS.md`.
 
-Acceptance: new observations first appear in `findings.md`; human classification as `bug` or `issue` moves the rendered detail to `bugs/bugs.md` or `issues/issues.md`; category indexes remain definition-only; each category document renders a TOC with clickable sections; the migrated drag anomaly appears with its captioned image and run anchor; a status and category change is visible in both JSONL and Markdown without deleting history. Empty categories do not receive `No findings` placeholders.
+Acceptance: new observations first appear in local `findings.md`; human classification as `bug` or `knowledge` moves the durable detail to `bugs/bugs.md` or a knowledge topic; confirmed and unresolved bug records include numeric confidence, severity, status, and evidence; a status and category change is visible in local JSONL and durable Markdown without deleting history. Empty categories do not receive `No findings` placeholders.
 
 ### Phase 3 — Knowledge Base restructure
 

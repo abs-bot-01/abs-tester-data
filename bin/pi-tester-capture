@@ -38,7 +38,7 @@ for existing in "$out_dir"/*; do
   prefix=${base%%-*}
   case "$prefix" in
     ''|*[!0-9]*) ;;
-    *) [ "$prefix" -ge "$next" ] && next=$((prefix + 1)) ;;
+    *) local_prefix=$(printf %s "$prefix" | sed 's/^0*//'); [ -z "$local_prefix" ] && local_prefix=0; [ "$local_prefix" -ge "$next" ] && next=$((local_prefix + 1)) ;;
   esac
 done
 while :; do

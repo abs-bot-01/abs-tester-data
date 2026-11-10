@@ -41,7 +41,7 @@ Every real test session creates a **run record**. Creating a runbook does not cr
 
 ## What gets stored
 
-The system keeps seven project-scoped document/configuration types, plus the global knowledge document.
+The system keeps the project-scoped run, local findings intake, a single durable bug record file, reviewed project knowledge, and runbook documents, plus the global knowledge document.
 
 ### 1. Runs
 
@@ -87,9 +87,10 @@ The human decides the final status.
 
 The human then reviews it and classifies it with `finding-status`:
 
-- Confirmed bug → category `bug`, rendered in `bugs/bugs.md`.
-- Doubt, anomaly, or blocker → category `issue`, rendered in `issues/issues.md`.
-- `bugs/index.md` and `issues/index.md` only define the categories.
+- Confirmed bug → category `bug`, rendered in `bugs/bugs.md` with numeric confidence, severity, and evidence.
+- Confirmed or unresolved bug → category `bug`, rendered in the single `bugs/bugs.md` file with status, confidence, and severity.
+- Reviewed intentional behavior → accepted into a project `knowledge/` topic.
+- `bugs/index.md` only defines the bug record format.
 
 For example:
 
@@ -144,11 +145,11 @@ contains no absolute paths, event history, or human-facing document content.
 
 ### 6. Bugs
 
-`bugs/bugs.md` is the categorized document containing confirmed or suspected application bugs. It is generated from findings whose category is `bug`; `bugs/index.md` is definition-only.
+`bugs/bugs.md` is the durable categorized document containing confirmed application bugs. It is generated from findings whose category is `bug`; each bug carries numeric confidence, severity, and required evidence. `bugs/index.md` is definition-only.
 
-### 7. Issues
+### 7. Unresolved bug records
 
-`issues/issues.md` is the categorized document containing anomalies, doubts, blockers, and other non-bug findings. It is generated from findings whose category is `issue`; `issues/index.md` is definition-only.
+Unresolved anomalies, doubts, and blockers are maintained in `bugs/bugs.md` with an unresolved status. There is no separate issues document.
 
 ## Evidence and reports
 

@@ -11,13 +11,12 @@ and runbooks. Do not treat this repository as an application under test.
    otherwise ask whether to create one.
 2. Resolve the configured tester data root with `bin/pi-tester-tool paths`, then read
    the configured project's `<data-root>/setup.md`, `data.json`,
-   `knowledge/index.md`, `findings.md`, and the durable `bugs/bugs.md` and
-   `issues/issues.md` records before testing. The `bugs/index.md` and
-   `issues/index.md` files are definition/reference pages. When
-   `PI_TESTER_SINGLE_PROJECT` is set,
-   the data root itself is the project store.
-   Use local `findings.jsonl` when available for recurrence; the Markdown
-   documents are the committed fallback.
+   `knowledge/index.md`, the local `findings.md` when present, and the durable
+   `bugs/bugs.md` record before testing. The `bugs/index.md` page is the
+   definition/reference page; unresolved items remain in the same bug file.
+   When `PI_TESTER_SINGLE_PROJECT` is set, the data root itself is the project
+   store. Use local `findings.jsonl` when available for recurrence; the Markdown
+   documents are the durable classification fallback.
    Read the configured project's `index.md` and every linked `Instructions`
    document before testing. Project-specific instructions define the required
    evidence checkpoints and override generic screenshot defaults.
@@ -71,6 +70,23 @@ bin/pi-tester-tool run-report --project <project> --run-id <run-id>
 bin/pi-tester-tool findings-report --project <project>
 bin/pi-tester-tool validate
 ```
+
+For a registered feature run, pass the feature scope explicitly before the first
+application interaction:
+
+```bash
+bin/pi-tester-tool run-start --project <project> --run-id <run-id> \
+  --target <target> --purpose <purpose> --mode explore \
+  --feature-name <feature-name> --feature-alias <matched-alias> \
+  --feature-specification <specification> --feature-cases HS-T01,HS-T02 \
+  --feature-scope "declared feature scope" --coverage-scope full
+```
+
+Feature runs must not include level or board metadata. Record one `action` event
+per selected feature case using the case ID in `--test`; `run-report` then
+renders a feature summary and case-by-case coverage. Use the feature's declared
+fixture and evidence requirements, and mark unavailable cases `blocked` rather
+than representing the feature as a level run.
 
 For a regression run, use an **active** runbook and record its id in the run
 header:
@@ -138,8 +154,15 @@ tool response confirms it.
   artifact that does not itself create a run.
 - Findings are recorded during testing; never silently suppress one.
 - Only explicit human decisions become durable knowledge-base entries.
-- Classify a finding with `finding-status --category bug|issue` and a durable
-  reason; classification never deletes the finding history.
+- Classify a finding only after human review. Use
+  `finding-status --category bug --confidence 0..100 --severity <level>
+  --evidence <path|caption>` for a confirmed or unresolved bug record, or
+  `--category knowledge --topic <topic>` for accepted known behavior. Unresolved
+  records remain in `bugs/bugs.md` with a retest or discussion status. Every
+  classification requires a durable `--reason`; classification never deletes
+  local finding history. Findings intake files are not committed: commit only
+  the resulting bug or knowledge record and selected finding screenshots from
+  the run artifacts.
 
 ## Backend provenance
 
@@ -155,11 +178,14 @@ the user's real desktop. See `pi-agent/native-x11.md` for the command contract.
 ## Completion
 
 A completed run must have `run.jsonl`, evidence under its own `artifacts/`
-directory, a generated `flow.md` containing the complete testing path, and a
-`report.md` containing the reader-facing summary. Record findings in
-`findings.jsonl` and `findings.md` only when findings exist; do not add `No
-findings` placeholders. Human-classified bug records belong in `bugs/bugs.md`
-and issue records belong in `issues/issues.md`; `bugs/index.md` and
-`issues/index.md` remain definition/reference pages. Omit empty categories from
-reports. Finish with a successful `bin/pi-tester-tool validate`. Return the
+directory, and an `evidence.jsonl` sidecar mapping retained artifacts to action
+sequence numbers. It must also have a generated `flow.md` containing the
+complete testing path and a `report.md` containing the reader-facing summary. Record findings in the local,
+uncommitted `findings.jsonl` and generated `findings.md` only when findings
+exist; do not add `No findings` placeholders. Human-classified bug records
+belong in `bugs/bugs.md` with numeric confidence, severity, and status; accepted
+known behavior belongs in a project `knowledge/` topic. Finding screenshots
+remain in the run's `artifacts/` directory and are committed for future
+reference. The bug index remains a definition/reference page.
+Omit empty categories from reports and never commit the intake findings. Finish with a successful `bin/pi-tester-tool validate`. Return the
 compact result in chat with coverage, findings, blocked flows, and next action.

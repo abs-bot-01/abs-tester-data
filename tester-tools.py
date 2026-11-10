@@ -10,11 +10,13 @@ Layout (under the configured external store root):
   runs/<run-id>/run.jsonl           append-only events (machine record)
   runs/<run-id>/flow.md             complete human-readable test flow (OKF concept, generated)
   runs/<run-id>/report.md           reader-facing summary of the run (OKF concept, generated)
-  runs/<run-id>/artifacts/          numbered screenshots and captures, bound to events
-  findings.jsonl                    machine record behind findings.md
-  findings.md                       unreviewed findings document (OKF concept, generated)
-  bugs/bugs.md + issues/issues.md   categorized bug and issue records
-  bugs/index.md + issues/index.md   category definitions/reference pages
+  runs/<run-id>/artifacts/          numbered screenshots and captures
+  runs/<run-id>/evidence.jsonl       local evidence-to-action links (not in run.jsonl)
+  findings.jsonl                    local, uncommitted machine intake record
+  findings.md                       local unreviewed findings document (generated)
+  bugs/bugs.md                       human-classified bug and issue records
+  bugs/index.md                      bug-record definition/reference page
+  knowledge/                        human-reviewed durable knowledge records
   knowledge/index.md + <topic>.md  project KB (topics are OKF concepts)
   data.json                         source, runtime, and tester context
   runbooks/<runbook-id>.md          test plans (OKF concepts)
@@ -58,8 +60,10 @@ RUN_STATUSES = ("passed", "failed", "partial", "blocked")
 MODES = ("explore", "continue", "runbook")
 FINDING_STATUSES = ("new", "needs-retest", "confirmed", "not-a-bug", "suppressed", "fixed")
 KB_TOPICS = ("app-rules", "known-non-issues", "focus-areas", "environment", "decisions")
-FINDING_CATEGORIES = ("bug", "issue")
+FINDING_CATEGORIES = ("bug",)
+FINDING_KNOWLEDGE_CATEGORY = "knowledge"
 UNCLASSIFIED_CATEGORY = "finding"
+SEVERITIES = ("low", "medium", "high", "critical")
 
 def slug(value): return value if NAME_RE.fullmatch(value or "") else None
 
@@ -228,6 +232,11 @@ def artifact_name(value):
 def split_pairs(value, sep=";"):
     return [x.strip() for x in (value or "").split(sep) if x.strip()]
 
+
+def split_values(value, sep=","):
+    """Parse a simple comma-separated feature-case list."""
+    return [x.strip() for x in (value or "").split(sep) if x.strip()]
+
 # ---------- OKF helpers ----------
 
 OKF_VERSION = "0.2"
@@ -328,7 +337,7 @@ def cmd_project_create(a):
         if s != SINGLE_PROJECT:
             die(f"configured project is {SINGLE_PROJECT}, not {s}")
         p=DATA
-        for sub in ("runs","knowledge","runbooks","bugs","issues"): (p/sub).mkdir(parents=True, exist_ok=True)
+        for sub in ("runs","knowledge","runbooks","bugs"): (p/sub).mkdir(parents=True, exist_ok=True)
         if not (p/"data.json").exists():
             write_project_config(p, a.context_path)
         for topic in KB_TOPICS:
@@ -344,7 +353,7 @@ def cmd_project_create(a):
         return
     p=PROJECTS/s
     if p.exists(): die(f"project already exists: {s}")
-    for sub in ("runs","knowledge","runbooks","bugs","issues"): (p/sub).mkdir(parents=True, exist_ok=True)
+    for sub in ("runs","knowledge","runbooks","bugs"): (p/sub).mkdir(parents=True, exist_ok=True)
     write_project_config(p, a.context_path)
     atomic_write(p/"setup.md", fm("App Setup", s, f"How to launch and configure {s} under test.", tags=["setup"])
         + f"# Setup — {s}\n\n- **application:** (name)\n- **executable:** (path to the supplied binary)\n- **launch:** approved `bin/pi-tester-launch <executable>`\n- **environment:** Linux desktop on the per-user disposable Xvfb display reported by `bin/pi-tester-display` (1280x720)\n- **setup notes:** profiles, save data, window sizing\n")
@@ -381,6 +390,16 @@ def cmd_start(a):
     rid=slug(a.run_id) or die("invalid run id")
     rd=p/"runs"/rid
     if (rd/"run.jsonl").exists() and lines(rd/"run.jsonl"): die(f"run already exists: {rid}")
+    feature_mode=bool(a.feature_name)
+    level_values=(a.level_id, a.level_title, a.configured_segments, a.board_count, a.board_time,
+                  a.training_result, a.speedrun_result)
+    if feature_mode and any(value not in (None, "") for value in level_values):
+        die("feature runs cannot include level or board metadata")
+    if feature_mode and not a.feature_scope:
+        die("feature runs require --feature-scope")
+    cases=split_values(a.feature_cases) if feature_mode else []
+    if len(cases) != len(set(cases)):
+        die("feature case IDs must be unique")
     (rd/"artifacts").mkdir(parents=True, exist_ok=True)
     header={"event":"run_started","run_id":rid,"project":a.project,"target":a.target,"purpose":a.purpose,
             "boundary":a.boundary,"environment":a.environment,"mode":a.mode,"status":"open","timestamp":now(),
@@ -390,8 +409,12 @@ def cmd_start(a):
         ("configured_segments", a.configured_segments), ("board_count", a.board_count),
         ("board_time", a.board_time), ("training_result", a.training_result),
         ("speedrun_result", a.speedrun_result), ("audio_status", a.audio_status),
+        ("feature_name", a.feature_name), ("feature_alias", a.feature_alias),
+        ("feature_specification", a.feature_specification), ("feature_cases", cases),
+        ("feature_scope", a.feature_scope), ("feature_requirement", a.feature_requirement),
+        ("coverage_scope", a.coverage_scope),
     )
-    header.update({key: value for key, value in metadata if value not in (None, "")})
+    header.update({key: value for key, value in metadata if value not in (None, "", [])})
     if a.mode=="runbook":
         if not a.runbook_id: die("runbook mode requires --runbook-id")
         runbook_id=slug(a.runbook_id) or die("invalid runbook id")
@@ -403,6 +426,22 @@ def cmd_start(a):
     append(rd/"run.jsonl", header)
     print(json.dumps({"run_id":rid,"run_dir":str(rd.relative_to(DATA)),"artifacts":str((rd/'artifacts').relative_to(DATA))}))
 
+def run_evidence(rd):
+    """Load evidence links separately from the append-only action log."""
+    links={}
+    evidence_file=rd/"evidence.jsonl"
+    if evidence_file.exists():
+        for item in lines(evidence_file):
+            if isinstance(item.get("seq"), int):
+                links[item["seq"]]=item.get("artifacts", [])
+    return links
+
+
+def artifacts_for_event(event, evidence):
+    # Read legacy action-embedded links so old runs still render correctly.
+    return event.get("artifacts", []) or evidence.get(event.get("seq"), [])
+
+
 def cmd_action(a):
     ev=active_run(a.project, a.run_id); rd=project_dir(a.project)/"runs"/slug(a.run_id)
     artifacts=[]
@@ -411,12 +450,14 @@ def cmd_action(a):
         f=rd/"artifacts"/name
         if not f.is_file() or f.is_symlink(): die(f"artifact does not exist in run artifacts dir: {name}")
         artifacts.append("artifacts/"+name)
-    obj={"seq":max((x.get("seq",0) for x in ev if isinstance(x.get("seq"),int)),default=0)+1,
-         "event":"action","timestamp":now(),"action":a.action,"result":a.result}
-    if artifacts: obj["artifacts"]=artifacts
+    seq=max((x.get("seq",0) for x in ev if isinstance(x.get("seq"),int)),default=0)+1
+    obj={"seq":seq,"event":"action","timestamp":now(),"action":a.action,"result":a.result}
     for key,val in (("target",a.target),("test",a.test),("expected",a.expected),("observed",a.observed),("notes",a.notes)):
         if val not in (None,""): obj[key]=val
-    append(rd/"run.jsonl", obj); print(json.dumps(obj,ensure_ascii=False))
+    append(rd/"run.jsonl", obj)
+    if artifacts:
+        append(rd/"evidence.jsonl", {"seq":seq,"artifacts":artifacts,"timestamp":now()})
+    print(json.dumps(obj,ensure_ascii=False))
 
 def cmd_complete(a):
     ev=active_run(a.project, a.run_id); rd=project_dir(a.project)/"runs"/slug(a.run_id)
@@ -450,7 +491,72 @@ def render_run_context(a, head, last, title):
     return "".join(out)
 
 
-def render_flow(a, head, acts, last):
+def feature_cases(head):
+    value=head.get("feature_cases") or []
+    return value if isinstance(value, list) else split_values(value)
+
+
+def feature_case_actions(acts, case_id):
+    return [event for event in acts if event.get("test") == case_id]
+
+
+def feature_case_status(events, fallback="blocked"):
+    if not events:
+        return fallback
+    precedence={"failed":4, "blocked":3, "partial":2, "passed":1, "skipped":0}
+    return max((event.get("result", "blocked") for event in events),
+               key=lambda result: precedence.get(result, 3))
+
+
+def render_feature_context(head, last):
+    out=[
+        f"- **feature name:** {head.get('feature_name')}\n",
+        f"- **matched alias:** {head.get('feature_alias', 'not recorded')}\n",
+        f"- **specification:** {head.get('feature_specification', 'not recorded')}\n",
+        f"- **selected cases:** {', '.join(feature_cases(head)) or 'not recorded'}\n",
+        f"- **declared scope:** {head.get('feature_scope', 'not recorded')}\n",
+    ]
+    if head.get("feature_requirement"):
+        out.append(f"- **explicit requirement:** {head['feature_requirement']}\n")
+    if head.get("coverage_scope"):
+        out.append(f"- **coverage scope:** {head['coverage_scope']}\n")
+    if last.get("event")=="run_completed":
+        out.append(f"- **status:** {last.get('status')} — {last.get('summary','')}\n")
+    return "".join(out)
+
+
+def render_feature_flow(a, head, acts, last, evidence):
+    purpose=head.get("purpose", "") or a.run_id
+    title=f"Run {a.run_id} — {purpose}"
+    out=[run_document_header(a, head, last, title, purpose), render_run_context(a, head, last, title),
+         "\n## Feature scope\n\n", render_feature_context(head, last),
+         "\n## Contents\n\n- [Feature scope](#feature-scope)\n- [Cases](#cases)\n- [Blocked work](#blocked-work)\n- [Summary](#summary)\n- [Evidence](#evidence)\n\n",
+         "## Cases\n\n"]
+    for case_id in feature_cases(head):
+        events=feature_case_actions(acts, case_id)
+        status=feature_case_status(events, "blocked" if last.get("status")=="blocked" else "not_recorded")
+        out.append(f"## {case_id} (`{status}`)\n\n")
+        if not events:
+            out.append("No action was recorded for this case.\n\n")
+        for event in events:
+            out.append(f"1. **Action:** {event.get('action','unnamed')}\n")
+            for key in ("expected", "observed", "notes"):
+                if event.get(key): out.append(f"   - **{key.title()}:** {event[key]}\n")
+            out.append(f"   - **Result:** `{event.get('result','not_recorded')}`\n")
+            for artifact in artifacts_for_event(event, evidence):
+                out.append(f"   - **Evidence:** [{Path(artifact).name}]({artifact})\n")
+        out.append(f"\n**Case result:** `{status}`\n\n")
+    blocked=[event for event in acts if event.get("result")=="blocked"]
+    out.append("## Blocked work\n\n" + ("\n".join(f"- seq {event['seq']}: {event['action']}" for event in blocked)+"\n" if blocked else "None.\n"))
+    out.append("\n## Summary\n\n" + ((last.get("summary", "")+"\n") if last.get("event")=="run_completed" else "(run still open)\n"))
+    artifacts=[artifact for event in acts for artifact in artifacts_for_event(event, evidence)]
+    out.append("\n## Evidence\n\n" + ("".join(f"- [{Path(x).name}]({x})\n" for x in artifacts) if artifacts else "None retained.\n"))
+    return "".join(out)
+
+
+def render_flow(a, head, acts, last, evidence):
+    if head.get("feature_name"):
+        return render_feature_flow(a, head, acts, last, evidence)
     purpose=head.get("purpose", "") or a.run_id
     title=f"Run {a.run_id} — {purpose}"
     out=[run_document_header(a, head, last, title, purpose), render_run_context(a, head, last, title),
@@ -467,7 +573,7 @@ def render_flow(a, head, acts, last):
         out.append(f'<a id="seq-{e["seq"]}"></a>\n\n### {e["seq"]} — {e["action"]} (`{e["result"]}`)\n\n')
         for k in ("test", "expected", "observed", "notes"):
             if e.get(k): out.append(f"**{k}:** {e[k]}\n\n")
-        imgs=e.get("artifacts", [])
+        imgs=artifacts_for_event(e, evidence)
         if len(imgs)==1:
             stem=Path(imgs[0]).stem
             out.append(f"![{stem}]({imgs[0]})\n\n*{stem} — {e.get('action','')}*\n\n")
@@ -476,18 +582,66 @@ def render_flow(a, head, acts, last):
     blocked=[e for e in acts if e.get("result")=="blocked"]
     out.append("## Blocked work\n\n" + ("\n".join(f"- seq {e['seq']}: {e['action']}" for e in blocked)+"\n" if blocked else "None.\n"))
     out.append("\n## Summary\n\n" + ((last.get("summary", "")+"\n") if last.get("event")=="run_completed" else "(run still open)\n"))
-    arts=[art for e in acts for art in e.get("artifacts", [])]
+    arts=[art for e in acts for art in artifacts_for_event(e, evidence)]
     out.append("\n## Evidence\n\n" + ("".join(f"- [{Path(x).name}]({x})\n" for x in arts) if arts else "None retained.\n"))
     return "".join(out)
 
 
-def render_report(a, head, acts, last):
+def render_feature_report(a, head, acts, last, evidence):
     purpose=head.get("purpose", "") or a.run_id
     title=f"Run {a.run_id} — {purpose}"
     result=last.get("status") if last.get("event")=="run_completed" else "open"
-    arts=[art for e in acts for art in e.get("artifacts", [])]
+    artifacts=[artifact for event in acts for artifact in artifacts_for_event(event, evidence)]
+    blocked=[event for event in acts if event.get("result")=="blocked"]
+    out=[run_document_header(a, head, last, title, purpose), render_run_context(a, head, last, title),
+         "\n## Feature summary\n\n",
+         "| Field | Summary |\n|---|---|\n",
+         f"| **Feature name** | {head.get('feature_name')} |\n",
+         f"| **Matched alias** | {head.get('feature_alias', 'not recorded')} |\n",
+         f"| **Specification** | {head.get('feature_specification', 'not recorded')} |\n",
+         f"| **Selected cases** | {', '.join(feature_cases(head)) or 'not recorded'} |\n",
+         f"| **Declared scope** | {head.get('feature_scope', 'not recorded')} |\n",
+         f"| **Overall QA result** | **{result}** |\n",
+         f"| **Coverage scope** | {head.get('coverage_scope', 'not recorded')} |\n",
+         f"| **Audio/TTS/SFX** | {run_metadata_value(head, 'audio_status')} |\n",
+         "\n[Open the complete testing flow](flow.md) · [Open findings](../../findings.md)\n",
+         "\n## Testing scope and environment\n\n", render_feature_context(head, last),
+         f"- **Purpose:** {purpose}\n",
+         f"- **Boundary:** {head.get('boundary')}\n",
+         f"- **Environment:** {head.get('environment')}\n",
+         "\n## Screenshot policy\n\n",
+         "Retain only the minimum fresh evidence required by the feature specification, including initial state, significant transitions, blockers, and findings.\n",
+         "\n## Retained artifacts\n\n"]
+    out.append("\n".join(f"- [{Path(x).name}]({x})" for x in artifacts)+"\n" if artifacts else "None retained.\n")
+    out.append("\n## Feature test coverage\n\n| Case ID | Status | Notes |\n|---|---|---|\n")
+    for case_id in feature_cases(head):
+        events=feature_case_actions(acts, case_id)
+        status=feature_case_status(events, "blocked" if result=="blocked" else "not_recorded")
+        notes=" ".join(event.get("observed", "") for event in events) or "No action recorded."
+        notes=notes.replace("|", "\\|")
+        out.append(f"| {case_id} | {status} | {notes} |\n")
+    out.append("\n## Findings, limitations, and blocked work\n\n")
+    if blocked:
+        out.append("Blocked actions:\n\n" + "\n".join(f"- seq {event['seq']}: {event.get('action','unnamed')} — {event.get('observed','blocked')}" for event in blocked)+"\n\n")
+    else:
+        out.append("No blocked actions recorded in this run.\n\n")
+    if run_metadata_value(head, "audio_status") not in ("verified", "not_applicable"):
+        out.append(f"Audio/TTS/SFX limitation: {run_metadata_value(head, 'audio_status')}.\n\n")
+    out.append("See the complete testing flow and feature-case coverage for detailed observations.\n")
+    out.append("\n## Final QA result\n\n")
+    out.append(f"**{result}** — {last.get('summary', '(run still open)')}\n")
+    return "".join(out)
+
+
+def render_report(a, head, acts, last, evidence):
+    if head.get("feature_name"):
+        return render_feature_report(a, head, acts, last, evidence)
+    purpose=head.get("purpose", "") or a.run_id
+    title=f"Run {a.run_id} — {purpose}"
+    result=last.get("status") if last.get("event")=="run_completed" else "open"
+    arts=[art for e in acts for art in artifacts_for_event(e, evidence)]
     blocked=[e for e in acts if e.get("result")=="blocked"]
-    without_images=[e for e in acts if not e.get("artifacts")]
+    without_images=[e for e in acts if not artifacts_for_event(e, evidence)]
     out=[run_document_header(a, head, last, title, purpose), render_run_context(a, head, last, title),
          "\n## Level summary\n\n",
          "| Field | Summary |\n|---|---|\n",
@@ -534,8 +688,9 @@ def cmd_report(a):
     if not ev or ev[0].get("event")!="run_started": die("run has no header event")
     head=ev[0]; acts=[e for e in ev if e.get("event")=="action"]
     last=ev[-1]
-    flow=render_flow(a, head, acts, last)
-    report=render_report(a, head, acts, last)
+    evidence=run_evidence(rd)
+    flow=render_flow(a, head, acts, last, evidence)
+    report=render_report(a, head, acts, last, evidence)
     atomic_write(rd/"flow.md", flow)
     atomic_write(rd/"report.md", report)
     rebuild_project_index(p)
@@ -546,6 +701,20 @@ def cmd_report(a):
 # ---------- findings ----------
 
 def findings_path(project): return project_dir(project)/"findings.jsonl"
+
+def normalize_confidence(value):
+    """Return the new numeric confidence scale while reading old records safely."""
+    if value in (None, ""):
+        return None
+    if isinstance(value, str) and value in {"low", "medium", "high"}:
+        return {"low": 25, "medium": 50, "high": 80}[value]
+    try:
+        number = int(value)
+    except (TypeError, ValueError):
+        die("confidence must be an integer from 0 to 100")
+    if not 0 <= number <= 100:
+        die("confidence must be an integer from 0 to 100")
+    return number
 
 def img_list(value):
     out=[]
@@ -565,8 +734,9 @@ def cmd_finding(a):
     new_imgs=img_list(a.images)
     category = finding_category(rows[matches[0]]) if matches else UNCLASSIFIED_CATEGORY
     proposal = a.proposed_for_kb.strip()
+    confidence = normalize_confidence(a.confidence)
     base={"finding_id":a.finding_id or f"finding-{a.run_id}-{len(rows)+1:03d}","fingerprint":fp,"run_id":a.run_id,
-          "title":a.title,"category":category,"severity":a.severity,"confidence":a.confidence,"status":a.status,
+          "title":a.title,"category":category,"severity":a.severity or None,"confidence":confidence,"status":a.status,
           "description":a.description,"steps":parse_json(a.steps,[]),"expected":a.expected,"observed":a.observed,
           "images":new_imgs,"references":split_pairs(a.references),"proposed_for_kb":proposal,
           "proposal_state":"pending" if proposal else "","recurrence":{},"updated_at":now()}
@@ -594,6 +764,51 @@ def cmd_finding(a):
     rebuild_project_index(p)
     print(json.dumps({"result":verb,"finding":rows[matches[0]] if matches else base},ensure_ascii=False))
 
+def promote_bug_evidence(project, row, specs):
+    """Validate finding screenshots and retain their run-artifact paths."""
+    if not specs:
+        if not row.get("images"):
+            die("bug classification requires --evidence or existing finding images")
+        return
+    images=[]
+    for image in img_list(specs):
+        source=Path(image["path"])
+        candidate=source if source.is_absolute() else project/source
+        if not candidate.is_file():
+            die(f"bug evidence does not exist: {image['path']}")
+        try:
+            path=str(candidate.resolve().relative_to(project.resolve()))
+        except ValueError:
+            die("bug evidence must be inside the project data root")
+        images.append({"path":path,"caption":image.get("caption", "")})
+    row["images"] = images
+
+
+def append_finding_to_knowledge(project, row, topic, confirmed_by, content=""):
+    if topic not in KB_TOPICS:
+        die(f"topic must be one of {KB_TOPICS}")
+    kb=project/"knowledge"
+    kb.mkdir(parents=True, exist_ok=True)
+    target=kb/f"{topic}.md"
+    if not target.exists():
+        atomic_write(target, fm("Knowledge", f"{topic} — {project.name}", topic.replace("-", " ") + f" for project {project.name}.", tags=["knowledge", topic])
+            + f"# {topic.replace('-', ' ').title()}\n\n")
+    finding_id=row.get("finding_id", "")
+    text=target.read_text(encoding="utf-8")
+    if f"finding {finding_id}" not in text:
+        statement=content.strip() or row.get("proposed_for_kb", "").strip() or row.get("observed", "").strip() or row.get("title", "")
+        with target.open("a", encoding="utf-8") as stream:
+            stream.write("\n" + kb_entry(row.get("title", ""), statement,
+                                             f"finding {finding_id}; accepted by human", confirmed_by))
+    row["category"] = FINDING_KNOWLEDGE_CATEGORY
+    row["proposal_state"] = "accepted"
+    row["status"] = "not-a-bug"
+    row["knowledge_topic"] = topic
+    row["knowledge_reviewed_by"] = confirmed_by
+    row["updated_at"] = now()
+    rebuild_kb_index(kb, project.name)
+
+
 def cmd_finding_status(a):
     p=project_dir(a.project); rows=lines(p/"findings.jsonl")
     reason=a.reason.strip()
@@ -602,25 +817,42 @@ def cmd_finding_status(a):
     idx=next((i for i,x in enumerate(rows) if x.get("finding_id")==a.finding_id), None)
     if idx is None: die(f"finding not found: {a.finding_id}")
     row=rows[idx]
-    log={"from":row.get("status"),"status":a.status,"reason":reason,"by":"human","identity":current_identity(),"at":now()}
-    if a.category:
-        log["category_from"]=finding_category(row); log["category_to"]=a.category
-        row["category"]=a.category
+    category=a.category
+    old_category=finding_category(row)
+    if category == FINDING_KNOWLEDGE_CATEGORY:
+        if not a.topic:
+            die("knowledge classification requires --topic")
+        append_finding_to_knowledge(p, row, a.topic, a.confirmed_by, a.content)
+    elif category == "bug":
+        if a.confidence is None or not a.severity:
+            die("bug classification requires --confidence 0..100 and --severity")
+        promote_bug_evidence(p, row, a.evidence)
+        row["confidence"] = normalize_confidence(a.confidence)
+        row["severity"] = a.severity
+        row["category"] = category
+    elif category:
+        row["category"] = category
+    log={"from":old_category,"status":a.status,"reason":reason,"by":"human","identity":current_identity(),"at":now()}
+    if category:
+        log["category_to"]=category
     row.setdefault("status_log",[]).append(log)
     row["status"]=a.status; row["updated_at"]=now()
     atomic_write(p/"findings.jsonl", "".join(json.dumps(x,ensure_ascii=False,separators=(",",":"))+"\n" for x in rows))
-    rebuild_findings_documents(p, rows, include_classified=bool(a.category))
+    rebuild_findings_documents(p, rows, include_classified=bool(category and category != FINDING_KNOWLEDGE_CATEGORY))
     rebuild_project_index(p)
     print(json.dumps(row,ensure_ascii=False))
 
 def finding_category(row):
     category=row.get("category", UNCLASSIFIED_CATEGORY)
-    return category if category in (*FINDING_CATEGORIES, UNCLASSIFIED_CATEGORY) else UNCLASSIFIED_CATEGORY
+    # Older local records used `issue`; they now belong in the single bug file.
+    if category == "issue":
+        return "bug"
+    return category if category in (*FINDING_CATEGORIES, FINDING_KNOWLEDGE_CATEGORY, UNCLASSIFIED_CATEGORY) else UNCLASSIFIED_CATEGORY
 
 
 def finding_document(category):
     """Return the categorized record document inside its findings directory."""
-    return f"{category}s/{category}s.md"
+    return "bugs/bugs.md"
 
 
 def finding_index(category):
@@ -629,11 +861,8 @@ def finding_index(category):
 
 
 def category_definition(category):
-    if category == "bug":
-        return ("Bugs", "A confirmed, reproducible deviation between expected and actual application behavior. "
-                "Detailed bug records are stored in bugs.md.")
-    return ("Issues", "An anomaly, doubt, blocker, or other observation that is not yet a confirmed bug. "
-            "Detailed issue records are stored in issues.md.")
+    return ("Bugs", "Confirmed bugs and unresolved QA issues are maintained in bugs.md. "
+            "Use the status field to distinguish confirmed work from items needing retest or discussion.")
 
 
 def ensure_category_index(project, category):
@@ -669,16 +898,21 @@ def render_findings_document(project, entries, category=None):
     out=[fm(doc_type, f"{label} — {p.name}", description, resource, ["findings"] + ([category] if category else []), extra),
          f"# {label} — {p.name}\n\n"]
     if entries:
-        out.append("| # | Finding | Description | Severity | Status |\n|---|---------|-------------|----------|--------|\n")
+        out.append("| # | Finding | Description | Severity | Confidence | Status |\n|---|---------|-------------|----------|------------|--------|\n")
     for i,x in entries:
         desc=(x.get("description") or x.get("observed") or "").replace("|","\\|")
         if len(desc)>110: desc=desc[:107]+"…"
-        out.append(f'| {i} | [F{i}](#f{i}) | {desc} | {x.get("severity")} | {x.get("status")} |\n')
+        severity=x.get("severity") or "—"
+        confidence=x.get("confidence")
+        confidence=f"{confidence}%" if confidence is not None else "—"
+        out.append(f'| {i} | [F{i}](#f{i}) | {desc} | {severity} | {confidence} | {x.get("status")} |\n')
         out.append("\n")
     for i,x in entries:
         out.append(f'<a id="f{i}"></a>\n\n## F{i} — {x.get("title")}\n\n')
         out.append(f'**category:** {finding_category(x)}\n\n')
         out.append(f'**run:** [{x.get("run_id")}]({prefix}runs/{x.get("run_id")}/flow.md)\n\n')
+        if x.get("severity"): out.append(f"**severity:** {x['severity']}\n\n")
+        if x.get("confidence") is not None: out.append(f"**confidence:** {x['confidence']}%\n\n")
         if x.get("description"): out.append(f"**description:** {x['description']}\n\n")
         if x.get("steps"):
             out.append("**steps:**\n"); out+= "".join(f"{n}. {s}\n" for n,s in enumerate(x["steps"],1)); out.append("\n")
@@ -767,15 +1001,10 @@ def cmd_kb_accept(a):
     p=project_dir(a.project); rows=lines(p/"findings.jsonl")
     idx=next((i for i,x in enumerate(rows) if x.get("finding_id")==a.finding_id), None)
     if idx is None: die("finding does not exist")
-    text=rows[idx].get("proposed_for_kb") or die("nothing proposed for this finding")
+    if not rows[idx].get("proposed_for_kb"): die("nothing proposed for this finding")
     topic=slug(a.topic) or die("invalid topic slug")
-    if a.topic not in KB_TOPICS: die(f"topic must be one of {KB_TOPICS}")
-    kb=p/"knowledge"
-    with (kb/f"{topic}.md").open("a",encoding="utf-8") as f:
-        f.write("\n"+kb_entry(rows[idx].get("title",""), text, f"finding {a.finding_id}; accepted by human", a.confirmed_by))
-    rows[idx]["proposal_state"]="accepted"; rows[idx]["updated_at"]=now()
+    append_finding_to_knowledge(p, rows[idx], topic, a.confirmed_by)
     atomic_write(p/"findings.jsonl", "".join(json.dumps(x,ensure_ascii=False,separators=(",",":"))+"\n" for x in rows))
-    rebuild_kb_index(kb, p.name)
     rebuild_findings_documents(p, rows)
     rebuild_project_index(p)
     print(json.dumps({"finding_id":a.finding_id,"proposal_state":"accepted","topic":topic}))
@@ -874,7 +1103,7 @@ def cmd_validate(a):
         checked.append("index.md (bundle root)")
     for project_name,p in project_entries():
         if not p.is_dir(): continue
-        for sub,why in (("index.md","project index.md"),("knowledge/index.md","knowledge index"),("setup.md","setup.md"),("data.json","data.json"),("findings.md","findings.md")):
+        for sub,why in (("index.md","project index.md"),("knowledge/index.md","knowledge index"),("setup.md","setup.md"),("data.json","data.json"),("bugs/bugs.md","bugs/bugs.md")):
             if not (p/sub).exists(): problems.append(f"{project_name}: missing {why}")
         for category in FINDING_CATEGORIES:
             category_index = p/finding_document(category)
@@ -908,7 +1137,13 @@ def cmd_validate(a):
             if (not st or st.group(1) not in ("draft","active","retired")) and not flat_layout():
                 problems.append(f"{project_name}/{rb.name}: missing/invalid status")
         for jp in sorted((p/"runs").glob("*/run.jsonl")):
-            rdir=jp.parent; ev=lines(jp)
+            rdir=jp.parent; ev=lines(jp); evidence=run_evidence(rdir)
+            action_seqs={e.get("seq") for e in ev if e.get("event")=="action"}
+            for seq, artifacts in evidence.items():
+                if seq not in action_seqs:
+                    problems.append(f"{rdir.name}: evidence has no matching action seq {seq}")
+                for art in artifacts:
+                    if not (rdir/art).is_file(): problems.append(f"{rdir.name}: missing evidence artifact {art}")
             last_seq=0
             for i,e in enumerate(ev):
                 if i==0 and e.get("event")!="run_started": problems.append(f"{rdir.name}: first line is not run_started")
@@ -927,8 +1162,11 @@ def cmd_validate(a):
                     elif not fm_field(path.read_text(encoding="utf-8"), "type"):
                         problems.append(f"{rdir.name}/{document}: missing OKF frontmatter/type")
                 report=rdir/"report.md"
-                if report.is_file() and "## Level summary" not in report.read_text(encoding="utf-8"):
-                    problems.append(f"{rdir.name}/report.md: missing Level summary")
+                if report.is_file():
+                    report_text=report.read_text(encoding="utf-8")
+                    required_summary="## Feature summary" if ev[0].get("feature_name") else "## Level summary"
+                    if required_summary not in report_text:
+                        problems.append(f"{rdir.name}/report.md: missing {required_summary.removeprefix('## ')}")
             checked.append(str(jp))
     print(json.dumps({"valid":not problems,"problems":problems},ensure_ascii=False))
     if problems: sys.exit(1)
@@ -948,6 +1186,13 @@ def parser():
     x.add_argument("--level-id"); x.add_argument("--level-title"); x.add_argument("--configured-segments")
     x.add_argument("--board-count"); x.add_argument("--board-time"); x.add_argument("--training-result")
     x.add_argument("--speedrun-result"); x.add_argument("--audio-status",choices=("verified", "not_applicable", "blocked"))
+    x.add_argument("--feature-name", help="feature target; mutually exclusive with level metadata")
+    x.add_argument("--feature-alias")
+    x.add_argument("--feature-specification")
+    x.add_argument("--feature-cases", help="comma-separated selected feature case IDs")
+    x.add_argument("--feature-scope")
+    x.add_argument("--feature-requirement")
+    x.add_argument("--coverage-scope")
     x.add_argument("--mode",default="explore",choices=MODES); x.add_argument("--runbook-id"); x.set_defaults(fn=cmd_start)
     x=s.add_parser("action"); x.add_argument("--project",required=True); x.add_argument("--run-id",required=True)
     x.add_argument("--action",required=True); x.add_argument("--result",required=True,choices=RESULTS)
@@ -958,12 +1203,16 @@ def parser():
     x=s.add_parser("run-report"); x.add_argument("--project",required=True); x.add_argument("--run-id",required=True); x.set_defaults(fn=cmd_report)
     x=s.add_parser("finding"); x.add_argument("--project",required=True); x.add_argument("--run-id",required=True)
     x.add_argument("--title",required=True); x.add_argument("--finding-id"); x.add_argument("--fingerprint")
-    x.add_argument("--description",default=""); x.add_argument("--severity",default="medium",choices=["low","medium","high"])
-    x.add_argument("--confidence",default="medium",choices=["low","medium","high"]); x.add_argument("--status",default="new",choices=FINDING_STATUSES)
+    x.add_argument("--description",default=""); x.add_argument("--severity",default="",choices=["", *SEVERITIES])
+    x.add_argument("--confidence",default=""); x.add_argument("--status",default="new",choices=FINDING_STATUSES)
     x.add_argument("--steps"); x.add_argument("--expected",default=""); x.add_argument("--observed",default="")
     x.add_argument("--images"); x.add_argument("--references"); x.add_argument("--proposed-for-kb",default=""); x.set_defaults(fn=cmd_finding)
     x=s.add_parser("finding-status"); x.add_argument("--project",required=True); x.add_argument("--finding-id",required=True)
-    x.add_argument("--status",required=True,choices=FINDING_STATUSES); x.add_argument("--category",choices=FINDING_CATEGORIES,help="human classification: bug or issue"); x.add_argument("--reason",default=""); x.set_defaults(fn=cmd_finding_status)
+    x.add_argument("--status",required=True,choices=FINDING_STATUSES)
+    x.add_argument("--category",choices=(*FINDING_CATEGORIES, FINDING_KNOWLEDGE_CATEGORY), help="human classification: bug or knowledge; unresolved items also remain in bugs.md")
+    x.add_argument("--reason",default=""); x.add_argument("--topic"); x.add_argument("--confirmed-by",default="human")
+    x.add_argument("--content",default=""); x.add_argument("--evidence"); x.add_argument("--severity",choices=SEVERITIES); x.add_argument("--confidence",type=int)
+    x.set_defaults(fn=cmd_finding_status)
     x=s.add_parser("findings-report"); x.add_argument("--project",required=True); x.set_defaults(fn=cmd_findings_report)
     x=s.add_parser("kb-add"); x.add_argument("--project"); x.add_argument("--global",dest="global_",action="store_true")
     x.add_argument("--topic",default="app-rules"); x.add_argument("--title",required=True); x.add_argument("--content",required=True)
