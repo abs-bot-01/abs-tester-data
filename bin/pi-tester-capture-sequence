@@ -1,8 +1,40 @@
 #!/bin/sh
 # Capture a timed sequence of cursor-marked screenshots for one run.
 set -eu
+capture_pid=${PI_TESTER_CAPTURE_PID:-}
+capture_window_id=${PI_TESTER_CAPTURE_WINDOW_ID:-}
+expected_capture_size=${PI_TESTER_CAPTURE_EXPECTED_SIZE:-}
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --pid)
+      [ "$#" -ge 2 ] || { echo "--pid requires a value" >&2; exit 2; }
+      capture_pid=$2
+      shift 2
+      ;;
+    --window-id)
+      [ "$#" -ge 2 ] || { echo "--window-id requires a value" >&2; exit 2; }
+      capture_window_id=$2
+      shift 2
+      ;;
+    --expected-size)
+      [ "$#" -ge 2 ] || { echo "--expected-size requires a value" >&2; exit 2; }
+      expected_capture_size=$2
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+export PI_TESTER_CAPTURE_PID="$capture_pid"
+export PI_TESTER_CAPTURE_WINDOW_ID="$capture_window_id"
+export PI_TESTER_CAPTURE_EXPECTED_SIZE="$expected_capture_size"
 if [ "$#" -lt 4 ] || [ "$#" -gt 5 ]; then
-  echo "usage: pi-tester-capture-sequence <project> <run-id> <label> <count> [interval-seconds]" >&2
+  echo "usage: pi-tester-capture-sequence [--pid PID|--window-id WINDOW_ID] [--expected-size WIDTHxHEIGHT] <project> <run-id> <label> <count> [interval-seconds]" >&2
   exit 2
 fi
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)

@@ -2,8 +2,37 @@
 # Capture a cursor-marked screenshot into a numbered project-run artifact.
 # The numeric prefix is allocated per run so lexical filename order is capture order.
 set -eu
+capture_pid=${PI_TESTER_CAPTURE_PID:-}
+capture_window_id=${PI_TESTER_CAPTURE_WINDOW_ID:-}
+expected_capture_size=${PI_TESTER_CAPTURE_EXPECTED_SIZE:-}
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --pid)
+      [ "$#" -ge 2 ] || { echo "--pid requires a value" >&2; exit 2; }
+      capture_pid=$2
+      shift 2
+      ;;
+    --window-id)
+      [ "$#" -ge 2 ] || { echo "--window-id requires a value" >&2; exit 2; }
+      capture_window_id=$2
+      shift 2
+      ;;
+    --expected-size)
+      [ "$#" -ge 2 ] || { echo "--expected-size requires a value" >&2; exit 2; }
+      expected_capture_size=$2
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
 if [ "$#" -ne 3 ]; then
-  echo "usage: pi-tester-capture <project> <run-id> <label>" >&2
+  echo "usage: pi-tester-capture [--pid PID|--window-id WINDOW_ID] [--expected-size WIDTHxHEIGHT] <project> <run-id> <label>" >&2
   exit 2
 fi
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
@@ -54,17 +83,63 @@ trap cleanup EXIT HUP INT TERM
 out="$out_dir/$filename"
 DISPLAY_NAME=$(pi_tester_resolve_display)
 AUTH_FILE=$(pi_tester_auth_file)
-DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/import -window root -quality 90 "$out"
-cur=$(DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/xdotool getmouselocation 2>/dev/null || true)
-x=$(printf '%s' "$cur" | tr ' ' '\n' | sed -n 's/^x://p' | head -n1)
-y=$(printf '%s' "$cur" | tr ' ' '\n' | sed -n 's/^y://p' | head -n1)
+
+if [ -z "$capture_window_id" ] && [ -n "$capture_pid" ]; then
+  windows=$(DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" \
+    /usr/bin/xdotool search --onlyvisible --pid "$capture_pid" 2>/dev/null || true)
+  for candidate in $windows; do
+    capture_window_id=$candidate
+  done
+fi
+
+capture_target=root
+window_x=0
+window_y=0
+if [ -n "$capture_window_id" ]; then
+  capture_target=$capture_window_id
+  geometry=$(DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" \
+    /usr/bin/xdotool getwindowgeometry --shell "$capture_window_id" 2>/dev/null || true)
+  window_x=$(printf '%s\n' "$geometry" | awk -F= '$1 == "X" {print $2}')
+  window_y=$(printf '%s\n' "$geometry" | awk -F= '$1 == "Y" {print $2}')
+  if [ -z "$window_x" ] || [ -z "$window_y" ]; then
+    echo "unable to resolve geometry for window $capture_window_id" >&2
+    exit 12
+  fi
+fi
+
+if [ -n "$capture_pid" ] && [ "$capture_target" = root ]; then
+  echo "no visible window found for PID $capture_pid" >&2
+  exit 12
+fi
+
+DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/import \
+  -window "$capture_target" -quality 90 "$out"
+
+cur=$(DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" \
+  /usr/bin/xdotool getmouselocation 2>/dev/null || true)
+screen_x=$(printf '%s' "$cur" | tr ' ' '\n' | sed -n 's/^x://p' | head -n1)
+screen_y=$(printf '%s' "$cur" | tr ' ' '\n' | sed -n 's/^y://p' | head -n1)
+x=${screen_x:-}
+y=${screen_y:-}
+if [ -n "$x" ] && [ -n "$y" ] && [ "$capture_target" != root ]; then
+  x=$((x - window_x))
+  y=$((y - window_y))
+fi
 if [ -n "${x:-}" ] && [ -n "${y:-}" ]; then
   DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/convert "$out" \
     -stroke white -strokewidth 2 -fill none -draw "circle $x,$y $((x+9)),$y" \
     -fill red -stroke none -draw "circle $x,$y $((x+5)),$y" "$out"
 fi
-/usr/bin/mogrify -resize '1280>' "$out"
+if [ "$capture_target" = root ]; then
+  /usr/bin/mogrify -resize '1280>' "$out"
+fi
+size=$(/usr/bin/identify -format '%wx%h' "$out" 2>/dev/null || printf 'unknown')
+if [ -n "$expected_capture_size" ] && [ "$size" != "$expected_capture_size" ]; then
+  rm -f -- "$out"
+  echo "captured image is $size; expected $expected_capture_size" >&2
+  exit 13
+fi
 trap - EXIT HUP INT TERM
 cleanup
-printf '{"project":"%s","run":"%s","sequence":%d,"artifact":"artifacts/%s","display":"%s","cursor":"%s,%s"}\n' \
-  "$project" "$run_id" "$next" "$filename" "$DISPLAY_NAME" "${x:-none}" "${y:-none}"
+printf '{"project":"%s","run":"%s","sequence":%d,"artifact":"artifacts/%s","display":"%s","target":"%s","size":"%s","cursor":"%s,%s"}\n' \
+  "$project" "$run_id" "$next" "$filename" "$DISPLAY_NAME" "$capture_target" "$size" "${x:-none}" "${y:-none}"

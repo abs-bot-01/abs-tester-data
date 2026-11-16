@@ -5,6 +5,9 @@ set -eu
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 . "$ROOT/bin/pi-tester-runtime"
 DISPLAY_NAME=${PI_TESTER_DISPLAY:-}
+CAPTURE_PID=${PI_TESTER_CAPTURE_PID:-}
+CAPTURE_WINDOW_ID=${PI_TESTER_CAPTURE_WINDOW_ID:-}
+EXPECTED_CAPTURE_SIZE=${PI_TESTER_CAPTURE_EXPECTED_SIZE:-}
 TIMEOUT_SECONDS=${PI_TESTER_X11_TIMEOUT:-3}
 KILL_AFTER_SECONDS=${PI_TESTER_X11_KILL_AFTER:-1}
 
@@ -17,7 +20,7 @@ usage:
   pi-tester-x11 [--display DISPLAY] type TEXT
   pi-tester-x11 [--display DISPLAY] key KEY [KEY ...]
   pi-tester-x11 [--display DISPLAY] drag SX SY W1X W1Y W2X W2Y TX TY [HOLD] [STEP] [SETTLE]
-  pi-tester-x11 [--display DISPLAY] capture OUTPUT.png
+  pi-tester-x11 [--display DISPLAY] [--pid PID|--window-id WINDOW_ID] [--expected-size WIDTHxHEIGHT] capture OUTPUT.png
 
 Drag requires two intermediate waypoints. Coordinates must come from a fresh
 screenshot on the validated display.
@@ -30,6 +33,21 @@ while [ "$#" -gt 0 ]; do
     --display)
       [ "$#" -ge 2 ] || usage
       DISPLAY_NAME=$2
+      shift 2
+      ;;
+    --pid)
+      [ "$#" -ge 2 ] || usage
+      CAPTURE_PID=$2
+      shift 2
+      ;;
+    --window-id)
+      [ "$#" -ge 2 ] || usage
+      CAPTURE_WINDOW_ID=$2
+      shift 2
+      ;;
+    --expected-size)
+      [ "$#" -ge 2 ] || usage
+      EXPECTED_CAPTURE_SIZE=$2
       shift 2
       ;;
     --help|-h)
@@ -76,6 +94,27 @@ require_ints() {
   done
 }
 
+capture_window_id() {
+  if [ -n "$CAPTURE_WINDOW_ID" ]; then
+    printf '%s\n' "$CAPTURE_WINDOW_ID"
+    return
+  fi
+  if [ -z "$CAPTURE_PID" ]; then
+    return 0
+  fi
+
+  windows=$(run_xdotool search --onlyvisible --pid "$CAPTURE_PID" 2>/dev/null || true)
+  window_id=""
+  for candidate in $windows; do
+    window_id=$candidate
+  done
+  if [ -z "$window_id" ]; then
+    echo "no visible window found for PID $CAPTURE_PID" >&2
+    exit 12
+  fi
+  printf '%s\n' "$window_id"
+}
+
 capture_screen() {
   output=$1
   case "$output" in
@@ -83,8 +122,24 @@ capture_screen() {
     *) echo "capture output must end in .png: $output" >&2; exit 2 ;;
   esac
   mkdir -p "$(dirname -- "$output")"
-  DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/import -window root -quality 90 "$output"
-  printf '{"display":"%s","backend":"ImageMagick import","artifact":"%s"}\n' "$DISPLAY_NAME" "$output"
+
+  window_id=$(capture_window_id)
+  capture_target=root
+  if [ -n "$window_id" ]; then
+    capture_target=$window_id
+  fi
+  DISPLAY="$DISPLAY_NAME" XAUTHORITY="$AUTH_FILE" /usr/bin/import \
+    -window "$capture_target" -quality 90 "$output"
+
+  size=$(/usr/bin/identify -format '%wx%h' "$output" 2>/dev/null || printf 'unknown')
+  if [ -n "$EXPECTED_CAPTURE_SIZE" ] && [ "$size" != "$EXPECTED_CAPTURE_SIZE" ]; then
+    rm -f -- "$output"
+    echo "captured image is $size; expected $EXPECTED_CAPTURE_SIZE" >&2
+    exit 13
+  fi
+
+  printf '{"display":"%s","backend":"ImageMagick import","artifact":"%s","target":"%s","size":"%s"}\n' \
+    "$DISPLAY_NAME" "$output" "$capture_target" "$size"
 }
 
 [ "$#" -ge 1 ] || usage

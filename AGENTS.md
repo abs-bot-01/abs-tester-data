@@ -51,7 +51,8 @@ interface; do not use `computer_use` for this project. Read
 input. Capture meaningful states with:
 
 ```bash
-bin/pi-tester-capture <project> <run-id> <label>
+bin/pi-tester-capture [--pid <app-pid>|--window-id <window-id>] \
+  [--expected-size WIDTHxHEIGHT] <project> <run-id> <label>
 # Optional timed screenshot sequence:
 bin/pi-tester-capture-sequence <project> <run-id> <label> <count> [interval-seconds]
 ```

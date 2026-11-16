@@ -46,11 +46,21 @@ Capture a raw root screenshot with:
 bin/pi-tester-x11 capture <data-root>/projects/<project>/runs/<run-id>/artifacts/<NNN>-<label>.png
 ```
 
-The raw command above is useful for diagnostics, but it does not allocate a
-run sequence. For normal run evidence, prefer the numbered wrapper:
+For deterministic application visual comparisons, target the launched window
+instead of the root display and validate its dimensions:
 
 ```bash
-bin/pi-tester-capture <project> <run-id> <label>
+bin/pi-tester-x11 --pid <app-pid> --expected-size 640x360 \
+  capture /tmp/level.png
+```
+
+The PID/window options are optional and preserve the generic root-display
+capture behavior. The raw command above is useful for diagnostics, but it does
+not allocate a run sequence. For normal run evidence, prefer the numbered wrapper:
+
+```bash
+bin/pi-tester-capture [--pid <app-pid>|--window-id <window-id>] \
+  [--expected-size WIDTHxHEIGHT] <project> <run-id> <label>
 ```
 
 The wrapper allocates the next run-local sequence and writes a filename such as
