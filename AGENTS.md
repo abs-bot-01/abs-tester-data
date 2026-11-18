@@ -45,10 +45,12 @@ bin/pi-tester-tool run-start --project <project> --run-id <run-id> \
 ```
 
 Use the repository's native X11 helper for the supplied application's visible
-interface; do not use `computer_use` for this project. Read
+interface; do not use an alternate GUI mechanism for this project. Read
 `pi-agent/native-x11.md` first, verify the display with
 `bin/pi-tester-x11 verify`, and use fresh screenshot-derived coordinates for
-input. Capture meaningful states with:
+input. If the required X11 helper, display, or tester wrapper is unavailable,
+stop and report that the shared tester is unavailable; do not silently
+substitute another tool. Capture meaningful states with:
 
 ```bash
 bin/pi-tester-capture [--pid <app-pid>|--window-id <window-id>] \

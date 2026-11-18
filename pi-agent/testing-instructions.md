@@ -54,10 +54,12 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 4. Create the run with `bin/pi-tester-tool run-start` before interacting. For
    a feature target, include `--feature-name`, `--feature-specification`,
    `--feature-cases`, and `--feature-scope`; do not add level or board fields.
-5. Capture a stable initial state. For this repository use the native X11
-   helper (`bin/pi-tester-x11`) rather than `computer_use`; verify the display
-   first and use fresh screenshot-derived coordinates before coordinate
-   actions. Never replay stale coordinates or screenshots.
+5. Capture a stable initial state. Use the shared tester's native X11
+   helper (`bin/pi-tester-x11`); verify the display first and use fresh
+   screenshot-derived coordinates before coordinate actions. Never replay stale
+   coordinates or screenshots. If the required tester wrapper, X11 helper, or
+   display is unavailable, stop and report that the shared tester is
+   unavailable. Do not silently substitute another GUI mechanism.
 6. Open or launch the application and observe its loading and initial state.
    Setup or mounting the application is a prerequisite, not a test interaction.
 7. Perform one meaningful action at a time, or record an application event such
@@ -143,6 +145,7 @@ Use these wrappers instead of ad-hoc writes:
 
 Use `bin/pi-tester-x11` for visible application actions in this repository;
 its input backend is `xdotool` and its screenshot backend is ImageMagick
-`import`. Record `computer_use_invoked=false` when it is used. Do not use
-source inspection, hidden application APIs, production data, or security
+`import`. If this wrapper or its display is unavailable, fail explicitly rather
+than switching tools. Record the actual tester backend in the run notes. Do not
+use source inspection, hidden application APIs, production data, or security
 bypasses to obtain a result.
