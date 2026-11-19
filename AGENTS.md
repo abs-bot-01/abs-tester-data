@@ -44,6 +44,21 @@ bin/pi-tester-tool run-start --project <project> --run-id <run-id> \
   --target <target> --purpose <purpose> --mode explore
 ```
 
+For a level run, include the supported level metadata when it is known:
+
+```bash
+bin/pi-tester-tool run-start --project <project> --run-id <run-id> \
+  --target <target> --purpose <purpose> --mode explore \
+  --level-id <level-id> --level-title "<title>" \
+  --configured-segments <segments> --board-count <count> \
+  --board-time <seconds> --training-result <status> \
+  --speedrun-result <status> --audio-status <verified|not_applicable|blocked>
+```
+
+Feature runs must use the feature options shown below instead of level or board
+metadata. Before adding optional arguments not shown in these examples, check
+the exact wrapper contract with `bin/pi-tester-tool <subcommand> -h`.
+
 Use the repository's native X11 helper for the supplied application's visible
 interface; do not use an alternate GUI mechanism for this project. Read
 `pi-agent/native-x11.md` first, verify the display with
@@ -72,6 +87,18 @@ bin/pi-tester-tool run-complete --project <project> --run-id <run-id> \
 bin/pi-tester-tool run-report --project <project> --run-id <run-id>
 bin/pi-tester-tool findings-report --project <project>
 bin/pi-tester-tool validate
+```
+
+`bin/pi-tester-tool validate` validates the stored tester data and run
+artifacts after a run; it is not a CLI dry-run or argument validator. Use the
+specific subcommand help commands to check syntax before execution:
+
+```bash
+bin/pi-tester-tool run-start -h
+bin/pi-tester-tool action -h
+bin/pi-tester-tool run-complete -h
+bin/pi-tester-x11 --help
+bin/pi-tester-capture --help
 ```
 
 For a registered feature run, pass the feature scope explicitly before the first
@@ -143,6 +170,26 @@ tool response confirms it.
   the run; the tester should not wait for approval at every step.
 - If a bounded recovery fails, record the blocker and ask the human. If another
   independent flow is safe, continue it and report the blocked flow at the end.
+- **Coordinate/checkpoint recovery:** a missed or incorrect coordinate is a
+  tester-side interaction problem by default, not evidence of an application
+  bug. Keep the current run and application session open; do not block the run
+  or create a replacement run just to recover from it. Capture a fresh
+  screenshot through the tester wrapper, inspect the actual current UI state,
+  and resume from the latest confirmed checkpoint. Use a documented,
+  non-destructive UI path to return to that checkpoint when needed; otherwise
+  reconcile the current state from the screenshot and replan from there. Retry
+  at most once with coordinates derived from that fresh observation. Never
+  replay stale coordinates or blindly repeat an action. Record the coordinate
+  or input mistake as tester-side uncertainty, separately from application
+  results.
+- Mark an application behavior `failed` and record an unclassified finding
+  only when fresh evidence from a correctly delivered, valid UI action makes
+  the unexpected application behavior clear and rules out a coordinate/input
+  mistake. If that attribution is uncertain, do not call it a bug: continue
+  only after safe recovery, or mark the affected flow `blocked` if it cannot be
+  tested safely. A confirmed failure does not itself justify creating a new
+  run; preserve the current run and its evidence. Findings remain subject to
+  human triage and must not be automatically deleted or suppressed.
 
 ## Safety and scope
 

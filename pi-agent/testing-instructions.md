@@ -54,6 +54,11 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
 4. Create the run with `bin/pi-tester-tool run-start` before interacting. For
    a feature target, include `--feature-name`, `--feature-specification`,
    `--feature-cases`, and `--feature-scope`; do not add level or board fields.
+   For a level target, use the supported level metadata options when known.
+   Before adding optional arguments not shown in the shared examples, run the
+   exact subcommand's `-h` help and use only the options it lists. Do not use
+   `bin/pi-tester-tool validate` as a CLI syntax check; it validates stored
+   tester data after the run.
 5. Capture a stable initial state. Use the shared tester's native X11
    helper (`bin/pi-tester-x11`); verify the display first and use fresh
    screenshot-derived coordinates before coordinate actions. Never replay stale
@@ -77,7 +82,8 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
    stuck and another independent flow is safe, continue with the next flow and
    report the blocked flow.
 10. Recover only through an existing safe instruction or one bounded, observable
-    retry. Do not guess after an unresolved failure.
+    retry. For coordinate/input mistakes, follow the checkpoint recovery rules
+    below; do not guess, blindly repeat an action, or start a replacement run.
 11. Complete the run, generate its complete `flow.md` and reader-facing
     `report.md`, and validate the complete store. Record findings in
     local `findings.jsonl` and `findings.md` only when findings exist; never add a
@@ -92,6 +98,42 @@ backend in the run notes, without claiming Jev unless confirmed by the tool.
     summarizes the run, retained evidence, limitations, and final QA result.
     Neither document is a line-for-line copy of the event stream.
 12. Report status, coverage, findings, blocked flows, and next action in chat.
+
+## Coordinate and checkpoint recovery
+
+A coordinate action that misses its intended target, or an input command whose
+result is uncertain, is a tester-side interaction problem unless the observed
+evidence establishes otherwise. It is not by itself an application bug or a
+reason to block the run.
+
+When this happens:
+
+1. Keep the active run and application session open. Do not create a fresh run
+   just because a coordinate was wrong or the action could not be confirmed.
+2. Capture a fresh screenshot through the shared tester and inspect the actual
+   current UI state. Treat that image—not the intended coordinates or an older
+   checkpoint—as the source of truth.
+3. Resume from the latest confirmed checkpoint. If the UI has a documented,
+   safe, non-destructive way to return to that checkpoint, use it. Otherwise,
+   determine the current state from the screenshot and replan from that state;
+   do not restart or navigate backward using guessed actions.
+4. Make at most one bounded retry, using coordinates derived from the fresh
+   screenshot. Record the original miss/input issue separately from the
+   application's observed result. Never repeat an action blindly.
+5. If safe recovery is no longer possible, mark only the affected flow
+   `blocked` and record why. Keep the rest of the run and any safe independent
+   work intact; do not replace the run.
+
+Call an unexpected result an application failure only when the action was valid
+and correctly delivered, fresh evidence shows the expected user-facing behavior
+did not occur, and the evidence rules out a coordinate/input mistake. In that
+clear case, mark the affected check/run `failed`, preserve the evidence, and
+record an unclassified finding for human triage. Do not mislabel an observed
+application failure as `blocked`, and do not automatically delete or suppress a
+finding. If the cause is uncertain, do not assert that it is a bug: use bounded
+recovery or mark the affected flow `blocked` if it remains unsafe or
+unverifiable. A failure is not a reason to start a new run; rerun only when the
+human requests a separate retest.
 
 ## Evidence contract
 
@@ -145,7 +187,11 @@ Use these wrappers instead of ad-hoc writes:
 
 Use `bin/pi-tester-x11` for visible application actions in this repository;
 its input backend is `xdotool` and its screenshot backend is ImageMagick
-`import`. If this wrapper or its display is unavailable, fail explicitly rather
-than switching tools. Record the actual tester backend in the run notes. Do not
-use source inspection, hidden application APIs, production data, or security
-bypasses to obtain a result.
+`import`. Its raw capture command accepts `--pid`, `--window-id`, and
+`--expected-size`; use `bin/pi-tester-capture --help` for the numbered wrapper
+contract. If a wrapper rejects an argument, stop, read that wrapper's `-h`
+help, and correct the command rather than retrying guessed syntax. If the
+wrapper or its display is unavailable, fail explicitly rather than switching
+tools. Record the actual tester backend in the run notes. Do not use source
+inspection, hidden application APIs, production data, or security bypasses to
+obtain a result.
